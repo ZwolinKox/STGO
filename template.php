@@ -14,6 +14,10 @@
         .btn-dark {
             margin-top: 15px;
         }
+		
+		.btn-dark:hover {
+			cursor: pointer;
+		}
     </style>
     
 </head>
@@ -37,9 +41,29 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
-                <div class="col-12 col-md-6 " style="margin-top: 15px">
+				
+				<div class="col-12 text-center display-4">Dom</div>
+				
+				<div class="col-12 col-md-6" style="margin-top: 15px;">
+
+                        <div class="btn-dark btn-lg">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
+                        <div class="btn-dark btn-lg">2. Idz do sklepu</div>
+                        <div class="btn-dark btn-lg">3. Napraw komputer</div>
+                        <div class="btn-dark btn-lg">4. Idz spac</div>
+                        <div class="btn-dark btn-lg">5. Idz wreszcie na silownie</div>
+                        <div class="btn-dark btn-lg">6. Wyslij mema na grupe</div>
+                        <div class="btn-dark btn-lg">7. Wyzywanie brata</div>
+                        <div class="btn-dark btn-lg">8. Zagraj w Slyszolotka</div>
+                        <div class="btn-dark btn-lg">9. Idz do pracowni alchemicznej</div>
+                        <div class="btn-dark btn-lg">10. Eksploracja</div>
+                        <div class="btn-dark btn-lg">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
+
+                </div>
+		
+		
+                <div class="col-12 col-md-6 " style="margin-top: 30px">
 
                     <p>Dzień tygodnia: poniedziałek</p>
                     <p>Dzień w grze: 5</p>
@@ -57,23 +81,9 @@
                     <p>Obecnie posiadana broń <span style="color: gold;">*LEGENDARNE*</span> Palec Pawła Majnusza</p>
 
                 </div>
-                <div class="col-12 col-md-6" style="margin-top: 15px;">
-
-                        <div class="btn-dark btn-lg">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
-                        <div class="btn-dark btn-lg">2. Idz do sklepu</div>
-                        <div class="btn-dark btn-lg">3. Napraw komputer</div>
-                        <div class="btn-dark btn-lg">4. Idz spac</div>
-                        <div class="btn-dark btn-lg">5. Idz wreszcie na silownie</div>
-                        <div class="btn-dark btn-lg">6. Wyslij mema na grupe</div>
-                        <div class="btn-dark btn-lg">7. Wyzywanie brata</div>
-                        <div class="btn-dark btn-lg">8. Zagraj w Slyszolotka</div>
-                        <div class="btn-dark btn-lg">9. Idz do pracowni alchemicznej</div>
-                        <div class="btn-dark btn-lg">10. Eksploracja</div>
-                        <div class="btn-dark btn-lg">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
-
-                </div>
+                
         </div>
-    </div>
+    </div> <!-- ŚRODEK -->
 
 	<br/><br/>
     
