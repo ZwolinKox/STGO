@@ -44,45 +44,43 @@
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
 				
-				<div class="col-12 text-center display-4">Dom</div>
+				<div class="col-12 col-md-6 text-center" style="margin-top: 25px;" >
+					Zaloguj
+					
+					<form action="login.php" method="POST">
+						
+					<div class="form-group" style="margin-top: 15px;">
+						
+					  <label for="usr">Login:</label>
+					  <input type="text" class="form-control" id="usr">
+					</div>
+					<div class="form-group">
+					  <label for="pwd">Hasło:</label>
+					  <input type="password" class="form-control" id="pwd">
+					</div>
+						<input class="btn btn-dark btn-lg" type="submit" style="margin-bottom: 15px;">
+					</form>
+					
+				</div>
 				
-				<div class="col-12 col-md-6" style="margin-top: 15px;">
-
-                        <div class="btn-dark btn-lg">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
-                        <div class="btn-dark btn-lg">2. Idz do sklepu</div>
-                        <div class="btn-dark btn-lg">3. Napraw komputer</div>
-                        <div class="btn-dark btn-lg">4. Idz spac</div>
-                        <div class="btn-dark btn-lg">5. Idz wreszcie na silownie</div>
-                        <div class="btn-dark btn-lg">6. Wyslij mema na grupe</div>
-                        <div class="btn-dark btn-lg">7. Wyzywanie brata</div>
-                        <div class="btn-dark btn-lg">8. Zagraj w Slyszolotka</div>
-                        <div class="btn-dark btn-lg">9. Idz do pracowni alchemicznej</div>
-                        <div class="btn-dark btn-lg">10. Eksploracja</div>
-                        <div class="btn-dark btn-lg">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
-
-                </div>
-		
-		
-                <div class="col-12 col-md-6 " style="margin-top: 30px">
-
-                    <p>Dzień tygodnia: poniedziałek</p>
-                    <p>Dzień w grze: 5</p>
-                    <p>Słysz Coiny: 20</p>
-                    <p>XP: 100/500</p>
-                    <p>lvl: 53</p>
-                    <p>SłyszLeaguePoints: 2561</p>
-                    <p>Energia: 100</p>
-                    <p>Intelekt: 20</p>
-                    <p>Zręczność: 20</p>
-                    <p>Siła: 65</p>
-                    <p>AD: 50</p>
-                    <p>HP: 120/120</p>
-                    <p>Armor: 200</p>
-                    <p>Obecnie posiadana broń <span style="color: gold;">LEGENDARNE</span> Palec Pawła Majnusza</p>
-
-                </div>
-                
-        </div>
+				<div class="col-12 col-md-6 text-center" style="margin-top: 25px;">
+					Zarejestruj
+					
+					<form action="login.php" method="POST">
+						
+					<div class="form-group" style="margin-top: 15px;">
+						
+					  <label for="usr">Login:</label>
+					  <input type="text" class="form-control" id="usr">
+					</div>
+					<div class="form-group">
+					  <label for="pwd">Hasło:</label>
+					  <input type="password" class="form-control" id="pwd">
+					</div>
+						<input class="btn btn-dark btn-lg" type="submit" style="margin-bottom: 15px;">
+					</form>
+					
+			</div>	
     </div> <!-- ŚRODEK -->
 
 	<br/><br/>
