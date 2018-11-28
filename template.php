@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php
+
+	session_start();
+	function __autoload($className)
+	{
+		require('./'.$className.'.class.php');
+	} 
+
+	Zwolin::test();
+
+?>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -73,12 +84,13 @@
                     <p>SłyszLeaguePoints: 2561</p>
                     <p>Energia: 100</p>
                     <p>Intelekt: 20</p>
-                    <p>Zręczność: 20</p>
-                    <p>Siła: 65</p>
                     <p>AD: 50</p>
+                    <p>Unik: 30</p>
                     <p>HP: 120/120</p>
+                    <p>Krytyk: 25%</p>
                     <p>Armor: 200</p>
-                    <p>Obecnie posiadana broń <span style="color: gold;">LEGENDARNE</span> Palec Pawła Majnusza</p>
+                    <p>Absorpcja: 500</p>
+                    <p>Obecnie posiadana broń <span style="color: gold;">*LEGENDARNE*</span> Palec Pawła Majnusza</p>
 
                 </div>
                 
@@ -90,6 +102,8 @@
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone
     </footer>
+	
+	DatabaseManager::selectBySql
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

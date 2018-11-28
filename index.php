@@ -1,3 +1,15 @@
+<?php
+
+
+	session_start();
+	function __autoload($className)
+	{
+		require('./'.$className.'.class.php');
+	} 
+	
+		
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +47,7 @@
 
     <div class="container-fluid d-flex justify-content-center" style="background-color: rgb(50, 50, 58);">
         <div class="row d-flex">
-            <div class="col-4 btn btn-dark btn-lg">Profil</div>
+            <a href="template.php"><div class="col-4 btn btn-dark btn-lg">Profil</div></a>
             <div class="col-4 btn btn-dark btn-lg">Ranking</div>
             <div class="col-4 btn btn-dark btn-lg">Wyloguj</div>
         </div>
