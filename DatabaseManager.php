@@ -1,10 +1,5 @@
 <?php
 
-define('DB_SERVER', );
-define('DB_USERNAME', );
-define('DB_PW', );
-define('DB_DB', );
-
 //Klasyczny model. Połączenie z bazą danych
 class DatabaseManager {
     static public function getConnection() {
