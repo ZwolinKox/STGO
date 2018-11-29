@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <?php
 
-	session_start();
-	function __autoload($className)
-	{
-		require('./'.$className.'.class.php');
-	} 
+    require_once('config.php');
 
-	Zwolin::test();
+
+    if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
+        header('Location: index.php');
 
 ?>
 <html>

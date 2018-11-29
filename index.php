@@ -1,6 +1,9 @@
 <?php
 
-	
+	require_once('config.php');
+
+	if(isset($_SESSION['logged']) && $_SESSION['logged'] == true)
+		header('Location: template.php');
 		
 ?>
 
@@ -41,7 +44,7 @@
 
     <div class="container-fluid d-flex justify-content-center" style="background-color: rgb(50, 50, 58);">
         <div class="row d-flex">
-            <a href="template.php"><div class="col-4 btn btn-dark btn-lg">Profil</div></a>
+            <div class="col-4 btn btn-dark btn-lg">Profil</div>
             <div class="col-4 btn btn-dark btn-lg">Ranking</div>
             <div class="col-4 btn btn-dark btn-lg">Wyloguj</div>
         </div>
@@ -58,11 +61,11 @@
 					<div class="form-group" style="margin-top: 15px;">
 						
 					  <label for="usr">Login:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input type="text" class="form-control" id="user" name="login">
 					</div>
 					<div class="form-group">
 					  <label for="pwd">Hasło:</label>
-					  <input type="password" class="form-control" id="pwd">
+					  <input type="password" class="form-control" id="pwd" name="pass">
 					</div>
 						<input class="btn btn-dark btn-lg" type="submit" style="margin-bottom: 15px;">
 					</form>
@@ -77,11 +80,15 @@
 					<div class="form-group" style="margin-top: 15px;">
 						
 					  <label for="usr">Login:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input type="text" class="form-control" name="login">
 					</div>
 					<div class="form-group">
 					  <label for="pwd">Hasło:</label>
-					  <input type="password" class="form-control" id="pwd">
+					  <input type="password" class="form-control" name="pass">
+					</div>
+					<div class="form-group">
+					  <label for="pwd">email:</label>
+					  <input type="email" class="form-control" name="email">
 					</div>
 						<input class="btn btn-dark btn-lg" type="submit" style="margin-bottom: 15px;">
 					</form>

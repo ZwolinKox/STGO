@@ -39,7 +39,7 @@ class UserManager {
         $_SESSION['uid'] = $this->id;
         $_SESSION['logged'] = true;
     }
-    protected function LogOut() {
+    public function LogOut() {
         $_SESSION['uid'] = false;
         $_SESSION['logged'] = false;
         
@@ -47,7 +47,7 @@ class UserManager {
     }
     public function CreateUser($POST) {
         if(!empty($POST) && is_array($POST)) {
-            $res = DatabaseManager::insertInto("users", array("username"=>addslashes($POST['username']), "pass"=>md5($POST['pass']), "email"=>addslashes($POST['email']))); //dodanie użytkownika do bazy danych
+            $res = DatabaseManager::insertInto("users", array("username"=>addslashes($POST['login']), "pass"=>md5($POST['pass']), "email"=>addslashes($POST['email']))); //dodanie użytkownika do bazy danych
             if($res) {
                 return true;
             }

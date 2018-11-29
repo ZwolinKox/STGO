@@ -1,9 +1,12 @@
 <?php
-if(Post::exist('login') && Post::exist('password')) {
-    
+	require_once('config.php');
+
+
+if(Post::exist('login') && Post::exist('pass')) {
+        
     $um = new UserManager;
     
-    if($um->LogIn(Post::get('login'), Post::get('password'))) { //przekazanie do metody LogIn w klasie UserManager loginu i hasła
+    if($um->LogIn(Post::get('login'), Post::get('pass'))) { //przekazanie do metody LogIn w klasie UserManager loginu i hasła
         
         URL::to($_SERVER['HTTP_REFERER']); //przekierowanie do gry
         
