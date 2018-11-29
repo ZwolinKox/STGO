@@ -16,20 +16,21 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
+
 -- Database: `STGO`
---
+
 
 -- --------------------------------------------------------
 
---
+
 -- Struktura tabeli dla tabeli `Users`
---
+
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` text COLLATE utf8_polish_ci NOT NULL,
   `pass` text COLLATE utf8_polish_ci NOT NULL,
+  `nick` text COLLATE utf8_polish_ci NOT NULL,
   `dayWeek` int(11) NOT NULL,
   `dayGame` int(11) NOT NULL,
   `slyszCoin` int(11) NOT NULL,
