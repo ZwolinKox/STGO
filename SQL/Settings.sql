@@ -22,28 +22,35 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gameruleName` text COLLATE utf8_polish_ci NOT NULL,
   `levelCap` int(11) NOT NULL,
   `chanceCar` int(11) NOT NULL,
-  dresy
-  kielich
-  papa
-  mocher
-  sztanga
-  zawiasy
-  pobicie w szkole
-  pobicie w parku
-  zloty pociag
-  slysz lotek
-  wielka komul.
+  `chanceDres` int(11) NOT NULL,
+  `chanceKielich` int(11) NOT NULL,
+  `chancePapa` int(11) NOT NULL,
+  `chanceMocher` int(11) NOT NULL,
+  `chanceSztanga` int(11) NOT NULL,
+  `chanceZawiasy` int(11) NOT NULL,
+  `chanceSztanga` int(11) NOT NULL,
+  `chanceSchoolTrobule` int(11) NOT NULL,
+  `chanceParkTrouble` int(11) NOT NULL,
+  `chanceMinistrantTrouble` int(11) NOT NULL,
+  `chanceGoldTrain` int(11) NOT NULL,
+  `chanceLotekWin` int(11) NOT NULL,
+  `chanceKomulacja` int(11) NOT NULL,
+  `expLegs` int(11) NOT NULL,
+  `expArms` int(11) NOT NULL,
+  `jobPcRepair` int(11) NOT NULL,
+
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=1 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
   
-  lapy szansa
-  nogi szansa
-  
-  naprawisz 
-  
-  ministran pobcieie
-  
-  explo nedzia
+ 
  
   
   

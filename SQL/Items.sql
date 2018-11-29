@@ -38,7 +38,9 @@ CREATE TABLE IF NOT EXISTS `items` (
   `addDamage` int(11) NOT NULL,
   `addCritChance` int(11) NOT NULL,
   `passiveId` int(11) NOT NULL,
-  
+  `dropChance` int(11) NOT NULL,
+  `rarity` text COLLATE utf8_polish_ci NOT NULL,
+    
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=1 ;
 
