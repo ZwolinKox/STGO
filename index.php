@@ -1,11 +1,5 @@
 <?php
 
-
-	session_start();
-	function __autoload($className)
-	{
-		require('./'.$className.'.class.php');
-	} 
 	
 		
 ?>
@@ -15,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Słysz Symulator Template</title>
+    <title>Słysz Symulator Online</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
@@ -78,7 +72,7 @@
 				<div class="col-12 col-md-6 text-center" style="margin-top: 25px;">
 					Zarejestruj
 					
-					<form action="login.php" method="POST">
+					<form action="register.php" method="POST">
 						
 					<div class="form-group" style="margin-top: 15px;">
 						

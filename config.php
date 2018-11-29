@@ -1,5 +1,7 @@
 <?php
 ob_start();
+session_start();
+
 // OKREŚLENIE POŁOŻENIA STRONY W SERWISIE
 $AbsoluteURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
 $dirCat = dirname($_SERVER['PHP_SELF']);
