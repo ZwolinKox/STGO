@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `statHp` int(11) NOT NULL,
   `statDamage` int(11) NOT NULL,
   `statToAdd` int(11) NOT NULL,
-  `statCritChance int(11) NOT NULL,
+  `statCritChance` int(11) NOT NULL,
   `luck` int(11) NOT NULL,
   `eqMainHand` int(11) NOT NULL,
   `eqOffHand` int(11) NOT NULL,
