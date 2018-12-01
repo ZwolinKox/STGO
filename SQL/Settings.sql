@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `chanceMocher` int(11) NOT NULL,
   `chanceSztanga` int(11) NOT NULL,
   `chanceZawiasy` int(11) NOT NULL,
-  `chanceSztanga` int(11) NOT NULL,
   `chanceSchoolTrobule` int(11) NOT NULL,
   `chanceParkTrouble` int(11) NOT NULL,
   `chanceMinistrantTrouble` int(11) NOT NULL,

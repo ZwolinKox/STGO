@@ -2,6 +2,7 @@
 -- version 4.1.6
 -- http://www.phpmyadmin.net
 --
+-- Host: 127.0.0.1
 -- Generation Time: 28 Lis 2018, 11:22
 -- Server version: 5.5.36
 -- PHP Version: 5.4.25

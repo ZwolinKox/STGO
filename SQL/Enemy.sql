@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `enemy` (
   `enemyIntelect` int(11) NOT NULL,
   `enemyDex` int(11) NOT NULL,
   `enemyArmor` int(11) NOT NULL,
-  `enemyHp` int(11) NOT NULL,
   `enemyDamage` int(11) NOT NULL,
   `enemyToAdd` int(11) NOT NULL,
   `enemyCritChance` int(11) NOT NULL,
