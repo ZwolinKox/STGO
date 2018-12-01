@@ -33,6 +33,24 @@ CREATE TABLE IF NOT EXISTS `types` (
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=1 ;
 
+--
+-- Zrzut danych tabeli `types`
+--
+
+INSERT INTO `types` (`id`, `typeName`) VALUES
+(1, 'sword'),
+(2, 'bow'),
+(3, 'staff'),
+(4, 'armorLight'),
+(5, 'armorMedium'),
+(6, 'armorHard'),
+(7, 'neck'),
+(8, 'shield'),
+(9, 'arrow'),
+(10, 'orb'),
+(11, 'quest'),
+(12, 'misc');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -40,9 +40,19 @@ CREATE TABLE IF NOT EXISTS `items` (
   `passiveId` int(11) NOT NULL,
   `dropChance` int(11) NOT NULL,
   `rarity` text COLLATE utf8_polish_ci NOT NULL,
+  `vendorCost` int(11) NOT NULL,
     
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=1 ;
+
+--
+-- Zrzut danych tabeli `items`
+--
+
+INSERT INTO `items` (`id`, `itemtype`, `name`, `addHp`, `addStrenght`, `addIntelect`, `addDex`, `addArmor`, `addDamage`, `addCritChance`, `passiveId`, `dropChance`, `rarity`, `vendorCost`) VALUES
+(1, 1, 'Patyk', 0, 0, 0, 0, 0, 5, 0, 1, 100, 'common', 5);
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
