@@ -52,13 +52,13 @@
 
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
-				
+								
 				<div class="col-12 text-center display-4">Dom</div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                        <div class="btn-dark btn-lg">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
-                        <div class="btn-dark btn-lg">2. Idz do sklepu</div>
+                        <div class="btn-dark btn-lg href" id="https://www.onet.pl">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
+                        <div class="btn-dark btn-lg href-blank" id="https://www.onet.pl">2. Idz do sklepu</div>
                         <div class="btn-dark btn-lg">3. Napraw komputer</div>
                         <div class="btn-dark btn-lg">4. Idz spac</div>
                         <div class="btn-dark btn-lg">5. Idz wreszcie na silownie</div>
