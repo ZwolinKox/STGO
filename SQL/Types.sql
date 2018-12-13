@@ -38,16 +38,16 @@ CREATE TABLE IF NOT EXISTS `types` (
 --
 
 INSERT INTO `types` (`id`, `typeName`) VALUES
-(1, 'sword'),
-(2, 'bow'),
-(3, 'staff'),
+(1, 'staff'),
+(2, 'sword'),
+(3, 'bow'),
 (4, 'armorLight'),
-(5, 'armorMedium'),
-(6, 'armorHard'),
+(5, 'armorHard'),
+(6, 'armorMedium'),
 (7, 'neck'),
-(8, 'shield'),
-(9, 'arrow'),
-(10, 'orb'),
+(8, 'orb'),
+(9, 'shield'),
+(10, 'arrow'),
 (11, 'quest'),
 (12, 'misc');
 

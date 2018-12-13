@@ -40,9 +40,20 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `expLegs` int(11) NOT NULL,
   `expArms` int(11) NOT NULL,
   `jobPcRepair` int(11) NOT NULL,
+  `deathItems` tinyint(1) NOT NULL,
+  `deathPvpItems` tinyint(1) NOT NULL,
+  `deathPvpLevel` tinyint(1) NOT NULL,
 
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=1 ;
+
+--
+-- Zrzut danych tabeli `settings`
+--
+
+INSERT INTO `settigs` (`id`, `gameruleName`, `levelCap`, `chanceCar`, `chanceDres`, `chanceKielich`, `chancePapa`, `chanceMocher`, `chanceSztanga`, `chanceZawiasy`, `chanceSchoolTrobule`, `chanceParkTrouble`, `chanceMinistrantTrouble`, `chanceGoldTrain`, `chanceLotekWin`, `chanceKomulacja`, `expLegs`, `expArms`, `jobPcRepair`, `deathItems`, `deathLvL`, `deathPvpItems`, `deathPvpLvl` ) VALUES
+(1, 'vanilla', 40, 0.1, 0.1, 0.05,
+(2, 'hardcore'
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
