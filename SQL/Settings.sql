@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `expArms` int(11) NOT NULL,
   `jobPcRepair` int(11) NOT NULL,
   `deathItems` tinyint(1) NOT NULL,
+  `deathLevel` tinyint(1) NOT NULL,
   `deathPvpItems` tinyint(1) NOT NULL,
   `deathPvpLevel` tinyint(1) NOT NULL,
 
@@ -51,9 +52,9 @@ PRIMARY KEY (`id`)
 -- Zrzut danych tabeli `settings`
 --
 
-INSERT INTO `settigs` (`id`, `gameruleName`, `levelCap`, `chanceCar`, `chanceDres`, `chanceKielich`, `chancePapa`, `chanceMocher`, `chanceSztanga`, `chanceZawiasy`, `chanceSchoolTrobule`, `chanceParkTrouble`, `chanceMinistrantTrouble`, `chanceGoldTrain`, `chanceLotekWin`, `chanceKomulacja`, `expLegs`, `expArms`, `jobPcRepair`, `deathItems`, `deathLvL`, `deathPvpItems`, `deathPvpLvl` ) VALUES
-(1, 'vanilla', 40, 0.1, 0.1, 0.05,
-(2, 'hardcore'
+INSERT INTO `settigs` (`id`, `gameruleName`, `levelCap`, `chanceCar`, `chanceDres`, `chanceKielich`, `chancePapa`, `chanceMocher`, `chanceSztanga`, `chanceZawiasy`, `chanceSchoolTrobule`, `chanceParkTrouble`, `chanceMinistrantTrouble`, `chanceGoldTrain`, `chanceLotekWin`, `chanceKomulacja`, `expLegs`, `expArms`, `jobPcRepair`, `deathItems`, `deathLevel`, `deathPvpItems`, `deathPvpLevel` ) VALUES
+(1, 'vanilla', 40, 10, 10, 1, 1, 10, 10, 100, 100, 100, 100, 1, 1, 1, 7500, 7500, 5000, 0, 0, 0, 0),
+(2, 'hardcore', 40, 50, 50, 15, 15, 50, 50, 175, 175, 175, 175, 15, 15, 15, 8000, 8000, 6000, 1, 0, 1, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
