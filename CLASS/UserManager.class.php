@@ -4,6 +4,11 @@ class UserManager {
     protected $pass;
     protected $mail;
     protected $id;
+
+    public static function death() {
+        die('Umarłeś! Jesteś beznadziejnym Słyszem!');
+    }
+
     public function LogIn($LOGIN, $pass) { //przyjmujemy w formularza login i hasło
         
         $this->login = $LOGIN; //przypisanie loginu

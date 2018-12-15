@@ -12,6 +12,7 @@ if((strlen(Post::get('login')) >= 5 && strlen(Post::get('login')) <= 20) &&
     
     if($res) {
          $um->LogIn(Post::get('login'), Post::get('pass')); //zarejestrowano, logujemy użytkownika
+         URL::to('index.php');
     } else {
         
         die("Utworzenie użytkownika nie było możliwe!"); //przekierowanie na stronę błędu

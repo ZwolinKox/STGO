@@ -32,18 +32,19 @@ class DatabaseManager {
         $conn = self::getConnection();
         $SQL = "UPDATE {$TABLE} SET "; //Początek zapytania
         foreach($SET as $key => $val) { //Pętla przechodząca po tablicy $SET
-            $SQL .= $key."='".$val."',"; //dodawanie do zapytania wartości do ustawienia
+            $SQL .= $key.'='.$val.','; //dodawanie do zapytania wartości do ustawienia
         }
         $SQL = rtrim($SQL, ','); //obcięcie ostatniego przecinka z zapytania
         if(count($WHERE) > 0) { //Jeżeli tablica $WHERE ma zawartość
            
             $SQL .= " WHERE "; //Jeżeli ma dodajemy zapytanie WHERE
             foreach($WHERE as $key => $val) { //analogicznie jak przy $SET
-                $SQL .= $key."='".$val."' ".$OPER." "; //uzupełniamy zapytanie o warunki oddzielone operatorem (domyślnie AND)
+                $SQL .= $key.'='.$val.' '.$OPER." "; //uzupełniamy zapytanie o warunki oddzielone operatorem (domyślnie AND)
             }
             $SQL = substr($SQL, 0, strlen($SQL)-(strlen($OPER)+2)); //obcięcie końcowego operatora
         }
         $result = $conn->query($SQL);
+
         if($result)
             return true;
         return false;

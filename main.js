@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', () =>  {
 	let buttons = document.querySelectorAll('.href');
 		
 	for(let i = 0; i < buttons.length; i++) {
+		const thisButton = buttons[i];
 		buttons[i].addEventListener('click', () => {
-			location.href = buttons[i].id;
+			location.href = thisButton.id;
 		})
 	}
 	
