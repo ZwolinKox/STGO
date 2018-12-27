@@ -90,7 +90,7 @@
                                     
                                     unset($szansa);
                                     echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                                    echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do domu </div>';
+                                    echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do ćwiczeń </div>';
                                   
                                 }
                             }
@@ -123,7 +123,7 @@
                                     
                                     unset($szansa);
                                     echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                                    echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do domu </div>';
+                                    echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do ćwiczeń </div>';
                                   
                                 }
                             }
