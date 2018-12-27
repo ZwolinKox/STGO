@@ -75,9 +75,9 @@
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
                                     else{
-                                        $szansaNaNaprawe = 4000;
+                                        $szansaNaNaprawe = DatabaseManager::selectBySQL("SELECT jobPcRepair FROM settings WHERE id=1");
                                         DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-20', 'slyszCoin' => 'slyszCoin-30'], ['id' => $_SESSION['uid']]);
-                                        if(rand(1, 10000) <= 4000) {
+                                        if(rand(1, 10000) <= $szansaNaNaprawe) {
 
                                             $hajs = rand(0, 2);
 
