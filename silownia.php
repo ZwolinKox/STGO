@@ -132,8 +132,8 @@
                         {
 
                             echo '<h3>Co chcesz ćwiczyć?</h3>';
-                            echo '<br> <div class="btn-dark btn-lg href" id="silownia.php?co=lapy">Łapy </div>';
-                            echo '     <div class="btn-dark btn-lg href" id="silownia.php?co=nogi">Nogi </div>';
+                            echo '<br> <div class="btn-dark btn-lg href" id="silownia.php?co=lapy">Łapy (Koszt: 30Energii, 20Słysz Coinów) </div>';
+                            echo '     <div class="btn-dark btn-lg href" id="silownia.php?co=nogi">Nogi (Koszt: 40Energii, 25Słysz Coinów) </div>';
 
                             echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                         }
