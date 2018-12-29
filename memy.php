@@ -161,10 +161,6 @@
                                     echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                 }
                             }
-                            
-
-                            
-                            
 
                         }
                         else

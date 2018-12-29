@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `maxEnergy` int(11) NOT NULL,
   `maxXp` int(11) NOT NULL,
   `boolLotek` tinyint(1) NOT NULL,
-  `boolChurch` tinyint(1) NOT NULL,
+  `boolChurch` tinyint(1) NOT NULL,  --czy byłeś w kosciele w tym tygodniu
   `boolSchoolBan` tinyint(1) NOT NULL,
   `banCheck` tinyint(1) NOT NULL,
   `banInfo` text COLLATE utf8_polish_ci NOT NULL,
