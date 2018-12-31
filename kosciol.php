@@ -100,6 +100,7 @@
                                         }
 
                                         DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                        unset($rng);
 
                                         echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                         
@@ -107,22 +108,325 @@
                                 }
                                 else if(Get::get('co') == 'kielich')
                                 {
+                                    $rng = rand(1,2);
+                                    switch($rng)
+                                    {
+                                        case 1:
+                                        {
+                                            $gral = rand(1,1000);
+                                            if($gral == 23)
+                                            {
+                                                // ACZIFMENT ZA GRAL, TRZEBA DO BAZY DODAC I TRZEBA OGÓŁEM NAPISAĆ CO SIĘ STANIE XD
+                                            }
+                                            else
+                                            {
+                                                DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+100'], ['id' => $_SESSION['uid']]);
+                                                echo '<h3 style="color: green;">Ksiądz był zadowolony, zdobyłeś 100 Słysz Coinów!</h3><br>';
+                                            }
+                                        }break;
+                                        case 2:
+                                        {
+                                            echo '<h3 style="color: red;">Ksiądz nie był zadowolony, musisz wyjść z kośioła!</h3><br>';
+                                        }break;
+                                    }
+                                    
+                                    DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                    unset($rng);
+                                    if(isset($gral))
+                                    {
+                                        unset($gral);
+                                    }
+
+                                    echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
 
                                 }
                                 else if(Get::get('co') == 'ministrant')
                                 {
+                                    $rng = rand(1,2);
+                                    switch($rng)
+                                    {
+                                        case 1:
+                                        {
+                                            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+40'], ['id' => $_SESSION['uid']]);
+                                            echo '<h3 style="color: green;">Udało ci się pobić ministrantów! Zarobiłeś 40 Słysz Coinów z kolędy!</h3>';
+                                        }break;
+                                        case 2:
+                                        {
+                                            echo '<h3 style="color: red;"> Zostałeś pobity i wyrzucony z kościoła!</h3>';
+                                            // TUTAJ TRZEBA DODAC ZE TRACISZ HP
+                                        }break;
+                                    }
 
+                                    DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                    unset($rng);
+
+                                    echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                 }
                                 else if(Get::get('co') == 'piesn')
                                 {
+                                    //Piesn to jest duzo klikania i to moze byc takie meeh w php
+                                    //sam nie wierze w to co mówie ale jakby tu użyć jakiegos JS? xD
 
+                                    //TU BEDZIE KOLEJNY ACZIFMENT
                                 }
                                 else if(Get::get('co') == 'kazanie')
                                 {
+                                    if(Get::exist('jakie'))
+                                    {
+                                        if(Get::get('jakie') == 'pierwsze')
+                                        {
+                                            echo '<h3>Twoje kazanie brzmiało następująco:';
+                                            echo '<p style="text-align: justify;">
+                                            Drodzy bracia i siostry, 
+                                            Pomimo tego co wpaja nam "nauka" od setek lat trzeba ujrzec swiatlo prawdy.. 
+                                            Otoz Ziemia nie jest okragla, tak jak wam tak wmawiaja naukowcy i rzad. 
+                                            Od wiekow ludzie wiedzieli, ze jest plaska. 
+                                            Dzisiaj malo kto zna prawde, 
+                                            dlatego przybywam do was, aby was oswiecic.
+                                            Wytlumaczcie mi moi drodzy, jak to jest. 
+                                            Przeciez jakby ziemia byla kula, to oceany by po niej splywaly! 
+                                            Nie przekonalem was? To posluchajcie tego!
+                                            Samoloty nie mogą latać po kulistej Ziemi, gdyż ona się obraca, a każde lądowanie skończyłoby się katastrofą. 
+                                            I co wy na to "naukowcy"?
+                                            Na koniec chcialbym tylko prosic o wybaczenie dla tych, którzy szerzą te kłamstwa..
+                                            </p><br>';
+                                            $rng = rand(1,2);
+                                            switch($rng)
+                                            {
+                                                case 1:
+                                                {
+                                                    $prize = rand(1,3);
+                                                    switch($prize)
+                                                    {
+                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+60'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 3: DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+20'], ['id' => $_SESSION['uid']]); break;
+                                                    }
+                                                    
+                                                    echo '<h3 style="color: green;">Ludzie byli zadowoleni! Otrzymałeś nagrodę!</h3>';
+                                                    unset($prize);
+                                                    
+                                                }break;
+                                                case 2:
+                                                {
+                                                    $penalty = rand(1,2);
+                                                    switch($penalty)
+                                                    {
+                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['slyszCoin' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                    }
 
+                                                    echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
+                                                    unset($penalty);
+                                                }break;
+                                            }
+
+                                            DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                            unset($rng);
+
+                                            echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                            
+                                        }
+                                        else if(Get::get('jakie') == 'drugie')
+                                        {
+                                            echo '<h3>Twoje kazanie brzmiało następująco:';
+                                            echo '<p style="text-align: justify;">
+                                            Drodzy bracia i siostry
+                                            Jak pewnie myslicie, Adolf Hitler byl czlowiekiem
+                                            Jednakze byl genetycznie modyfikowanyn delfinem!
+                                            Myslicie, ze to absurd?
+                                            Nie powiedzialbym
+                                            Adolf - Imie
+                                            A dolphin - delfin
+                                            Adolfin..
+                                            To nie przypadek
+                                            Ta cala wiedze mam z wiarygodnego zrodla, kwejk
+                                            </p><br>';
+                                            $rng = rand(1,2);
+                                            switch($rng)
+                                            {
+                                                case 1:
+                                                {
+                                                    $prize = rand(1,3);
+                                                    switch($prize)
+                                                    {
+                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+60'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 3: DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+20'], ['id' => $_SESSION['uid']]); break;
+                                                    }
+                                                    
+                                                    echo '<h3 style="color: green;">Ludzie byli zadowoleni! Otrzymałeś nagrodę!</h3>';
+                                                    unset($prize);
+                                                    
+                                                }break;
+                                                case 2:
+                                                {
+                                                    $penalty = rand(1,2);
+                                                    switch($penalty)
+                                                    {
+                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['slyszCoin' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                    }
+
+                                                    echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
+                                                    unset($penalty);
+                                                }break;
+                                            }
+
+                                            DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                            unset($rng);
+
+                                            echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                            
+                                        }
+                                        else if(Get::get('jakie') == 'trzecie')
+                                        {
+                                            echo '<h3>Twoje kazanie brzmiało następująco:';
+                                            echo '<p style="text-align: justify;">
+                                            Drodzy bracia i siostry
+                                            Jak dobrze wiecie, coraz popularniejsze sa w internetach tzw czalendze
+                                            Wykonywane sa zarowno przez gwiazdy, jak i zwyklych ludzi
+                                            Jednakze jeden z nich, nie jest zwykla zabawa
+                                            Mam tutaj na mysli Ice Bucket Challenge
+                                            Pewnie zyjecie w przekonaniu, ze to zabawa charytatywna
+                                            Ktora przerodzila sie w forme rozrywki?
+                                            W zadnym wypadku!
+                                            Diabel tkwi w szczegolach
+                                            W rzeczywistosci jest to chrzest satanistyczny
+                                            Jezeli widzicie, ze wasze dziecko wykonuje podobne praktyki, mozecie zglosic sie do egzorcysty
+                                            </p><br>';
+                                            $rng = rand(1,2);
+                                            switch($rng)
+                                            {
+                                                case 1:
+                                                {
+                                                    $prize = rand(1,3);
+                                                    switch($prize)
+                                                    {
+                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+60'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 3: DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+20'], ['id' => $_SESSION['uid']]); break;
+                                                    }
+                                                    
+                                                    echo '<h3 style="color: green;">Ludzie byli zadowoleni! Otrzymałeś nagrodę!</h3>';
+                                                    unset($prize);
+                                                    
+                                                }break;
+                                                case 2:
+                                                {
+                                                    $penalty = rand(1,2);
+                                                    switch($penalty)
+                                                    {
+                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['slyszCoin' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                    }
+
+                                                    echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
+                                                    unset($penalty);
+                                                }break;
+                                            }
+
+                                            DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                            unset($rng);
+
+                                            echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                            
+                                        }
+                                        else if(Get::get('jakie') == 'czwarte')
+                                        {
+                                            echo '<h3>Twoje kazanie brzmiało następująco:';
+                                            echo '<p style="text-align: justify;">
+                                            Drodzy bracia i siostry
+                                            Na pewno wierzycie w podzial swiata, jaki jest wam pokazywany w szkolach
+                                            Jednak jest to tylko propaganda miedzynarodowa
+                                            Prawda jest zupelnie inna!
+                                            Otoz prawda ejst inna
+                                            Wszechswiat zlozony jest ze stref
+                                            My zyjemy w strefie zielonej, a istnieja jeszcze takie jak czarna lub zolta!
+                                            W dodatku czarna dziura moze wychodzic jako bialy karzel
+                                            Tego nie wolno lekcewazyc
+                                            Caly wszechswiat opiera sie na czestotliwosciach, najlepsza to 432 Hz..
+                                            </p><br>';
+                                            $rng = rand(1,2);
+                                            switch($rng)
+                                            {
+                                                case 1:
+                                                {
+                                                    $prize = rand(1,3);
+                                                    switch($prize)
+                                                    {
+                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+60'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 3: DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+20'], ['id' => $_SESSION['uid']]); break;
+                                                    }
+                                                    
+                                                    echo '<h3 style="color: green;">Ludzie byli zadowoleni! Otrzymałeś nagrodę!</h3>';
+                                                    unset($prize);
+                                                    
+                                                }break;
+                                                case 2:
+                                                {
+                                                    $penalty = rand(1,2);
+                                                    switch($penalty)
+                                                    {
+                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['slyszCoin' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                    }
+
+                                                    echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
+                                                    unset($penalty);
+                                                }break;
+                                            }
+
+                                            DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                            unset($rng);
+
+                                            echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                            
+                                        }
+                                        else if(Get::get('jakie') == "piate")
+                                        {
+                                            echo '<h3>Twoje kazanie brzmiało następująco:';
+                                            echo '<p style="text-align: justify;">
+                                            Jak pewnie dobrze wiecie... (Zostałes wyrzucony za zajmowanie ambony!)
+                                            </p><br>';
+                                            
+                                            DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                            echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo '<h3>Które kazanie chcesz opowiedzieć?</h3><br>';
+                                        echo '<div class="btn-dark btn-lg href" id="kosciol.php?co=kazanie&jakie=pierwsze">Kazanie pierwsze</div>';
+                                        echo '<div class="btn-dark btn-lg href" id="kosciol.php?co=kazanie&jakie=drugie">Kazanie drugie</div>';
+                                        echo '<div class="btn-dark btn-lg href" id="kosciol.php?co=kazanie&jakie=trzecie">Kazanie trzecie</div>';
+                                        echo '<div class="btn-dark btn-lg href" id="kosciol.php?co=kazanie&jakie=czwarte">Kazanie czwarte</div>';
+                                        echo '<div class="btn-dark btn-lg href" id="kosciol.php?co=kazanie&jakie=piate">Kazanie piąte</div>';
+                                    }
                                 }
                                 else if(Get::get('co') == 'koszyk')
                                 {
+                                    if(rand(1,100) > 20)
+                                    {
+                                        if(rand(1,100) > 50)
+                                        {
+                                            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+80'], ['id' => $_SESSION['uid']]);
+                                            echo '<h3 style="color: green;">Udało ci się ukraść pieniądze z koszyczka, nikt tego nie zauważył!</h3>';
+                                        }
+                                        else
+                                        {
+                                            echo '<h3 style="color: red;">Udało ci się ukraść pieniądze, ale kościelny to zauważył i musiałeś oddać pieniądze!</h3>';
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo '<h3 style="color: red;">Koszyczek był pusty!</h3>';
+                                    }
+
+                                    DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                    echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     
                                 }
                             }
