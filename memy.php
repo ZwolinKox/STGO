@@ -57,7 +57,7 @@
 
                     <?php
 
-                        if(Get::exist('jaki'))
+                        if(Get::exist('jakie'))
                         {
                             if(Get::get('jakie') == 'normickie')
                             {
