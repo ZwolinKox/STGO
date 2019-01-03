@@ -58,7 +58,7 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
                     <?php
-                        if(DatabaseManager::selectBySQL("SELECT boolChurch FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'])
+                        if(DatabaseManager::selectBySQL("SELECT boolChurch FROM users WHERE id=".$_SESSION['uid'])[0]['boolChurch'])
                         {
                             echo '<h3 style="color: red;">W tym tygodniu już byłeś w kościele!</h3><br>';
                             echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';

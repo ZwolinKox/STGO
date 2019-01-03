@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` text COLLATE utf8_polish_ci NOT NULL,
   `pass` text COLLATE utf8_polish_ci NOT NULL,
-  `nick` text COLLATE utf8_polish_ci NOT NULL,
+  `username` text COLLATE utf8_polish_ci NOT NULL,
   `dayWeek` int(11) NOT NULL,
   `dayGame` int(11) NOT NULL,
   `slyszCoin` int(11) NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `maxEnergy` int(11) NOT NULL,
   `maxXp` int(11) NOT NULL,
   `boolLotek` tinyint(1) NOT NULL,
-  `boolChurch` tinyint(1) NOT NULL,  --czy byłeś w kosciele w tym tygodniu
+  `boolChurch` tinyint(1) NOT NULL, 
   `boolSchoolBan` tinyint(1) NOT NULL,
   `banCheck` tinyint(1) NOT NULL,
   `banInfo` text COLLATE utf8_polish_ci NOT NULL,
