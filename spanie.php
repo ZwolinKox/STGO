@@ -53,8 +53,15 @@
     <?php
         if(Get::exist('spanie') && Get::get('spanie') == "tak")
         {
-            //Do uzupełnienia
-            echo 'xd';
+            $dayWeek = DatabaseManager::selectBySQL('SELECT dayWeek FROM users WHERE id='.Session::get('uid'))[0]['dayWeek'];
+
+            $dayWeek++;
+            if($dayWeek > 7)
+                $dayWeek = 1;
+
+            DatabaseManager::updateTable('users', ['userEnergy' => '100', 'statHp' => 'maxHp', 'dayWeek' => $dayWeek, 'dayGame'=>'dayGame+1'], ['id' => $_SESSION['uid']]);
+
+            Url::to('index.php');
         }
     ?>
     

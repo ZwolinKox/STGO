@@ -1,6 +1,7 @@
 <?php
                     $stats = DatabaseManager::selectBySQL('SELECT * FROM users WHERE id='.$_SESSION['uid'])[0];
     
+                    echo '<h3 style="color: pink"><p>Witaj '.$stats['username'].'!</p></h3>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
                     echo '<p>Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
                     echo '<p>Dzień w grze: '.$stats['dayGame'].'</p>';  //To musze dodac to tabeli user bo nie ma xD
                     echo '<p>Słysz Coiny: '.$stats['slyszCoin'].'</p>';
