@@ -62,7 +62,7 @@
                         <div class="btn-dark btn-lg href" id="silownia.php">5. Idz wreszcie na silownie</div>
                         <div class="btn-dark btn-lg href" id="memy.php">6. Wyslij mema na grupe</div>
                         <div class="btn-dark btn-lg href" id="brat.php">7. Wyzywanie brata</div>
-                        <div class="btn-dark btn-lg">8. Zagraj w Slyszolotka</div>
+                        <div class="btn-dark btn-lg href" id="lotek.php">8. Zagraj w Slyszolotka</div>
                         <div class="btn-dark btn-lg">9. Idz do pracowni alchemicznej</div>
                         <div class="btn-dark btn-lg">10. Eksploracja</div>
                         <div class="btn-dark btn-lg href" id="kosciol.php">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
