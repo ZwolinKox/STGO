@@ -61,13 +61,13 @@
                         <div class="btn-dark btn-lg href-blank" id="https://www.onet.pl">2. Idz do sklepu</div>
                         <div class="btn-dark btn-lg href" id="napraw-komputer.php">3. Napraw komputer</div>
                         <div class="btn-dark btn-lg">4. Idz spac</div>
-                        <div class="btn-dark btn-lg">5. Idz wreszcie na silownie</div>
-                        <div class="btn-dark btn-lg">6. Wyslij mema na grupe</div>
-                        <div class="btn-dark btn-lg">7. Wyzywanie brata</div>
+                        <div class="btn-dark btn-lg href" id="silownia.php">5. Idz wreszcie na silownie</div>
+                        <div class="btn-dark btn-lg href" id="memy.php">6. Wyslij mema na grupe</div>
+                        <div class="btn-dark btn-lg href" id="brat.php">7. Wyzywanie brata</div>
                         <div class="btn-dark btn-lg">8. Zagraj w Slyszolotka</div>
                         <div class="btn-dark btn-lg">9. Idz do pracowni alchemicznej</div>
                         <div class="btn-dark btn-lg">10. Eksploracja</div>
-                        <div class="btn-dark btn-lg">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
+                        <div class="btn-dark btn-lg href" id="kosciol.php">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
 
                 </div>
 		
@@ -88,9 +88,6 @@
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone
     </footer>
-	
-	DatabaseManager::selectBySql
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
