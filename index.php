@@ -44,9 +44,7 @@
 
     <div class="container-fluid d-flex justify-content-center" style="background-color: rgb(50, 50, 58);">
         <div class="row d-flex">
-            <div class="col-4 btn btn-dark btn-lg">Profil</div>
-            <div class="col-4 btn btn-dark btn-lg">Ranking</div>
-            <div class="col-4 btn btn-dark btn-lg">Wyloguj</div>
+			<?php require_once 'navbar.php' ?>
         </div>
     </div>
 

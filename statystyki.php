@@ -1,5 +1,30 @@
 <?php
                     $stats = DatabaseManager::selectBySQL('SELECT * FROM users WHERE id='.$_SESSION['uid'])[0];
+
+
+                    switch ($stats['dayWeek']) {
+                        case '1':
+                            $stats['dayWeek'] = 'poniedziałek';
+                            break;
+                            case '2':
+                            $stats['dayWeek'] = 'wtorek';
+                            break;
+                            case '3':
+                            $stats['dayWeek'] = 'środa';
+                            break;
+                            case '4':
+                            $stats['dayWeek'] = 'czwartek';
+                            break;
+                            case '5':
+                            $stats['dayWeek'] = 'piątek';
+                            break;
+                            case '6':
+                            $stats['dayWeek'] = 'sobota';
+                            break;
+                            case '7':
+                            $stats['dayWeek'] = 'niedziela';
+                            break;
+                    }
     
                     echo '<h3 style="color: pink"><p>Witaj '.$stats['username'].'!</p></h3>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
                     echo '<p>Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
