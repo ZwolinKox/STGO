@@ -60,7 +60,7 @@
             }
                 
 
-            DatabaseManager::updateTable('users', ['userEnergy' => '100', 'statHp' => 'maxHp', 'dayWeek' => $dayWeek, 'dayGame'=>'dayGame+1'], ['id' => $_SESSION['uid']]);
+            DatabaseManager::updateTable('users', ['userEnergy' => '100', 'statHp' => 'maxHp', 'dayWeek' => $dayWeek, 'dayGame'=>'dayGame+1', 'boolLotek' => 0], ['id' => $_SESSION['uid']]);
 
             Url::to('index.php');
         }
