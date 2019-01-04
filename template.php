@@ -55,7 +55,7 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                        <div class="btn-dark btn-lg href" id="https://www.mechanik.rac.pl">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
+                        <div class="btn-dark btn-lg href" id="szkola.php">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
                         <div class="btn-dark btn-lg href-blank" id="https://www.allegro.pl">2. Idz do sklepu</div>
                         <div class="btn-dark btn-lg href" id="napraw-komputer.php">3. Napraw komputer</div>
                         <div class="btn-dark btn-lg href" id="spanie.php">4. Idz spac</div>
