@@ -61,6 +61,10 @@
                             echo '<h3 style="color: red;">W tym tygodniu już byłeś w kościele!</h3><br>';
                             echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                         }
+                        elseif (DatabaseManager::selectBySQL("SELECT dayWeek FROM users WHERE id=".$_SESSION['uid'])[0]['dayWeek'] != 7) {
+                            echo '<h3 style="color: red;">Do kościoła możesz iść tylko w niedzielę!</h3><br>';
+                            echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                        }
                         else
                         {
                             if(Get::exist('co'))
