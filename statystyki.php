@@ -29,7 +29,14 @@
                     echo '<h3 style="color: pink"><p>Witaj '.$stats['username'].'!</p></h3>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
                     echo '<p>Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
                     echo '<p>Dzień w grze: '.$stats['dayGame'].'</p>';  //To musze dodac to tabeli user bo nie ma xD
-                    echo '<p>Słysz Coiny: '.$stats['slyszCoin'].'</p>';
+
+                    if($stats['slyszCoin'] > 1000000)
+                        echo '<p">Słysz Coiny: '.'<span style="color: gold'.$stats['slyszCoin'].'</span></p>';
+                    elseif($stats['slyszCoin'] < 0)
+                        echo '<p>Słysz Coiny: '.'<span style="red: gold">'.$stats['slyszCoin'].'</span></p>';
+                    else
+                        echo '<p>Słysz Coiny: '.$stats['slyszCoin'].'</p>';
+
                     echo '<p>XP: '.$stats['xpPoints'].'/'.$stats['maxXp'].'</p>';
                     echo '<p>lvl: '.$stats['userLevel'].'</p>';
                     echo '<p>SłyszLeaguePoints: '.$stats['userLeaguePoints'].'</p>';
