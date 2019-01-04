@@ -54,8 +54,11 @@
             $dayWeek = DatabaseManager::selectBySQL('SELECT dayWeek FROM users WHERE id='.Session::get('uid'))[0]['dayWeek'];
 
             $dayWeek++;
-            if($dayWeek > 7)
+            if($dayWeek > 7) {
                 $dayWeek = 1;
+                DatabaseManager::updateTable('users', ['boolChurch' => 0, 'boolschoolban' => 0], ['id' => Session::get('uid')]);
+            }
+                
 
             DatabaseManager::updateTable('users', ['userEnergy' => '100', 'statHp' => 'maxHp', 'dayWeek' => $dayWeek, 'dayGame'=>'dayGame+1'], ['id' => $_SESSION['uid']]);
 
