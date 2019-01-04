@@ -56,7 +56,7 @@
             $dayWeek++;
             if($dayWeek > 7) {
                 $dayWeek = 1;
-                DatabaseManager::updateTable('users', ['boolChurch' => 0, 'boolschoolban' => 0], ['id' => Session::get('uid')]);
+                DatabaseManager::updateTable('users', ['boolChurch' => 0, 'boolSchoolBan' => 0], ['id' => Session::get('uid')]);
             }
                 
 
