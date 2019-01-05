@@ -65,7 +65,46 @@
                             {
                                 RandomEvent::Dresy();
                             }
+                            
+                            if(Get::get('co'))
+                            {
+                                if(Get::get('co') == 'panaceum') {
+                                    if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 30 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 20) {
+                                        DatabaseManager::updateTable('users', ['statHp' => 'maxHp', 'slyszCoin' => 'slyszCoin-20']);
+                                    }
+                                    else {
 
+                                        echo '<h3 style="color: red;">Nie masz wystarczająco inteligencji lub Słysz coinów</h3>';
+                                        echo '<div class="btn-dark btn-lg href" id="index.php">Powrót do domu</div>';
+                                    }
+                                }
+                                elseif(Get::get('co') == 'kamien') {
+                                    if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 50 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 20) {
+                                        DatabaseManager::updateTable('users', ['userEnergy' => '100', 'slyszCoin' => 'slyszCoin-20']);
+                                    }
+                                    else {
+
+                                        echo '<h3 style="color: red;">Nie masz wystarczająco inteligencji lub Słysz coinów</h3>';
+                                        echo '<div class="btn-dark btn-lg href" id="index.php">Powrót do domu</div>';
+                                    }
+                                }  
+                                elseif (Get::get('co') == 'depuratus') {
+                                    if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 70 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 50) {
+                                        DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10', 'slyszCoin' => 'slyszCoin-50']);
+                                    }
+                                    else {
+                                        echo '<h3 style="color: red;">Nie masz wystarczająco inteligencji lub Słysz coinów</h3>';
+                                        echo '<div class="btn-dark btn-lg href" id="index.php">Powrót do domu</div>';
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=panaceum">Panaceum (Wymagana inteligencja: 30, cena 20SC) (Odnawia całe HP)</div>';
+                                echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=kamien">Kamień filozoficzny (Wymagana inteligencja: 50, cena 20SC) (Odnawia całą energię)</div>';
+                                echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=depuratus">Depuratus (Wymagana inteligencja: 70, cena 50SC) (+10 do MAXHP)</div>';
+                                echo '<div class="btn-dark btn-lg href" id="index.php">Powrót do domu</div>';
+                            }
                         ?>
 
                 </div>
