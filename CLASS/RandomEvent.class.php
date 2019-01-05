@@ -9,7 +9,7 @@
             
             if($correct == $userChoice)
             {
-                echo '<h3 style="color: green;">Spotykasz dresów, jednak okazuje się ze to twoje ziomki!';
+                echo '<h3 style="color: lightgreen;">Spotykasz dresów, jednak okazuje się ze to twoje ziomki!';
             }
             else
             {
