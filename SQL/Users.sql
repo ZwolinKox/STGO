@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `banCheck` tinyint(1) NOT NULL,
   `banInfo` text COLLATE utf8_polish_ci NOT NULL,
   `nickCol` int(11) NOT NULL,
+  `team` int(11) NOT NULL,
   
   
   

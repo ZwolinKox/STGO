@@ -56,85 +56,102 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
                     <?php
-
-                        if(Get::exist('co'))
+                        if(rand(1,100) < 15)
                         {
-                            if(Get::get('co') == 'lapy')
+                            RandomEvent::Dresy();
+                        }
+                            if(Get::exist('co'))
                             {
-                                if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 30)
+                                if(Get::get('co') == 'lapy')
                                 {
-                                        echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                                }
-                                else if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 20)
-                                {
-                                        echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                                }
-                                else
-                                {
-                                    $szansa = DatabaseManager::selectBySQL("SELECT expArms FROM settings WHERE id=1");
-                                    DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-30', 'slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
-                                    if(rand(1, 10000) <= $szansa)
+                                    if(rand(1, 100) < 5)
                                     {
-                                        DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+10'], ['id' => $_SESSION['uid']]); 
-
-                                        echo '<h3 style="color: green;">Udało ci się zwykiększyć swoją siłę o 10!</h3><br>';  
+                                        RandomEvent::Sztanga();
                                     }
                                     else
                                     {
-                                        echo '<h3 style="color: red;">Nie udało ci sie zwiększyć swojej siły!</h3><br>';
-                                    }
-                                    
-                                    unset($szansa);
-                                    echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                                    echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do ćwiczeń </div>';
-                                  
-                                }
-                            }
-                            else if(Get::get('co') == 'nogi')
-                            {
-                                if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 40)
-                                {
-                                        echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                                }
-                                else if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 25)
-                                {
-                                        echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                                }
-                                else
-                                {
-                                    $szansa = DatabaseManager::selectBySQL("SELECT expLegs FROM settings WHERE id=1");
-                                    DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-40', 'slyszCoin' => 'slyszCoin-25'], ['id' => $_SESSION['uid']]);
-                                    if(rand(1, 10000) <= $szansa)
-                                    {
-                                        DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+20'], ['id' => $_SESSION['uid']]); 
+                                        if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 30)
+                                        {
+                                                echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
+                                                echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        }
+                                        else if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 20)
+                                        {
+                                                echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3>';
+                                                echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        }
+                                        else
+                                        {
+                                            $szansa = DatabaseManager::selectBySQL("SELECT expArms FROM settings WHERE id=1");
+                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-30', 'slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+                                            if(rand(1, 10000) <= $szansa)
+                                            {
+                                                DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+10'], ['id' => $_SESSION['uid']]); 
 
-                                        echo '<h3 style="color: green;">Udało ci się zwykiększyć swoją siłę o 20!</h3><br>';  
+                                                echo '<h3 style="color: green;">Udało ci się zwykiększyć swoją siłę o 10!</h3><br>';  
+                                            }
+                                            else
+                                            {
+                                                echo '<h3 style="color: red;">Nie udało ci sie zwiększyć swojej siły!</h3><br>';
+                                            }
+                                            
+                                            unset($szansa);
+                                            echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                            echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do ćwiczeń </div>';
+                                        
+                                        }
+                                    }
+                                }
+                                else if(Get::get('co') == 'nogi')
+                                {
+                                    if(rand(1, 100) > 5)
+                                    {
+                                        RandomEvent::Sztanga();
                                     }
                                     else
                                     {
-                                        echo '<h3 style="color: red;">Nie udało ci sie zwiększyć swojej siły!</h3><br>';
+                                        if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 40)
+                                        {
+                                                echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
+                                                echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        }
+                                        else if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 25)
+                                        {
+                                                echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3>';
+                                                echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        }
+                                        else
+                                        {
+                                            $szansa = DatabaseManager::selectBySQL("SELECT expLegs FROM settings WHERE id=1");
+                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-40', 'slyszCoin' => 'slyszCoin-25'], ['id' => $_SESSION['uid']]);
+                                            if(rand(1, 10000) <= $szansa)
+                                            {
+                                                DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+20'], ['id' => $_SESSION['uid']]); 
+
+                                                echo '<h3 style="color: green;">Udało ci się zwykiększyć swoją siłę o 20!</h3><br>';  
+                                            }
+                                            else
+                                            {
+                                                echo '<h3 style="color: red;">Nie udało ci sie zwiększyć swojej siły!</h3><br>';
+                                            }
+                                            
+                                            unset($szansa);
+                                            echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                            echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do ćwiczeń </div>';
+                                        
+                                        }
                                     }
-                                    
-                                    unset($szansa);
-                                    echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                                    echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do ćwiczeń </div>';
-                                  
                                 }
                             }
-                        }
-                        else
-                        {
+                            else
+                            {
 
-                            echo '<h3>Co chcesz ćwiczyć?</h3>';
-                            echo '<br> <div class="btn-dark btn-lg href" id="silownia.php?co=lapy">Łapy (Koszt: 30Energii, 20Słysz Coinów) </div>';
-                            echo '     <div class="btn-dark btn-lg href" id="silownia.php?co=nogi">Nogi (Koszt: 40Energii, 25Słysz Coinów) </div>';
+                                echo '<h3>Co chcesz ćwiczyć?</h3>';
+                                echo '<br> <div class="btn-dark btn-lg href" id="silownia.php?co=lapy">Łapy (Koszt: 30Energii, 20Słysz Coinów) </div>';
+                                echo '     <div class="btn-dark btn-lg href" id="silownia.php?co=nogi">Nogi (Koszt: 40Energii, 25Słysz Coinów) </div>';
 
-                            echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
-                        }
+                                echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                            }
 
                     ?>
                 
