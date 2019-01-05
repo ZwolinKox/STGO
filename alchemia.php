@@ -57,7 +57,7 @@
 
                         <?php
 
-                            if(rand(1, 10) < 10)
+                            if(rand(1, 100) < 10)
                             {
                                 RandomEvent::Auto();
                             }
