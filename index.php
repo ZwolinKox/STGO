@@ -65,7 +65,7 @@
 					  <label for="pwd">Hasło:</label>
 					  <input type="password" class="form-control" id="pwd" name="pass">
 					</div>
-						<input class="btn btn-dark btn-lg" type="submit" style="margin-bottom: 15px;">
+						<input class="btn btn-dark btn-lg" type="submit" value="Zaloguj" style="margin-bottom: 15px;">
 					</form>
 					
 				</div>
@@ -88,7 +88,7 @@
 					  <label for="pwd">email:</label>
 					  <input type="email" class="form-control" name="email">
 					</div>
-						<input class="btn btn-dark btn-lg" type="submit" style="margin-bottom: 15px;">
+						<input class="btn btn-dark btn-lg" type="submit" value="Zarejestruj" style="margin-bottom: 15px;">
 					</form>
 					
 			</div>	
