@@ -71,7 +71,7 @@
                                         if(rand(1,100) <= 60)
                                         {
                                             DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+5'], ['id' => $_SESSION['uid']]);
-                                            echo '<h3 style="color: green;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 5 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
+                                            echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 5 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
                                         {
@@ -94,7 +94,7 @@
                                         if(rand(1,100) <= 50)
                                         {
                                             DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+10'], ['id' => $_SESSION['uid']]);
-                                            echo '<h3 style="color: green;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 10 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
+                                            echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 10 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
                                         {
@@ -117,7 +117,7 @@
                                         if(rand(1,100) <= 40)
                                         {
                                             DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
-                                            echo '<h3 style="color: green;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 20 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
+                                            echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 20 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
                                         {
@@ -140,7 +140,7 @@
                                         if(rand(1,100) <= 30)
                                         {
                                             DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+30'], ['id' => $_SESSION['uid']]);
-                                            echo '<h3 style="color: green;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 30 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
+                                            echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 30 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
                                         {
@@ -163,7 +163,7 @@
                                         if(rand(1,100) <= 10)
                                         {
                                             DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+320'], ['id' => $_SESSION['uid']]);
-                                            echo '<h3 style="color: green;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 320 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
+                                            echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 320 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
                                         {

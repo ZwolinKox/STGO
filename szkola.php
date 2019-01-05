@@ -112,7 +112,7 @@
                                     else
                                     {
                                         DatabaseManager::updateTable('users', ['slyszCoin' => 'SlyszCoin+100'], ['id' => $_SESSION['uid']]);
-                                        echo '<h3 style="color: green;">Udało ci się okraść plecak! Zarobiłeś 100 Słysz Coinów!</h3>';
+                                        echo '<h3 style="color: lightgreen;">Udało ci się okraść plecak! Zarobiłeś 100 Słysz Coinów!</h3>';
                                         echo '<div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                     }
                                 }

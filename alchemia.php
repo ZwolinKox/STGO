@@ -61,9 +61,9 @@
                             {
                                 RandomEvent::Auto();
                             }
-                            else
+                            elseif(rand(1,100) < 15)
                             {
-                                ///Tutaj dawaj reszte...
+                                RandomEvent::Dresy();
                             }
 
                         ?>

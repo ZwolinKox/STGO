@@ -88,7 +88,7 @@
                                             {
                                                 DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+10'], ['id' => $_SESSION['uid']]); 
 
-                                                echo '<h3 style="color: green;">Udało ci się zwykiększyć swoją siłę o 10!</h3><br>';  
+                                                echo '<h3 style="color: lightgreen;">Udało ci się zwykiększyć swoją siłę o 10!</h3><br>';  
                                             }
                                             else
                                             {
@@ -128,7 +128,7 @@
                                             {
                                                 DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+20'], ['id' => $_SESSION['uid']]); 
 
-                                                echo '<h3 style="color: green;">Udało ci się zwykiększyć swoją siłę o 20!</h3><br>';  
+                                                echo '<h3 style="color: lightgreen;">Udało ci się zwykiększyć swoją siłę o 20!</h3><br>';  
                                             }
                                             else
                                             {

@@ -72,7 +72,7 @@
                                     if(rand(1,100) <= 70)
                                     {
                                         DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
-                                        echo '<h3 style="color: green;">Twój mem był śmieszny, zarobiłeś 20 Słysz Coin!</h3><br>';
+                                        echo '<h3 style="color: lightgreen;">Twój mem był śmieszny, zarobiłeś 20 Słysz Coin!</h3><br>';
                                         
                                     }
                                     else
@@ -97,7 +97,7 @@
                                     if(rand(1,100) <= 50)
                                     {
                                         DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+30'], ['id' => $_SESSION['uid']]);
-                                        echo '<h3 style="color: green;">Twój mem był śmieszny, zarobiłeś 30 Słysz Coin!</h3><br>';
+                                        echo '<h3 style="color: lightgreen;">Twój mem był śmieszny, zarobiłeś 30 Słysz Coin!</h3><br>';
                                         
                                     }
                                     else
@@ -122,7 +122,7 @@
                                     if(rand(1,100) <= 30)
                                     {
                                         DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+80'], ['id' => $_SESSION['uid']]);
-                                        echo '<h3 style="color: green;">Twój mem był śmieszny, zarobiłeś 80 Słysz Coin!</h3><br>';
+                                        echo '<h3 style="color: lightgreen;">Twój mem był śmieszny, zarobiłeś 80 Słysz Coin!</h3><br>';
                                         
                                     }
                                     else
@@ -147,7 +147,7 @@
                                     if(rand(1,100) <= 10)
                                     {
                                         DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+300'], ['id' => $_SESSION['uid']]);
-                                        echo '<h3 style="color: green;">Twój mem był śmieszny, zarobiłeś 300 Słysz Coin!</h3><br>';
+                                        echo '<h3 style="color: lightgreen;">Twój mem był śmieszny, zarobiłeś 300 Słysz Coin!</h3><br>';
                                         
                                     }
                                     else
