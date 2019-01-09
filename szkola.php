@@ -89,11 +89,20 @@
                                 }
                                 else if(Get::get('gdzie') == 'toaleta')
                                 {
-                                    //Ta sama sytuacja z AJAXEm
+                                    echo '<div class="btn-dark btn-lg" id="jedyneczka">Jedyneczka (-1Hp, +1Energia)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="dwojeczka">Dwojeczka (+1Hp, -1Energia)</div>';
+                                    echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                 }
                                 else if(Get::get('gdzie') == 'biblioteka')
                                 {
+                                    echo '<h3>Jaką książkę chcesz przeczytać?</h3>';
 
+                                    echo '<div class="btn-dark btn-lg" id="horror">Horror</div>';
+                                    echo '<div class="btn-dark btn-lg" id="przygodowa">Przygodowa</div>';
+                                    echo '<div class="btn-dark btn-lg" id="naukowa">Naukowa</div>';
+
+                                    echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
+                                   
                                 }
                                 else if(Get::get('gdzie') == 'plecaki')
                                 {
@@ -170,5 +179,69 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
+    <script>
+        const jedyneczkaBtn = document.querySelector("#jedyneczka");
+        const dwojeczkaBtn = document.querySelector("#dwojeczka");
+
+        jedyneczkaBtn.addEventListener("click", function() {
+            $.ajax({
+                url: "ajax.php",
+                method: "post",
+                data: {
+                    co: "jedyneczka"
+                }
+            })
+        })
+
+        dwojeczkaBtn.addEventListener("click", function() {
+            $.ajax({
+                url: "ajax.php",
+                method: "post",
+                data: {
+                    co: "dwojeczka"
+                }
+            })
+        })
+    </script>
+
+    <script>
+        const horrorBtn = document.querySelector("#horror");
+        const przygodowaBtn = document.querySelector("#przygodowa");
+        const naukowaBtn = document.querySelector("#naukowa");
+
+        horrorBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "horror"
+                        }
+                    })
+                })
+
+                przygodowaBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "przygodowa"
+                        }
+                    })
+                })
+
+                naukowaBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "naukowa"
+                        }
+                    })
+                })
+
+    </script>
+
+
 </body>
 </html>
