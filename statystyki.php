@@ -63,7 +63,6 @@
         .done((result) => {
 
             const resultObj = JSON.parse(result);
-            console.log(resultObj);
             
             document.querySelector('#stats').innerHTML  = `
                 <h3 style="color: pink" id="username"><p>Witaj ${ resultObj.username }!</p></h3>
