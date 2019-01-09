@@ -1,53 +1,90 @@
-<?php
-                    $stats = DatabaseManager::selectBySQL('SELECT * FROM users WHERE id='.$_SESSION['uid'])[0];
 
+<?php 
+    require_once 'config.php';
 
-                    switch ($stats['dayWeek']) {
-                        case '1':
-                            $stats['dayWeek'] = 'poniedziałek';
-                            break;
-                            case '2':
-                            $stats['dayWeek'] = 'wtorek';
-                            break;
-                            case '3':
-                            $stats['dayWeek'] = 'środa';
-                            break;
-                            case '4':
-                            $stats['dayWeek'] = 'czwartek';
-                            break;
-                            case '5':
-                            $stats['dayWeek'] = 'piątek';
-                            break;
-                            case '6':
-                            $stats['dayWeek'] = 'sobota';
-                            break;
-                            case '7':
-                            $stats['dayWeek'] = 'niedziela';
-                            break;
-                    }
-    
-                    echo '<h3 style="color: pink"><p>Witaj '.$stats['username'].'!</p></h3>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
-                    echo '<p>Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
-                    echo '<p>Dzień w grze: '.$stats['dayGame'].'</p>';  //To musze dodac to tabeli user bo nie ma xD
+    $stats = DatabaseManager::selectBySQL('SELECT * FROM users WHERE id='.$_SESSION['uid'])[0];
+    $stats['pass'] = 'xxx';
 
-                    if($stats['slyszCoin'] > 1000000)
-                        echo '<p">Słysz Coiny: '.'<span style="color: gold'.$stats['slyszCoin'].'</span></p>';
-                    elseif($stats['slyszCoin'] < 0)
-                        echo '<p>Słysz Coiny: '.'<span style="red: gold">'.$stats['slyszCoin'].'</span></p>';
-                    else
-                        echo '<p>Słysz Coiny: '.$stats['slyszCoin'].'</p>';
+        switch ($stats['dayWeek']) {
+            case '1':
+                $stats['dayWeek'] = 'poniedziałek';
+                break;
+                case '2':
+                $stats['dayWeek'] = 'wtorek';
+                break;
+                case '3':
+                $stats['dayWeek'] = 'środa';
+                break;
+                case '4':
+                $stats['dayWeek'] = 'czwartek';
+                break;
+                case '5':
+                $stats['dayWeek'] = 'piątek';
+                break;
+                case '6':
+                $stats['dayWeek'] = 'sobota';
+                break;
+                case '7':
+                $stats['dayWeek'] = 'niedziela';
+                break;
+        }
 
-                    echo '<p>XP: '.$stats['xpPoints'].'/'.$stats['maxXp'].'</p>';
-                    echo '<p>lvl: '.$stats['userLevel'].'</p>';
-                    echo '<p>SłyszLeaguePoints: '.$stats['userLeaguePoints'].'</p>';
-                    echo '<p>Energia: '.$stats['userEnergy'].'</p>';
-                    echo '<p>Intelekt: '.$stats['statIntelect'].'</p>';
-                    echo '<p>AD: '.$stats['statDamage'].'</p>';
-                    echo '<p>Zręczność: '.$stats['statDex'].'</p>';
-                    echo '<p>HP: '.$stats['statHp'].'/'.$stats['maxHp'].'</p>';
-                    echo '<p>Krytyk: '.$stats['statCritChance'].'%'.'</p>';
-                    echo '<p>Armor: '.$stats['statArmor'].'</p>';
-                    echo '<p>Obecnie posiadana broń <span style="color: gold;">*LEGENDARNE*</span>'.$stats['eqMainHand'].'</p>';
+        
+        echo '<div id="stats">';
+        echo '<h3 style="color: pink" id="username"><p>Witaj '.$stats['username'].'!</p></h3>';
+        echo '<p id="dayweek">Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
+        echo '<p id="daygame">Dzień w grze: '.$stats['dayGame'].'</p>';  //To musze dodac to tabeli user bo nie ma xD
+        echo '<p id="slyszCoin">Słysz Coiny: '.$stats['slyszCoin'].'</p>';
+        echo '<p>XP: <span id="xppoints">'.$stats['xpPoints'].'</span>/<span id="maxxp">'.$stats['maxXp'].'</span></p>';
+        echo '<p id="userlevel">lvl: '.$stats['userLevel'].'</p>';
+        echo '<p id="userleaguepoints">SłyszLeaguePoints: '.$stats['userLeaguePoints'].'</p>';
+        echo '<p id="userenergy">Energia: '.$stats['userEnergy'].'</p>';
+        echo '<p id="statintelect">Intelekt: '.$stats['statIntelect'].'</p>';
+        echo '<p id="statdamage">AD: '.$stats['statDamage'].'</p>';
+        echo '<p id="statdex">Zręczność: '.$stats['statDex'].'</p>';
+        echo '<p>HP: <span id="stathp">'.$stats['statHp'].'</span>/<span id="maxhp">'.$stats['maxHp'].'</span></p>';
+        echo '<p id="statcritchance">Krytyk: '.$stats['statCritChance'].'%'.'</p>';
+        echo '<p id="statarmor">Armor: '.$stats['statArmor'].'</p>';
+        echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHand'].'</p>';
+        echo '</div>'
+?>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
+        <script defer>
 
-                    //To trzeba będzie też lepiej poukładać, ale to potem XDD
+        setInterval(() => {
+            $.ajax({
+            url : "ajaxstats.php",
+            method : "POST",
+            data : {
+                ajax : "ajax"
+            },
+        })
+        .done((result) => {
+
+            const resultObj = JSON.parse(result);
+            console.log(resultObj);
+            
+            document.querySelector('#stats').innerHTML  = `
+                <h3 style="color: pink" id="username"><p>Witaj ${ resultObj.username }!</p></h3>
+                <p id="dayweek">Dzień tygodnia: ${ resultObj.dayWeek }</p>
+                <p id="daygame">Dzień w grze: ${ resultObj.dayGame }</p>
+                <p id="slyszCoin">Słysz Coiny: ${ resultObj.slyszCoin }</p>
+
+                <p>XP: <span id="xppoints">${ resultObj.xpPoints }</span>/<span id="maxxp">${ resultObj.maxXp }</span></p>
+                <p id="userlevel">lvl: ${ resultObj.userLevel }</p>
+                <p id="userleaguepoints">SłyszLeaguePoints: ${ resultObj.userLeaguePoints}</p>
+                <p id="userenergy">Energia: ${ resultObj.userEnergy}</p>
+                <p id="statintelect">Intelekt: ${ resultObj.statIntelect}</p>
+                <p id="statdamage">AD: ${ resultObj.statDamage}</p>
+                <p id="statdex">Zręczność: ${ resultObj.statDex}</p>
+                <p>HP: <span id="stathp">${ resultObj.statHp}</span>/<span id="maxhp">${ resultObj.maxHp}</span></p>
+                <p id="statcritchance">Krytyk: ${ resultObj.statCritChance}%</p>
+                <p id="statarmor">Armor: ${ resultObj.statArmor}</p>
+                <p id="eqmainhand">Obecnie posiadana broń: ${ resultObj.eqMainHand}</p>
+                `;
+            })
+        }, '1000');
+
+    </script>
+
