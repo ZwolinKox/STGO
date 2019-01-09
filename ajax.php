@@ -16,15 +16,15 @@ require_once 'config.php';
         //Biblioteka
         else if(Post::get('co') == 'horror')
         {
-            ButtonFunc::czytajHorror();
+            ButtonFunc::czytaj('horror');
         }
         else if(Post::get('co') == 'przygodowa')
         {
-            ButtonFunc::czytajPrzygoda();
+            ButtonFunc::czytaj('przygodowa');
         }
         else if(Post::get('co') == 'naukowa')
         {
-            ButtonFunc::czytajNauka();
+            ButtonFunc::czytaj('naukowa');
         }
     }
 

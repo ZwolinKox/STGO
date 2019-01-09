@@ -97,9 +97,9 @@
                                 {
                                     echo '<h3>Jaką książkę chcesz przeczytać?</h3>';
 
-                                    echo '<div class="btn-dark btn-lg" id="horror">Horror</div>';
-                                    echo '<div class="btn-dark btn-lg" id="przygodowa">Przygodowa</div>';
-                                    echo '<div class="btn-dark btn-lg" id="naukowa">Naukowa</div>';
+                                    echo '<div class="btn-dark btn-lg" id="horror">Horror (-10 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="przygodowa">Przygodowa (-10 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="naukowa">Naukowa (-10 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
 
                                     echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                    
@@ -131,7 +131,33 @@
                                 }
                                 else if(Get::get('gdzie') == 'park')
                                 {
+                                    if(Get::exist('miejsce'))
+                                    {
+                                        if(Get::get('miejsce') == 'mcdonald')
+                                        {
+                                        
+                                        }
+                                        else if(Get::get('miejsce') == 'aldi')
+                                        {
 
+                                        }
+                                        else if(Get::get('miejsce') == 'stacja')
+                                        {
+
+                                        }
+                                        else if(Get::get('miejsce') == 'bieg')
+                                        {
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park&miejsce=mcdonald">Idź do McDonalds </div>';
+                                        echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park&miejsce=aldi">Idź do Aldika </div>';
+                                        echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park&miejsce=stacja">Idź na stację benzynową </div>';
+                                        echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park&miejsce=bieg">Idź biegać 1000m </div>';
+                                        echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc do szkoły</div>';
+                                    }
                                 }
                                 else if(Get::get("gdzie") == 'dom')
                                 {
