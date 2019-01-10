@@ -26,6 +26,25 @@ require_once 'config.php';
         {
             ButtonFunc::czytaj('naukowa');
         }
+        //McDonald
+        else if(Post::get('co') == 'burgerslysz')
+        {
+            ButtonFunc::jedzBurger();
+        }
+        else if(Post::get('co') == 'bigslysz')
+        {
+            ButtonFunc::jedzBig();
+        }
+        //Aldi
+        else if(Post::get('co') == 'kamizelka')
+        {
+            ButtonFunc::buyVest();
+        }
+        //Stacja benzynowa
+        else if(Post::get('co') == 'hotdog')
+        {
+            ButtonFunc::hotdog();
+        }
     }
 
 ?>

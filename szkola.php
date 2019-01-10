@@ -131,23 +131,36 @@
                                 }
                                 else if(Get::get('gdzie') == 'park')
                                 {
+                                    if(rand(1, 100) < 60)
+                                    {
+                                        RandomEvent::Dresy();
+                                    }
+
                                     if(Get::exist('miejsce'))
                                     {
                                         if(Get::get('miejsce') == 'mcdonald')
                                         {
-                                        
+                                            echo '<h3>Witaj w McDonalds! Mogę przyjąć twoje zamówienie?</h3><br>';
+                                            echo '<div class="btn-dark btn-lg" id="burgerslysz">SłyszBurger (-1 Siła, +1 MaxHP)</div>';
+                                            echo '<div class="btn-dark btn-lg" id="bigslysz">BigSłysz (+1 Siła, -1 MaxHP)</div>';
+                                            echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Wyjdz na dwór</div>';
                                         }
                                         else if(Get::get('miejsce') == 'aldi')
                                         {
-
+                                            echo '<h3>Witaj w Aldi!</h3><br>';
+                                            echo '<div class="btn-dark btn-lg" id="kamizelka">Kamizelka odblaskowa (Koszt: 500Słysz Coinów)</div>';
+                                            echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Wyjdz na dwór</div>';
                                         }
                                         else if(Get::get('miejsce') == 'stacja')
                                         {
-
+                                            echo '<h3>Witaj na stacji benzynowej! Co podać?</h3><br>';
+                                            echo '<div class="btn-dark btn-lg" id="hotdog">Hot-Dog (Koszt 20 Słysz Coin, przywraca 10HP)</div>';
+                                            echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Wyjdz na dwór</div>';
                                         }
                                         else if(Get::get('miejsce') == 'bieg')
                                         {
-
+                                            echo '<h3>Hahahahahaha, nie!</h3>';
+                                            echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Wyjdz na dwór</div>';
                                         }
                                     }
                                     else
@@ -159,7 +172,7 @@
                                         echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc do szkoły</div>';
                                     }
                                 }
-                                else if(Get::get("gdzie") == 'dom')
+                                else if(Get::get('gdzie') == 'dom')
                                 {
                                     DatabaseManager::updateTable('users', ['boolSchool' => 'true'], ['id' => $_SESSION['uid']]);
                                     header('Location: index.php'); 
@@ -176,7 +189,7 @@
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=plecaki">Okradnij plecaki </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=pietro">Wejdz na wyższe piętro </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Idz do parku </div>';
-                                echo '<br><div class="btn-dark btn-lg href" id="szkola?gdzie=dom">Wróć do domu </div>';
+                                echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=dom">Wróć do domu </div>';
                             }
                         }
 
@@ -266,6 +279,59 @@
                     })
                 })
 
+    </script>
+
+    <script>
+        const burgerslyszBtn = document.querySelector("#burgerslysz");
+        const bigslyszBtn = document.querySelector("#bigslysz");
+
+        burgerslyszBtn.addEventListener("click", function() {
+            $.ajax({
+                url: "ajax.php",
+                method: "post",
+                data: {
+                    co: "burgerslysz"
+                }
+            })
+        })
+
+        bigslyszBtn.addEventListener("click", function() {
+            $.ajax({
+                url: "ajax.php",
+                method: "post",
+                data: {
+                    co: "bigslysz"
+                }
+            })
+        })
+    </script>
+
+    <script>
+        const hotdogBtn = document.querySelector("#hotdog");
+
+        hotdogBtn.addEventListener("click", function() {
+            $.ajax({
+                url: "ajax.php",
+                method: "post",
+                data: {
+                    co: "hotdog"
+                }
+            })
+        })
+    </script>
+
+<script>
+        const kamizelkaBtn = document.querySelector("#kamizelka");
+
+        kamizelkaBtn.addEventListener("click", function() {
+            $.ajax({
+                url: "ajax.php",
+                method: "post",
+                data: {
+                    co: "kamizelka"
+                }
+            })
+        })
     </script>
 
 
