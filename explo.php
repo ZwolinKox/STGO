@@ -55,18 +55,53 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                        <div class="btn-dark btn-lg href" id="szkola.php">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href-blank" id="https://www.allegro.pl">2. Idz do sklepu</div>
-                        <div class="btn-dark btn-lg href" id="napraw-komputer.php">3. Napraw komputer</div>
-                        <div class="btn-dark btn-lg href" id="spanie.php">4. Idz spac</div>
-                        <div class="btn-dark btn-lg href" id="silownia.php">5. Idz wreszcie na silownie</div>
-                        <div class="btn-dark btn-lg href" id="memy.php">6. Wyslij mema na grupe</div>
-                        <div class="btn-dark btn-lg href" id="brat.php">7. Wyzywanie brata</div>
-                        <div class="btn-dark btn-lg href" id="lotek.php">8. Zagraj w Slyszolotka</div>
-                        <div class="btn-dark btn-lg href" id="alchemia.php">9. Idz do pracowni alchemicznej</div>
-                        <div class="btn-dark btn-lg href" id="explo.php">10. Eksploracja</div>
-                        <div class="btn-dark btn-lg href" id="kosciol.php">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href" id="gildia.php">12. Spotkaj się z gildią (zarys) </div>
+                     <?php
+                        if(Get::exist('gdzie'))
+                        {
+                            if(Get::get('gdzie') == 'ostrog')
+                            {
+                                Raid::raidOstrog();
+                            }
+                            else if(Get::get('gdzie') == 'markowice')
+                            {
+                                Raid::raidMarkowice();
+                            }
+                            else if(Get::get('gdzie') == 'babice')
+                            {
+                                Raid::raidBabice();
+                            }
+                            else if(Get::get('gdzie') == 'nedza')
+                            {
+                                Raid::raidNedza();
+                            }
+                        }
+                        else
+                        {
+                            echo '<h3>Jakie miejsce chcesz odwiedzić?</h3><br>';
+                            if(DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'] < 15)
+                            {
+                                echo '<h3 style="color: red;">Nie możesz jeszcze odwiedzić żadnych miejsc!</h3>';
+                            }
+                            if(DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'] >= 15)
+                            {
+                                echo '<div class="btn-dark btn-lg href" id="explo.php?ostrog">Ostróg (Wymagany level: 15)</div>';
+                            }
+                            if(DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'] >= 20)
+                            {
+                                echo '<div class="btn-dark btn-lg href" id="explo.php?markowice">Markowice (Wymagany level: 20)</div>';
+                            }
+                            if(DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'] >= 25)
+                            {
+                                echo '<div class="btn-dark btn-lg href" id="explo.php?babice">Babice (Wymagany level: 25)</div>';
+                            }
+                            if(DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'] >= 30)
+                            {
+                                echo '<div class="btn-dark btn-lg href" id="explo.php?nedza">Ostróg (Wymagany level: 30)</div>';
+                            }
+
+                            echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                        }
+                     ?>
 
                 </div>
 		

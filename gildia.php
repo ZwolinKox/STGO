@@ -51,22 +51,41 @@
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
 								
-				<div class="col-12 text-center display-4">Dom</div>
+				<div class="col-12 text-center display-4">Gildia</div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                        <div class="btn-dark btn-lg href" id="szkola.php">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href-blank" id="https://www.allegro.pl">2. Idz do sklepu</div>
-                        <div class="btn-dark btn-lg href" id="napraw-komputer.php">3. Napraw komputer</div>
-                        <div class="btn-dark btn-lg href" id="spanie.php">4. Idz spac</div>
-                        <div class="btn-dark btn-lg href" id="silownia.php">5. Idz wreszcie na silownie</div>
-                        <div class="btn-dark btn-lg href" id="memy.php">6. Wyslij mema na grupe</div>
-                        <div class="btn-dark btn-lg href" id="brat.php">7. Wyzywanie brata</div>
-                        <div class="btn-dark btn-lg href" id="lotek.php">8. Zagraj w Slyszolotka</div>
-                        <div class="btn-dark btn-lg href" id="alchemia.php">9. Idz do pracowni alchemicznej</div>
-                        <div class="btn-dark btn-lg href" id="explo.php">10. Eksploracja</div>
-                        <div class="btn-dark btn-lg href" id="kosciol.php">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href" id="gildia.php">12. Spotkaj się z gildią (zarys) </div>
+                    <?php
+                        $name = DatabaseManager::selectBySQL('SELECT guildName FROM users WHERE id='.Session::get('uid'))[0]['guildName'];
+
+                        if(DatabaseManager::selectBySQL('SELECT boolGuild FROM users WHERE id='.Session::get('uid'))[0]['boolGuild'] == 1)
+                        {
+                            if(Get::exist('co'))
+                            {
+                                if(Get::get('co') == '')
+                                {
+
+                                }
+                                
+                            }
+                            else
+                            {
+                                echo '<h3>Witaj w bazie gildii '.$name.'! Co chcesz zrobić?</h3><br>';
+                                //tutaj ile masz punktów
+                                echo '<div class="btn-dark btn-lg href" id="gildia.php?czlonkowie">Członkowie</div>';
+                                echo '<div class="btn-dark btn-lg href" id="gildia.php?">Idz na wyprawe</div>';
+                                //jesli jestes guild master masz opcje dodatkowe if()
+                                echo '<div class="btn-dark btn-lg href" id="gildia.php?">Wybierz miejsce na wyprawę</div>';
+                                echo '<div class="btn-dark btn-lg href" id="gildia.php?">Zarządzaj gildią</div>';
+                                
+                            }
+                        }
+                        else
+                        {
+
+                        }
+
+                    ?>
 
                 </div>
 		
