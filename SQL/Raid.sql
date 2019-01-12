@@ -46,9 +46,6 @@ CREATE TABLE IF NOT EXISTS `raid` (
 -- Zrzut danych tabeli `raid`
 --
 
-INSERT INTO `raid` (`id`, `name`, 'type', 'cost', 'forLevel', 'ifRaidHowManyPoints', 'enemyOne', 'enemyTwo', 'enemyThree', 'enemyFour', 'enemyFive', 'enemySix', 'enemySeven', 'enemyEight', 'enemyNine', 'enemyTen', 'enemyEleven', 'enemyTwelve', 'enemyThirteen', 'enemyFourteen', 'enemyFifteen') VALUES
-(1, 'Berliniok', 'dungeon', 20, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
