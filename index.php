@@ -4,11 +4,6 @@
 
 	if(isset($_SESSION['logged']) && $_SESSION['logged'] == true)
 		header('Location: template.php');
-
-	if(isset($_COOKIE["new"]) != true)
-	{
-		header('Location: start.php');
-	}
 		
 ?>
 
@@ -94,12 +89,13 @@
 					  <input type="email" class="form-control" name="email">
 					</div>
 						<input class="btn btn-dark btn-lg" type="submit" value="Zarejestruj" style="margin-bottom: 15px;">
-					</form>
-					
+					</form>		
 			</div>	
     </div> <!-- ŚRODEK -->
 
 	<br/><br/>
+
+
     
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone

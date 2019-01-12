@@ -64,6 +64,9 @@
 
             Url::to('index.php');
         }
+        else {
+            
+        }
     ?>
     
     <div class="container"> <!-- ŚRODEK !-->
