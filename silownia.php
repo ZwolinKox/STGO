@@ -3,6 +3,7 @@
 
     require_once('config.php');
 
+    CheckUrl::check();
 
    if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
         header('Location: index.php');
