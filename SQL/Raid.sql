@@ -38,18 +38,6 @@ CREATE TABLE IF NOT EXISTS `raid` (
   `enemyOne` int(11) NOT NULL,
   `enemyTwo` int(11) NOT NULL,
   `enemyThree` int(11) NOT NULL,
-  `enemyFour` int(11) NOT NULL,
-  `enemyFive` int(11) NOT NULL,
-  `enemySix` int(11) NOT NULL,
-  `enemySeven` int(11) NOT NULL,
-  `enemyEight` int(11) NOT NULL,
-  `enemyNine` int(11) NOT NULL,
-  `enemyTen` int(11) NOT NULL,
-  `enemyEleven` int(11) NOT NULL,
-  `enemyTwelve` int(11) NOT NULL,
-  `enemyThirteen` int(11) NOT NULL,
-  `enemyFourteen` int(11) NOT NULL,
-  `enemyFifteen` int(11) NOT NULL,
 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=1 ;

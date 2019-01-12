@@ -35,17 +35,7 @@ CREATE TABLE IF NOT EXISTS `enemy` (
   `dropItemThree` int(11) NOT NULL,
   `dropItemFour` int(11) NOT NULL,
   `dropItemFive` int(11) NOT NULL,
-  `dropItemSix` int(11) NOT NULL,
-  `dropItemSeven` int(11) NOT NULL,
-  `dropItemEight` int(11) NOT NULL,
-  `dropItemNine` int(11) NOT NULL,
-  `dropItemTen` int(11) NOT NULL,
-  `dropItemEleven` int(11) NOT NULL,
-  `dropItemTwelve` int(11) NOT NULL,
-  `dropItemThirteen` int(11) NOT NULL,
-  `dropItemFourteen` int(11) NOT NULL,
-  `dropItemFifteen` int(11) NOT NULL,
-
+ 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=1 ;
 

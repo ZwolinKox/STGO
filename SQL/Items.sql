@@ -28,16 +28,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `itemType` int(11) NOT NULL,
+  `itemType` text COLLATE utf8_polish_ci NOT NULL,
   `name` text COLLATE utf8_polish_ci NOT NULL,
-  `addHp` int(11) NOT NULL,
   `addStrenght` int(11) NOT NULL,
   `addIntelect` int(11) NOT NULL,
   `addDex` int(11) NOT NULL, 
   `addArmor` int(11) NOT NULL,
   `addDamage` int(11) NOT NULL,
-  `addCritChance` int(11) NOT NULL,
-  `passiveId` int(11) NOT NULL,
   `dropChance` int(11) NOT NULL,
   `rarity` text COLLATE utf8_polish_ci NOT NULL,
   `forLevel` int(11) NOT NULL,
@@ -51,15 +48,7 @@ CREATE TABLE IF NOT EXISTS `items` (
 -- Zrzut danych tabeli `items`
 --
 
-INSERT INTO `items` (`id`, `itemtype`, `name`, `addHp`, `addStrenght`, `addIntelect`, `addDex`, `addArmor`, `addDamage`, `addCritChance`, `passiveId`, `dropChance`, `rarity`, `vendorCost`) VALUES
-(1, 1, 'Magiczny patyk', 0, 0, 0, 0, 0, 5, 0, 0, 100, 'common', 1, 'warrior', 5),
-(2, 2, 'Duży patyk', 0, 0, 0, 0, 0, 5, 0, 0, 100, 'common', 1, 'mage', 5),
-(3, 3, 'Prosta proca', 0, 0, 0, 0, 0, 5, 0, 0, 100, 'common', 1, 'hunter', 5),
-(4, 4, 'Koszulka', 0, 0, 0, 0, 5, 0, 0, 0, 100, 'common', 1, 'warrior', 5),
-(5, 5, 'Kostium halloween', 0, 0, 0, 0, 5, 0, 0, 0, 100, 'common', 1, 'mage', 5), 
-(6, 6, 'Strój na W-f', 0, 0, 0, 0, 5, 0, 0, 0, 100, 'common', 1, 'hunter', 5), 
-(7, 7, 'Kapsel', 0, 5, 5, 5, 0, 0, 1, 0, 100, 'common', 1, 'all', 5);
-
+INSERT INTO `items` (`id`, `itemtype`, `name`, `addStrenght`, `addIntelect`, `addDex`, `addArmor`, `addDamage`, `dropChance`, `rarity`, `forLevel`, `forClass`, `vendorCost`) VALUES
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
