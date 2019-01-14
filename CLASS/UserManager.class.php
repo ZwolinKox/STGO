@@ -52,7 +52,10 @@ class UserManager {
     }
     public function CreateUser($POST) {
         if(!empty($POST) && is_array($POST)) {
-            $res = DatabaseManager::insertInto("users", array("username"=>addslashes($POST['login']), "pass"=>md5($POST['pass']), "email"=>addslashes($POST['email']))); //dodanie użytkownika do bazy danych
+            $res = DatabaseManager::insertInto("users", array("username"=>addslashes($POST['login']), "pass"=>md5($POST['pass']), "email"=>addslashes($POST['email']), "team"=>addslashes($POST['team']),
+            "dayWeek" => 1, "dayGame" => 1, "slyszCoin" => 100, "xpPoints" => 0, "userLevel" => 1, "userLeaguePoints" => 0, "userEnergy" => 100, "statStrength" => 0, "statIntelect" => 0, 
+            "statArmor" => 0, "statHp" => 100, "statDamage" => 1, 
+        )); //dodanie użytkownika do bazy danych
             if($res) {
                 return true;
             }
