@@ -85,9 +85,20 @@
 					  <input type="password" class="form-control" name="pass">
 					</div>
 					<div class="form-group">
-					  <label for="pwd">email:</label>
+					  <label for="pwd">E-mail:</label>
 					  <input type="email" class="form-control" name="email">
+					  
 					</div>
+
+					<div class="form-group">
+					<label for="team">Wybierz swoją drużynę:</label>
+						<select class="form-control" name="team">
+							<option value="1">LKS 1908 Nędza</option>
+							<option value="2">LKS Zgoda Zawada Książęca</option>
+							<option value="3">KS Unia Racibórz</option>
+						</select>
+					</div>
+
 						<input class="btn btn-dark btn-lg" type="submit" value="Zarejestruj" style="margin-bottom: 15px;">
 					</form>		
 			</div>	
