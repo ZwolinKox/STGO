@@ -32,6 +32,21 @@ if(isset($_POST['ajax']) && $_POST['ajax'] == 'ajax')
             break;
     }
 
+            
+    switch ($stats['team']) {
+        case '1':
+            $stats['team'] = 'LKS 1908 Nędza';
+            $stats['colorTeam'] = '#ffcd2b';
+            break;
+            case '2':
+            $stats['team'] = 'LKS Zgoda Zawada Książęca';
+            $stats['colorTeam'] = '#ff1616';
+            break;
+            case '3':
+            $stats['team'] = 'KS Unia Racibórz';
+            $stats['colorTeam'] = '#42c5f4';
+    }
+
     die(json_encode($stats));
 }
 
