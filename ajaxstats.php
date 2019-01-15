@@ -47,6 +47,9 @@ if(isset($_POST['ajax']) && $_POST['ajax'] == 'ajax')
             $stats['colorTeam'] = '#42c5f4';
     }
 
+    $stats['procentHp'] = ($stats['statHp'] / $stats['maxHp']) * 100;
+    $stats['procentXp'] = ($stats['xpPoints'] / $stats['maxXp']) * 100;
+
     die(json_encode($stats));
 }
 

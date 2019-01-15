@@ -43,22 +43,41 @@
                 $stats['team'] = 'KS Unia Racibórz';
                 $stats['colorTeam'] = '#42c5f4';
         }
+
+        $stats['procentHp'] = ($stats['statHp'] / $stats['maxHp']) * 100;
+        $stats['procentXp'] = ($stats['xpPoints'] / $stats['maxXp']) * 100;
         
         echo '<div id="stats">';
         echo '<h3 style="color: pink" id="username"><p>Witaj '.$stats['username'].'!</p></h3>';
         echo '<p id="dayweek">Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
         echo '<p id="daygame">Dzień w grze: '.$stats['dayGame'].'</p>';  //To musze dodac to tabeli user bo nie ma xD
         echo '<p id="slyszCoin">Słysz Coiny: '.$stats['slyszCoin'].'</p>';
-        echo '<p>XP: <span id="xppoints">'.$stats['xpPoints'].'</span>/<span id="maxxp">'.$stats['maxXp'].'</span></p>';
         echo '
+        <h5>XP:</h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="'.$stats['xpPoints'].'" aria-valuemin="0" aria-valuemax="'.$stats['maxXp'].'" style="width:'.$stats['xpPoints'].'%">
-            '.$stats['xpPoints'].'%</div>
+            <span style="color: black">'.$stats['procentXp'].'%</span></div>
         </div>
+        <p></p>
+        ';
+        echo '
+        <h5>Energia:</h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="'.$stats['userEnergy'].'" aria-valuemin="0" aria-valuemax="100" style="width:'.$stats['userEnergy'].'%">
+            <span style="color: black">'.$stats['userEnergy'].'%</span></div>
+        </div>
+        <p></p>
+        ';
+        echo '
+        <h5>Punkty życia:</h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="'.$stats['statHp'].'" aria-valuemin="0" aria-valuemax="'.$stats['maxHp'].'" style="width:'.$stats['statHp'].'%">
+            <span style="color: black">'.$stats['procentHp'].'%</span></div>
+        </div>
+        <p></p>
         ';
         echo '<p id="userlevel">lvl: '.$stats['userLevel'].'</p>';
         echo '<p id="userleaguepoints">SłyszLeaguePoints: '.$stats['userLeaguePoints'].'</p>';
-        echo '<p id="userenergy">Energia: '.$stats['userEnergy'].'</p>';
         echo '<p id="statintelect">Intelekt: '.$stats['statIntelect'].'</p>';
         echo '<p id="statdamage">AD: '.$stats['statDamage'].'</p>';
         echo '<p id="statdex">Zręczność: '.$stats['statDex'].'</p>';
@@ -91,15 +110,29 @@
                 <p id="dayweek">Dzień tygodnia: ${ resultObj.dayWeek }</p>
                 <p id="daygame">Dzień w grze: ${ resultObj.dayGame }</p>
                 <p id="slyszCoin">Słysz Coiny: ${ resultObj.slyszCoin }</p>
-
-                <p>XP: <span id="xppoints">${ resultObj.xpPoints }</span>/<span id="maxxp">${ resultObj.maxXp }</span></p>
+                <h5>XP:</h5>
+                <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="${ resultObj.xpPoints }" aria-valuemin="0" aria-valuemax="${ resultObj.maxXp }" style="width: ${ resultObj.xpPoints }%">
+                    <span style="color: black"> ${ resultObj.xpPoints }%</span></div>
+                </div>
+                <p></p>
+                    <h5>Energia:</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="${ resultObj.userEnergy }" aria-valuemin="0" aria-valuemax="100" style="width: ${ resultObj.userEnergy }%">
+                        <span style="color: black">${ resultObj.userEnergy }%</span></div>
+                    </div>
+                <p></p>
+                <h5>Punkty życia:</h5>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="${ resultObj.statHp }" aria-valuemin="0" aria-valuemax="${ resultObj.maxHp }" style="width:${ resultObj.statHp }%">
+                    <span style="color: black">${ resultObj.procentHp }%</span></div>
+                </div>
+                <p></p>
                 <p id="userlevel">lvl: ${ resultObj.userLevel }</p>
                 <p id="userleaguepoints">SłyszLeaguePoints: ${ resultObj.userLeaguePoints}</p>
-                <p id="userenergy">Energia: ${ resultObj.userEnergy}</p>
                 <p id="statintelect">Intelekt: ${ resultObj.statIntelect}</p>
                 <p id="statdamage">AD: ${ resultObj.statDamage}</p>
                 <p id="statdex">Zręczność: ${ resultObj.statDex}</p>
-                <p>HP: <span id="stathp">${ resultObj.statHp}</span>/<span id="maxhp">${ resultObj.maxHp}</span></p>
                 <p id="team">Twoja drużyna: <span style="color: ${ resultObj.colorTeam }"> ${ resultObj.team} </span></p>
                 <p id="statarmor">Armor: ${ resultObj.statArmor}</p>
                 <p id="eqmainhand">Obecnie posiadana broń: ${ resultObj.eqMainHand}</p>
