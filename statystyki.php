@@ -81,7 +81,6 @@
         echo '<p id="statintelect">Intelekt: '.$stats['statIntelect'].'</p>';
         echo '<p id="statdamage">AD: '.$stats['statDamage'].'</p>';
         echo '<p id="statdex">Zręczność: '.$stats['statDex'].'</p>';
-        echo '<p>HP: <span id="stathp">'.$stats['statHp'].'</span>/<span id="maxhp">'.$stats['maxHp'].'</span></p>';
         echo '<p id="team">Twoja drużyna: <span style="color: '.$stats['colorTeam'].'">'.$stats['team'].'</span></p>';
         echo '<p id="statarmor">Armor: '.$stats['statArmor'].'</p>';
         echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHand'].'</p>';
