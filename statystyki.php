@@ -83,6 +83,7 @@
         echo '<p id="statdex">Zręczność: '.$stats['statDex'].'</p>';
         echo '<p id="team">Twoja drużyna: <span style="color: '.$stats['colorTeam'].'">'.$stats['team'].'</span></p>';
         echo '<p id="statarmor">Armor: '.$stats['statArmor'].'</p>';
+        echo '<p id="statstrength">Siła: '.$stats['statStrength'].'</p>';
         echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHand'].'</p>';
         echo '</div>'
 ?>
@@ -134,6 +135,7 @@
                 <p id="statdex">Zręczność: ${ resultObj.statDex}</p>
                 <p id="team">Twoja drużyna: <span style="color: ${ resultObj.colorTeam }"> ${ resultObj.team} </span></p>
                 <p id="statarmor">Armor: ${ resultObj.statArmor}</p>
+                <p id="statstrength">Siła: ${ resultObj.statStrength}</p>
                 <p id="eqmainhand">Obecnie posiadana broń: ${ resultObj.eqMainHand}</p>
                 `;
             })

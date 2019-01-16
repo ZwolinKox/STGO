@@ -83,19 +83,11 @@
                                         }
                                         else
                                         {
-                                            $szansa = DatabaseManager::selectBySQL("SELECT expArms FROM settings WHERE id=1");
                                             DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-30', 'slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
-                                            if(rand(1, 10000) <= $szansa)
-                                            {
-                                                DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+10'], ['id' => $_SESSION['uid']]); 
+                                            DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+1'], ['id' => $_SESSION['uid']]); 
 
-                                                echo '<h3 style="color: lightgreen;">Udało ci się zwykiększyć swoją siłę o 10!</h3><br>';  
-                                            }
-                                            else
-                                            {
-                                                echo '<h3 style="color: red;">Nie udało ci sie zwiększyć swojej siły!</h3><br>';
-                                            }
-                                            
+                                            echo "<h3 style='color: lightgreen;'>Udało ci się zwykiększyć swoją siłę o 1!</h3><br>";  
+
                                             unset($szansa);
                                             echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                             echo '<div class="btn-dark btn-lg href" id="silownia.php">Wróć do ćwiczeń </div>';
@@ -105,7 +97,7 @@
                                 }
                                 else if(Get::get('co') == 'nogi')
                                 {
-                                    if(rand(1, 100) > 5)
+                                    if(rand(1, 100) < 5)
                                     {
                                         RandomEvent::Sztanga();
                                     }
@@ -123,13 +115,14 @@
                                         }
                                         else
                                         {
-                                            $szansa = DatabaseManager::selectBySQL("SELECT expLegs FROM settings WHERE id=1");
+                                            $str = rand(0, 3);
+                                            
+                                            
                                             DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-40', 'slyszCoin' => 'slyszCoin-25'], ['id' => $_SESSION['uid']]);
-                                            if(rand(1, 10000) <= $szansa)
-                                            {
-                                                DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+20'], ['id' => $_SESSION['uid']]); 
-
-                                                echo '<h3 style="color: lightgreen;">Udało ci się zwykiększyć swoją siłę o 20!</h3><br>';  
+                                            
+                                            if($str > 0) {
+                                                DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+'.$str], ['id' => $_SESSION['uid']]); 
+                                                echo "<h3 style='color: lightgreen;''>Udało ci się zwykiększyć swoją siłę o $str!</h3><br>";  
                                             }
                                             else
                                             {
