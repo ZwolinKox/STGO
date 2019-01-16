@@ -100,10 +100,14 @@
             },
         })
         .done((result) => {
-
+                
+            function Round(n, k)
+            {
+                var factor = Math.pow(10, k);
+                return Math.round(n*factor)/factor;
+            }
+                
             const resultObj = JSON.parse(result);
-
-            console.log(resultObj);
             
             document.querySelector('#stats').innerHTML  = `
                 <h3 style="color: pink" id="username"><p>Witaj ${ resultObj.username }!</p></h3>
