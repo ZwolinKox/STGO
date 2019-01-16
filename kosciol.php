@@ -112,7 +112,11 @@
                                 }
                                 else if(Get::get('co') == 'kielich')
                                 {
-                                    $rng = rand(1,2);
+                                    $rng = rand(1,100);
+                                    
+                                    if($rng != 1)
+                                        $rng = 2;
+                                    
                                     switch($rng)
                                     {
                                         case 1:
