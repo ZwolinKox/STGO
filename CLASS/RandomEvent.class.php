@@ -25,8 +25,14 @@
         }
         //Wpadnięcie pod auto
         static public function Auto() {
-            echo '<h3 style="color: red;">Wpadłeś pod auto!</h3>';
-            UserManager::death();
+            
+            if(!DatabaseManager::selectBySQL('SELECT boolVest FROM users WHERE id='.Session::get('uid'))[0]['boolVest']) {
+                echo '<h3 style="color: red;">Wpadłeś pod auto!</h3>';
+                UserManager::death();
+            } else {
+                echo '<h3 style="color: lightgreen;">Wpadłbyś pod auto, ale miałeś na sobie kamizelkę odblaskową!</h3>';
+            }
+            
             
         }
         //Wypadek na siłowni ze sztangą
