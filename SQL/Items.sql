@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 16 Sty 2019, 21:57
+-- Czas generowania: 17 Sty 2019, 21:05
 -- Wersja serwera: 10.1.33-MariaDB
 -- Wersja PHP: 7.2.6
 
@@ -57,7 +57,7 @@ INSERT INTO `items` (`id`, `itemType`, `name`, `addStrenght`, `addIntelect`, `ad
 (6, '0', 'Zabawkowy kostur', 0, 5, 0, 0, 30, 0, 'common', 5, 'mag', 50),
 (7, '0', 'Butelka CocaCola', 5, 0, 0, 0, 65, 0, 'common', 7, 'woj', 70),
 (8, '0', 'Butelka Pepsi', 0, 5, 0, 0, 65, 0, 'common', 7, 'mag', 70),
-(9, '0', 'Plastikowy miecz', 5, 0, 0, 0, 80, 0, 'commmon', 10, 'woj', 80),
+(9, '0', 'Plastikowy miecz', 5, 0, 0, 0, 80, 0, 'common', 10, 'woj', 80),
 (10, '0', 'Plastikowa różdżka', 0, 5, 0, 0, 80, 0, 'common', 10, 'mag', 100),
 (11, '0', 'Ekierka', 10, 0, 0, 0, 120, 0, 'common', 12, 'woj', 120),
 (12, '0', 'Kreda', 0, 10, 0, 0, 120, 0, 'common', 12, 'mag', 120),
@@ -78,7 +78,35 @@ INSERT INTO `items` (`id`, `itemType`, `name`, `addStrenght`, `addIntelect`, `ad
 (27, '0', 'Kij baseballowy', 15, 0, 0, 0, 410, 0, 'common', 30, 'woj', 400),
 (28, '0', 'Znak drogowy', 0, 15, 0, 0, 410, 0, 'common', 30, 'mag', 400),
 (29, '0', 'Niejednoznaczny miecz', 20, 0, 0, 0, 450, 0, 'common', 30, 'woj', 500),
-(30, '0', 'Magia w proszku', 0, 20, 0, 0, 450, 0, 'common', 30, 'mag', 500);
+(30, '0', 'Magia w proszku', 0, 20, 0, 0, 450, 0, 'common', 30, 'mag', 500),
+(31, '0', 'Próbierka', 5, 0, 0, 0, 60, 10, 'rare', 5, 'woj', 0),
+(32, '0', 'Cyna', 0, 5, 0, 0, 60, 10, 'rare', 5, 'mag', 0),
+(33, '0', 'Kabel', 5, 0, 0, 0, 80, 10, 'rare', 7, 'woj', 0),
+(34, '0', 'Arduino', 0, 5, 0, 0, 80, 10, 'rare', 7, 'mag', 0),
+(35, '0', 'Lutownica', 6, 0, 0, 0, 100, 5, 'heroic', 10, 'woj', 0),
+(36, '0', 'Miernik', 0, 6, 0, 0, 100, 5, 'heroic', 10, 'mag', 0),
+(37, '0', 'Antena Wifi', 10, 0, 0, 0, 200, 10, 'rare', 15, 'woj', 0),
+(38, '0', 'Bryloczek', 0, 10, 0, 0, 200, 10, 'rare', 15, 'mag', 0),
+(39, '0', 'Nowa myszka', 10, 0, 0, 0, 250, 10, 'rare', 18, 'woj', 0),
+(40, '0', 'Pendrive', 0, 10, 0, 0, 250, 10, 'rare', 18, 'mag', 0),
+(41, '0', 'Spalony ram', 12, 0, 0, 0, 275, 5, 'heroic', 20, 'woj', 0),
+(42, '0', 'Pendrak', 0, 12, 0, 0, 275, 5, 'heroic', 20, 'mag', 0),
+(43, '0', 'Wiatraczek', 10, 0, 0, 0, 350, 10, 'rare', 25, 'woj', 0),
+(44, '0', 'Energia solarna', 0, 10, 0, 0, 350, 10, 'rare', 25, 'mag', 0),
+(45, '0', 'Miecz Z CNC', 10, 0, 0, 0, 450, 10, 'rare', 30, 'woj', 0),
+(46, '0', 'Kostur z CNC', 0, 10, 0, 0, 450, 10, 'rare', 30, 'mag', 0),
+(47, '0', 'Klucz do szatni', 15, 0, 0, 0, 500, 5, 'heroic', 30, 'woj', 0),
+(48, '0', 'Klucze do Golfa', 0, 15, 0, 0, 500, 5, 'heroic', 30, 'mag', 0),
+(49, '0', 'Klucz do Berlinioka', 10, 0, 0, 0, 200, 5, 'heroic', 20, 'woj', 0),
+(50, '0', 'Bułka od Janety', 0, 10, 0, 0, 200, 5, 'heroic', 20, 'mag', 0),
+(51, '0', 'Kawałek pociągu', 10, 0, 0, 0, 390, 5, 'heroic', 25, 'woj', 0),
+(52, '0', 'Ziemniaki i internet', 0, 10, 0, 0, 390, 5, 'heroic', 25, 'mag', 0),
+(53, '0', 'Patyk patyk drewniany', 10, 0, 0, 0, 490, 5, 'heroic', 30, 'woj', 0),
+(54, '0', 'Wętka', 0, 10, 0, 0, 490, 5, 'heroic', 30, 'mag', 0),
+(55, '0', 'Klucze do Bandola', 15, 0, 0, 0, 550, 5, 'heroic', 30, 'woj', 0),
+(56, '0', 'Piwko KWK', 0, 15, 0, 0, 550, 5, 'heroic', 30, 'mag', 0),
+(57, '0', 'Palec Pawła ', 20, 0, 0, 0, 600, 1, 'legendary', 30, 'woj', 0),
+(58, '0', 'Rozpuszczalnik cały ten', 0, 20, 0, 0, 600, 1, 'legendary', 30, 'mag', 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -98,7 +126,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT dla tabeli `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
