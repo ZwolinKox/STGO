@@ -44,6 +44,12 @@
                 $stats['colorTeam'] = '#42c5f4';
         }
 
+        if($stats['eqMainHand'] == 0)
+            $stats['eqMainHandName'] = "Brak broni";
+        else
+            $stats['eqMainHandName'] = DatabaseManager::selectBySQL('SELECT items.name FROM users, items WHERE items.id = users.eqMainHand AND users.id='.$_SESSION['uid'])[0]['name'];
+
+
         $stats['procentHp'] = ($stats['statHp'] / $stats['maxHp']) * 100;
         $stats['procentXp'] = ($stats['xpPoints'] / $stats['maxXp']) * 100;
         
@@ -84,7 +90,7 @@
         echo '<p id="team">Twoja drużyna: <span style="color: '.$stats['colorTeam'].'">'.$stats['team'].'</span></p>';
         echo '<p id="statarmor">Armor: '.$stats['statArmor'].'</p>';
         echo '<p id="statstrength">Siła: '.$stats['statStrength'].'</p>';
-        echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHand'].'</p>';
+        echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHandName'].'</p>';
         echo '</div>'
 ?>
 
@@ -109,6 +115,7 @@
                 
             const resultObj = JSON.parse(result);
             
+
             document.querySelector('#stats').innerHTML  = `
                 <h3 style="color: pink" id="username"><p>Witaj ${ resultObj.username }!</p></h3>
                 <p id="dayweek">Dzień tygodnia: ${ resultObj.dayWeek }</p>
@@ -140,7 +147,7 @@
                 <p id="team">Twoja drużyna: <span style="color: ${ resultObj.colorTeam }"> ${ resultObj.team} </span></p>
                 <p id="statarmor">Armor: ${ resultObj.statArmor}</p>
                 <p id="statstrength">Siła: ${ resultObj.statStrength}</p>
-                <p id="eqmainhand">Obecnie posiadana broń: ${ resultObj.eqMainHand}</p>
+                <p id="eqmainhand">Obecnie posiadana broń: ${ resultObj.eqMainHandName}</p>
                 `;
             })
         }, '1000');
