@@ -4,8 +4,10 @@
 class TradeManager {
     static public function buyById($id) {
         if(DatabaseManager::selectbySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] > DatabaseManager::selectBySQL("SELECT vendorCost FROM items WHERE id=$id")[0]['vendorCost'])
-
-
+        {
+            $cost = DatabaseManager::selectBySQL("SELECT vendorCost FROM items WHERE id=$id")[0]['vendorCost'];
+            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-'.$cost], ['id' => $_SESSION['uid']]);
+            unset($cost);
 
             if(DatabaseManager::selectBySQL("SELECT eqMainHand FROM users WHERE id=".$_SESSION['uid'])[0]['eqMainHand'] == 0)
             {
@@ -45,8 +47,13 @@ class TradeManager {
             }
             else
             {
-                echo '<h3 style="color: red;">Nie masz miejsca w ekwipunku</h3>';
+                echo '<h3 style="color: red;">Nie masz miejsca w ekwipunku!</h3>';
             }
+        }
+        else
+        {
+            echo '<h3 style="color: red;">Nie masz wystarczająco Słysz Coinów!</h3>';
+        }
     }
 
 }
