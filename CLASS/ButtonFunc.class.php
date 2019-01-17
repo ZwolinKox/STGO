@@ -33,13 +33,13 @@
                     }break;
                     case 'przygodowa':
                     {
-                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-10'], ['id' => $_SESSION['uid']]);
+                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-15'], ['id' => $_SESSION['uid']]);
                         DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+1'], ['id' => $_SESSION['uid']]);
                     }break;
                     case 'naukowa':
                     {
                         $add = rand(2, 4);
-                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-10'], ['id' => $_SESSION['uid']]);
+                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-20'], ['id' => $_SESSION['uid']]);
                         DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+'.$add], ['id' => $_SESSION['uid']]); 
                     }break;
                 }

@@ -98,8 +98,8 @@
                                     echo '<h3>Jaką książkę chcesz przeczytać?</h3>';
 
                                     echo '<div class="btn-dark btn-lg" id="horror">Horror (-10 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
-                                    echo '<div class="btn-dark btn-lg" id="przygodowa">Przygodowa (-10 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
-                                    echo '<div class="btn-dark btn-lg" id="naukowa">Naukowa (-10 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="przygodowa">Przygodowa (-15 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="naukowa">Naukowa (-20 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
 
                                     echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                    
