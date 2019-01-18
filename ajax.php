@@ -47,7 +47,7 @@ require_once 'config.php';
         }
         else if(Post::get('co') == 'sklep')
         {
-            TradeManager::buyById(id);
+            TradeManager::buyById(Post::get('id'));
         }
     }
 
