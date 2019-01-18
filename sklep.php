@@ -59,13 +59,45 @@
 
                             echo '<h3>Oto rzeczy dostępne dla ciebie!</h3>';
 
-                            if(DatabaseManager::selectbySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'] < 10)
-                            {
-                                //tutaj przycisk asynchorincze 
-                                //przycisk ustawia zmienna i wywolywana jest metoda, jest ta zmienna jako parametr
-                                echo '<div class="btn-dark btn-lg shop" id="1">test </div>';
-                            }
+                            //od 1 do 10
+                            
+                                echo '<div class="btn-dark btn-lg shop" id="1">Patyk</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="2">Puszka</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="3">Ostryk patyk</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="4">Zgnieciona puszka</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="5">Plastikowy widelec</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="6">Zabawkowy kostur</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="7">Butelka CocaCola</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="8">Butelka Pepsi</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="9">Plastikowy miecz</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="10">Plastikowa różdżka</div>';
+                            
+                            //od 11 do 20
 
+                                echo '<div class="btn-dark btn-lg shop" id="11">Ekierka</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="12">Kreda</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="13">Linijka</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="14">Figura geometryczna</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="15">Ram Mojżesza</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="16">Dysk Mojżesza</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="17">Piórnik</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="18">Reklamówka</div>';
+                            
+                            //od 21 do 30
+                            
+                                echo '<div class="btn-dark btn-lg shop" id="19">Nóż do masła</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="20">Zamek z bluzy</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="21">Cyrkiel</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="22">Kątomierz</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="23">Prawie prawdziwy miecz</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="24">Prawie prawdziwa różdżka</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="25">Prawdziwy miecz</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="26">Prawdziwa różdżka</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="27">Kij baseballowy</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="28">Znak drogowy</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="29">Niejednoznaczny miecz</div>';
+                                echo '<div class="btn-dark btn-lg shop" id="30">Magia w proszku</div>';
+                            
                        ?>
 
                 </div>

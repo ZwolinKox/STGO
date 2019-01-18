@@ -56,7 +56,7 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
                         <div class="btn-dark btn-lg href" id="szkola.php">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href-blank" id="sklep.php">2. Idz do sklepu</div>
+                        <div class="btn-dark btn-lg href" id="sklep.php">2. Idz do sklepu</div>
                         <div class="btn-dark btn-lg href" id="napraw-komputer.php">3. Napraw komputer</div>
                         <div class="btn-dark btn-lg href" id="spanie.php">4. Idz spac</div>
                         <div class="btn-dark btn-lg href" id="silownia.php">5. Idz wreszcie na silownie</div>
