@@ -14,8 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Słysz Symulator Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 
     
@@ -78,7 +77,43 @@
                             {
                                 if(Get::get('gdzie') == 'parter-szukaj')
                                 {
-                                    //Tu jest walka wiec zostawiam na pozniej
+
+                                    $enemyId = rand(1, 2); //Do ustalenia testy
+                                    $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
+                                    $enemyInfo = $enemyStats[0]['type'].' Lvl: '.$enemyStats[0]['enemyLevel'];
+                                    
+                                    echo <<< END
+                                    <div class="text-center" style="margin-bottom: 35px;">
+
+                                    <div id="poszukiwanie" class="display-4" style="margin-bottom: 35px; color: red;">Poszukiwanie przeciwników...</div>
+
+                                    <div id="search" class="spinner-border" role="status" style="width: 9rem; height: 9rem;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+
+                                    <div id="fight"></div>
+
+                                    </div>
+
+                                    <script defer>
+
+                                        document.addEventListener("DOMContentLoaded",() => {
+                                            const poszukiwanie = document.querySelector("#poszukiwanie");
+                                            const fight = document.querySelector("#fight");
+
+                                            setTimeout(() => {
+                                                poszukiwanie.style.color = "lightGreen";
+                                                poszukiwanie.innerHTML = "Znaleziono przeciwnika! $enemyInfo";
+                                                document.querySelector("#search").style.display = "none";
+                                                fight.innerHTML = `<div class="btn-dark btn-lg" onclick="location.href = 'szkola.php'">Walcz</div>
+                                                <div class="btn-dark btn-lg" onclick="location.href = 'szkola.php'">Uciekaj</div>`
+                                            }, 1000)
+
+                                        })
+                                        
+                                    </script>
+
+END;
                                 }
                                 else if(Get::get('gdzie') == 'sklep')
                                 {
@@ -128,7 +163,7 @@
                                 }
                                 else if(Get::get('gdzie') == 'pietro')
                                 {
-
+                                   
                                 }
                                 else if(Get::get('gdzie') == 'park')
                                 {
@@ -218,8 +253,7 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>    <script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
     <script>
         const jedyneczkaBtn = document.querySelector("#jedyneczka");
         const dwojeczkaBtn = document.querySelector("#dwojeczka");
