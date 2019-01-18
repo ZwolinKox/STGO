@@ -63,6 +63,7 @@
                             {
                                 //tutaj przycisk asynchorincze 
                                 //przycisk ustawia zmienna i wywolywana jest metoda, jest ta zmienna jako parametr
+                                echo '<div class="btn-dark btn-lg shop" id="1">test </div>';
                             }
 
                        ?>
@@ -91,9 +92,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     
-    <script>
-        
-                            //cale te
+    <script>  
+        function buy(itemid) {
+            $.ajax({
+            url : "ajax.php",
+            method : "POST",
+            data : {
+                co: "sklep",
+                id: itemid
+            }   
+            })
+        }
+
+        document.addEventListener('DOMContentLoaded', () =>  {
+
+        let buttons = document.querySelectorAll('.shop');
+            
+        for(let i = 0; i < buttons.length; i++) {
+            const thisButton = buttons[i];
+            buttons[i].addEventListener('click', () => {
+                buy(thisButton.id);
+            })
+        }
+    })
 
     </script>
 

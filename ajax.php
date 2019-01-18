@@ -45,6 +45,10 @@ require_once 'config.php';
         {
             ButtonFunc::hotdog();
         }
+        else if(Post::get('co') == 'sklep')
+        {
+            TradeManager::buyById(id);
+        }
     }
 
 ?>
