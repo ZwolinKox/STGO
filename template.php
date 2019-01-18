@@ -66,7 +66,7 @@
                         <div class="btn-dark btn-lg href" id="alchemia.php">9. Idz do pracowni alchemicznej</div>
                         <div class="btn-dark btn-lg href" id="explo.php">10. Eksploracja</div>
                         <div class="btn-dark btn-lg href" id="kosciol.php">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href" id="gildia.php">12. Spotkaj się z gildią (zarys) </div>
+                        <!-- <div class="btn-dark btn-lg href" id="gildia.php">12. Spotkaj się z gildią (zarys) </div> -->
 
                 </div>
 		

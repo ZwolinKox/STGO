@@ -59,6 +59,8 @@
 
                             echo '<h3>Oto rzeczy dostępne dla ciebie!</h3>';
 
+                            echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=dom">Wróć do domu </div><br>';
+
                             //od 1 do 10
                             
                                 echo '<div class="btn-dark btn-lg shop" id="1">Patyk</div>';
