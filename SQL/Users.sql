@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `boolSchool` tinyint(1) NOT NULL,
   `boolSchoolBan` tinyint(1) NOT NULL,
   `boolVest` tinyint(1) NOT NULL,
-  `banCheck` tinyint(1) NOT NULL,
+  `banCheck` DATETIME NOT NULL,
   `banInfo` text COLLATE utf8_polish_ci NOT NULL,
   `nickCol` int(11) NOT NULL,
   `team` int(11) NOT NULL,

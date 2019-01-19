@@ -6,6 +6,9 @@ class UserManager {
     protected $id;
 
     public static function death() {
+
+        DatabaseManager::updateTable('users', ['banCheck' => 'now() + INTERVAL 1 DAY'], ['id' => $_SESSION['uid']]);
+
         die('Umarłeś! Jesteś beznadziejnym Słyszem!');
     }
 

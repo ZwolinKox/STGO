@@ -113,8 +113,7 @@
                 return Math.round(n*factor)/factor;
             }
                 
-            const resultObj = JSON.parse(result);
-            
+            const resultObj = JSON.parse(result);    
 
             document.querySelector('#stats').innerHTML  = `
                 <h3 style="color: pink" id="username"><p>Witaj ${ resultObj.username }!</p></h3>

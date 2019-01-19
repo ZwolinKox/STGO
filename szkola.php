@@ -81,6 +81,11 @@
                                     $enemyId = rand(1, 2); //Do ustalenia testy
                                     $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
                                     $enemyInfo = $enemyStats[0]['type'].' Lvl: '.$enemyStats[0]['enemyLevel'];
+
+                                    $_SESSION['enemyId'] = $enemyId;
+                                    $_SESSION['enemyInfo'] = $enemyStats[0];
+                                    $_SESSION['enemyInfo']['enemyMaxHp'] = $_SESSION['enemyInfo']['enemyHp'];
+                                    $_SESSION['enemyInfo']['enemyMaxArmor'] = $_SESSION['enemyInfo']['enemyArmor'];
                                     
                                     echo <<< END
                                     <div class="text-center" style="margin-bottom: 35px;">
@@ -105,7 +110,7 @@
                                                 poszukiwanie.style.color = "lightGreen";
                                                 poszukiwanie.innerHTML = "Znaleziono przeciwnika! $enemyInfo";
                                                 document.querySelector("#search").style.display = "none";
-                                                fight.innerHTML = `<div class="btn-dark btn-lg" onclick="location.href = 'szkola.php'">Walcz</div>
+                                                fight.innerHTML = `<div class="btn-dark btn-lg" onclick="location.href = 'fight.php'">Walcz</div>
                                                 <div class="btn-dark btn-lg" onclick="location.href = 'szkola.php'">Uciekaj</div>`
                                             }, 1000)
 

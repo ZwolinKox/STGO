@@ -15,6 +15,22 @@ document.addEventListener('DOMContentLoaded', () =>  {
 		buttons[i].addEventListener('click', () => {
 			window.open(buttons[i].id, '_blank');
 	})
-	
 	}
+
+	setInterval(() => {
+		$.ajax({
+		url : "isBan.php",
+		method : "POST",
+		data : {
+			ajax : "ajax"
+		},
+	})
+	.done((result) => {  
+		
+	})
+		
+	}, '1000');
+
+
+	
 })
