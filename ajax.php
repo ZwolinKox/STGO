@@ -13,6 +13,15 @@ require_once 'config.php';
         {
             ButtonFunc::dwojeczka();
         }
+        //Sklepik szkolny
+        else if(Post::get('co') == 'hamburger')
+        {
+            ButtonFunc::sklepikBurger();
+        }
+        else if(Post::get('co') == 'tost')
+        {
+            ButtonFunc::sklepikTost();
+        }
         //Biblioteka
         else if(Post::get('co') == 'horror')
         {

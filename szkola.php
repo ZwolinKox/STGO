@@ -82,10 +82,10 @@
                                 }
                                 else if(Get::get('gdzie') == 'sklep')
                                 {
-                                    //Tutaj AJAX niestety musi być no bo to nie ma sensu robić 10000000 podstron,
-                                    //wszystkie sklepy to bedzie musial byc AJAX i tyle xDDD
-
-
+                                    echo '<h3>Witaj, tutaj możesz kupić efekty wzacmiające trwające jeden dzień!</h3><br>';
+                                    echo '<div class="btn-dark btn-lg" id="hamburger">Hamburger z sosem Arabskim (+25 siły na jeden dzień, koszt 50Słysz Coinów)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="tost">Tost z szynką (+25 inteligencjii na jeden dzień, koszt 50Słysz Coinów)</div>';
+                                    echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                 }
                                 else if(Get::get('gdzie') == 'toaleta')
                                 {
@@ -125,10 +125,6 @@
                                         echo "<h3 style='color: lightgreen;'>Udało ci się okraść plecak! Zarobiłeś $sc Słysz Coinów!</h3>";
                                         echo '<div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                     }
-                                }
-                                else if(Get::get('gdzie') == 'pietro')
-                                {
-
                                 }
                                 else if(Get::get('gdzie') == 'park')
                                 {
@@ -188,7 +184,6 @@
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=toaleta">Toaleta </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=biblioteka">Biblioteka </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=plecaki">Okradnij plecaki </div>';
-                                echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=pietro">Wejdz na wyższe piętro </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Idz do parku </div>';
                                 echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=dom">Wróć do domu </div>';
                             }
@@ -223,34 +218,39 @@
     <script>
         const jedyneczkaBtn = document.querySelector("#jedyneczka");
         const dwojeczkaBtn = document.querySelector("#dwojeczka");
-
-        jedyneczkaBtn.addEventListener("click", function() {
-            $.ajax({
-                url: "ajax.php",
-                method: "post",
-                data: {
-                    co: "jedyneczka"
-                }
+        if(jedyneczkaBtn)
+        {
+                jedyneczkaBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "jedyneczka"
+                        }
+                })
             })
-        })
-
-        dwojeczkaBtn.addEventListener("click", function() {
-            $.ajax({
-                url: "ajax.php",
-                method: "post",
-                data: {
-                    co: "dwojeczka"
-                }
+        }
+        if(dwojeczkaBtn)
+        {
+                dwojeczkaBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "dwojeczka"
+                        }
+                    })
             })
-        })
+        }
     </script>
 
     <script>
         const horrorBtn = document.querySelector("#horror");
         const przygodowaBtn = document.querySelector("#przygodowa");
         const naukowaBtn = document.querySelector("#naukowa");
-
-        horrorBtn.addEventListener("click", function() {
+        if(horrorBtn)
+        {
+                horrorBtn.addEventListener("click", function() {
                     $.ajax({
                         url: "ajax.php",
                         method: "post",
@@ -259,7 +259,9 @@
                         }
                     })
                 })
-
+        }
+        if(przygodowaBtn)
+        {
                 przygodowaBtn.addEventListener("click", function() {
                     $.ajax({
                         url: "ajax.php",
@@ -269,7 +271,9 @@
                         }
                     })
                 })
-
+        }
+        if(naukowaBtn)
+        {
                 naukowaBtn.addEventListener("click", function() {
                     $.ajax({
                         url: "ajax.php",
@@ -279,60 +283,101 @@
                         }
                     })
                 })
-
+        }
     </script>
 
     <script>
         const burgerslyszBtn = document.querySelector("#burgerslysz");
         const bigslyszBtn = document.querySelector("#bigslysz");
 
-        burgerslyszBtn.addEventListener("click", function() {
-            $.ajax({
-                url: "ajax.php",
-                method: "post",
-                data: {
-                    co: "burgerslysz"
-                }
-            })
-        })
-
-        bigslyszBtn.addEventListener("click", function() {
-            $.ajax({
-                url: "ajax.php",
-                method: "post",
-                data: {
-                    co: "bigslysz"
-                }
-            })
-        })
+        if(burgerslyszBtn)
+        {
+                burgerslyszBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "burgerslysz"
+                        }
+                    })
+                })
+        }
+        if(bigslyszBtn)
+        {
+                bigslyszBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "bigslysz"
+                        }
+                    })
+                })
+        }
     </script>
 
     <script>
         const hotdogBtn = document.querySelector("#hotdog");
 
-        hotdogBtn.addEventListener("click", function() {
-            $.ajax({
-                url: "ajax.php",
-                method: "post",
-                data: {
-                    co: "hotdog"
-                }
-            })
-        })
+        if(hotdogBtn)
+        {
+                hotdogBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "hotdog"
+                        }
+                    })
+                })
+        }
     </script>
 
-<script>
+    <script>
         const kamizelkaBtn = document.querySelector("#kamizelka");
 
-        kamizelkaBtn.addEventListener("click", function() {
-            $.ajax({
-                url: "ajax.php",
-                method: "post",
-                data: {
-                    co: "kamizelka"
-                }
-            })
-        })
+        if(kamizelkaBtn)
+        {
+                kamizelkaBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "kamizelka"
+                        }
+                    })
+                })
+        }
+    </script>
+
+    <script>
+        const hamburgerBtn = document.querySelector("#hamburger");
+        const tostBtn = document.querySelector("#tost");
+
+        if(hamburgerBtn)
+        {
+                hamburgerBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "hamburger"
+                        }
+                    })
+                })
+        }
+        if(tostBtn)
+        {
+                tostBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "tost"
+                        }
+                    })
+                })
+        }
     </script>
 
 
