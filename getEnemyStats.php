@@ -17,7 +17,6 @@ elseif ($_POST['co'] == "Ucieczka") {
         DatabaseManager::updateTable('users', ['slyszCoin' => "slyszCoin-200", "userEnergy" => "0"], ['id' => $_SESSION['uid']]);
         die('yes');
     }
-    die('no');
 
 }
 
@@ -46,7 +45,7 @@ elseif ($_POST['co'] == 'Cios') {
     elseif ($_SESSION['enemyInfo']['enemyHp'] <= 0) {
         $_SESSION['enemyInfo']['enemyHp'] = 0;
 
-        DatabaseManager::updateTable('users', ['xpPoints' => "xpPoints+".$_SESSION['enemyInfo']['dropXp'], 'slyszCoin' => 'slyszCoin'.$_SESSION['enemyInfo']['dropSlyszCoin']], ['id' => $_SESSION['uid']]);
+        DatabaseManager::updateTable('users', ['xpPoints' => "xpPoints+".$_SESSION['enemyInfo']['dropXp'], 'slyszCoin' => 'slyszCoin+'.$_SESSION['enemyInfo']['dropSlyszCoin']], ['id' => $_SESSION['uid']]);
         
         if(DatabaseManager::selectBySQL("SELECT xpPoints FROM users WHERE id=".$_SESSION['uid'])[0]['xpPoints']
             >= DatabaseManager::selectBySQL("SELECT maxXp FROM users WHERE id=".$_SESSION['uid'])[0]['maxXp']) 
@@ -54,6 +53,40 @@ elseif ($_POST['co'] == 'Cios') {
             DatabaseManager::updateTable('users', ['xpPoints' => "0", 'maxXp' => 'maxXp+100', 'userLevel' => 'userLevel+1'], ['id' => $_SESSION['uid']]);
             $_SESSION['lvlup'] = true;
         }
+
+        //Losowanie, czy będzie drop
+        if(rand(1, 20) > 3) {
+            $itemDrop = rand(1, 5);
+
+            switch ($itemDrop) {
+                    case '1':
+                    $itemDrop = 'dropItemOne';
+                    break;
+                    case '2':
+                    $itemDrop = 'dropItemTwo';
+                    break;
+                    case '3':
+                    $itemDrop = 'dropItemThree';
+                    break;
+                    case '4':
+                    $itemDrop = 'dropItemFour';
+                    break;
+                    case '5':
+                    $itemDrop = 'dropItemFive';
+                    break;
+            }
+
+            $freeSlot = EqManager::findSpace();
+
+            if($freeSlot != null) {
+                DatabaseManager::updateTable('users', [$freeSlot => DatabaseManager::selectBySQL("SELECT $itemDrop FROM enemy WHERE id=".$_SESSION['enemyInfo']['id'])[0][$itemDrop]], ['id' => $_SESSION['uid']]);
+            } else
+                $_SESSION['enemyInfo']['isFull'] = true;
+
+            $_SESSION['enemyInfo']['dropItem'] = DatabaseManager::selectBySQL("SELECT name FROM items, enemy WHERE items.id = enemy.$itemDrop AND enemy.id =".$_SESSION['enemyInfo']['id'])[0]['name'];
+
+        }
+
 
         $_SESSION['win'] = true;
 

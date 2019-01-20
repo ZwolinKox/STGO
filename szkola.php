@@ -82,6 +82,7 @@
                                     $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
                                     $enemyInfo = $enemyStats[0]['type'].' Lvl: '.$enemyStats[0]['enemyLevel'];
 
+                                    $_SESSION['fight'] = true;
                                     $_SESSION['enemyId'] = $enemyId;
                                     $_SESSION['enemyInfo'] = $enemyStats[0];
                                     $_SESSION['enemyInfo']['enemyMaxHp'] = $_SESSION['enemyInfo']['enemyHp'];

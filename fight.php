@@ -56,8 +56,9 @@
 
                     <?php
 
-                        if(!isset($_SESSION['enemyId']))
+                        if(!isset($_SESSION['fight']))
                             URL::to('index.php');
+                            
                         else {
                             
                             echo "<div class='text-center' id='walka'> </div> 

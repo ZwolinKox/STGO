@@ -64,6 +64,22 @@
                     <div class="display-3" style="color: lightgreen;">Gratulacje! Wygrałeś</div>
 
                     <h3 style="margin-top: 50px;">Zdobyłeś <span style="color: gold"><?php echo $_SESSION['enemyInfo']['dropSlyszCoin'];?></span> SłyszCoinów!</h3>
+                    
+                    <?php
+                    if(isset($_SESSION['enemyInfo']['dropItem'])) {
+                        $color = 'style="color: lightblue"';
+                        echo '<h3>Z tej walki wyniosłeś również przedmiot o nazwie: <span '.$color.'>'.$_SESSION['enemyInfo']['dropItem']. "</span> </h3>";
+                    }
+
+                    if(isset($_SESSION['enemyInfo']['isFull']) && $_SESSION['enemyInfo']['isFull'])
+                    {
+                        echo '<h3 style="color: red">Twój ekwipunek był pełny, przedmiot przepadł!</h3>';
+                    }
+                        
+                    unset($_SESSION['enemyInfo']);
+                    unset($_SESSION['fight']);
+
+                    ?>
 
                     <?php
                         

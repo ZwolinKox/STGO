@@ -37,6 +37,8 @@ class EqManager {
         {
             return 'eqSlotEight';
         }
+
+        return null;
     }
 
     //Sprawdzanie czy możemy używać daną broń

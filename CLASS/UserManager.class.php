@@ -19,7 +19,7 @@ class UserManager {
         else
             $add = 24;
 
-        DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL $add HOUR"], ['id' => $_SESSION['uid']]);
+        DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL $add HOUR", 'statHp' => 1], ['id' => $_SESSION['uid']]);
 
         die('Umarłeś! Jesteś beznadziejnym Słyszem!');
     }
