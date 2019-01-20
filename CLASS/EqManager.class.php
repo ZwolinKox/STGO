@@ -44,11 +44,11 @@ class EqManager {
     public static function checkHand($itemid) {
         if(DatabaseManager::selectBySQL("SELECT forLevel FROM items WHERE id=".$itemid)[0]['forLevel'] > DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'])
         {
-            return true;
+            return false;
         }
         else
         {
-            return false;
+            return true;
         }
     }
 

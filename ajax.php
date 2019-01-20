@@ -37,8 +37,11 @@ require_once 'config.php';
         }
         else if(Post::get('co') == 'changeItem') 
         {
-            DatabaseManager::updateTable('users', ['eqMainHand' => $_POST['itemName']], ['id' => $_SESSION['uid']]);
-            unset($_POST['itemName']);
+            if(EqManager::checkHand(DatabaseManager::selectBySQL('SELECT '.$_POST['itemName'].' FROM users WHERE id='.$_SESSION['uid'])[0][$_POST['itemName']])) {
+                DatabaseManager::updateTable('users', ['eqMainHand' => $_POST['itemName']], ['id' => $_SESSION['uid']]);
+                unset($_POST['itemName']);
+            }
+
         }
         else if(Post::get('co') == 'deleteItem') 
         {

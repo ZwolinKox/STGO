@@ -63,10 +63,12 @@
 
                     <div class="display-3" style="color: lightgreen;">Gratulacje! Wygrałeś</div>
 
+                    <h3 style="margin-top: 50px;">Zdobyłeś <span style="color: gold"><?php echo $_SESSION['enemyInfo']['dropSlyszCoin'];?></span> SłyszCoinów!</h3>
+
                     <?php
                         
                         if(isset($_SESSION['lvlup'])) {
-                            echo `<h3>Gratulacje! Osiągnąłeś poziom <?php echo '<span style="color: gold;">`.DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel']."</span></h3>";
+                            echo '<h3>Gratulacje! Osiągnąłeś poziom <span style="color: gold;">'.DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel']."</span></h3>";
                             unset($_SESSION['lvlup']);
                         }
                         

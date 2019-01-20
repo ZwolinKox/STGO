@@ -44,7 +44,7 @@ elseif ($_POST['co'] == 'Cios') {
     elseif ($_SESSION['enemyInfo']['enemyHp'] <= 0) {
         $_SESSION['enemyInfo']['enemyHp'] = 0;
 
-        DatabaseManager::updateTable('users', ['xpPoints' => "xpPoints+".$_SESSION['enemyInfo']['dropXp']], ['id' => $_SESSION['uid']]);
+        DatabaseManager::updateTable('users', ['xpPoints' => "xpPoints+".$_SESSION['enemyInfo']['dropXp'], 'slyszCoin' => 'slyszCoin'.$_SESSION['enemyInfo']['dropSlyszCoin']], ['id' => $_SESSION['uid']]);
         
         if(DatabaseManager::selectBySQL("SELECT xpPoints FROM users WHERE id=".$_SESSION['uid'])[0]['xpPoints']
             >= DatabaseManager::selectBySQL("SELECT maxXp FROM users WHERE id=".$_SESSION['uid'])[0]['maxXp']) 
