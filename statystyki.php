@@ -147,6 +147,7 @@
             </div>
               </div>
               <div class="modal-footer">
+                <button id="deleteItem" type="button" class="btn btn-danger">Usuń przedmiot</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
                 <button id="saveEq" type="button" class="btn btn-primary">Zapisz zmiany</button>
               </div>
@@ -167,6 +168,19 @@ END;
                 co : "changeItem",
                 itemName : document.querySelector('#setEq').value
             }
+        })
+    })
+
+    document.querySelector('#deleteItem').addEventListener('click', () => {
+            $.ajax({
+            url : "ajax.php",
+            method : "POST",
+            data : {
+                co : "deleteItem",
+                itemName : document.querySelector('#setEq').value
+            }
+        }).done((result) => {
+            location.reload(); 
         })
     })
 

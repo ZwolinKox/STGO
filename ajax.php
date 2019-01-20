@@ -40,6 +40,11 @@ require_once 'config.php';
             DatabaseManager::updateTable('users', ['eqMainHand' => $_POST['itemName']], ['id' => $_SESSION['uid']]);
             unset($_POST['itemName']);
         }
+        else if(Post::get('co') == 'deleteItem') 
+        {
+            DatabaseManager::updateTable('users', [$_POST['itemName'] => 0], ['id' => $_SESSION['uid']]);
+            unset($_POST['itemName']);
+        }
         //McDonald
         else if(Post::get('co') == 'burgerslysz')
         {
