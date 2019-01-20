@@ -6,7 +6,13 @@ require_once 'config.php';
 if(!isset($_POST['co']))
     die();
 
+if($_POST['co'] == 'startFight') {
+    $_SESSION['fight'] = true;
+    unset($_POST['co']);
+}
+
 if($_POST['co'] == 'getEnemyStats') {
+
     $_SESSION['enemyInfo']['enemyArmorProcent'] = ($_SESSION['enemyInfo']['enemyArmor'] / $_SESSION['enemyInfo']['enemyMaxArmor']) * 100;
     $_SESSION['enemyInfo']['enemyHpProcent'] = ($_SESSION['enemyInfo']['enemyHp'] / $_SESSION['enemyInfo']['enemyMaxHp']) * 100;
 

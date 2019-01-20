@@ -87,7 +87,6 @@
                                     $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
                                     $enemyInfo = $enemyStats[0]['type'].' Lvl: '.$enemyStats[0]['enemyLevel'];
 
-                                    $_SESSION['fight'] = true;
                                     $_SESSION['enemyId'] = $enemyId;
                                     $_SESSION['enemyInfo'] = $enemyStats[0];
                                     $_SESSION['enemyInfo']['enemyMaxHp'] = $_SESSION['enemyInfo']['enemyHp'];
@@ -108,6 +107,20 @@
 
                                     <script defer>
 
+                                        function start() {
+                                            $.ajax({
+                                                url: "getEnemyStats.php",
+                                                method: "post",
+                                                data: {
+                                                    co: "startFight"
+                                                }
+                                            }).done((result) => {
+                                                location.href = 'fight.php';
+                                            })
+                                        
+                                            
+                                        }
+
                                         document.addEventListener("DOMContentLoaded",() => {
                                             const poszukiwanie = document.querySelector("#poszukiwanie");
                                             const fight = document.querySelector("#fight");
@@ -116,7 +129,7 @@
                                                 poszukiwanie.style.color = "lightGreen";
                                                 poszukiwanie.innerHTML = "Znaleziono przeciwnika! $enemyInfo";
                                                 document.querySelector("#search").style.display = "none";
-                                                fight.innerHTML = `<div class="btn-dark btn-lg" onclick="location.href = 'fight.php'">Walcz</div>
+                                                fight.innerHTML = `<div class="btn-dark btn-lg" onclick="start()">Walcz</div>
                                                 <div class="btn-dark btn-lg" onclick="location.href = 'szkola.php'">Uciekaj</div>`
                                             }, 1000)
 
