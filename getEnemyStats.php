@@ -78,6 +78,8 @@ elseif ($_POST['co'] == 'Cios') {
 
             $freeSlot = EqManager::findSpace();
 
+            
+
             if($freeSlot != null) {
                 DatabaseManager::updateTable('users', [$freeSlot => DatabaseManager::selectBySQL("SELECT $itemDrop FROM enemy WHERE id=".$_SESSION['enemyInfo']['id'])[0][$itemDrop]], ['id' => $_SESSION['uid']]);
             } else

@@ -5,6 +5,11 @@
 
     CheckUrl::check();
 
+    if(isset($_SESSION['fight']) && $_SESSION['fight']) {
+        if(basename($_SERVER['PHP_SELF']) != 'fight.php' && basename($_SERVER['PHP_SELF']) != 'fight.php')
+            URL::to('fight.php');
+    }
+
    if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
         header('Location: index.php');
 

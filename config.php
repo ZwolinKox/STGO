@@ -127,9 +127,7 @@ END;
 }
 
 
-if(isset($_SESSION['fight']) && $_SESSION['fight']) {
-    
-}
+
 
 
 
