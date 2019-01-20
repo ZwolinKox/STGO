@@ -55,7 +55,7 @@ elseif ($_POST['co'] == 'Cios') {
         }
 
         //Losowanie, czy będzie drop
-        if(rand(1, 20) > 3) {
+        if(rand(1, 20) == 3) {
             $itemDrop = rand(1, 5);
 
             switch ($itemDrop) {
