@@ -162,7 +162,7 @@
                         })
         })
 
-        document.querySelector('#cios').addEventListener('click', () => {
+        document.querySelector('#ucieczka').addEventListener('click', () => {
                         $.ajax({
                         url: "getEnemyStats.php",
                         method: "post",
@@ -170,7 +170,7 @@
                             co : 'Ucieczka'
                         }
                         }).done((result) => {
-
+                            console.log(result);
                             if(result == 'yes')
                                 location.href = "index.php"
                            
