@@ -7,7 +7,19 @@ class UserManager {
 
     public static function death() {
 
-        DatabaseManager::updateTable('users', ['banCheck' => 'now() + INTERVAL 1 DAY'], ['id' => $_SESSION['uid']]);
+        $lvl = DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'];
+        
+        if($lvl < 5)
+            $add = 1;
+        elseif($lvl < 10)
+            $add = 6;
+        elseif ($lvl < 20) {
+            $add = 12;
+        }
+        else
+            $add = 24;
+
+        DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL $add HOUR"], ['id' => $_SESSION['uid']]);
 
         die('Umarłeś! Jesteś beznadziejnym Słyszem!');
     }

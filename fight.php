@@ -162,6 +162,21 @@
                         })
         })
 
+        document.querySelector('#cios').addEventListener('click', () => {
+                        $.ajax({
+                        url: "getEnemyStats.php",
+                        method: "post",
+                        data: {
+                            co : 'Ucieczka'
+                        }
+                        }).done((result) => {
+
+                            if(result == 'yes')
+                                location.href = "index.php"
+                           
+                        })
+        })
+
     </script>
 
 </body>

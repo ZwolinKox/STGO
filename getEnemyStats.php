@@ -12,6 +12,13 @@ if($_POST['co'] == 'getEnemyStats') {
 
     die(json_encode($_SESSION['enemyInfo']));
 }
+elseif ($_POST['co'] == "Ucieczka") {
+    if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] <= 200) {
+        DatabaseManager::updateTable('users', ['slyszCoin' => "slyszCoin-200", "statEnergy" => "0"], ['id' => $_SESSION['uid']]);
+    }
+
+}
+
 elseif ($_POST['co'] == 'Cios') {
     
     $playerStats = DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$_SESSION['uid'])[0];
