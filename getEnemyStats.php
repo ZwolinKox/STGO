@@ -87,6 +87,9 @@ elseif ($_POST['co'] == 'Cios') {
 
         }
 
+        $_SESSION['fight'] = false;
+        unset($_SESSION['fight']);
+
 
         $_SESSION['win'] = true;
 

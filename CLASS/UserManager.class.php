@@ -64,6 +64,7 @@ class UserManager {
         $_SESSION['logged'] = false;
         
         unset($_SESSION);
+        session_destroy();
     }
     public function CreateUser($POST) {
         if(!empty($POST) && is_array($POST)) {

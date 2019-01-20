@@ -77,7 +77,6 @@
                     }
                         
                     unset($_SESSION['enemyInfo']);
-                    unset($_SESSION['fight']);
 
                     ?>
 

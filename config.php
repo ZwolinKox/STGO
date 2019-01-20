@@ -120,6 +120,14 @@ END;
     die();
 
     }
+    /*elseif () {
+        
+    }*/
+    
+}
+
+
+if(isset($_SESSION['fight']) && $_SESSION['fight']) {
     
 }
 
