@@ -91,11 +91,84 @@
         echo '<p id="statarmor">Armor: '.$stats['statArmor'].'</p>';
         echo '<p id="statstrength">Siła: '.$stats['statStrength'].'</p>';
         echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHandName'].'</p>';
-        echo '</div>'
+        echo '</div>';
+
+        $eq1 = $stats['eqSlotOne'];
+        $eq2 = $stats['eqSlotTwo'];
+        $eq3 = $stats['eqSlotThree'];
+        $eq4 = $stats['eqSlotFour'];
+        $eq5 = $stats['eqSlotFive'];
+        $eq6 = $stats['eqSlotSix'];
+        $eq7 = $stats['eqSlotSeven'];
+        $eq8 = $stats['eqSlotEight'];
+
+        $eq1name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotOne'])[0]['name'];
+        $eq2name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotTwo'])[0]['name'];
+        $eq3name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotThree'])[0]['name'];
+        $eq4name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotFour'])[0]['name'];
+        $eq5name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotFive'])[0]['name'];
+        $eq6name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotSix'])[0]['name'];
+        $eq7name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotSeven'])[0]['name'];
+        $eq8name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotEight'])[0]['name'];
+
+
+        echo <<< END
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eq">
+          Ekwipunek
+        </button>
+        
+        <!-- Modal -->
+        <div style="color: black;" class="modal fade" id="eq" tabindex="-1" role="dialog" aria-labelledby="eqLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="eqLabel">Ekwipunek</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              <div class="input-group mb-3">
+              <div class="input-group-append">
+              <div class="form-group">
+              <label for="setEq">Obecnie wybrana broń:</label>
+              <select class="form-control" id="setEq">
+                <option value="eqSlotOne">1)$eq1name</option>
+                <option value="eqSlotTwo">2)$eq2name</option>
+                <option value="eqSlotThree">3)$eq3name</option>
+                <option value="eqSlotFour">4)$eq4name</option>
+                <option value="eqSlotFive">5)$eq5name</option>
+                <option value="eqSlotSix">6)$eq6name</option>
+                <option value="eqSlotSeven">7)$eq7name</option>
+                <option value="eqSlotEight">8)$eq8name</option>
+              </select>
+            </div>
+              </div>
+            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                <button id="saveEq" type="button" class="btn btn-primary">Zapisz zmiany</button>
+              </div>
+            </div>
+          </div>
+        </div>
+END;
 ?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
         <script defer>
+
+        document.querySelector('#saveEq').addEventListener('click', () => {
+            $.ajax({
+            url : "ajax.php",
+            method : "POST",
+            data : {
+                co : "changeItem",
+                itemName : document.querySelector('#setEq').value
+            }
+        })
+    })
 
         setInterval(() => {
             $.ajax({

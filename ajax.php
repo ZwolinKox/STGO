@@ -35,6 +35,11 @@ require_once 'config.php';
         {
             ButtonFunc::czytaj('naukowa');
         }
+        else if(Post::get('co') == 'changeItem') 
+        {
+            DatabaseManager::updateTable('users', ['eqMainHand' => $_POST['itemName']], ['id' => $_SESSION['uid']]);
+            unset($_POST['itemName']);
+        }
         //McDonald
         else if(Post::get('co') == 'burgerslysz')
         {
