@@ -21,6 +21,8 @@ if($_POST['co'] == 'getEnemyStats') {
 elseif ($_POST['co'] == "Ucieczka") {
     if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 200) {
         DatabaseManager::updateTable('users', ['slyszCoin' => "slyszCoin-200", "userEnergy" => "0"], ['id' => $_SESSION['uid']]);
+        $_SESSION['fight'] = false;
+        unset($_SESSION['fight']);
         die('yes');
     }
 
