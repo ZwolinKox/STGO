@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <?php
-
     require_once('config.php');
-
     if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
         header('Location: index.php');
-
         if(isset($_SESSION['fight']) && $_SESSION['fight']) {
             if(basename($_SERVER['PHP_SELF']) != 'fight.php' && basename($_SERVER['PHP_SELF']) != 'fight.php')
                 URL::to('fight.php');
         }
-
 ?>
 <html>
 <head>
@@ -60,14 +56,21 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
                        <?php
-
                             echo '<h3>Oto rzeczy dostępne dla ciebie!</h3>';
-
                             echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div><br>';
-
                             //od 1 do 10
                             
+                            //href="#collapseExample"
                                 echo '<div class="btn-dark btn-lg shop" id="1">Patyk</div>';
+
+                                echo "
+                                <div class='collapse' id='coll1' style='color: black;'>
+                                <div class='card card-body'>
+                                   Randomowa treść po najechaniu na to XD
+                                </div>
+                                </div>                           
+                                ";
+
                                 echo '<div class="btn-dark btn-lg shop" id="2">Puszka</div>';
                                 echo '<div class="btn-dark btn-lg shop" id="3">Ostryk patyk</div>';
                                 echo '<div class="btn-dark btn-lg shop" id="4">Zgnieciona puszka</div>';
@@ -79,7 +82,6 @@
                                 echo '<div class="btn-dark btn-lg shop" id="10">Plastikowa różdżka</div>';
                             
                             //od 11 do 20
-
                                 echo '<div class="btn-dark btn-lg shop" id="11">Ekierka</div>';
                                 echo '<div class="btn-dark btn-lg shop" id="12">Kreda</div>';
                                 echo '<div class="btn-dark btn-lg shop" id="13">Linijka</div>';
@@ -138,12 +140,24 @@
             data : {
                 co: "sklep",
                 id: itemid
-            }   
-            })
+            }
+            }).done((result) => {
+                location.reload();
+            })   
         }
 
-        document.addEventListener('DOMContentLoaded', () =>  {
 
+        const coll1 = $('#coll1');
+        $( '#1' ).mouseenter( function() { 
+               coll1.collapse('show');
+            } 
+            ).mouseleave( 
+            function() { 
+                coll1.collapse('hide') ;
+            }
+         );
+
+        document.addEventListener('DOMContentLoaded', () =>  {
         let buttons = document.querySelectorAll('.shop');
             
         for(let i = 0; i < buttons.length; i++) {
@@ -153,7 +167,6 @@
             })
         }
     })
-
     </script>
 
 
