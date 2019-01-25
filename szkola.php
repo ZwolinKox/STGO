@@ -244,7 +244,9 @@ END;
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=biblioteka">Biblioteka </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=plecaki">Okradnij plecaki </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Idz do parku </div>';
+                                echo '<div class="btn-dark btn-lg href" id="sklodowska.php">Wyrusz w niebezpieczne rewiry</div>';
                                 echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=dom">Wróć do domu </div>';
+                                
                             }
                         }
 

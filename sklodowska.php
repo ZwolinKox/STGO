@@ -52,13 +52,32 @@
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
 								
-				<div class="col-12 text-center display-4">Memy</div>
+				<div class="col-12 text-center display-4">Witamy na Skłodowskiej!</div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                    <!-- TU SIĘ ZACZYNAJĄ ŚWIRKI -->
+
+                <div class="btn-dark btn-lg href" id="pvp.php">Szukaj zaczepki</div>
+                <div class="btn-dark btn-lg href" id="szkola.php">Wróć do spokojniejszego miejsca</div>
+                <div style="margin-bottom: 40px;"></div>
+
+                <div id='chat' class="card text-white bg-secondary">
+                <div  class="card-header" style="font-size: 32px;">Chat</div>
+
+                
+                </div>
+
+
+                <div class="input-group mb-3">
+                <input id="messageToSend" type="text" class="form-control" placeholder="Wpisz wiadomość" aria-label="Wpisz wiadomość" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button id="sendMessage" class="btn btn-outline-danger" type="button" id="button-addon2">Wyślij</button>
+                </div>
+                </div>
 
                 </div>
+
+                
 		
 	
                 <div class="col-12 col-md-6 " style="margin-top: 30px">
@@ -67,6 +86,8 @@
 
                     <?php 
                     require_once 'statystyki.php';
+
+
                     ?>
 
                 </div>
@@ -79,6 +100,76 @@
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone
     </footer>
+
+    <script>
+
+        const oldChat = document.querySelector('#chat').innerHTML;
+        document.addEventListener('DOMContentLoaded', () => {
+            const color = 'blue';
+
+            const messageToSend = document.querySelector('#messageToSend');
+            const sendMessage = document.querySelector('#sendMessage');
+            const chat = document.querySelector('#chat');
+
+            sendMessage.addEventListener('click', () => {
+                chat.innerHTML += `
+
+            `;
+
+            $.ajax({
+            url : "sendPublicMessage.php",
+            method : "POST",
+            data : {
+                co : "sendMessage",
+                message : messageToSend.value
+            }
+            }).done((result) => {
+                
+            })
+
+           
+
+            })
+
+            setInterval(() => {
+                $.ajax({
+                url : "sendPublicMessage.php",
+                method : "POST",
+                data : {
+                    co : "recMessage",
+                }
+                }).done((result) => {
+                    obj = JSON.parse(result);
+
+                    chat.innerHTML = oldChat;
+
+                    console.log(obj);
+                    for(let i = obj.length-1; i > -1 ; i--) 
+                    {
+                        
+                        chat.innerHTML += `
+                        <div class="card-body">
+                        <div class="card-text">
+                        
+                        <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-0" style="color: ${ obj[i].color };">${ obj[i].nick }</h5>
+                            ${ obj[i].mess }
+                        </div>
+                        </div>
+                        </div>
+                        
+                        
+                        </div>
+                        `;
+                    }
+                })
+            }, '500');
+        })
+
+        
+        
+    </script>
 	
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
