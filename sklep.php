@@ -58,10 +58,9 @@
                        <?php
                             echo '<h3>Oto rzeczy dostępne dla ciebie!</h3>';
                             echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div><br>';
-                            //od 1 do 10
                             
                             //href="#collapseExample"
-                                echo '<div class="btn-dark btn-lg shop" id="1">Patyk</div>';
+                             /*   echo '<div class="btn-dark btn-lg shop" id="1">Patyk</div>';
 
                                 echo "
                                 <div class='collapse' id='coll1' style='color: black;'>
@@ -70,41 +69,29 @@
                                 </div>
                                 </div>                           
                                 ";
+                            */
 
-                                echo '<div class="btn-dark btn-lg shop" id="2">Puszka</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="3">Ostryk patyk</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="4">Zgnieciona puszka</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="5">Plastikowy widelec</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="6">Zabawkowy kostur</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="7">Butelka CocaCola</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="8">Butelka Pepsi</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="9">Plastikowy miecz</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="10">Plastikowa różdżka</div>';
-                            
-                            //od 11 do 20
-                                echo '<div class="btn-dark btn-lg shop" id="11">Ekierka</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="12">Kreda</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="13">Linijka</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="14">Figura geometryczna</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="15">Ram Mojżesza</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="16">Dysk Mojżesza</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="17">Piórnik</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="18">Reklamówka</div>';
-                            
-                            //od 21 do 30
-                            
-                                echo '<div class="btn-dark btn-lg shop" id="19">Nóż do masła</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="20">Zamek z bluzy</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="21">Cyrkiel</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="22">Kątomierz</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="23">Prawie prawdziwy miecz</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="24">Prawie prawdziwa różdżka</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="25">Prawdziwy miecz</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="26">Prawdziwa różdżka</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="27">Kij baseballowy</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="28">Znak drogowy</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="29">Niejednoznaczny miecz</div>';
-                                echo '<div class="btn-dark btn-lg shop" id="30">Magia w proszku</div>';
+                                $itemData = DatabaseManager::selectbySQL("SELECT id, name, rarity, forLevel, vendorCost, addDamage FROM items ORDER BY id");
+                                
+                                for($i=0; $i<25; $i++)
+                                {
+                                    $iCost = $itemData[$i]['vendorCost'];
+                                    $iLvl = $itemData[$i]['addDamage'];
+                                    $iDmg = $itemData[$i]['forLevel'];
+                                    
+                                    echo '<div class="btn-dark btn-lg shop" id="'.$itemData[$i]['id'].'">'.$itemData[$i]['name'].'</div>';
+
+                                    echo "
+                                <div class='collapse' id='coll$i' style='color: black;'>
+                                <div class='card card-body' id='$i'>
+                                   Dostępne od: $iLvl poziomu<br>
+                                   Obrażenia: $iDmg<br>
+                                   Koszt: $iCost
+                                </div>
+                                </div>                           
+                                ";
+
+                                }
                             
                        ?>
 
