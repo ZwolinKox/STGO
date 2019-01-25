@@ -5,13 +5,26 @@
 
         //Metody wykorzystywane w szkole w toalecie
         static public function jedyneczka() {
-            DatabaseManager::updateTable('users', ['statHp' => 'statHp-1'], ['id' => $_SESSION['uid']]);
-            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+1'], ['id' => $_SESSION['uid']]);
+
+            $stats = DatabaseManager::selectBySQL('SELECT statHp, userEnergy FROM users WHERE id='.$_SESSION['uid'])[0];
+            
+            if($stats['statHp'] > 1 && $stats['userEnergy'] < 100)
+            {
+                DatabaseManager::updateTable('users', ['statHp' => 'statHp-1'], ['id' => $_SESSION['uid']]);
+                DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+1'], ['id' => $_SESSION['uid']]);
+            }
+
+ 
         }
 
         static public function dwojeczka() {
-            DatabaseManager::updateTable('users', ['statHp' => 'statHp+1'], ['id' => $_SESSION['uid']]);
-            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-1'], ['id' => $_SESSION['uid']]);
+            $stats = DatabaseManager::selectBySQL('SELECT statHp, userEnergy FROM users WHERE id='.$_SESSION['uid'])[0];
+
+            if($stats['statHp'] < $stats['maxHp'] && $stats['userEnergy'] > 1) {
+                DatabaseManager::updateTable('users', ['statHp' => 'statHp+1'], ['id' => $_SESSION['uid']]);
+                DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-1'], ['id' => $_SESSION['uid']]);
+            }
+            
         }
 
         //Metody wykorzystywane w sklepiku szkolnym
