@@ -93,7 +93,7 @@
                     echo    '</tbody>
                             </table>';
 
-                            //Powrót tutaj trzeba dodać
+                            //Powrót tutaj trzeba dodać 
                 ?>
         </div>
     </div> <!-- ŚRODEK -->

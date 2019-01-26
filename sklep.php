@@ -69,8 +69,7 @@
                                 </div>
                                 </div>                           
                                 ";
-                            */
-
+                            
                                 $itemData = DatabaseManager::selectbySQL("SELECT id, name, rarity, forLevel, vendorCost, addDamage FROM items ORDER BY id");
                                 
                                 for($i=0; $i<25; $i++)
@@ -92,12 +91,36 @@
                                 ";
 
                                 }
-                            
+                                */
+
+                                $itemData = DatabaseManager::selectbySQL("SELECT id, name, rarity, forLevel, vendorCost, addDamage FROM items ORDER BY id");
+
+                                //wole to trzymać w zmiennej niż męczyć bazędanych
+                                $checkCost = DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'];
+                                $checkLvl = DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'];
+
+                                for($i=0; $i<30; $i++)
+                                {
+                                    $iName = $itemData[$i]['name'];
+                                    $iCost = $itemData[$i]['vendorCost'];
+                                    $iLvl = $itemData[$i]['forLevel'];
+                                    $iDmg = $itemData[$i]['addDamage'];
+                                    $count = $i +1;
+
+                                    if(($checkCost < $iCost)||($checkLvl < $iLvl))
+                                    {
+                                        $color = 'red';
+                                    } 
+                                    else
+                                    {
+                                        $color = '';
+                                    }                               
+                                        echo '<div class="btn-dark btn-lg shop" id="'.$count.'"><p style="color: '.$color.';">'.$iName.'(Lvl: '.$iLvl.') Obrażenia: '.$iDmg.' Koszt: '.$iCost.'SC</p></div>';
+                                }                            
                        ?>
 
                 </div>
-		
-		
+	
                 <div class="col-12 col-md-6 " style="margin-top: 30px">
 
                     <?php
