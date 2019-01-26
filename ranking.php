@@ -71,7 +71,7 @@
                                 <th scope="col">Poziom</th>
                             </tr>
                             <tbody>';
-                    for($i=0; $i<10; $i++)
+                    for($i=0; $i<count($wynik); $i++)
                     {
                         $rNick = $wynik[$i]['username'];
                         $rLvl = $wynik[$i]['userLevel'];
