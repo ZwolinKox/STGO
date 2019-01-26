@@ -55,7 +55,7 @@
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
 								
-				<div class="col-12 text-center display-4">Dom</div>
+				<div class="col-12 text-center display-4">Ranking</div>
 
                 <div class="col-12 text-center">
 
@@ -63,58 +63,38 @@
 
                     $wynik = DatabaseManager::selectbySQL("SELECT username, userLevel, team FROM users ORDER BY userLevel LIMIT 10");
                     
-                    echo '<table class="table table-striped table-dark">
-                    <thead><tr>';
-                    echo '</tr>';
-                    for($i=0; $i>10; $i++)
+                    echo '<br><table class="table table-striped table-dark">
+                            <thead>
+                            <tr>
+                                <th scope="col">Miejsce</th>
+                                <th scope="col">Nick</th>
+                                <th scope="col">Poziom</th>
+                            </tr>
+                            <tbody>';
+                    for($i=0; $i<10; $i++)
                     {
-                        echo '<tr><th scope="row">'.$wynik[$i]['username'].'</th><th scope="col">'.$wynik[$i]['userlevel'].'</th><th scope="col">'.$wynik[$i]['team'].'</th></tr>
+                        $rNick = $wynik[$i]['username'];
+                        $rLvl = $wynik[$i]['userLevel'];
+                        $count = $i +1;
+                        switch($wynik[$i]['team'])
+                        {
+                             case '1': $color = '#ffcd2b'; break;
+                             case '2': $color = '#ff1616'; break;
+                             case '3': $color = '#42c5f4'; break;     
+                        }                       
+
+                    echo '
+                            <tr>
+                                <th scope="row">'.$count.'</th>
+                                <td style="color: '.$color.';">'.$rNick.'</td>
+                                <td>'.$rLvl.'</td>
+                            </tr>';
                     }
+                    echo    '</tbody>
+                            </table>';
 
-                    
-
-
+                            //Powrót tutaj trzeba dodać
                 ?>
-
-
-                <table class="table table-striped table-dark">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td></td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                    </table>
-
-                </div>
-				
-				
-		
-		
-                
-                
         </div>
     </div> <!-- ŚRODEK -->
 
