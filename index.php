@@ -97,6 +97,12 @@
 							<option value="2">LKS Zgoda Zawada Książęca</option>
 							<option value="3">KS Unia Racibórz</option>
 						</select>
+						
+					<label for="hardcore">Wybierz tryb gry</label>
+					<select class="form-control" name="team">
+							<option value="1">Normalny</option>
+							<option value="2" style="color: red;">Hardcore (Przy śmierci tracisz wszystko)</option>
+						</select>
 					</div>
 
 						<input class="btn btn-dark btn-lg" type="submit" value="Zarejestruj" style="margin-bottom: 15px;">
