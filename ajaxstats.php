@@ -47,6 +47,18 @@ if(isset($_POST['ajax']) && $_POST['ajax'] == 'ajax')
             $stats['colorTeam'] = '#42c5f4';
     }
 
+                
+    switch ($stats['boolHardcore']) {
+        case '0':
+            $stats['hardcore'] = 'Normalny';
+            $stats['hardcoreColor'] = 'white';
+            break;
+            case '1':
+            $stats['hardcore'] = 'HARDCORE';
+            $stats['hardcoreColor'] = 'red';
+            break;
+    }
+
     if($stats['eqMainHand'] == 0)
         $stats['eqMainHandName'] = "Brak broni";
     else

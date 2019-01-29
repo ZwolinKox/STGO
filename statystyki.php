@@ -44,6 +44,17 @@
                 $stats['colorTeam'] = '#42c5f4';
         }
 
+        switch ($stats['boolHardcore']) {
+            case '0':
+                $stats['hardcore'] = 'Normalny';
+                $stats['hardcoreColor'] = 'white';
+                break;
+                case '1':
+                $stats['hardcore'] = 'HARDCORE';
+                $stats['hardcoreColor'] = 'red';
+                break;
+        }
+
         if($stats['eqMainHand'] == 0)
             $stats['eqMainHandName'] = "Brak broni";
         else
@@ -55,6 +66,7 @@
         
         echo '<div id="stats">';
         echo '<h3 style="color: pink" id="username"><p>Witaj '.$stats['username'].'!</p></h3>';
+        echo '<h3 id="gamemode"><p>Tryb gry <span style="color: '.$stats['hardcoreColor'].'">'.$stats['hardcore'].'!</span></p></h3>';
         echo '<p id="dayweek">Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
         echo '<p id="daygame">Dzień w grze: '.$stats['dayGame'].'</p>';  //To musze dodac to tabeli user bo nie ma xD
         echo '<p id="slyszCoin">Słysz Coiny: '.$stats['slyszCoin'].'</p>';
@@ -204,6 +216,7 @@ END;
 
             document.querySelector('#stats').innerHTML  = `
                 <h3 style="color: pink" id="username"><p>Witaj ${ resultObj.username }!</p></h3>
+                <h3 id="gamemode"><p>Tryb gry <span style="color: ${ resultObj.hardcoreColor }"> ${ resultObj.hardcore }!</span></p></h3>
                 <p id="dayweek">Dzień tygodnia: ${ resultObj.dayWeek }</p>
                 <p id="daygame">Dzień w grze: ${ resultObj.dayGame }</p>
                 <p id="slyszCoin">Słysz Coiny: ${ resultObj.slyszCoin }</p>

@@ -1,0 +1,33 @@
+//Ja
+	-kolory nicków i itemów
+	-barka
+	-poczta
+	-weryfikacja czy wszedzie sa sc sprawdzane (energia itp.)
+	-itemy na raidy gangów
+	-explo
+	-system mieszkan
+	-system przyjaciele
+	-1 praca
+	-kasyno (system hazrdu) - obstawianie meczy piłkarskich, ruletka, minipoker, jednoreki bandyta
+	-rozbudowa komputerów i koparka SC
+	
+//Ty
+	-Walki PvP
+	-ustawki
+	-System gangów
+	-explo
+	-minigry mulitplayer
+	-siedziby gangów (strategiczne obiekty)
+	-2 praca
+	-obiekty do przejęcia
+	-quick time event
+	-kasyno (system hazrdu) - obstawianie meczy piłkarskich, ruletka, minipoker, jednoreki bandyta
+	-rozbudowa komputerów i koparka SC
+	
+	
+	
+	
+	
+// ?
+	-system petów
+	-

@@ -99,7 +99,7 @@
 						</select>
 						
 					<label for="hardcore">Wybierz tryb gry</label>
-					<select class="form-control" name="team">
+					<select class="form-control" name="hardcore">
 							<option value="1">Normalny</option>
 							<option value="2" style="color: red;">Hardcore (Przy śmierci tracisz wszystko)</option>
 						</select>
