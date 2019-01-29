@@ -20,7 +20,11 @@
                     case 2: echo '<h3 style="color: red;">LKS Zgoda Zawada Książęca</h3>'; break;
                     case 3; echo '<h3 style="color: red;">KS Unia Racibórz</h3>'; break;
                 }
+                
                 DatabaseManager::updateTable('users', ['statHp' => 'statHp-50'], ['id' => $_SESSION['uid']]);
+
+                if(DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0)
+                    UserManager::death();
             }
         }
         //Wpadnięcie pod auto

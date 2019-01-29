@@ -71,11 +71,11 @@
                                 <th scope="col">Poziom</th>
                             </tr>
                             <tbody>';
-                    for($i=0; $i<count($wynik); $i++)
+                    for($i=count($wynik)-1; $i != 0; $i--)
                     {
                         $rNick = $wynik[$i]['username'];
                         $rLvl = $wynik[$i]['userLevel'];
-                        $count = $i +1;
+                        $count = abs($i - 10);
                         switch($wynik[$i]['team'])
                         {
                              case '1': $color = '#ffcd2b'; break;
