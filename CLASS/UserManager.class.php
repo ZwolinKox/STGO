@@ -19,9 +19,26 @@ class UserManager {
         else
             $add = 24;
 
-        DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL $add HOUR", 'statHp' => 1], ['id' => $_SESSION['uid']]);
+            
+
+        if(DatabaseManager::selectBySQL("SELECT boolHardcore FROM users WHERE id=".$_SESSION['uid'])[0]['boolHardcore']) {
+            DatabaseManager::updateTable('users', ["dayWeek" => 1, "dayGame" => 1, "slyszCoin" => 100, "xpPoints" => 0, "userLevel" => 1, "userLeaguePoints" => 0, "userEnergy" => 100, "statStrength" => 0, "statIntelect" => 0, 
+            "statArmor" => 0, "statHp" => 100, "statDamage" => 1, "maxHp" => 100, "maxXp" => 100, "eqMainHand" => '0']);
+
+            DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL 2 HOUR", 'statHp' => 1], ['id' => $_SESSION['uid']]);
+        }
+            
+        else
+            DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL $add HOUR", 'statHp' => 1], ['id' => $_SESSION['uid']]);
 
         die('Umarłeś! Jesteś beznadziejnym Słyszem!');
+
+        $_SESSION['uid'] = false;
+        $_SESSION['logged'] = false;
+        $_SESSION['fight'] = false;
+        
+        unset($_SESSION);
+        session_destroy();
     }
 
     public function LogIn($LOGIN, $pass) { //przyjmujemy w formularza login i hasło
