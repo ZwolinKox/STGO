@@ -139,7 +139,14 @@
                         }
                         
                     }).done((result) => {
+                        
+                        if(result == "win")
+                            location.href = "winpvp.php";
+                        else if(result == "lose")
+                            location.href = "losepvp.php";
+
                         let resultObj = JSON.parse(result);
+
                         document.querySelector('#enemyNick').innerHTML = `Walka z ${ resultObj.username }`;
 
                         container.innerHTML = `

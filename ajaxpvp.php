@@ -47,6 +47,22 @@ if($_POST['co'] == 'getEnemyStats') {
 
     $enemyStats['fightInfo'] = $fightInfo;
 
+    if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0) {
+
+        DatabaseManager::updateTable('users', ['userLeaguePoints' => "userLeaguePoints+20"], ['id' => $_SESSION['uid']]);
+
+        if(DatabaseManager::selectBySQL('SELECT userLeaguePoints FROM users WHERE id='.$_SESSION['uid'])[0]['userLeaguePoints'] < 0)
+            DatabaseManager::updateTable('users', ['userLeaguePoints' => "0"], ['id' => $_SESSION['uid']]);
+
+        die('lose');
+    }
+    elseif (DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$enemyId)[0]['statHp'] <= 0) {
+
+        DatabaseManager::updateTable('users', ['userLeaguePoints' => "userLeaguePoints+20"], ['id' => $_SESSION['uid']]);
+
+        die('win');
+    }
+
     die(json_encode($enemyStats));
 }
 elseif ($_POST['co'] == "Ucieczka") {
@@ -71,26 +87,12 @@ elseif ($_POST['co'] == 'Cios') {
     
         DatabaseManager::updateTable('fight', ['round' => $enemyId, $playerNumber.'LastRound' => 'NOW() + INTERVAL 15 SECOND']);
 
-        if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0) {
-            die('lose');
-        }
-        elseif (DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$enemyId)[0]['statHp'] <= 0) {
-    
-            DatabaseManager::updateTable('users', ['userLeaguePoints' => "xpPoints+20"], ['id' => $_SESSION['uid']]);
-    
-            die('win');
-        }
-        else {
-    
             die("<div class='alert alert-warning alert-dismissible fade show' role='alert'>
             Zadałeś przeciwnikowi obrażenia równe $playerDmg
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
               <span aria-hidden='true'>&times;</span>
             </button>
             </div>");
-        }
-
-
     }
   
 }
