@@ -57,7 +57,7 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
 
-                <div class="btn-dark btn-lg href" id="pvp.php">Szukaj zaczepki</div>
+                <div class="btn-dark btn-lg href" id="losowanie-przeciwnika.php">Szukaj zaczepki</div>
                 <div class="btn-dark btn-lg href" id="szkola.php">Wróć do spokojniejszego miejsca</div>
                 <div style="margin-bottom: 40px;"></div>
 
