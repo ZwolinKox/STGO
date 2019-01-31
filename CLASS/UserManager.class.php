@@ -128,6 +128,7 @@ class UserManager {
         //3 - fioletowy - ukonczenie ostatniego raida
         //4 - czerwony - 1000 punktow pvp
         //5 - ciemno czerwony - 30 poziom w trybie hardcore
+        //6 - jasnozielony - 1000 razy nie poszedłeś biegac easter egg achivement
 
         $nickColor = 'white';
         $nickname = DatabaseManager::selectBySQL('SELECT username FROM users WHERE id='.$_SESSION['uid'])[0]['username'];
@@ -135,9 +136,10 @@ class UserManager {
         {
             case '0': break;
             case '1': $nickColor = '#5672FA'; break;
-            case '2': $nickColor = '#D0B957'; break;
+            case '2': $nickColor = '#A57902'; break;
             case '3': $nickColor = '#214B83'; break;
             case '5': $nickColor = '#751B0B'; break;
+            case '6': $nickColor = '#94C98F'; break;
         }
 
         return "<$htmlTagType style='color: $nickColor';>$nickname</$htmlTagType>";    

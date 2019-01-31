@@ -68,7 +68,7 @@ class EqManager {
         }
     }
 
-    //$id podajemy id temu
+    //$id podajemy id itemu
     //$writeType (typ wypisania) name = nazwa, color = kolor, colorTag = tagi span z parametrem koloru
     public static function item($id, $writeType) {
         $dataRarity = DatabaseManager::selectbySQL('SELECT rarity FROM items WHERE id='.$id)[0]['rarity'];

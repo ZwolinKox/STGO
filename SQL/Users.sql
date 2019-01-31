@@ -77,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `boolBuff` tinyint(1) NOT NULL,
   `buffData` int(11) NOT NULL,
   `buffType` int(11) NOT NULL,
+  `achivementRun` int(11) NOT NULL,
   
   
   
