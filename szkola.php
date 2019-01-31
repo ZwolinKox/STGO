@@ -217,6 +217,14 @@ END;
                                         {
                                             echo '<h3>Hahahahahaha, nie!</h3>';
                                             echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Wyjdz na dwór</div>';
+                                            
+                                            ///EASTER EGG
+                                            DatabaseManager::updateTable('users', ['achivementRun' => 'achivementRun+1'], ['id' => $_SESSION['uid']]);
+                                            if(DatabaseManager::selectBySQL("SELECT achivementRun FROM users WHERE id=".$_SESSION['uid'])[0]['achivementRun'] > 1000)
+                                            {
+                                                echo '<h3>POBIEGŁEŚ!! SZYBKOOO!!!</h3>';
+                                                DatabaseManager::updateTable('users', ['nickCol' => '6'], ['id' => $_SESSION['uid']]);
+                                            }
                                         }
                                     }
                                     else
