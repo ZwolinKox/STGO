@@ -49,30 +49,28 @@ if($_POST['co'] == 'getEnemyStats') {
 
     if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0) {
 
-        DatabaseManager::updateTable('users', ['userLeaguePoints' => "userLeaguePoints+20"], ['id' => $_SESSION['uid']]);
+        DatabaseManager::updateTable('users', ['userLeaguePoints' => "userLeaguePoints-20"], ['id' => $_SESSION['uid']]);
 
         if(DatabaseManager::selectBySQL('SELECT userLeaguePoints FROM users WHERE id='.$_SESSION['uid'])[0]['userLeaguePoints'] < 0)
             DatabaseManager::updateTable('users', ['userLeaguePoints' => "0"], ['id' => $_SESSION['uid']]);
 
+        $_SESSION['Lp'] = 20;
+        $_SESSION['losepvp'] = true;
+
+
         die('lose');
     }
-    elseif (DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$enemyId)[0]['statHp'] <= 0) {
+    elseif (DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$enemyId)[0]['statHp'] <= 0 ) {
 
         DatabaseManager::updateTable('users', ['userLeaguePoints' => "userLeaguePoints+20"], ['id' => $_SESSION['uid']]);
+
+        $_SESSION['Lp'] = 20;
+        $_SESSION['winpvp'] = true;
 
         die('win');
     }
 
     die(json_encode($enemyStats));
-}
-elseif ($_POST['co'] == "Ucieczka") {
-    if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 200) {
-        DatabaseManager::updateTable('users', ['slyszCoin' => "slyszCoin-200", "userEnergy" => "0"], ['id' => $_SESSION['uid']]);
-        $_SESSION['fight'] = false;
-        unset($_SESSION['fight']);
-        die('yes');
-    }
-
 }
 
 elseif ($_POST['co'] == 'Cios') {
@@ -85,7 +83,7 @@ elseif ($_POST['co'] == 'Cios') {
     
         DatabaseManager::updateTable('users', ['statHp' => "statHp-$playerDmg"], ['id' => $enemyId]);
     
-        DatabaseManager::updateTable('fight', ['round' => $enemyId, $playerNumber.'LastRound' => 'NOW() + INTERVAL 15 SECOND']);
+        DatabaseManager::updateTable('fight', ['round' => $enemyId, 'playerOneLastRound' => 'NOW() + INTERVAL 15 SECOND', 'playerTwoLastRound' => 'NOW() + INTERVAL 15 SECOND']);
 
             die("<div class='alert alert-warning alert-dismissible fade show' role='alert'>
             Zadałeś przeciwnikowi obrażenia równe $playerDmg
