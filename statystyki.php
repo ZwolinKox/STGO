@@ -65,7 +65,7 @@
         $stats['procentXp'] = ($stats['xpPoints'] / $stats['maxXp']) * 100;
         
         echo '<div id="stats">';
-        echo '<h3 style="color: pink" id="username"><p>Witaj '.$stats['username'].'!</p></h3>';
+        echo '<h3 id="username" style="display: inline;"><p>Witaj '.UserManager::Nick('span').'!</p></h3>';
         echo '<h3 id="gamemode"><p>Tryb gry <span style="color: '.$stats['hardcoreColor'].'">'.$stats['hardcore'].'!</span></p></h3>';
         echo '<p id="dayweek">Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
         echo '<p id="daygame">Dzień w grze: '.$stats['dayGame'].'</p>';  //To musze dodac to tabeli user bo nie ma xD
@@ -102,27 +102,17 @@
         echo '<p id="team">Twoja drużyna: <span style="color: '.$stats['colorTeam'].'">'.$stats['team'].'</span></p>';
         echo '<p id="statarmor">Armor: '.$stats['statArmor'].'</p>';
         echo '<p id="statstrength">Siła: '.$stats['statStrength'].'</p>';
-        echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHandName'].'</p>';
+        echo '<p id="eqmainhand">Obecnie posiadana broń:<span style="color: '.EqManager::item('eqMainHand', 'color').';"> '.$stats['eqMainHandName'].'</span></p>';
         echo '</div>';
 
-        $eq1 = $stats['eqSlotOne'];
-        $eq2 = $stats['eqSlotTwo'];
-        $eq3 = $stats['eqSlotThree'];
-        $eq4 = $stats['eqSlotFour'];
-        $eq5 = $stats['eqSlotFive'];
-        $eq6 = $stats['eqSlotSix'];
-        $eq7 = $stats['eqSlotSeven'];
-        $eq8 = $stats['eqSlotEight'];
-
-        $eq1name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotOne'])[0]['name'];
-        $eq2name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotTwo'])[0]['name'];
-        $eq3name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotThree'])[0]['name'];
-        $eq4name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotFour'])[0]['name'];
-        $eq5name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotFive'])[0]['name'];
-        $eq6name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotSix'])[0]['name'];
-        $eq7name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotSeven'])[0]['name'];
-        $eq8name = DatabaseManager::selectBySQL('SELECT name FROM items WHERE id='.$stats['eqSlotEight'])[0]['name'];
-
+        $eq1name = EqManager::item($stats['eqSlotOne'], 'name');
+        $eq2name = EqManager::item($stats['eqSlotTwo'], 'name');
+        $eq3name = EqManager::item($stats['eqSlotThree'], 'name');
+        $eq4name = EqManager::item($stats['eqSlotFour'], 'name');
+        $eq5name = EqManager::item($stats['eqSlotFive'], 'name');
+        $eq6name = EqManager::item($stats['eqSlotSix'], 'name');
+        $eq7name = EqManager::item($stats['eqSlotSeven'], 'name');
+        $eq8name = EqManager::item($stats['eqSlotEight'], 'name');
 
         echo <<< END
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eq">

@@ -56,8 +56,7 @@ class EqManager {
 
     //Musze na spokojnie przeanalizować czy to ma sens ale chyba tak
     //Zakładanie danego przedmiotu
-    public static function putOn($slot)
-    {
+    public static function putOn($slot) {
         if(checkHand(DatabaseManager::selectBySQL("SELECT '.$slot.' FROM users WHERE id=".$_SESSION['uid'])[0][$slot]))
         {
             $bufferOld = DatabaseManager::selectBySQL("SELECT eqMainHand FROM users WHERE id=".$_SESSION['uid'])[0]['eqMainHand'];
@@ -69,6 +68,42 @@ class EqManager {
         }
     }
 
+    //$id podajemy id temu
+    //$writeType (typ wypisania) name = nazwa, color = kolor, colorTag = tagi span z parametrem koloru
+    public static function item($id, $writeType) {
+        $dataRarity = DatabaseManager::selectbySQL('SELECT rarity FROM items WHERE id='.$id)[0]['rarity'];
+        $dataName = DatabaseManager::selectbySQL('SELECT name FROM items WHERE id='.$id)[0]['name'];
+
+        if($writeType == 'name')
+        {
+            return $dataName;
+        }
+        else
+        {
+            $color = '#34FD6D';
+            switch($dataRarity)
+            {
+                case 'common': break;
+                case 'rare': $color = '#076DD8'; break;
+                case 'heroic': $color = '#623CD0'; break;
+                case 'legendary': $color = '#D0B95B'; break;
+            }
+
+            if($writeType == 'color')
+            {
+                return $color;
+            }
+            else if($writeType == 'colorTag')
+            {
+                //return '<span style="color: '.$color.';>'.$dataName.'</span>';
+                return "<span style='color: $color;>$dataName</span>";
+            }
+            else
+            {
+                //BŁAD - ZŁY PARAMETR METODY
+            }
+       }
+    }
 }
 
 ?>
