@@ -24,6 +24,9 @@ else {
 
 if($_POST['co'] == 'getEnemyStats') {
 
+    if(DatabaseManager::selectBySQL('SELECT statHp FROM users WHERE id='.$_SESSION['uid'])[0]['statHp'] <= 0)
+         DatabaseManager::updateTable('fight', ['winner' => $enemyId, 'status' => 1], ['id' => $fightId]);
+
     $fightInfo = DatabaseManager::selectBySQL("SELECT * FROM fight WHERE id=".$fightId)[0];
 
     $enemyStats = DatabaseManager::selectBySQL('SELECT statHp, username, userLeaguePoints, statStrength, statIntelect, eqMainHand, maxHp, team 
@@ -47,7 +50,8 @@ if($_POST['co'] == 'getEnemyStats') {
 
     $enemyStats['fightInfo'] = $fightInfo;
 
-    if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0) {
+    if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0 ||
+    DatabaseManager::selectBySQL('SELECT winner FROM fight WHERE status=0 AND playerOne='.$_SESSION['uid'].' OR playerTwo='.$_SESSION['uid'])[0]['winner'] == $enemyId) {
 
         DatabaseManager::updateTable('users', ['userLeaguePoints' => "userLeaguePoints-20"], ['id' => $_SESSION['uid']]);
 
@@ -60,8 +64,10 @@ if($_POST['co'] == 'getEnemyStats') {
 
         die('lose');
     }
-    elseif (DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$enemyId)[0]['statHp'] <= 0 ) {
+    elseif (DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$enemyId)[0]['statHp'] <= 0 || 
+    DatabaseManager::selectBySQL('SELECT winner FROM fight WHERE status=0 AND playerOne='.$_SESSION['uid'].' OR playerTwo='.$_SESSION['uid'])[0]['winner'] == $_SESSION['uid']) {
 
+        DatabaseManager::updateTable('fight', ['winner' => $_SESSION['uid'], 'status' => 1], ['id' => $fightId]);
         DatabaseManager::updateTable('users', ['userLeaguePoints' => "userLeaguePoints+20"], ['id' => $_SESSION['uid']]);
 
         $_SESSION['Lp'] = 20;

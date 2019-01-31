@@ -56,7 +56,7 @@
 
                     <?php
 
-                        if(!DatabaseManager::selectBySQL('SELECT * FROM fight WHERE status=0 AND playerOne='.$_SESSION['uid'].' OR playerTwo='.$_SESSION['uid'])) {
+                        if(!DatabaseManager::selectBySQL('SELECT * FROM fight WHERE status=0 AND (playerOne='.$_SESSION['uid'].' OR playerTwo='.$_SESSION['uid'].')')) {
                             echo '<h3 style="color: red;">Nie uczestniczysz w żadnej walce!</h3>';
                             echo '<div class="btn-dark btn-lg href" id="sklodowska.php">Tak</div>';
                         }   

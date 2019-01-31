@@ -72,7 +72,7 @@
                     
                     <?php
 
-                    //DatabaseManager::updateTable('users', ['statHp' => "maxHp"], ['id' => $_SESSION['uid']]);
+                    DatabaseManager::updateTable('users', ['statHp' => "maxHp"], ['id' => $_SESSION['uid']]);
                     unset($_SESSION['Lp']);
                     unset($_SESSION['losepvp']);
 
