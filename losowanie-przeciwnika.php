@@ -99,7 +99,61 @@
     </footer>
     
     <?php
+        $role = rand(1, 2);
 
+        if($role == 2) {
+
+            DatabaseManager::deleteFrom('queue', ['host' => $_SESSION['uid'], 'client' => $_SESSION['uid']], "OR");
+            DatabaseManager::insertInto('queue', ['client' => $_SESSION['uid']]);
+
+            echo <<< END
+            <script>  
+            
+            setInterval(() => {
+                $.ajax({
+                    url: "ajaxFightManager.php",
+                    method: "post",
+                    data: {
+                        co: "client"
+                    }
+                }).done((result) => {
+                    console.log('client');
+                    if(result != "no") {
+                        document.querySelector('main').innerHTML = "<h2 style='color: lightgreen;'> Znaleziono przeciwnika! </h2> <br></br> <div class='btn-dark btn-lg href' onclick='accept()'>Potwierdź</div> <br><br> <h3>Pozostało: <strong style='color: gold;'>"+result+"</strong> sekund</h3>"
+                    }
+                })
+                
+            }, '300')
+            
+            </script>
+END;
+        }
+
+        elseif ($role == 1) {
+            DatabaseManager::deleteFrom('queue', ['host' => $_SESSION['uid'], 'client' => $_SESSION['uid']], "OR");
+            echo <<< END
+            <script>  
+            
+            setInterval(() => {
+                $.ajax({
+                    url: "ajaxFightManager.php",
+                    method: "post",
+                    data: {
+                        co: "host"
+                    }
+                }).done((result) => {
+                    console.log('host');
+                    if(result != "no") {
+                        document.querySelector('main').innerHTML = "<h2 style='color: lightgreen;'> Znaleziono przeciwnika! </h2> <br></br> <div class='btn-dark btn-lg href' onclick='accept()'>Potwierdź</div> <br><br> <h3>Pozostało: <strong style='color: gold;'>"+result+"</strong> sekund</h3>"
+                    }
+                })
+                
+            }, '300')
+            
+            </script>
+END;
+        }
+            
     ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -124,6 +178,7 @@
         return "";
     }
 
+
             function getRandomColor() {
             const letters = '0123456789ABCDEF';
             let color = '#';
@@ -137,23 +192,23 @@
 
             var audio = new Audio('http://ccmixter.org/content/JeffSpeed68/JeffSpeed68_-_Unbury_Your_Heart.mp3');
             audio.play();
+
             audio.currentTime = getCookie('musicTime');
 
-            if(audio.currentTime >= audio.duration) {
-                document.cookie = "musicTime=0";
+            audio.onended = function() {
+                document.cookie = "musicTime=0.1";
                 audio.currentTime = 0;
-            }
-
+            };
 
             document.querySelector('#search').style.color = getRandomColor();
 
             const seconds = document.querySelector('#seconds');
             setInterval(() => {
                 seconds.innerHTML++;
-                console.log(audio.currentTime);
                 document.cookie = "musicTime="+audio.currentTime; 
             }, '1000');
         })
+    
 
 
     </script>
