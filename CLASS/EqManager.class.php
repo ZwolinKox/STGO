@@ -84,8 +84,8 @@ class EqManager {
             switch($dataRarity)
             {
                 case 'common': break;
-                case 'rare': $color = '#076DD8'; break;
-                case 'heroic': $color = '#623CD0'; break;
+                case 'rare': $color = '#6DC4F1'; break;
+                case 'heroic': $color = '#9944B9'; break;
                 case 'legendary': $color = '#D0B95B'; break;
             }
 
@@ -96,7 +96,7 @@ class EqManager {
             else if($writeType == 'colorTag')
             {
                 //return '<span style="color: '.$color.';>'.$dataName.'</span>';
-                return "<span style='color: $color;>$dataName</span>";
+                return "<br><span style='color: $color; font-size: 25px'>$dataName</span>";
             }
             else
             {

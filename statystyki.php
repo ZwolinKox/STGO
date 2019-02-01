@@ -102,7 +102,7 @@
         echo '<p id="team">Twoja drużyna: <span style="color: '.$stats['colorTeam'].'">'.$stats['team'].'</span></p>';
         echo '<p id="statarmor">Armor: '.$stats['statArmor'].'</p>';
         echo '<p id="statstrength">Siła: '.$stats['statStrength'].'</p>';
-        echo '<p id="eqmainhand">Obecnie posiadana broń:<span style="color: '.EqManager::item('eqMainHand', 'color').';"> '.$stats['eqMainHandName'].'</span></p>';
+        echo '<p id="eqmainhand">Obecnie posiadana broń: '.EqManager::item($stats['eqMainHand'], 'colorTag').'</p>';
         echo '</div>';
 
         $eq1name = EqManager::item($stats['eqSlotOne'], 'name');
@@ -205,7 +205,7 @@ END;
             const resultObj = JSON.parse(result);    
 
             document.querySelector('#stats').innerHTML  = `
-                <h3 style="color: pink" id="username"><p>Witaj ${ resultObj.username }!</p></h3>
+                <h3 id="username"><p>Witaj ${ resultObj.username }!</p></h3>
                 <h3 id="gamemode"><p>Tryb gry <span style="color: ${ resultObj.hardcoreColor }"> ${ resultObj.hardcore }!</span></p></h3>
                 <p id="dayweek">Dzień tygodnia: ${ resultObj.dayWeek }</p>
                 <p id="daygame">Dzień w grze: ${ resultObj.dayGame }</p>

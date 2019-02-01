@@ -117,7 +117,7 @@ class UserManager {
    
     }
 
-    public function Nick($htmlTagType) {
+    public static function Nick($htmlTagType) {
         //$htmlTagType --> Nick('h3');  Nick('p');
         //Do wypisywania nicku bedzie stosowana ta metoda
         //Tutaj wszystkie możliwe nicki będą, to jaki masz nick jest pobieranie z bazy danych ,,nickCol''
@@ -138,6 +138,7 @@ class UserManager {
             case '1': $nickColor = '#5672FA'; break;
             case '2': $nickColor = '#A57902'; break;
             case '3': $nickColor = '#214B83'; break;
+            case '4': $nickColor = '#EF0C22'; break;
             case '5': $nickColor = '#751B0B'; break;
             case '6': $nickColor = '#94C98F'; break;
         }
