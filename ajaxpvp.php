@@ -50,7 +50,12 @@ if($_POST['co'] == 'getEnemyStats') {
 
     $enemyStats['fightInfo'] = $fightInfo;
 
-    if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0 ||
+    if($fightInfo['round'] != $_SESSION['uid'] && (strtotime($fightInfo[$enemyNumber.'LastRound']) - time()) <= 0)
+    {
+        DatabaseManager::updateTable('fight', ['round' => $_SESSION['uid'], 'playerOneLastRound' => 'NOW() + INTERVAL 15 SECOND', 'playerTwoLastRound' => 'NOW() + INTERVAL 15 SECOND']);
+    }
+
+    if(//DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0 ||
     DatabaseManager::selectBySQL('SELECT winner FROM fight WHERE status=0 AND playerOne='.$_SESSION['uid'].' OR playerTwo='.$_SESSION['uid'])[0]['winner'] == $enemyId) {
 
         DatabaseManager::updateTable('users', ['userLeaguePoints' => "userLeaguePoints-20"], ['id' => $_SESSION['uid']]);
@@ -64,7 +69,7 @@ if($_POST['co'] == 'getEnemyStats') {
 
         die('lose');
     }
-    elseif (DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$enemyId)[0]['statHp'] <= 0 || 
+    elseif (//DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$enemyId)[0]['statHp'] <= 0 || 
     DatabaseManager::selectBySQL('SELECT winner FROM fight WHERE status=0 AND playerOne='.$_SESSION['uid'].' OR playerTwo='.$_SESSION['uid'])[0]['winner'] == $_SESSION['uid']) {
 
         DatabaseManager::updateTable('fight', ['winner' => $_SESSION['uid'], 'status' => 1], ['id' => $fightId]);

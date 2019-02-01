@@ -99,17 +99,32 @@
     </footer>
     
     <?php
+    
         $role = rand(1, 2);
 
         if($role == 2) {
 
-            DatabaseManager::deleteFrom('queue', ['host' => $_SESSION['uid'], 'client' => $_SESSION['uid']], "OR");
-            DatabaseManager::insertInto('queue', ['client' => $_SESSION['uid']]);
+            DatabaseManager::deleteFrom('pvpqueue', ['host' => $_SESSION['uid'], 'client' => $_SESSION['uid']], "OR");
+            DatabaseManager::insertInto('pvpqueue', ['client' => $_SESSION['uid']]);
 
             echo <<< END
             <script>  
-            
+            console.log('client');
             setInterval(() => {
+                $.ajax({
+                    url: "ajaxFightManager.php",
+                    method: "post",
+                    data: {
+                        co: "allAccept"
+                    }
+                }).done((result) => {
+                    if(result == "yes") {
+                        location.href = "pvp.php";
+                    }
+
+                });
+                
+
                 $.ajax({
                     url: "ajaxFightManager.php",
                     method: "post",
@@ -117,9 +132,11 @@
                         co: "client"
                     }
                 }).done((result) => {
-                    console.log('client');
                     if(result != "no") {
-                        document.querySelector('main').innerHTML = "<h2 style='color: lightgreen;'> Znaleziono przeciwnika! </h2> <br></br> <div class='btn-dark btn-lg href' onclick='accept()'>Potwierdź</div> <br><br> <h3>Pozostało: <strong style='color: gold;'>"+result+"</strong> sekund</h3>"
+                        result = JSON.parse(result);
+                        if(result.time <= 0)
+                            location.href = "sklodowska.php";
+                        document.querySelector('main').innerHTML = "CLIENT<h2 style='color: lightgreen;'> Znaleziono przeciwnika! </h2> <br></br> <div class='btn-dark btn-lg href' onclick='clientAccept()'>Potwierdź</div> <br><br> <h3>Pozostało: <strong style='color: gold;'>"+result.time+"</strong> sekund</h3>"
                     }
                 })
                 
@@ -130,11 +147,26 @@ END;
         }
 
         elseif ($role == 1) {
-            DatabaseManager::deleteFrom('queue', ['host' => $_SESSION['uid'], 'client' => $_SESSION['uid']], "OR");
+            $_SESSION['enemyFound'] = false;
+            DatabaseManager::deleteFrom('pvpqueue', ['host' => $_SESSION['uid'], 'client' => $_SESSION['uid']], "OR");
             echo <<< END
             <script>  
-            
+            console.log('host');
             setInterval(() => {
+
+                $.ajax({
+                    url: "ajaxFightManager.php",
+                    method: "post",
+                    data: {
+                        co: "allAccept"
+                    }
+                }).done((result) => {
+                    if(result == "yes") {
+                        location.href = "pvp.php";
+                    }
+
+                });
+                
                 $.ajax({
                     url: "ajaxFightManager.php",
                     method: "post",
@@ -142,9 +174,12 @@ END;
                         co: "host"
                     }
                 }).done((result) => {
-                    console.log('host');
                     if(result != "no") {
-                        document.querySelector('main').innerHTML = "<h2 style='color: lightgreen;'> Znaleziono przeciwnika! </h2> <br></br> <div class='btn-dark btn-lg href' onclick='accept()'>Potwierdź</div> <br><br> <h3>Pozostało: <strong style='color: gold;'>"+result+"</strong> sekund</h3>"
+                        result = JSON.parse(result);
+                        if(result.time <= 0)
+                            location.href = "sklodowska.php";
+
+                        document.querySelector('main').innerHTML = "HOST <h2 style='color: lightgreen;'> Znaleziono przeciwnika! </h2> <br></br> <div class='btn-dark btn-lg href' onclick='hostAccept()'>Potwierdź</div> <br><br> <h3>Pozostało: <strong style='color: gold;'>"+result.time+"</strong> sekund</h3>"
                     }
                 })
                 
@@ -177,6 +212,28 @@ END;
         }
         return "";
     }
+
+        function clientAccept()
+        {
+            $.ajax({
+                    url: "ajaxFightManager.php",
+                    method: "post",
+                    data: {
+                        co: "clientAccept"
+                    }
+                })
+        }
+
+        function hostAccept()
+        {
+            $.ajax({
+                    url: "ajaxFightManager.php",
+                    method: "post",
+                    data: {
+                        co: "hostAccept"
+                    }
+                })
+        }
 
 
             function getRandomColor() {

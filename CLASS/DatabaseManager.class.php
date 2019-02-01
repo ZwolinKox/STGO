@@ -67,7 +67,7 @@ class DatabaseManager {
         return true;
         $mysqli_close($conn);
     }
-    static public function insertInto($TABLE, $DATA) { //wzór zapytania "INSERT INTO table_name (column1, ...) VALUES (value1, ...)"
+    static public function insertInto($TABLE, $DATA, $przecinki="'") { //wzór zapytania "INSERT INTO table_name (column1, ...) VALUES (value1, ...)"
         $conn = self::getConnection(); //połączenie z bazą
         
         $SQL = "INSERT INTO {$TABLE}"; //początek zapytania
@@ -83,7 +83,7 @@ class DatabaseManager {
         $SQL .= " (";
         
         foreach($DATA as $val) {
-            $SQL .= "'".$val."',"; //dodanie do zapytania wybranych wartości
+            $SQL .= "$przecinki".$val."$przecinki,"; //dodanie do zapytania wybranych wartości
         }
         
         $SQL = rtrim($SQL, ','); //obcięcie przecinka z końca zapytania

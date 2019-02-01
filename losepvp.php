@@ -73,6 +73,7 @@
                     <?php
 
                     DatabaseManager::updateTable('users', ['statHp' => "maxHp"], ['id' => $_SESSION['uid']]);
+                    DatabaseManager::deleteFrom('fight', ['playerOne' => $_SESSION['uid'], 'playerTwo' => $_SESSION['uid']] , 'OR');
                     unset($_SESSION['Lp']);
                     unset($_SESSION['losepvp']);
 
