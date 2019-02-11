@@ -62,6 +62,10 @@ require_once 'config.php';
         {
             ButtonFunc::buyVest();
         }
+        else if(Post::get('co') == 'czesci')
+        {
+            ButtonFunc::pcUpgrade();
+        }
         //Stacja benzynowa
         else if(Post::get('co') == 'hotdog')
         {

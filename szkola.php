@@ -205,6 +205,7 @@ END;
                                         {
                                             echo '<h3>Witaj w Aldi!</h3><br>';
                                             echo '<div class="btn-dark btn-lg" id="kamizelka">Kamizelka odblaskowa (Koszt: 500Słysz Coinów)</div>';
+                                            echo '<div class="btn-dark btn-lg" id="czesci">Części komputerowe (Koszt: xxxSłysz Coinów)</div>';
                                             echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Wyjdz na dwór</div>';
                                         }
                                         else if(Get::get('miejsce') == 'stacja')
@@ -415,6 +416,23 @@ END;
                         }
                     })
                 })
+        }
+    </script>
+
+    <script>
+        const czesciBtn = document.querySelector("#czesci");
+
+        if(czesciBtn)
+        {
+                czesciBtn.addEventListener("click", function() {
+                        $.ajax({
+                            url: "ajax.php",
+                            method: "post",
+                            data: {
+                                co: "czesci"
+                            }
+                        })
+                    })
         }
     </script>
 

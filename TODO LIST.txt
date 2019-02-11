@@ -1,5 +1,5 @@
-//Ja
-	-kolory nicków i itemów
+﻿//Ja
+	-kolory nicków i itemów (gotowe)
 	-barka
 	-poczta
 	-weryfikacja czy wszedzie sa sc sprawdzane (energia itp.)

@@ -135,6 +135,22 @@
             }
         }
 
+        static public function pcUpgrade(){
+            $currentPcLevel = DatabaseManager::selectBySQL("SELECT levelkoparka FROM users WHERE id=".$_SESSION['uid'])[0]['levelkoparka'];
+            if($currentPcLevel < 5)
+            {
+                if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < $currentPcLevel*500)
+                {
+                    echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3><br>';
+                }
+                else
+                {
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-'.$currentPcLevel*500], ['id' => $_SESSION['uid']]);
+                    DatabaseManager::updateTable('users', ['levelkoparka' => 'levelkoparka+1'], ['id' => $_SESSION['uid']]);
+                }
+            }
+        }
+
         //Metody wykorzystywane w szkole w parku w Stacji benzynowej
         static public function hotdog(){
             if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 20)

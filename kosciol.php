@@ -181,6 +181,44 @@
                                     //sam nie wierze w to co mówie ale jakby tu użyć jakiegos JS? xD
 
                                     //TU BEDZIE KOLEJNY ACZIFMENT
+
+                                    echo'
+                                                
+                                                    <br><select class="form-control">
+                                                        <option>Tu naraze jest ściernisko</option>
+                                                        <option>Pole, pole, łyse pole</option>
+                                                        <option>Pomalutku, bez pośpiechu</option>
+                                                        <option>wszystko zrobię sam</option>
+                                                        <option>ale mam już plan</option>
+                                                    </select><br>
+                                                
+                                                    <select class="form-control">
+                                                        <option>Tu naraze jest ściernisko</option>
+                                                        <option>Pole, pole, łyse pole</option>
+                                                        <option>Pomalutku, bez pośpiechu</option>
+                                                        <option>wszystko zrobię sam</option>
+                                                        <option>ale mam już plan</option>
+                                                    </select><br>
+                                                
+                                                    <select class="form-control">
+                                                        <option>Tu naraze jest ściernisko</option>
+                                                        <option>Pole, pole, łyse pole</option>
+                                                        <option>Pomalutku, bez pośpiechu</option>
+                                                        <option>wszystko zrobię sam</option>
+                                                        <option>ale mam już plan</option>
+                                                    </select><br>
+                                                
+                                                    <select class="form-control">
+                                                        <option>Tu naraze jest ściernisko</option>
+                                                        <option>Pole, pole, łyse pole</option>
+                                                        <option>Pomalutku, bez pośpiechu</option>
+                                                        <option>wszystko zrobię sam</option>
+                                                        <option>ale mam już plan</option>
+                                                    </select><br>';
+
+                                    echo '<br><div class="btn-dark btn-lg href" id="index.php">Śpiewaj!</div>';
+
+
                                 }
                                 else if(Get::get('co') == 'kazanie')
                                 {

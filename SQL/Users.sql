@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `buffType` int(11) NOT NULL,
   `achivementRun` int(11) NOT NULL,
   `boolkoparka` int(11) NOT NULL,
+  `levelkoparka` int(11) NOT NULL,
   `collectElik` int(11) NOT NULL,
   `collectElyk` int(11) NOT NULL,
   `collectInfo` int(11) NOT NULL,
