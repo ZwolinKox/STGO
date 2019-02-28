@@ -73,6 +73,7 @@ END;
 
                             echo <<< END
                             <h3>Jesteś członkiem gangu: $guildName</h3>
+                            <div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do donmu</div>
 END;
                         }
 
