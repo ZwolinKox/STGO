@@ -19,38 +19,37 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
 
 	let b = [];
-	b.push(document.querySelector('.1'));
-	b.push(document.querySelector('.2'));
-	b.push(document.querySelector('.3'));
-	b.push(document.querySelector('.4'));
-	b.push(document.querySelector('.5'));
-	b.push(document.querySelector('.6'));
-	b.push(document.querySelector('.7'));
-	b.push(document.querySelector('.8'));
-	b.push(document.querySelector('.9'));
+	b.push(document.querySelector('.jeden'));
+	b.push(document.querySelector('.dwa'));
+	b.push(document.querySelector('.trzy'));
+	b.push(document.querySelector('.cztery'));
+	b.push(document.querySelector('.piec'));
+	b.push(document.querySelector('.szesc'));
+	b.push(document.querySelector('.siedem'));
+	b.push(document.querySelector('.osiem'));
+	b.push(document.querySelector('.dziewiec'));
 
 	
 	window.addEventListener('keydown', function(event) {
 			
 			const key = event.keyCode;
-			
 			switch(key)
 			{
-				case 97:
+				case 49:
 				location.href = b[0].id; break;
-				case 98:
+				case 50:
 				location.href = b[1].id; break;
-				case 99:
+				case 51:
 				location.href = b[2].id; break;
-				case 100:
+				case 52:
 				location.href = b[3].id; break;
-				case 101:
+				case 53:
 				location.href = b[4].id; break;
-				case 102:
+				case 54:
 				location.href = b[5].id; break;
-				case 103:
+				case 55:
 				location.href = b[6].id; break;
-				case 104:
+				case 56:
 				location.href = b[7].id; break;
 				
 			}
