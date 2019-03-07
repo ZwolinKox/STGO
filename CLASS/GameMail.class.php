@@ -8,7 +8,7 @@ class GameMail {
     }
 
     static public function refreshMail($id) {
-        $allMails = DatabaseManager::selectBySQL("SELECT messText, whoSend FROM Mail WHERE spaghet ");
+        $allMails = DatabaseManager::selectBySQL("SELECT messText, whoSend FROM Mail WHERE  "); // <-- dokoncz XD
     }
 
     //Jestem leniwy wiec te 2 metody sobie zrobiłem, mozna je potem usunąć ale na czas prac nad poczta sobie je zostawie
@@ -20,5 +20,7 @@ class GameMail {
         return DatabaseManager::selectBySQL('SELECT id FROM users WHERE username="'.$name.'"')[0]['id'];
     }
 
-    static public function deleteMail() {}
+    static public function deleteMail($id) {
+        DatabaseManager::deleteFrom("Mail", ["whoReceive" => $id]);
+    }
 }

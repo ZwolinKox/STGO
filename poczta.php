@@ -58,9 +58,8 @@
 				<div class="col-12 text-center display-4">Poczta</div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
-
+                    
                     <form action="sendPrivateMessage.php" method="POST">
-						
                         <div class="form-group" style="margin-top: 15px;">
                             <label for="mailTo">Adresat:</label>
                             <input type="text" class="form-control" id="mailTo" name="adresat">
@@ -71,11 +70,19 @@
                         </div>
                             <input class="btn btn-dark btn-lg" type="submit" value="Wyślij" style="margin-bottom: 15px;">
                     </form>
-                       
-                        
-                    
-                    
 
+                    <form action="deletePrivateMessage.php" method="POST">
+                        <input class="btn btn-dark btn-lg" type="submit" value="Usuń wszystkie wiadomości" style="margin-bottom: 15px;">
+                    </form> 
+
+                    <!-- ////////////////////////////////////////////////// -->
+
+                    <?php
+
+                        $allMail = DatabaseManager::selectbySQL("SELECT whoSend, messText FROM Mail WHERE whoReceive".$_SESSION['uid']);
+
+                        
+                    ?>
                 </div>
 		
 		
