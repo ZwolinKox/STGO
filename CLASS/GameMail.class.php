@@ -4,7 +4,7 @@ class GameMail {
     private function __construct () {}
 
     static public function sendMail($mailTo, $mailFrom, $mailText) {
-        DatabaseManager::insertInto("Mail", ["whoReceive" => GameMail::nameToId($mailTo), "whoSend" => $mailFrom, "messText" => $mailText]);
+        DatabaseManager::insertInto("Mail", ["whoReceive" => GameMail::nameToId($mailTo), "whoSend" => $mailFrom, "messDate" => date("H:i d-m"), "messText" => $mailText]);
     }
 
     static public function refreshMail($id) {

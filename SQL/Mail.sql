@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `mail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `whoSend` int(11) NOT NULL,
   `whoReceive` int(11) NOT NULL,
+  `messDate` text COLLATE utf8_polish_ci NOT NULL, 
   `messText` text COLLATE utf8_polish_ci NOT NULL,
 
 PRIMARY KEY (`id`)

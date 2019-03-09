@@ -75,22 +75,25 @@
                         <input class="btn btn-dark btn-lg" type="submit" value="Usuń wszystkie wiadomości" style="margin-bottom: 15px;">
                     </form> 
 
+                    <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div><br>
+
                     <!-- ////////////////////////////////////////////////// -->
 
                     <?php
 
-                        $allMail = DatabaseManager::selectbySQL("SELECT whoSend, messText FROM Mail WHERE whoReceive=".$_SESSION['uid']);
+                        $allMail = DatabaseManager::selectbySQL("SELECT whoSend, messDate, messText FROM Mail WHERE whoReceive=".$_SESSION['uid']);
 
                         if($allMail != null)
                         {
                             for($i=0; $i < count($allMail); $i++)
                             {
                                 $rNick = GameMail::idToName($allMail[$i]['whoSend']);
+                                $rDate = $allMail[$i]['messDate'];
                                 $rText = $allMail[$i]['messText'];
 
                                 echo '
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">Od: '.$rNick.'</div>
+                                    <div class="panel-heading">Od: '.$rNick.' - '.$rDate.'</div>
                                     <div class="panel-body">Treść: '.$rText.'</div>
                                 </div><br>';
                             }
