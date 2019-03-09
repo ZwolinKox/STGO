@@ -79,9 +79,22 @@
 
                     <?php
 
-                        $allMail = DatabaseManager::selectbySQL("SELECT whoSend, messText FROM Mail WHERE whoReceive".$_SESSION['uid']);
+                        $allMail = DatabaseManager::selectbySQL("SELECT whoSend, messText FROM Mail WHERE whoReceive=".$_SESSION['uid']);
 
-                        
+                        if($allMail != null)
+                        {
+                            for($i=0; $i < count($allMail); $i++)
+                            {
+                                $rNick = GameMail::idToName($allMail[$i]['whoSend']);
+                                $rText = $allMail[$i]['messText'];
+
+                                echo '
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Od: '.$rNick.'</div>
+                                    <div class="panel-body">Treść: '.$rText.'</div>
+                                </div><br>';
+                            }
+                        }
                     ?>
                 </div>
 		

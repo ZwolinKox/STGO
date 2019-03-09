@@ -12,7 +12,7 @@ class GameMail {
     }
 
     //Jestem leniwy wiec te 2 metody sobie zrobiłem, mozna je potem usunąć ale na czas prac nad poczta sobie je zostawie
-    static private function idToName($id) {
+    static public function idToName($id) {
         return DatabaseManager::selectBySQL("SELECT username FROM users WHERE id=".$id)[0]['username'];
     }
 
