@@ -1,7 +1,7 @@
 ﻿//Ja
 	-kolory nicków i itemów (gotowe)
 	-barka
-	-poczta
+	-poczta (gotowe)
 	-weryfikacja czy wszedzie sa sc sprawdzane (energia itp.)
 	-itemy na raidy gangów
 	-explo

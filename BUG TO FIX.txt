@@ -1,0 +1,12 @@
+- W kosciele po przegraniu w opowiadaniu kazania i tak otrzymujemy SC
+- Podczas walki z bazy danych zamist nazywy przeciwnika wypisujemy typ przeciwnika
+- Po smierci na ekran sa wypisywane b³edy dot wyciagania zmiennych z bazy danych
+- Usuwanie tagów html w publicznym czacie
+- Wylaczenie PvP i Explo na BETE
+- W McDonalds nie dzialaja slyszburgery i bigslysze (chyba)
+- Nie dziala sklepik szkolny
+- Trzbea dodac kawe do sklepiu bo zbyt szybko tracimy hp ( test bez balansu enemy)
+- W publicznym czacie nie ma kolorwych nickow
+- Gdy nie mamy ubranej brony napis o jej braku dziwnie sie wyswietla
+
+//Lista bugów z 14 marca 2019
