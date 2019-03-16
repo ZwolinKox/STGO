@@ -264,7 +264,7 @@
                                                     switch($penalty)
                                                     {
                                                         case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['slyszCoin' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
                                                     }
 
                                                     echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
