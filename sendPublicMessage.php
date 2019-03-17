@@ -18,7 +18,7 @@ function colorByTeam($id) {
 require_once 'config.php';
 
 if(Post::get('co') == 'sendMessage') {
-    DatabaseManager::insertInto('messages', ['fromId' => $_SESSION['uid'], 'mess' => Post::get('message')]);
+    DatabaseManager::insertInto('messages', ['fromId' => $_SESSION['uid'], 'mess' => strip_tags(Post::get('message'))]);
 }
 
 elseif (Post::get('co') == 'recMessage') {

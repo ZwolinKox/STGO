@@ -1,7 +1,7 @@
-- W kosciele po przegraniu w opowiadaniu kazania i tak otrzymujemy SC
-- Podczas walki z bazy danych zamist nazywy przeciwnika wypisujemy typ przeciwnika
-- Po smierci na ekran sa wypisywane b³edy dot wyciagania zmiennych z bazy danych
-- Usuwanie tagów html w publicznym czacie
+- *naprawione - W kosciele po przegraniu w opowiadaniu kazania i tak otrzymujemy SC
+- *naprawione - Podczas walki z bazy danych zamist nazywy przeciwnika wypisujemy typ przeciwnika
+- Po smierci na ekran sa wypisywane bï¿½edy dot wyciagania zmiennych z bazy danych
+- *naprawione - Usuwanie tagï¿½w html w publicznym czacie
 - Wylaczenie PvP i Explo na BETE
 - W McDonalds nie dzialaja slyszburgery i bigslysze (chyba)
 - Nie dziala sklepik szkolny
@@ -9,4 +9,7 @@
 - W publicznym czacie nie ma kolorwych nickow
 - Gdy nie mamy ubranej brony napis o jej braku dziwnie sie wyswietla
 
-//Lista bugów z 14 marca 2019
+//Lista bugï¿½w z 14 marca 2019
+
+
+- na czatach moÅ¼na wysÅ‚aÄ‡ puste wiadomoÅ›ci

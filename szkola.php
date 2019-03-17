@@ -85,7 +85,7 @@
 
                                     $enemyId = rand(1, 2); //Do ustalenia testy
                                     $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
-                                    $enemyInfo = $enemyStats[0]['type'].' Lvl: '.$enemyStats[0]['enemyLevel'];
+                                    $enemyInfo = $enemyStats[0]['name'].' Lvl: '.$enemyStats[0]['enemyLevel'];
 
                                     $_SESSION['enemyId'] = $enemyId;
                                     $_SESSION['enemyInfo'] = $enemyStats[0];
