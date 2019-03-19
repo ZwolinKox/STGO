@@ -93,8 +93,9 @@
                         }
                         
                     ?>
-
-                    <br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu</div>
+        
+                    <br> <div class="btn-dark btn-lg href" id="szkola.php?gdzie=parter-szukaj" >Szukaj kolejnego przeciwnika</div>
+                    <div class="btn-dark btn-lg href" id="index.php">Wróć do domu</div>
 
                 </div>
 		

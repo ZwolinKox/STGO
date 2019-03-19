@@ -144,6 +144,7 @@ END;
                                     echo '<h3>Witaj, tutaj możesz kupić efekty wzacmiające trwające jeden dzień!</h3><br>';
                                     echo '<div class="btn-dark btn-lg" id="hamburger">Hamburger z sosem Arabskim (+25 siły na jeden dzień, koszt 50Słysz Coinów)</div>';
                                     echo '<div class="btn-dark btn-lg" id="tost">Tost z szynką (+25 inteligencjii na jeden dzień, koszt 50Słysz Coinów)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="kawa">Kawa z automatu (Przywraca 25Hp, koszt 50Słsz Coinów)</div>';
                                     echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                 }
                                 else if(Get::get('gdzie') == 'toaleta')
@@ -439,6 +440,7 @@ END;
     <script>
         const hamburgerBtn = document.querySelector("#hamburger");
         const tostBtn = document.querySelector("#tost");
+        const kawaBtn = document.querySelector("#kawa");
 
         if(hamburgerBtn)
         {
@@ -460,6 +462,18 @@ END;
                         method: "post",
                         data: {
                             co: "tost"
+                        }
+                    })
+                })
+        }
+        if(kawaBtn)
+        {
+                kawaBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "kawa"
                         }
                     })
                 })

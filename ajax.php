@@ -22,6 +22,10 @@ require_once 'config.php';
         {
             ButtonFunc::sklepikTost();
         }
+        else if(Post::get('co' == 'kawa'))
+        {
+            ButtonFunc::sklepikKawa();
+        }
         //Biblioteka
         else if(Post::get('co') == 'horror')
         {

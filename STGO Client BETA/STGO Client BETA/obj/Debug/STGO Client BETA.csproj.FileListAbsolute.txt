@@ -8,3 +8,13 @@ C:\Users\Krzysztof\C#\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BE
 C:\Users\Krzysztof\C#\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BETA.csproj.CoreCompileInputs.cache
 C:\Users\Krzysztof\C#\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BETA.exe
 C:\Users\Krzysztof\C#\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BETA.pdb
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\bin\Debug\STGO Client BETA.exe.config
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\bin\Debug\STGO Client BETA.exe
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\bin\Debug\STGO Client BETA.pdb
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BETA.csprojAssemblyReference.cache
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\obj\Debug\STGO_Client_BETA.Form1.resources
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\obj\Debug\STGO_Client_BETA.Properties.Resources.resources
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BETA.csproj.GenerateResource.cache
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BETA.csproj.CoreCompileInputs.cache
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BETA.exe
+D:\xampp\htdocs\STGO\STGO Client BETA\STGO Client BETA\obj\Debug\STGO Client BETA.pdb

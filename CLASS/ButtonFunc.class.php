@@ -75,6 +75,18 @@
             }     
         }
 
+        static public function sklepikKawa() {
+            if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'][0]['slyszCoin']) < 50)
+            {
+                echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3>';
+            }
+            else
+            {
+                DatabaseManager::updateTable('users', ['statHp' => 'statHp+25'], ['id' => $_SESSION['uid']]);
+                DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-50'], ['id' => $_SESSION['uid']]);
+            }
+        }
+
         //Metody wykorzystywane w szkole w bibliotece
         static public function czytaj($gatunek) {
             if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 15)
