@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 13 Mar 2019, 20:14
--- Wersja serwera: 10.1.38-MariaDB
--- Wersja PHP: 7.3.2
+-- Czas generowania: 23 Mar 2019, 14:31
+-- Wersja serwera: 10.1.33-MariaDB
+-- Wersja PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -51,12 +51,12 @@ CREATE TABLE `enemy` (
 --
 
 INSERT INTO `enemy` (`id`, `name`, `type`, `rarity`, `enemyLevel`, `enemyHp`, `enemyDamage`, `enemyArmor`, `dropXp`, `dropSlyszCoin`, `dropItemOne`, `dropItemTwo`, `dropItemThree`, `dropItemFour`, `dropItemFive`) VALUES
-(1, 'Elektryk', 'standard', 'common', 5, 100, 10, 50, 20, 5, 31, 32, 33, 34, 35),
+(1, 'Elektryk', 'standard', 'common', 5, 25, 8, 10, 20, 5, 31, 32, 33, 34, 35),
 (2, 'Elektronik', 'standard', 'common', 10, 150, 15, 50, 20, 5, 31, 32, 33, 34, 36),
 (3, 'Mechatronik', 'standard', 'common', 15, 200, 20, 100, 40, 10, 37, 38, 39, 40, 41),
-(4, 'Informatyk', 'standard', 'common', 20, 250, 25, 100, 40, 10, 37, 38, 39, 40, 42),
-(5, 'Energia odnawialna', 'standard', 'common', 25, 300, 30, 150, 60, 20, 43, 44, 45, 46, 47),
-(6, 'Mechanik', 'standard', 'common', 30, 350, 35, 200, 60, 20, 43, 44, 45, 46, 48);
+(4, 'Informatyk', 'standard', 'common', 20, 400, 25, 150, 40, 10, 37, 38, 39, 40, 42),
+(5, 'Energia odnawialna', 'standard', 'common', 25, 600, 30, 300, 60, 20, 43, 44, 45, 46, 47),
+(6, 'Mechanik', 'standard', 'common', 30, 800, 35, 550, 60, 20, 43, 44, 45, 46, 48);
 
 --
 -- Indeksy dla zrzutów tabel
