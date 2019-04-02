@@ -101,7 +101,7 @@
                     case 'horror':
                     {
                         $add = rand(0, 2);
-						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE uid='.$_SESSION['uid'])[0]['userEnergy'] >= 10) {
+						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 10) {
 							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-10'], ['id' => $_SESSION['uid']]);
 							DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+'.$add], ['id' => $_SESSION['uid']]);
 						}
@@ -109,7 +109,7 @@
                     }break;
                     case 'przygodowa':
                     {
-						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE uid='.$_SESSION['uid'])[0]['userEnergy'] >= 15) {
+						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 15) {
 							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-15'], ['id' => $_SESSION['uid']]);
 							DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+1'], ['id' => $_SESSION['uid']]);
 						}
@@ -118,7 +118,7 @@
                     case 'naukowa':
                     {
                         $add = rand(2, 4);
-						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE uid='.$_SESSION['uid'])[0]['userEnergy'] >= 20) {
+						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 20) {
 							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-20'], ['id' => $_SESSION['uid']]);
 							DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+'.$add], ['id' => $_SESSION['uid']]); 
 						}
@@ -134,7 +134,7 @@
 
         //Metody wykorzystywane w szkole w parku w McDonalds
         static public function jedzBurger() {
-			if(DatabaseManager::selectBySQL('SELECT statStrength FROM users WHERE uid='.$_SESSION['uid'])[0]['statStrength'] > 1) {
+			if(DatabaseManager::selectBySQL('SELECT statStrength FROM users WHERE id='.$_SESSION['uid'])[0]['statStrength'] > 1) {
 				DatabaseManager::updateTable('users', ['statStrength' => 'statStrength-1'], ['id' => $_SESSION['uid']]);
 				DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+1'], ['id' => $_SESSION['uid']]);
 			}
@@ -142,7 +142,7 @@
         }
 
         static public function jedzBig() {
-			if(DatabaseManager::selectBySQL('SELECT maxHp FROM users WHERE uid='.$_SESSION['uid'])[0]['maxHp'] > 1) {
+			if(DatabaseManager::selectBySQL('SELECT maxHp FROM users WHERE id='.$_SESSION['uid'])[0]['maxHp'] > 1) {
 				DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+1'], ['id' => $_SESSION['uid']]);
 				DatabaseManager::updateTable('users', ['maxHp' => 'maxHp-1'], ['id' => $_SESSION['uid']]);
 			}
@@ -186,8 +186,8 @@
             }
             else
             {
-				if(DatabaseManager::selectBySQL('SELECT statHp FROM users WHERE uid='.$_SESSION['uid'])[0]['statHp']+10 <=
-				DatabaseManager::selectBySQL('SELECT maxHp FROM users WHERE uid='.$_SESSION['uid'])[0]['maxHp']) {
+				if(DatabaseManager::selectBySQL('SELECT statHp FROM users WHERE id='.$_SESSION['uid'])[0]['statHp']+10 <=
+				DatabaseManager::selectBySQL('SELECT maxHp FROM users WHERE id='.$_SESSION['uid'])[0]['maxHp']) {
 					DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
 					DatabaseManager::updateTable('users', ['statHp' => 'statHp+10'], ['id' => $_SESSION['uid']]); 
 				}

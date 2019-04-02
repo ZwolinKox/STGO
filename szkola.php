@@ -83,7 +83,7 @@
                                 if(Get::get('gdzie') == 'parter-szukaj')
                                 {
 
-                                    $enemyId = rand(1, 2); //Do ustalenia testy
+                                    $enemyId = rand(1, 1); //Do ustalenia testy
                                     $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
                                     $enemyInfo = $enemyStats[0]['name'].' Lvl: '.$enemyStats[0]['enemyLevel'];
 
@@ -318,6 +318,7 @@ END;
         const horrorBtn = document.querySelector("#horror");
         const przygodowaBtn = document.querySelector("#przygodowa");
         const naukowaBtn = document.querySelector("#naukowa");
+
         if(horrorBtn)
         {
                 horrorBtn.addEventListener("click", function() {
