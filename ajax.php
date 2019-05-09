@@ -4,6 +4,18 @@ require_once 'config.php';
 
     if(Post::exist('co'))
     {
+		if(Post::get('co') == 'gangName')
+        {		
+	
+			$usr = DatabaseManager::selectBySQL("SELECT id FROM guilds WHERE guildName='".Post::get('gangName')."' LIMIT 1")[0]["id"];
+
+            if($usr >= 1)
+				die("fail");
+			else
+				die("succes");
+				
+        }
+		
         //Toaleta
         if(Post::get('co') == 'jedyneczka')
         {
@@ -79,6 +91,7 @@ require_once 'config.php';
         {
             TradeManager::buyById(Post::get('id'));
         }
+
     }
 
 ?>

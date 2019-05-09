@@ -59,25 +59,10 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
                         
-                        <?php
-                        if(DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'] == "") {
-                            echo <<< END
-                            <h3>Nie jesteś członkiem gangu!</h3>
-                            <div class="btn-dark btn-lg href" id="newGang.php">Załóż gang</div>
-                            <div class="btn-dark btn-lg href" id="sklep.php">Dołącz do gangu</div>
-                            <div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do donmu</div>
-END;
-                        }
-                        else {
-                            $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
-
-                            echo <<< END
-                            <h3>Jesteś członkiem gangu: $guildName</h3>
-                            <div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do donmu</div>
-END;
-                        }
-
-                        ?>
+                        <h3>Podaj nazwe swojego gangu:</h3>
+						<input type="text" id="gangName">
+						<div class="btn-dark btn-lg" id="createGang">Załóż gang</div>
+						<h4 id="errorName"></h4>
 
                 </div>
 		
@@ -98,6 +83,34 @@ END;
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone
     </footer>
+	
+	<script>
+		const createGang = document.querySelector("#createGang");
+		const errorName = document.querySelector("#errorName");
+		
+		
+		createGang.addEventListener('click', () => {
+			const gangNamee = document.querySelector("#gangName").value;
+			
+			    $.ajax({
+                    url: "ajax.php",
+                    method: "post",
+                    data: {
+                        co: "gangName",
+						gangName : gangNamee
+                    }
+				}).done((result) => {
+					if(result == "fail")
+						errorName.innerHTML = "<span style='color: red;'>Istnieje gildia z taką nazwą!</span>";
+					
+					console.log(result);
+				})
+				
+			
+		})
+		
+		
+	</script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
