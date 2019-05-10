@@ -65,21 +65,99 @@
                             <h3>Nie jesteś członkiem gangu!</h3>
                             <div class="btn-dark btn-lg href" id="newGang.php">Załóż gang</div>
                             <div class="btn-dark btn-lg href" id="sklep.php">Dołącz do gangu</div>
-                            <div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do donmu</div>
+                            <div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do domu</div>
 END;
                         }
                         else {
                             $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+                            $areYouOwner = false;
+
+                            if(DatabaseManager::selectBySQL("SELECT guildOwner FROM guilds WHERE guildName='".$guildName."'")[0]['guildOwner'] == Session::get('uid'))
+                                $areYouOwner = true;
 
                             echo <<< END
                             <h3>Jesteś członkiem gangu: $guildName</h3>
-                            <div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do donmu</div>
 END;
+
+                            echo '<div class="btn-dark btn-lg " data-toggle="modal" data-target="#clanList">Lista członków gangu</div>';
+
+
+                           if($areYouOwner)
+                           {
+
+
+                                echo '<div class="btn-danger btn-lg href" style="margin-top: 75px;" id="index.php">Rozwiąż gang</div>';
+                           }
+                           else
+                           {
+
+
+                            echo '<div class="btn-danger btn-lg href" style="margin-top: 75px;" id="index.php">Opuść gang</div>';
+
+                           }
+
+                            echo '<div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do domu</div>';
+
                         }
+
+
+
+
+
+
+
+                         echo <<< END
+        
+        <!-- Modal -->
+        <div style="color: black;" class="modal fade" id="clanList" tabindex="-1" role="dialog" aria-labelledby="clanLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="clanLabel">Lista klanowiczy</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              <div class="input-group mb-3">
+              <div class="input-group-append">
+              <div class="form-group">
+              <select class="form-control" id="players">
+                <option value="eqSlotOne">1)Twarog</option> <label>Ehh no okej</label>
+                <option value="eqSlotTwo">2)Brak gracza</option>
+                <option value="eqSlotThree">3)Sarnacki</option>
+                <option value="eqSlotFour">4)Slysz</option>
+                <option value="eqSlotFive">5)Noo i analogiczne..</option>
+                <option value="eqSlotSix">6)</option>
+                <option value="eqSlotSeven">7)</option>
+                <option value="eqSlotEight">8)</option>
+              </select>
+            </div>
+              </div>
+            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+END;
+
+        if($areYouOwner)
+        {
+            echo '<button id="deleteItem" type="button" class="btn btn-danger">Usuń klanowicza</button>';
+            // TUTAJ SIĘ TO KIEDYŚ PRZYDAecho '<button id="saveEq" type="button" class="btn btn-primary">Zapisz zmiany</button>';
+        }
+
+echo <<< END
+              </div>
+            </div>
+          </div>
+        </div>
+END;
 
                         ?>
 
                 </div>
+
+                
 		
 		
                 <div class="col-12 col-md-6 " style="margin-top: 30px">
