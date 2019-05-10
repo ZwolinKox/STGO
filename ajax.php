@@ -12,46 +12,54 @@ require_once 'config.php';
             if($usr >= 1)
 				die("fail");
 			else
-				die("succes");
+				die("success");
 				
         }
-		
+        
+        elseif (Post::get('co') == 'createGang') {
+            DatabaseManager::insertInto("guilds", ["guildName" => Post::get('gangName'), "guildOwner" => Session::get('uid')]);
+
+            DatabaseManager::updateTable("users", ["guildName" => '"'.Post::get('gangName').'"', "boolGuild" => 1], ["id" => Session::get('uid')]);
+
+            die("success");
+        }
+
         //Toaleta
-        if(Post::get('co') == 'jedyneczka')
+        elseif(Post::get('co') == 'jedyneczka')
         {
             ButtonFunc::jedyneczka();
         }
-        else if(Post::get('co') == 'dwojeczka')
+        elseif(Post::get('co') == 'dwojeczka')
         {
             ButtonFunc::dwojeczka();
         }
         //Sklepik szkolny
-        else if(Post::get('co') == 'hamburger')
+        elseif(Post::get('co') == 'hamburger')
         {
             ButtonFunc::sklepikBurger();
         }
-        else if(Post::get('co') == 'tost')
+        elseif(Post::get('co') == 'tost')
         {
             ButtonFunc::sklepikTost();
         }
-        else if(Post::get('co' == 'kawa'))
+        elseif(Post::get('co' == 'kawa'))
         {
             ButtonFunc::sklepikKawa();
         }
         //Biblioteka
-        else if(Post::get('co') == 'horror')
+        elseif(Post::get('co') == 'horror')
         {
             ButtonFunc::czytaj('horror');
         }
-        else if(Post::get('co') == 'przygodowa')
+        elseif(Post::get('co') == 'przygodowa')
         {
             ButtonFunc::czytaj('przygodowa');
         }
-        else if(Post::get('co') == 'naukowa')
+        elseif(Post::get('co') == 'naukowa')
         {
             ButtonFunc::czytaj('naukowa');
         }
-        else if(Post::get('co') == 'changeItem') 
+        elseif(Post::get('co') == 'changeItem') 
         {
             if(EqManager::checkHand(DatabaseManager::selectBySQL('SELECT '.$_POST['itemName'].' FROM users WHERE id='.$_SESSION['uid'])[0][$_POST['itemName']])) {
                 DatabaseManager::updateTable('users', ['eqMainHand' => $_POST['itemName']], ['id' => $_SESSION['uid']]);
@@ -59,38 +67,39 @@ require_once 'config.php';
             }
 
         }
-        else if(Post::get('co') == 'deleteItem') 
+        elseif(Post::get('co') == 'deleteItem') 
         {
             DatabaseManager::updateTable('users', [$_POST['itemName'] => 0], ['id' => $_SESSION['uid']]);
             unset($_POST['itemName']);
         }
         //McDonald
-        else if(Post::get('co') == 'burgerslysz')
+        elseif(Post::get('co') == 'burgerslysz')
         {
             ButtonFunc::jedzBurger();
         }
-        else if(Post::get('co') == 'bigslysz')
+        elseif(Post::get('co') == 'bigslysz')
         {
             ButtonFunc::jedzBig();
         }
         //Aldi
-        else if(Post::get('co') == 'kamizelka')
+        elseif(Post::get('co') == 'kamizelka')
         {
             ButtonFunc::buyVest();
         }
-        else if(Post::get('co') == 'czesci')
+        elseif(Post::get('co') == 'czesci')
         {
             ButtonFunc::pcUpgrade();
         }
         //Stacja benzynowa
-        else if(Post::get('co') == 'hotdog')
+        elseif(Post::get('co') == 'hotdog')
         {
             ButtonFunc::hotdog();
         }
-        else if(Post::get('co') == 'sklep')
+        elseif(Post::get('co') == 'sklep')
         {
             TradeManager::buyById(Post::get('id'));
         }
+
 
     }
 

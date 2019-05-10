@@ -58,9 +58,10 @@
 				<div class="col-12 text-center display-4">Gangi</div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
-                        
-                        <h3>Podaj nazwe swojego gangu:</h3>
-						<input type="text" id="gangName">
+                        <div class="form-group" style="margin-top: 15px;">
+                        <h3><label for="gangName" id="newGang">Podaj nazwe swojego gangu: </label></h3>
+                        <input type="text" class="form-control" id="gangName" name="newGang">
+                      </div>
 						<div class="btn-dark btn-lg" id="createGang">Załóż gang</div>
 						<h4 id="errorName"></h4>
 
@@ -100,10 +101,34 @@
 						gangName : gangNamee
                     }
 				}).done((result) => {
+                    
 					if(result == "fail")
 						errorName.innerHTML = "<span style='color: red;'>Istnieje gildia z taką nazwą!</span>";
-					
-					console.log(result);
+                    else if(result == "success")
+                        {
+                            $.ajax({
+                                url: "ajax.php",
+                                method: "post",
+                                data: {
+                                    co: "createGang",
+                                    gangName : gangNamee
+                                }
+                            }).done((result) => {
+                                    if(result == "fail")
+                                    {
+                                        errorName.innerHTML = "<span style='color: red;'>Tworzenie Gildii nie powiodło się</span>";
+                                    }
+                                    else if(result == "success")
+                                    {
+                                        errorName.innerHTML = "<span style='color: lightgreen;'>Utworzyłeś gildię!</span>";
+
+                                        setTimeout(() => {
+                                            location.href = "gangs.php";
+                                        }, '700');
+                                    }                                
+                            })
+                        }
+				
 				})
 				
 			
