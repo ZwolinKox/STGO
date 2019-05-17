@@ -67,17 +67,17 @@
                         {
                             if(Get::get('jakie') == 'normickie')
                             {
-                                if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 15)
+                                if(Action::getCoins() < 15)
                                 {
                                     echo '<h3 style="color: red">Nie masz tyle Słysz Coinów!</h3>';
                                     echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                 }
                                 else
                                 {
-                                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-15'], ['id' => $_SESSION['uid']]);
+                                    Action::delCoin(15);
                                     if(rand(1,100) <= 70)
                                     {
-                                        DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
+                                        Action::addCoin(20);
                                         echo '<h3 style="color: lightgreen;">Twój mem był śmieszny, zarobiłeś 20 Słysz Coin!</h3><br>';
                                         
                                     }
@@ -92,17 +92,17 @@
                             }
                             else if(Get::get('jakie') == 'polityczne')
                             {
-                                if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 20)
+                                if(Action::getCoins() < 20)
                                 {
                                     echo '<h3 style="color: red">Nie masz tyle Słysz Coinów!</h3>';
                                     echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                 }
                                 else
                                 {
-                                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+                                    Action::delCoin(20);
                                     if(rand(1,100) <= 50)
                                     {
-                                        DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+30'], ['id' => $_SESSION['uid']]);
+                                        Action::addCoin(30);
                                         echo '<h3 style="color: lightgreen;">Twój mem był śmieszny, zarobiłeś 30 Słysz Coin!</h3><br>';
                                         
                                     }
@@ -117,17 +117,17 @@
                             }
                             else if(Get::get('jakie') == 'czarny-humor')
                             {
-                                if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 40)
+                                if(Action::getCoins() < 40)
                                 {
                                     echo '<h3 style="color: red">Nie masz tyle Słysz Coinów!</h3>';
                                     echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                 }
                                 else
                                 {
-                                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]);
+                                    Action::delCoin(40);
                                     if(rand(1,100) <= 30)
                                     {
-                                        DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+80'], ['id' => $_SESSION['uid']]);
+                                        Action::addCoin(80);
                                         echo '<h3 style="color: lightgreen;">Twój mem był śmieszny, zarobiłeś 80 Słysz Coin!</h3><br>';
                                         
                                     }
@@ -142,17 +142,17 @@
                             }
                             else if(Get::get('jakie') == 'dank-meme')
                             {
-                                if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 60)
+                                if(Action::getCoins() < 60)
                                 {
                                     echo '<h3 style="color: red">Nie masz tyle Słysz Coinów!</h3>';
                                     echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                 }
                                 else
                                 {
-                                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-60'], ['id' => $_SESSION['uid']]);
+                                    Action::delCoin(60);
                                     if(rand(1,100) <= 10)
                                     {
-                                        DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+300'], ['id' => $_SESSION['uid']]);
+                                        Action::addCoin(300);
                                         echo '<h3 style="color: lightgreen;">Twój mem był śmieszny, zarobiłeś 300 Słysz Coin!</h3><br>';
                                         
                                     }

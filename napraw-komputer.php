@@ -68,21 +68,20 @@
                             {
                                 if(Get::get('naprawa') == 'tak')
                                 {
-                                    if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 20)
+                                    if(Action::getEnergy() < 20)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
-                                    else if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 30)
+                                    else if(Action::getCoins() < 30)
                                     {
 
                                         echo '<h3 style="color: red;">Nie masz tyle słysz coinów!</h3>';
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
                                     else{
-                                        $szansaNaNaprawe = DatabaseManager::selectBySQL("SELECT jobPcRepair FROM settings WHERE id=1");
                                         DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-20', 'slyszCoin' => 'slyszCoin-30'], ['id' => $_SESSION['uid']]);
-                                        if(rand(1, 10000) <= $szansaNaNaprawe) {
+                                        if(rand(1, 100) <= 25) {
 
                                             $hajs = rand(0, 2);
 
@@ -98,7 +97,7 @@
                                                     break;
                                             }
     
-                                            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+'.$hajs], ['id' => $_SESSION['uid']]);
+                                            Action::addCoin($hajs);
 
                                             echo '<h3 style="color: gold;">Udało Ci się naprawić komputer! Zarobione SC: '.$hajs;
                                             
@@ -125,11 +124,7 @@
                                                     break;
                                             }
 
-                                            DatabaseManager::updateTable('users', ['statHp' => 'statHp-'.$dmg], ['id' => $_SESSION['uid']]);
-
-                                            if(DatabaseManager::selectBySQL('SELECT statHp FROM users WHERE id='.$_SESSION['uid'])[0]['statHp'] <= 0)
-                                                UserManager::death();
-
+                                            Action::delHp($dmg);
 
                                             echo '<h3 style="color: red;">Nie udało Ci się, spaliłeś RAM! Otrzymane obrażenia: '.$dmg; 
                                             
@@ -168,17 +163,13 @@
                             }
                             else 
                             {
-                                if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 20)
+                                if(Action::getEnergy() < 20)
                                 {
                                     echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                     echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                 }
-                                else {
-                                    if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] < 31)
-                                    {
-                                        echo '<h3 style="color: pink;">Uwaga! Masz mało punktów życia, ta operacja może zakończyć się śmiercią!</h3>';
-                                    }
-    
+                                else 
+                                {
                                     echo '<h3>Chcesz naprawiać komputer?</h3>';
     
                                     echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php?naprawa=tak">Tak </div>';
