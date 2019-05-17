@@ -57,9 +57,11 @@
 
         if($stats['eqMainHand'] == 0)
             $stats['eqMainHandName'] = "Brak broni";
-        else
+        else {
             $stats['eqMainHandName'] = DatabaseManager::selectBySQL('SELECT items.name FROM users, items WHERE items.id = users.eqMainHand AND users.id='.$_SESSION['uid'])[0]['name'];
             $stats['eqMainHandName'] = EqManager::item($stats['eqMainHand'], 'colorTag').' '.EqManager::stat($stats['eqMainHand']); //test
+        }
+
 
 
         $stats['procentHp'] = ($stats['statHp'] / $stats['maxHp']) * 100;
