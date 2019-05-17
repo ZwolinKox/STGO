@@ -7,6 +7,9 @@
     if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
         header('Location: index.php');
 
+        $_SESSION['winWithMonster'] = false;
+
+
 ?>
 <html>
 <head>
@@ -55,7 +58,7 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
                     <?php
-
+                        
                         if(!isset($_SESSION['fight']))
                             URL::to('index.php');
                             
@@ -101,6 +104,9 @@
 
 
     <script>
+    
+        let fightEnd = false;
+
         function Round(n, k)
         {
             var factor = Math.pow(10, k);
