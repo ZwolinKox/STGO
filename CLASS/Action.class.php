@@ -44,5 +44,14 @@ class Action {
     static public function setEnergy($value) {
         DatabaseManager::updateTable('users', ['userEnergy' => $value], ['id' => $_SESSION['uid']]);
     }
+
+    //Zdrowie
+    static public function addHp($value) {
+        DatabaseManager::updateTable('users', ['statHp' => 'statHp+'. $value], ['id' => $_SESSION['uid']]);
+    }
+
+    static public function delHp($value) {
+        DatabaseManager::updateTable('users', ['statHp' => 'statHp-'. $value], ['id' => $_SESSION['uid']]);
+    }
 }
 

@@ -59,6 +59,7 @@
             $stats['eqMainHandName'] = "Brak broni";
         else
             $stats['eqMainHandName'] = DatabaseManager::selectBySQL('SELECT items.name FROM users, items WHERE items.id = users.eqMainHand AND users.id='.$_SESSION['uid'])[0]['name'];
+            $stats['eqMainHandName'] = EqManager::item($stats['eqMainHand'], 'colorTag').' '.EqManager::stat($stats['eqMainHand']); //test
 
 
         $stats['procentHp'] = ($stats['statHp'] / $stats['maxHp']) * 100;
@@ -98,17 +99,17 @@
         echo '<p id="statstrength">Siła: '.$stats['statStrength'].'</p>';
         echo '<p id="statintelect">Intelekt: '.$stats['statIntelect'].'</p><br>';
         echo '<p id="team">Twoja drużyna: <span style="color: '.$stats['colorTeam'].'">'.$stats['team'].'</span></p>';
-        echo '<p id="eqmainhand">Obecnie posiadana broń: '.EqManager::item($stats['eqMainHand'], 'colorTag').'</p>';
+        echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHandName'].'</p>';
         echo '</div>';
 
-        $eq1name = EqManager::item($stats['eqSlotOne'], 'name');
-        $eq2name = EqManager::item($stats['eqSlotTwo'], 'name');
-        $eq3name = EqManager::item($stats['eqSlotThree'], 'name');
-        $eq4name = EqManager::item($stats['eqSlotFour'], 'name');
-        $eq5name = EqManager::item($stats['eqSlotFive'], 'name');
-        $eq6name = EqManager::item($stats['eqSlotSix'], 'name');
-        $eq7name = EqManager::item($stats['eqSlotSeven'], 'name');
-        $eq8name = EqManager::item($stats['eqSlotEight'], 'name');
+        $eq1name = EqManager::item($stats['eqSlotOne'], 'name').''.EqManager::stat($stats['eqSlotOne']);
+        $eq2name = EqManager::item($stats['eqSlotTwo'], 'name').''.EqManager::stat($stats['eqSlotTwo']);
+        $eq3name = EqManager::item($stats['eqSlotThree'], 'name').''.EqManager::stat($stats['eqSlotThree']);
+        $eq4name = EqManager::item($stats['eqSlotFour'], 'name').''.EqManager::stat($stats['eqSlotFour']);
+        $eq5name = EqManager::item($stats['eqSlotFive'], 'name').''.EqManager::stat($stats['eqSlotFive']);
+        $eq6name = EqManager::item($stats['eqSlotSix'], 'name').''.EqManager::stat($stats['eqSlotSix']);
+        $eq7name = EqManager::item($stats['eqSlotSeven'], 'name').''.EqManager::stat($stats['eqSlotSeven']);
+        $eq8name = EqManager::item($stats['eqSlotEight'], 'name').''.EqManager::stat($stats['eqSlotEight']);
 
         echo <<< END
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eq">
@@ -228,7 +229,7 @@ END;
                 <p id="statstrength">Siła: ${ resultObj.statStrength}</p>
                 <p id="statintelect">Intelekt: ${ resultObj.statIntelect}</p><br>
                 <p id="team">Twoja drużyna: <span style="color: ${ resultObj.colorTeam }"> ${ resultObj.team} </span></p>               
-                <p id="eqmainhand">Obecnie posiadana broń: ${ resultObj.eqMainHandName}</p>
+                <p id="eqmainhand">Obecnie posiadana broń: ${ resultObj.eqMainHandName } </p>
                 `;
             })
         }, '1000');

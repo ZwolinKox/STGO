@@ -55,25 +55,14 @@
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
 								
-				<div class="col-12 text-center display-4">Dom</div>
+				<div class="col-12 text-center display-4">Aukcje</div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
-
-                        <div class="btn-dark btn-lg href jeden" id="szkola.php">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href dwa" id="sklep.php">2. Idz do sklepu</div>
-                        <div class="btn-dark btn-lg href trzy" id="napraw-komputer.php">3. Napraw komputer</div>
-                        <div class="btn-dark btn-lg href cztery" id="spanie.php">4. Idz spac</div>
-                        <div class="btn-dark btn-lg href" id="silownia.php">5. Idz wreszcie na silownie</div>
-                        <div class="btn-dark btn-lg href" id="memy.php">6. Wyslij mema na grupe</div>
-                        <div class="btn-dark btn-lg href" id="brat.php">7. Wyzywanie brata</div>
-                        <div class="btn-dark btn-lg href" id="lotek.php">8. Zagraj w Slyszolotka</div>
-                        <div class="btn-dark btn-lg href" id="alchemia.php">9. Idz do pracowni alchemicznej</div>
-                        <div class="btn-dark btn-lg href" id="explo.php">10. Eksploracja</div>
-                        <div class="btn-dark btn-lg href" id="kosciol.php">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href" id="poczta.php">12. Poczta</div>
-                        <div class="btn-dark btn-lg href" id="gangs.php">13. Gangi</div>
-                        <div class="btn-dark btn-lg href" id="aukcje.php">14. Aukcje</div>
-
+                        
+                    <?php
+                        echo "W budowie...";
+                        echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                    ?>
 
                 </div>
 		

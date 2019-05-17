@@ -104,6 +104,29 @@ class EqManager {
             }
        }
     }
+
+    public static function stat($id) {
+        if($id == 0)
+        {
+            return '';
+        }
+        else
+        {
+            $statLevel = DatabaseManager::selectbySQL('SELECT forLevel FROM items WHERE id='.$id)[0]['forLevel'];
+            $statDamage = DatabaseManager::selectbySQL('SELECT addDamage FROM items WHERE id='.$id)[0]['addDamage'];
+            $statMultiplierStrenght = DatabaseManager::selectbySQL('SELECT addStrenght FROM items WHERE id='.$id)[0]['addStrenght'];
+            $statMultiplierIntelect = DatabaseManager::selectbySQL('SELECT addIntelect FROM items WHERE id='.$id)[0]['addIntelect'];
+
+            if($statMultiplierStrenght>0)
+            {
+                return ' (Lvl.'.$statLevel.') [Dmg: '.$statDamage.'/+'.$statMultiplierStrenght.' Siła]';
+            }
+            else
+            {
+                return ' (Lvl.'.$statLevel.') [Dmg: '.$statDamage.'/+'.$statMultiplierIntelect.' Intelekt]';
+            }
+        }
+    }
 }
 
 ?>
