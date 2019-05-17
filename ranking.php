@@ -27,10 +27,10 @@
         .btn-dark {
             margin-top: 15px;
         }
-		
-		.btn-dark:hover {
-			cursor: pointer;
-		}
+    
+    .btn-dark:hover {
+      cursor: pointer;
+    }
     </style>
     
 </head>
@@ -54,14 +54,14 @@
 
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
-								
-				<div class="col-12 text-center display-4">Ranking</div>
+                
+        <div class="col-12 text-center display-4">Ranking</div>
 
                 <div class="col-12 text-center">
 
                 <?php
 
-                    $wynik = DatabaseManager::selectbySQL("SELECT username, userLevel, team FROM users ORDER BY userLevel LIMIT 10");
+                    $wynik = DatabaseManager::selectbySQL("SELECT username, userLevel, team FROM users ORDER BY userLevel DESC LIMIT 10");
                     
                     echo '<br><table class="table table-striped table-dark">
                             <thead>
@@ -71,12 +71,12 @@
                                 <th scope="col">Poziom</th>
                             </tr>
                             <tbody>';
-                    for($i=count($wynik)-1; $i != 0; $i--)
+                    for($i=count($wynik)-1; $i != -1; $i--)
                     {
-                        $rNick = $wynik[$i]['username'];
-                        $rLvl = $wynik[$i]['userLevel'];
+                        $rNick = $wynik[abs($i-9)]['username'];
+                        $rLvl = $wynik[abs($i-9)]['userLevel'];
                         $count = abs($i - 10);
-                        switch($wynik[$i]['team'])
+                        switch($wynik[abs($i-9)]['team'])
                         {
                              case '1': $color = '#ffcd2b'; break;
                              case '2': $color = '#ff1616'; break;
@@ -93,12 +93,12 @@
                     echo    '</tbody>
                             </table>';
 
-                            //Powrót tutaj trzeba dodać 
+                            //Powrót tutaj trzeba dodać
                 ?>
         </div>
     </div> <!-- ŚRODEK -->
 
-	<br/><br/>
+  <br/><br/>
     
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone

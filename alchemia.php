@@ -71,8 +71,8 @@
                             {
                                 if(Get::get('co') == 'panaceum') {
                                     if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 30 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 20) {
-                                        DatabaseManager::updateTable('users', ['statHp' => 'maxHp', 'slyszCoin' => 'slyszCoin-20']);
-                                        Url::to('alchemia.php');
+                                        DatabaseManager::updateTable('users', ['statHp' => 'maxHp', 'slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+                                        URL::to('alchemia.php');
                                     }
                                     else {
 
@@ -82,8 +82,8 @@
                                 }
                                 elseif(Get::get('co') == 'kamien') {
                                     if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 50 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 20) {
-                                        DatabaseManager::updateTable('users', ['userEnergy' => '100', 'slyszCoin' => 'slyszCoin-20']);
-                                        Url::to('alchemia.php');
+                                        DatabaseManager::updateTable('users', ['userEnergy' => '100', 'slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+                                        URL::to('alchemia.php');
                                     }
                                     else {
 
@@ -93,8 +93,8 @@
                                 }  
                                 elseif (Get::get('co') == 'depuratus') {
                                     if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 70 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 50) {
-                                        DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10', 'slyszCoin' => 'slyszCoin-50']);
-                                        Url::to('alchemia.php');
+                                        DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10', 'slyszCoin' => 'slyszCoin-50'], ['id' => $_SESSION['uid']]);
+                                        URL::to('alchemia.php');
                                     }
                                     else {
                                         echo '<h3 style="color: red;">Nie masz wystarczająco inteligencji lub Słysz coinów</h3>';

@@ -23,7 +23,7 @@ class UserManager {
 
         if(DatabaseManager::selectBySQL("SELECT boolHardcore FROM users WHERE id=".$_SESSION['uid'])[0]['boolHardcore']) {
             DatabaseManager::updateTable('users', ["dayWeek" => 1, "dayGame" => 1, "slyszCoin" => 100, "xpPoints" => 0, "userLevel" => 1, "userLeaguePoints" => 0, "userEnergy" => 100, "statStrength" => 0, "statIntelect" => 0, 
-            "statArmor" => 0, "statHp" => 100, "statDamage" => 1, "maxHp" => 100, "maxXp" => 100, "eqMainHand" => '0']);
+            "statArmor" => 0, "statHp" => 100, "statDamage" => 1, "maxHp" => 100, "maxXp" => 100, "eqMainHand" => '0'], ['id' => $_SESSION['uid']]);
 
             DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL 2 HOUR", 'statHp' => 1], ['id' => $_SESSION['uid']]);
         }
