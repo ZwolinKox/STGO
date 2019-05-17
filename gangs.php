@@ -60,6 +60,9 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
                         
                         <?php
+                        $guildInfo;
+
+
                         if(DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'] == "") {
                             echo <<< END
                             <h3>Nie jesteś członkiem gangu!</h3>
@@ -70,17 +73,32 @@ END;
                         }
                         else {
                             $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+                            $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
                             $areYouOwner = false;
 
                             if(DatabaseManager::selectBySQL("SELECT guildOwner FROM guilds WHERE guildName='".$guildName."'")[0]['guildOwner'] == Session::get('uid'))
                                 $areYouOwner = true;
+
+                                
+                            $guildMemberTwo	= $guildInfo['guildMemberTwo'];
+                            $guildMemberThree =	$guildInfo['guildMemberThree'];
+                            $guildMemberFour = $guildInfo['guildMemberFour'];
+                            $guildMemberFive = $guildInfo['guildMemberFive'];
+                            $guildMemberSix	= $guildInfo['guildMemberSix'];
+                            $guildMemberSeven =	$guildInfo['guildMemberSeven'];
+                            $guildMemberEight =	$guildInfo['guildMemberEight'];
+                            $guildMemberNine =	$guildInfo['guildMemberNine'];
+                            $guildMemberTen = $guildInfo['guildMemberTen'];
+                            $guildOwner = $guildInfo['guildOwner'];
+
+
+                            //print_r(Guild::getGuildMember($guildMemberTwo));
 
                             echo <<< END
                             <h3>Jesteś członkiem gangu: $guildName</h3>
 END;
 
                             echo '<div class="btn-dark btn-lg " data-toggle="modal" data-target="#clanList">Lista członków gangu</div>';
-
 
                            if($areYouOwner)
                            {
@@ -104,8 +122,6 @@ END;
 
 
 
-
-
                          echo <<< END
         
         <!-- Modal -->
@@ -123,14 +139,20 @@ END;
               <div class="input-group-append">
               <div class="form-group">
               <select class="form-control" id="players">
-                <option value="eqSlotOne">1)Twarog</option> <label>Ehh no okej</label>
-                <option value="eqSlotTwo">2)Brak gracza</option>
-                <option value="eqSlotThree">3)Sarnacki</option>
-                <option value="eqSlotFour">4)Slysz</option>
-                <option value="eqSlotFive">5)Noo i analogiczne..</option>
-                <option value="eqSlotSix">6)</option>
-                <option value="eqSlotSeven">7)</option>
-                <option value="eqSlotEight">8)</option>
+END;
+               
+               echo '<option value="guildOwner">1)'.Guild::getGuildMemberStat($guildOwner, 'username').'  LVL: '.Guild::getGuildMemberStat($guildOwner, 'userLevel').'</option>';
+               echo '<option value="guildMemberTwo">2)'.Guild::getGuildMemberStat($guildMemberTwo, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberTwo, 'userLevel').'</option>';
+               echo '<option value="guildMemberThree">3)'.Guild::getGuildMemberStat($guildMemberThree, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberThree, 'userLevel').'</option>';
+               echo '<option value="guildMemberFour">4)'.Guild::getGuildMemberStat($guildMemberFour, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberFour, 'userLevel').'</option>';
+               echo '<option value="guildMemberFive">5)'.Guild::getGuildMemberStat($guildMemberFive, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberFive, 'userLevel').'</option>'; 
+               echo '<option value="guildMemberSix">6)'.Guild::getGuildMemberStat($guildMemberSix, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberSix, 'userLevel').'</option>'; 
+               echo '<option value="guildMemberSeven">7)'.Guild::getGuildMemberStat($guildMemberSeven, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberSeven, 'userLevel').'</option>';  
+               echo '<option value="guildMemberEight">8)'.Guild::getGuildMemberStat($guildMemberEight, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberEight, 'userLevel').'</option>';  
+               echo '<option value="guildMemberNine">9)'.Guild::getGuildMemberStat($guildMemberNine, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberNine, 'userLevel').'</option>';  
+               echo '<option value="guildMemberTen">10)'.Guild::getGuildMemberStat($guildMemberTen, 'username').'  LVL: '.Guild::getGuildMemberStat($guildMemberTen, 'userLevel').'</option>';  
+echo <<< END
+
               </select>
             </div>
               </div>
