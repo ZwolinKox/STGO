@@ -66,17 +66,18 @@
                             {
                                 if(Get::get('jak') == 'smiech')
                                 {
-                                    if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 100)
+                                    if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
-                                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-100'], ['id' => $_SESSION['uid']]);
+                                        Action::delEnergy(100);
                                         if(rand(1,100) <= 60)
                                         {
-                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+5'], ['id' => $_SESSION['uid']]);
+                                            Action::addEnergy(50);
+                                            Action::addCoin(5);
                                             echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 5 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
@@ -89,17 +90,18 @@
                                 }
                                 else if(Get::get('jak') == 'zwierze')
                                 {
-                                    if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 100)
+                                    if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
-                                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-100'], ['id' => $_SESSION['uid']]);
+                                        Action::delEnergy(100);
                                         if(rand(1,100) <= 50)
                                         {
-                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+10'], ['id' => $_SESSION['uid']]);
+                                            Action::addEnergy(50);
+                                            Action::addCoin(10);
                                             echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 10 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
@@ -112,17 +114,18 @@
                                 }
                                 else if(Get::get('jak') == 'palec')
                                 {
-                                    if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 100)
+                                    if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
-                                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-100'], ['id' => $_SESSION['uid']]);
+                                        Action::delEnergy(100);
                                         if(rand(1,100) <= 40)
                                         {
-                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
+                                            Action::addEnergy(50);
+                                            Action::addCoin(20);
                                             echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 20 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
@@ -135,17 +138,18 @@
                                 }
                                 else if(Get::get('jak') == 'wulgaryzmy')
                                 {
-                                    if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 100)
+                                    if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
-                                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-100'], ['id' => $_SESSION['uid']]);
+                                        Action::delEnergy(100);
                                         if(rand(1,100) <= 30)
                                         {
-                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+30'], ['id' => $_SESSION['uid']]);
+                                            Action::addEnergy(50);
+                                            Action::addCoin(30);
                                             echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 30 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else
@@ -158,17 +162,18 @@
                                 }
                                 else if(Get::get('jak') == 'rodzice')
                                 {
-                                    if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 100)
+                                    if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
-                                        DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-100'], ['id' => $_SESSION['uid']]);
+                                        Action::delEnergy(100);
                                         if(rand(1,100) <= 10)
                                         {
-                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy+50', 'slyszCoin' => 'slyszCoin+320'], ['id' => $_SESSION['uid']]);
+                                            Action::addEnergy(50);
+                                            Action::addCoin(320);
                                             echo '<h3 style="color: lightgreen;">Twój brat wygląda na zdenerwowanego! Zarobiłeś 320 Słysz Coin i odzyskałeś 50 Energii</h3><br>';
                                         }
                                         else

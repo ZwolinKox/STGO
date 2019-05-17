@@ -73,19 +73,19 @@
                             {
                                 if(Get::get('gra') == 'tak')
                                 {
-                                    if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 15)
+                                    if(Action::getCoins() < 15)
                                     {
                                         echo '<h3 style="color: red;">Nie masz wystarczająco Słysz Coinów!</h3>';
                                         echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
-                                        DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-15'], ['id' => $_SESSION['uid']]);
+                                        Action::delCoin(15);
 
                                         if(rand(1,9999999) == 707)
                                         {
                                             //Tu może damy jeszcze coś ze aaaa wygrałes aczifment jestes osom i wgl całe te
-                                            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+10000000'], ['id' => $_SESSION['uid']]);
+                                            Action::addCoin(10000000);
 
                                             echo '<h3 style="color: green;">WYGRAŁEŚ</h3>';
                                         }

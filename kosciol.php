@@ -78,7 +78,7 @@
                             {
                                 if(Get::get('co') == 'ofiara')
                                 {
-                                    if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 1)
+                                    if(Action::getCoins() < 1)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3><br>';
                                         echo '<div class="btn-dark btn-lg href" id="kosciol.php">Wybierz inną czynność </div>';
@@ -86,24 +86,25 @@
                                     }
                                     else
                                     {
-                                        DatabaseManager::updateTable('users', ['userEnergy' => '100', 'slyszCoin' => 'slyszCoin-1'], ['id' => $_SESSION['uid']]);
+                                        Action::setEnergy(100);
+                                        Action::delCoin(1);
                                         echo '<h3 style="color: lightgreen;">Twoja energia została odnowiona!</h3>';
                                         $rng = rand(1,3);
                                         switch($rng)
                                         {
                                             case 1:
                                             {
-                                                DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+1'], ['id' => $_SESSION['uid']]);
+                                                Action::addIntelect(1);
                                                 echo '<h3 style="color: lightgreen;">Twoja inteligencja wzrosła o 1!</h3>';
                                             }break;
                                             case 2:
                                             {
-                                                DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+1'], ['id' => $_SESSION['uid']]);
+                                                Action::addMaxHp(1);
                                                 echo '<h3 style="color: lightgreen;">Twoja maksymalna liczba punktów zdrowia wzrosła o 1!</h3>';
                                             }break;
                                             case 3:
                                             {
-                                                DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+1'], ['id' => $_SESSION['uid']]);
+                                                Action::addCoin(1);
                                                 echo '<h3 style="color: lightgreen;">Znalazłes w kieszeni jeszcze jednego Słysz Coina!</h3>';
                                             }break;
                                         }
@@ -133,7 +134,7 @@
                                             }
                                             else
                                             {
-                                                DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+100'], ['id' => $_SESSION['uid']]);
+                                                Action::addCoin(100);
                                                 echo '<h3 style="color: lightgreen;">Ksiądz był zadowolony, zdobyłeś 100 Słysz Coinów!</h3><br>';
                                             }
                                         }break;
@@ -160,13 +161,13 @@
                                     {
                                         case 1:
                                         {
-                                            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+40'], ['id' => $_SESSION['uid']]);
+                                            Action::addCoin(40);
                                             echo '<h3 style="color: lightgreen;">Udało ci się pobić ministrantów! Zarobiłeś 40 Słysz Coinów z kolędy!</h3>';
                                         }break;
                                         case 2:
                                         {
+                                            Action::delHp(25);
                                             echo '<h3 style="color: red;"> Zostałeś pobity i wyrzucony z kościoła!</h3>';
-                                            // TUTAJ TRZEBA DODAC ZE TRACISZ HP
                                         }break;
                                     }
 
@@ -249,9 +250,9 @@
                                                     $prize = rand(1,3);
                                                     switch($prize)
                                                     {
-                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+60'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]); break;
-                                                        case 3: DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+20'], ['id' => $_SESSION['uid']]); break;
+                                                        case 1: Action::addCoin(60); break;
+                                                        case 2: Action::addMaxHp(10); break;
+                                                        case 3: Action::addIntelect(5); break;
                                                     }
                                                     
                                                     echo '<h3 style="color: lightgreen;">Ludzie byli zadowoleni! Otrzymałeś nagrodę!</h3>';
@@ -263,8 +264,8 @@
                                                     $penalty = rand(1,2);
                                                     switch($penalty)
                                                     {
-                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 1: Action::delCoin(40); break;
+                                                        case 2: Action::delMaxHp(10); break;
                                                     }
 
                                                     echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
@@ -301,9 +302,9 @@
                                                     $prize = rand(1,3);
                                                     switch($prize)
                                                     {
-                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+60'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]); break;
-                                                        case 3: DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+20'], ['id' => $_SESSION['uid']]); break;
+                                                        case 1: Action::addCoin(60); break;
+                                                        case 2: Action::addMaxHp(10); break;
+                                                        case 3: Action::addIntelect(20); break;
                                                     }
                                                     
                                                     echo '<h3 style="color: lightgreen;">Ludzie byli zadowoleni! Otrzymałeś nagrodę!</h3>';
@@ -315,8 +316,8 @@
                                                     $penalty = rand(1,2);
                                                     switch($penalty)
                                                     {
-                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['slyszCoin' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 1: Action::delCoin(40); break;
+                                                        case 2: Action::delMaxHp(10); break;
                                                     }
 
                                                     echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
@@ -354,9 +355,9 @@
                                                     $prize = rand(1,3);
                                                     switch($prize)
                                                     {
-                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+60'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]); break;
-                                                        case 3: DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+20'], ['id' => $_SESSION['uid']]); break;
+                                                        case 1: Action::addCoin(60); break;
+                                                        case 2: Action::addMaxHp(10); break;
+                                                        case 3: Action::addIntelect(25); break;
                                                     }
                                                     
                                                     echo '<h3 style="color: lightgreen;">Ludzie byli zadowoleni! Otrzymałeś nagrodę!</h3>';
@@ -368,8 +369,8 @@
                                                     $penalty = rand(1,2);
                                                     switch($penalty)
                                                     {
-                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['slyszCoin' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 1: Action::delCoin(40); break;
+                                                        case 2: Action::delMaxHp(10); break;
                                                     }
 
                                                     echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
@@ -406,9 +407,9 @@
                                                     $prize = rand(1,3);
                                                     switch($prize)
                                                     {
-                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+60'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]); break;
-                                                        case 3: DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+20'], ['id' => $_SESSION['uid']]); break;
+                                                        case 1: Action::addCoin(60); break;
+                                                        case 2: Action::addMaxHp(10); break;
+                                                        case 3: Action::addIntelect(20); break;
                                                     }
                                                     
                                                     echo '<h3 style="color: lightgreen;">Ludzie byli zadowoleni! Otrzymałeś nagrodę!</h3>';
@@ -420,8 +421,8 @@
                                                     $penalty = rand(1,2);
                                                     switch($penalty)
                                                     {
-                                                        case 1: DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-40'], ['id' => $_SESSION['uid']]); break;
-                                                        case 2: DatabaseManager::updateTable('users', ['slyszCoin' => 'maxHp-10'], ['id' => $_SESSION['uid']]); break;
+                                                        case 1: Action::delCoin(40); break;
+                                                        case 2: Action::delMaxHp(10); break;
                                                     }
 
                                                     echo '<h3 style="color: red;">Ludzie nie byli zadowoleni! Zostałeś ukarany!</h3>';
@@ -463,7 +464,7 @@
                                     {
                                         if(rand(1,100) > 50)
                                         {
-                                            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+80'], ['id' => $_SESSION['uid']]);
+                                            Action::addCoin(80);
                                             echo '<h3 style="color: lightgreen;">Udało ci się ukraść pieniądze z koszyczka, nikt tego nie zauważył!</h3>';
                                         }
                                         else

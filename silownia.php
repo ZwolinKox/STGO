@@ -76,20 +76,21 @@
                                     }
                                     else
                                     {
-                                        if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 30)
+                                        if(Action::getEnergy() < 30)
                                         {
                                                 echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                                 echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                         }
-                                        else if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 20)
+                                        else if(Action::getCoins() < 20)
                                         {
                                                 echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3>';
                                                 echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                         }
                                         else
                                         {
-                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-30', 'slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
-                                            DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+1'], ['id' => $_SESSION['uid']]); 
+                                            Action::delEnergy(30);
+                                            Action::delCoin(20);
+                                            Action::addStrength(5);
 
                                             echo "<h3 style='color: lightgreen;'>Udało ci się zwykiększyć swoją siłę o 1!</h3><br>";  
 
@@ -108,25 +109,25 @@
                                     }
                                     else
                                     {
-                                        if(DatabaseManager::selectBySQL("SELECT userEnergy FROM users WHERE id=".$_SESSION['uid'])[0]['userEnergy'] < 40)
+                                        if(Action::getEnergy() < 40)
                                         {
                                                 echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
                                                 echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                         }
-                                        else if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 25)
+                                        else if(Action::getCoins() < 25)
                                         {
                                                 echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3>';
                                                 echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                         }
                                         else
                                         {
-                                            $str = rand(0, 3);
+                                            $str = rand(0, 10);
                                             
-                                            
-                                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-40', 'slyszCoin' => 'slyszCoin-25'], ['id' => $_SESSION['uid']]);
-                                            
+                                            Action::delEnergy(40);
+                                            Action::delCoin(25);
+
                                             if($str > 0) {
-                                                DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+'.$str], ['id' => $_SESSION['uid']]); 
+                                                Action::addStrength($str); 
                                                 echo "<h3 style='color: lightgreen;''>Udało ci się zwykiększyć swoją siłę o $str!</h3><br>";  
                                             }
                                             else
