@@ -145,4 +145,8 @@ class UserManager {
 
         return "<$htmlTagType style='color: $nickColor';>$nickname</$htmlTagType>";    
     }
+
+    public static function nickById($id) {
+        return DatabaseManager::selectBySQL("SELECT username FROM users WHERE id=".$id)[0]['username'];
+    }
 }

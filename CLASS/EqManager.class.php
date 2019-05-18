@@ -127,6 +127,45 @@ class EqManager {
             }
         }
     }
+
+    public static function findItem($itemId) {
+        if(DatabaseManager::selectBySQL("SELECT eqSlotOne FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotOne'] == $itemId)
+        {
+            return "eqSlotOne";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT eqSlotTwo FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotTwo'] == $itemId)
+        {
+            return "eqSlotTwo";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT eqSlotThree FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotThree'] == $itemId)
+        {
+            return "eqSlotThree";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT eqSlotFour FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotFour'] == $itemId)
+        {
+            return "eqSlotFour";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT eqSlotFive FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotFive'] == $itemId)
+        {
+            return "eqSlotFive";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT eqSlotSix FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotSix'] == $itemId)
+        {
+            return "eqSlotSix";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT eqSlotSeven FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotSeven'] == $itemId)
+        {
+            return "eqSlotSeven";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT eqSlotEight FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotEight'] == $itemId)
+        {
+            return "eqSlotEight";
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
 
 ?>
