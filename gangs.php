@@ -104,13 +104,12 @@ END;
                            {
 
 
-                                echo '<div class="btn-danger btn-lg href" style="margin-top: 75px;" id="index.php">Rozwiąż gang</div>';
+                                echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" id="deleteGuild">Rozwiąż gang</div>';
                            }
                            else
                            {
 
-
-                            echo '<div class="btn-danger btn-lg href" style="margin-top: 75px;" id="index.php">Opuść gang</div>';
+                            echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" id="leaveGuild" onclick="leaveGuild()">Opuść gang</div>';
 
                            }
 
@@ -164,7 +163,7 @@ END;
 
         if($areYouOwner)
         {
-            echo '<button id="deleteItem" type="button" class="btn btn-danger">Usuń klanowicza</button>';
+            echo '<button id="deleteMember" type="button" class="btn btn-danger">Usuń klanowicza</button>';
             // TUTAJ SIĘ TO KIEDYŚ PRZYDAecho '<button id="saveEq" type="button" class="btn btn-primary">Zapisz zmiany</button>';
         }
 
@@ -194,6 +193,65 @@ END;
     </div> <!-- ŚRODEK -->
 
 	<br/><br/>
+    
+    <script>
+        let deleteMember = document.querySelector("#deleteMember");
+
+            deleteMember.addEventListener("click", function() {
+                const memberNumber = document.querySelector("#players").value;
+                console.log(memberNumber);
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "deleteGuildMember",
+                            member: memberNumber
+                        }
+                    }).done((result) => {
+                        location.reload();
+                    })
+                })
+
+        let deleteGuild = document.querySelector("#deleteGuild");
+
+        deleteGuild.addEventListener("click", function() {
+            console.log('xxxx');
+                $.ajax({
+                    url: "ajax.php",
+                    method: "post",
+                    data: {
+                        co: "deleteGuild"
+                    }
+                }).done((result) => {
+                    console.log(result);
+                    location.reload();
+                })
+            })
+
+            //let leaveGuild = document.querySelector("#leaveGuild");
+
+
+           /* leaveGuild.addEventListener("click", function() {
+                console.log('w kocui');
+               
+            })*/
+
+
+            function leaveGuild()
+            {
+                $.ajax({
+                    url: "ajax.php",
+                    method: "post",
+                    data: {
+                        co: "leaveGuild"
+                    }
+                }).done((result) => {
+                    console.log(result);
+                    location.reload();
+                })
+            }
+
+    </script>
     
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone

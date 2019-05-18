@@ -24,6 +24,20 @@ require_once 'config.php';
             die("success");
         }
 
+        elseif(Post::get('co') == 'deleteGuildMember')
+        {
+            Guild::deleteGuildMemberByNumber(Post::get('member'));
+        }
+
+        elseif(Post::get('co') == 'deleteGuild')
+        {
+            Guild::deleteGuild();
+        }
+
+        elseif(Post::get('co') == 'leaveGuild') {
+            Guild::leaveGuild();
+        }
+
         //Toaleta
         elseif(Post::get('co') == 'jedyneczka')
         {
@@ -99,6 +113,7 @@ require_once 'config.php';
         {
             TradeManager::buyById(Post::get('id'));
         }
+
 
 
     }
