@@ -99,6 +99,7 @@ END;
 END;
 
                             echo '<div class="btn-dark btn-lg " data-toggle="modal" data-target="#clanList">Lista członków gangu</div>';
+                            echo '<div class="btn-dark btn-lg href" id="skarbiec.php">Skarbiec Gangu</div>'; 
 
                            if($areYouOwner)
                            {

@@ -71,6 +71,36 @@ require_once 'config.php';
              
         }
 
+        elseif (Post::get('co') == 'sendMoneyGuild') {
+            $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+            //$guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
+            $money = Post::get('money');
+
+            if(DatabaseManager::selectBySQL('SELECT slyszCoin FROM users WHERE id='.$_SESSION['uid'])[0]['slyszCoin']  >= $money)
+            {
+                DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszcoin-'.$money], ['id' => $_SESSION['uid']]);
+                DatabaseManager::updateTable('guilds', ['guildBankSlyszCoin' => 'guildBankSlyszCoin+'.$money], ['guildName' => '"'.$guildName.'"']);
+            }
+        }
+
+        elseif (Post::get('co') == 'getMoneyGuild') {
+            $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+            $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
+            $money = Post::get('money');
+
+            if($guildInfo['guildOwner'] == $_SESSION['uid'])
+            {
+                if(DatabaseManager::selectBySQL('SELECT guildBankSlyszCoin FROM guilds WHERE guildName="'.$guildName.'"')[0]['guildBankSlyszCoin']  >= $money)
+                {
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszcoin+'.$money], ['id' => $_SESSION['uid']]);
+                    DatabaseManager::updateTable('guilds', ['guildBankSlyszCoin' => 'guildBankSlyszCoin-'.$money], ['guildName' => '"'.$guildName.'"']);
+                }
+            }
+
+
+        }
+
+
         elseif (Post::get('co') == 'guildAccept') {
 
             $guildName = Post::get('guildName');
