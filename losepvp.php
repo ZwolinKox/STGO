@@ -66,13 +66,13 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                    <div class="display-3" style="color: red;">Niestety! Przegrałeś walkę pvp</div>
+                    <div class="display-3" style="color: red;">Niestety! Przegrałeś walkę pvp za 4 sekundy zostaniesz uleczony, nie opuszczaj</div>
 
                     <h3 style="margin-top: 50px;">Straciłeś <span style="color: red;"><?php echo $_SESSION['Lp'];?></span> punktów ligowych!</h3>
                     
                     <?php
 
-                    DatabaseManager::updateTable('users', ['statHp' => "maxHp"], ['id' => $_SESSION['uid']]);
+                    //DatabaseManager::updateTable('users', ['statHp' => "maxHp"], ['id' => $_SESSION['uid']]);
                     DatabaseManager::deleteFrom('fight', ['playerOne' => $_SESSION['uid'], 'playerTwo' => $_SESSION['uid']] , 'OR');
                     unset($_SESSION['Lp']);
                     unset($_SESSION['losepvp']);

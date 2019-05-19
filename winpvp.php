@@ -66,13 +66,13 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                    <div class="display-3" style="color: lightgreen;">Gratulacje! Wygrałeś walkę pvp</div>
+                    <div class="display-3" style="color: lightgreen;">Gratulacje! Wygrałeś walkę pvp za 4 sekundy zostaniesz uleczony</div>
 
                     <h3 style="margin-top: 50px;">Zdobyłeś <span style="color: gold"><?php echo $_SESSION['Lp'];?></span> punktów ligowych!</h3>
                     
                     <?php
 
-                    DatabaseManager::updateTable('users', ['statHp' => "maxHp"], ['id' => $_SESSION['uid']]);
+                    //DatabaseManager::updateTable('users', ['statHp' => "maxHp"], ['id' => $_SESSION['uid']]);
                     DatabaseManager::deleteFrom('fight', ['playerOne' => $_SESSION['uid'], 'playerTwo' => $_SESSION['uid']] , 'OR');
                     unset($_SESSION['Lp']);
                     unset($_SESSION['winpvp']);

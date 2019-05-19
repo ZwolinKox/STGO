@@ -83,7 +83,7 @@
                                 if(Get::get('gdzie') == 'parter-szukaj')
                                 {
 
-                                    $enemyId = rand(1, 1); //Do ustalenia testy
+                                    $enemyId = rand(1, 6); //Do ustalenia testy
                                     $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
                                     $enemyInfo = $enemyStats[0]['name'].' Lvl: '.$enemyStats[0]['enemyLevel'];
 
