@@ -38,6 +38,91 @@ require_once 'config.php';
             Guild::leaveGuild();
         }
 
+        elseif(Post::get('co') == 'inviteMember') {
+            $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+            $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
+
+            if($guildInfo['guildOwner'] == $_SESSION['uid'])
+            {
+                
+                $playerName = Post::get('playerName');
+               
+
+                $playerId = DatabaseManager::selectBySQL("SELECT id FROM users WHERE username='$playerName'")[0]['id'];
+
+                if($playerId <= 0)
+                    die("Taki gracz nie istnieje!");
+
+                $usr = DatabaseManager::selectBySQL("SELECT id FROM ganginv WHERE playerId='$playerId' AND guildName='$guildName' AND visible=1 LIMIT 1")[0]["id"];
+
+                if($usr >= 1)
+                    die("Gracz posiada oczekujace zaproszenie przez twój gang!");
+
+                    
+                if(DatabaseManager::selectBySQL("SELECT boolGuild FROM users WHERE id=$playerId")[0]['boolGuild'] == 1)
+                    die("Gracz jest już członkiem jakiejś gildii!");
+
+                
+                DatabaseManager::insertInto('ganginv', ['visible' => 1, 'guildName' => $guildName, 'playerId' => $playerId]);
+
+                die('success');
+            }
+
+             
+        }
+
+        elseif (Post::get('co') == 'guildAccept') {
+
+            $guildName = Post::get('guildName');
+            $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
+            $myId = $_SESSION['uid'];
+
+            $usr = DatabaseManager::selectBySQL("SELECT id FROM ganginv WHERE playerId='$myId' AND guildName='$guildName' AND visible=1 LIMIT 1")[0]["id"];
+
+            if($usr <= 0)
+                die("Nie posiadasz zaproszenia do tego klanu!");
+
+                $number = null;
+
+                    if($guildInfo['guildMemberTwo'] == 0)
+                        $number = 'guildMemberTwo';
+
+                    elseif($guildInfo['guildMemberThree'] == 0)
+                        $number = 'guildMemberThree';
+
+                    elseif($guildInfo['guildMemberFour'] == 0)
+                        $number = 'guildMemberFour';
+
+                    elseif($guildInfo['guildMemberFive'] == 0)
+                        $number = 'guildMemberFive';
+
+                    elseif($guildInfo['guildMemberSix'] == 0)
+                        $number = 'guildMemberSix';
+
+                    elseif($guildInfo['guildMemberSeven'] == 0)
+                        $number = 'guildMemberSeven';
+
+                    elseif($guildInfo['guildMemberEight'] == 0)
+                        $number = 'guildMemberEight';
+
+                    elseif($guildInfo['guildMemberNine'] == 0)
+                        $number = 'guildMemberNine';
+
+                    elseif($guildInfo['guildMemberTen'] == 0)
+                        $number = 'guildMemberTen';
+
+                if($number == null)
+                    die("Klan nie posiada wolnych miejsc!");
+            
+                DatabaseManager::updateTable("ganginv", ['visible' => 0], ['guildName' => '"'.$guildName.'"', 'visible' => 1]);
+                DatabaseManager::updateTable("users", ["guildName" => '"'.$guildName.'"', "boolGuild" => "1"], ["id" => $_SESSION['uid']]);
+                DatabaseManager::updateTable('guilds', [$number => $_SESSION['uid']]);
+
+                die('success'); 
+
+            
+        }
+
         //Toaleta
         elseif(Post::get('co') == 'jedyneczka')
         {

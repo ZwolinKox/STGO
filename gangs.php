@@ -67,7 +67,7 @@
                             echo <<< END
                             <h3>Nie jesteś członkiem gangu!</h3>
                             <div class="btn-dark btn-lg href" id="newGang.php">Załóż gang</div>
-                            <div class="btn-dark btn-lg href" id="sklep.php">Dołącz do gangu</div>
+                            <div class="btn-dark btn-lg href" id="gangInvites.php">Sprawdź zaproszenia do gangu</div>
                             <div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do domu</div>
 END;
                         }
@@ -103,8 +103,8 @@ END;
                            if($areYouOwner)
                            {
 
-
-                                echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" id="deleteGuild">Rozwiąż gang</div>';
+                            echo '<div class="btn-dark btn-lg href" id="invite.php">Zaproś nowych ludzi</div>';
+                            echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" id="deleteGuild">Rozwiąż gang</div>';
                            }
                            else
                            {
