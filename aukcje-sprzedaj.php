@@ -102,7 +102,7 @@
                         echo '</select><br>
                             
                             <input class="form-control" type="text" placeholder="Cena" id="itemCost">
-                            <div class="btn-dark btn-lg" onclick="sellItem()">Sprzedaj! (Kaucja: 20SC)</div>';
+                            <div class="btn-dark btn-lg" id="sellitembtn">Sprzedaj! (Kaucja: 20SC)</div>';
                         
                     ?>
 
@@ -131,16 +131,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	
     <script>
-        function sellItem() {
-            $.ajax({
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#sellitembtn').addEventListener('click', () => {
+                $.ajax({
                 url: "ajaxaukcje-sprzedaj.php",
                 method: "post",
+                type: "POST",
                 data: {
                     itemId: $('#selectedItem').val(),
                     itemCost : $('#itemCost').val()
                 }
+                }).fail((result) => {
+                    console.log(result)
+                })
+                parent.window.location.reload();
             })
-        parent.window.location.reload();
+        })
+
+        function sellItem() {
+
+           
         }
     </script>
 

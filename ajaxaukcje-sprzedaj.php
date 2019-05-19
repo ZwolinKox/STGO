@@ -2,10 +2,11 @@
 
 require_once "config.php";
 
+
 if(Post::exist('itemCost'))
 {
     if(Post::exist('itemId'))
-    {
+    {   
         //Action::delCoin(1);
         $item = Post::get('itemId');
         
