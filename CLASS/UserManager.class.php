@@ -146,7 +146,40 @@ class UserManager {
         return "<$htmlTagType style='color: $nickColor';>$nickname</$htmlTagType>";    
     }
 
+    public static function otherNick($id, $htmlTagType) {
+       //$htmlTagType --> Nick('h3');  Nick('p');
+        //Do wypisywania nicku bedzie stosowana ta metoda
+        //Tutaj wszystkie możliwe nicki będą, to jaki masz nick jest pobieranie z bazy danych ,,nickCol''
+        //
+        //0 - biały - domyslne
+        //1 - niebieski - gdy wbijemy poziom 30
+        //2 - pomaranczowy - gdy mamy ubrana legendarke
+        //3 - fioletowy - ukonczenie ostatniego raida
+        //4 - czerwony - 1000 punktow pvp
+        //5 - ciemno czerwony - 30 poziom w trybie hardcore
+        //6 - jasnozielony - 1000 razy nie poszedłeś biegac easter egg achivement
+
+        $nickColor = 'white';
+        $nickname = DatabaseManager::selectBySQL('SELECT username FROM users WHERE id='.$id)[0]['username'];
+        switch(DatabaseManager::selectBySQL("SELECT nickCol FROM users WHERE id=".$id)[0]['nickCol'])
+        {
+            case '0': break;
+            case '1': $nickColor = '#5672FA'; break;
+            case '2': $nickColor = '#A57902'; break;
+            case '3': $nickColor = '#214B83'; break;
+            case '4': $nickColor = '#EF0C22'; break;
+            case '5': $nickColor = '#751B0B'; break;
+            case '6': $nickColor = '#94C98F'; break;
+        }
+
+        return "<$htmlTagType style='color: $nickColor';>$nickname</$htmlTagType>";  
+    }
+
     public static function nickById($id) {
         return DatabaseManager::selectBySQL("SELECT username FROM users WHERE id=".$id)[0]['username'];
+    }
+
+    public static function idByNick($nick) {
+        return DatabaseManager::selectBySQL('SELECT id FROM users WHERE username="'.$nick.'"')[0]['id'];
     }
 }
