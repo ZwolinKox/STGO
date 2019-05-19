@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 17 Maj 2019, 17:40
+-- Czas generowania: 18 Maj 2019, 13:20
 -- Wersja serwera: 10.1.39-MariaDB
 -- Wersja PHP: 7.3.5
 
@@ -32,7 +32,8 @@ CREATE TABLE `auctions` (
   `id` int(11) NOT NULL,
   `itemId` int(11) NOT NULL,
   `sellerId` int(11) NOT NULL,
-  `itemPrice` int(11) NOT NULL
+  `itemPrice` int(11) NOT NULL,
+  `isSold` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --

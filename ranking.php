@@ -63,6 +63,7 @@
 
                     $wynik = DatabaseManager::selectbySQL("SELECT username, userLevel, team FROM users ORDER BY userLevel DESC LIMIT 10");
                     
+                    echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div><br>';
                     echo '<br><table class="table table-striped table-dark">
                             <thead>
                             <tr>

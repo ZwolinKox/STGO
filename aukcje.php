@@ -60,8 +60,29 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
                         
                     <?php
-                        echo "W budowie...";
-                        echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                        echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                        echo '<div class="btn-dark btn-lg href" id="aukcje-sprzedaj.php">Dodaj aukcję!</div><br>';                      
+                        echo '<h3>Lista aukcji:</h3><br>';
+
+                        if(DatabaseManager::selectBySQL("SELECT isSold FROM auctions WHERE isSold=0") == 0)
+                        {
+                            echo '<h3>Aktualnie nie ma żadnych aukcji!</h3><br>';
+                        }
+                        else
+                        {
+                            $elements = DatabaseManager::selectBySQL("SELECT id, itemId, sellerId, itemPrice, isSold FROM auctions WHERE isSold=0");
+                            
+
+                            for($i = 0; $i < count($elements); $i++)
+                            {
+                                $item = EqManager::item($elements[$i]['itemId'], 'name');
+                                $seller = UserManager::nickById($elements[$i]['sellerId']);
+                                $price = $elements[$i]['itemPrice'];
+                                $itemId = $elements[$i]['id'];
+
+                                echo '<div class="btn-dark btn-lg" onclick="buyItem('.$itemId.')">'.$item.' ('.$price.'SC) - '.$seller.'</div>';
+                            }
+                        }
                     ?>
 
                 </div>
@@ -88,6 +109,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	
+    <script>
+        function buyItem(id) {
+            $.ajax({
+            url: "ajaxaukcje.php",
+            method: "post",
+            data: {
+                itemId: id
+            }
+            })
+        parent.window.location.reload();
+        }
+    </script>
+
 
 </body>
 </html>
