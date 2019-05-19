@@ -172,6 +172,8 @@
                             co: "guildDecline",
                             guildName: thisButton.id
                         }
+                    }).done((result) => {
+                        parent.window.location.reload();
                     })
                 
             })

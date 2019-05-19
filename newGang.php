@@ -91,8 +91,10 @@
 		
 		
 		createGang.addEventListener('click', () => {
-			const gangNamee = document.querySelector("#gangName").value;
+			let gangNamee = document.querySelector("#gangName").value;
 			
+                gangNamee = gangNamee.split(' ').join('_');
+
 			    $.ajax({
                     url: "ajax.php",
                     method: "post",

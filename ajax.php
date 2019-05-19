@@ -77,10 +77,13 @@ require_once 'config.php';
             $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
             $myId = $_SESSION['uid'];
 
+            if($guildInfo['id'] <= 1)
+                die('Taki gang nie istnieje!');
+
             $usr = DatabaseManager::selectBySQL("SELECT id FROM ganginv WHERE playerId='$myId' AND guildName='$guildName' AND visible=1 LIMIT 1")[0]["id"];
 
             if($usr <= 0)
-                die("Nie posiadasz zaproszenia do tego klanu!");
+                die("Nie posiadasz zaproszenia do tego gangu!");
 
                 $number = null;
 
@@ -121,6 +124,11 @@ require_once 'config.php';
                 die('success'); 
 
             
+        }
+
+        elseif (Post::get('co') == "guildDecline") {
+            $guildName = Post::get('guildName');
+            DatabaseManager::updateTable("ganginv", ['visible' => 0], ['guildName' => '"'.$guildName.'"', 'visible' => 1]);
         }
 
         //Toaleta
