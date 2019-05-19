@@ -49,6 +49,28 @@
     </div>
 
     <div class="container"> <!-- ŚRODEK !-->
+	<div class="col-12 text-center" style="margin-top: 25px;">
+
+  <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+  Zobacz co przyniosła ostatnia aktualizacja!
+  </a>
+
+<div class="collapse" id="collapseExample">
+  <div class="card bg-dark card-body">
+	<div class="card-header">Aktualizacja 19.05.2019</div>
+    <div class="card-body">
+	<ul>
+		<li>Dodanie systemu opuszczenia/rozwiązania gangu</li>
+		<li>Dodanie systemu dodania ludzi do gangu</li>
+		<li>Dodanie systemu przyjmowania zaproszeń do gangu</li>
+		<li>Dodanie książki telefonicznej i zakładki profilu</li>
+		<li>Dodanie skarbca gangu</li>
+	</ul>
+	</div>
+  </div>
+</div>
+
+	</div>
         <div class="row">
 				
 				<div class="col-12 col-md-6 text-center" style="margin-top: 25px;" >
@@ -109,7 +131,7 @@
 					</form>		
 			</div>	
     </div> <!-- ŚRODEK -->
-
+		
 	<br/><br/>
 
 
