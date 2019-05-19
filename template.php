@@ -73,6 +73,7 @@
                         <div class="btn-dark btn-lg href" id="poczta.php">12. Poczta</div>
                         <div class="btn-dark btn-lg href" id="gangs.php">13. Gangi</div>
                         <div class="btn-dark btn-lg href" id="aukcje.php">14. Aukcje</div>
+                        <div class="btn-dark btn-lg href" id="ksiazka.php">15. Książka telefoniczna</div>
 
 
                 </div>

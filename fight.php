@@ -53,7 +53,7 @@
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
 								
-				<div class="col-12 text-center display-4">Walka z <?php echo $_SESSION['enemyInfo']['type']." Lvl: ".$_SESSION['enemyInfo']['enemyLevel']?></div>
+				<div class="col-12 text-center display-4">Walka z <?php echo $_SESSION['enemyInfo']['name']." Lvl: ".$_SESSION['enemyInfo']['enemyLevel']?></div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
