@@ -87,7 +87,7 @@
                     echo '
                             <tr>
                                 <th scope="row">'.$count.'</th>
-                                <td style="color: '.$color.';">'.$rNick.'</td>
+                                <td><a href="ksiazka.php?profile='.$rNick.'" style="color: '.$color.';">'.$rNick.'</a></td>
                                 <td>'.$rLvl.'</td>
                             </tr>';
                     }
