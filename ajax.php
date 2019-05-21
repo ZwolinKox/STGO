@@ -74,7 +74,7 @@ require_once 'config.php';
         elseif (Post::get('co') == 'sendMoneyGuild') {
             $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
             //$guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
-            $money = Post::get('money');
+            $money = abs(Post::get('money'));
 
             if(DatabaseManager::selectBySQL('SELECT slyszCoin FROM users WHERE id='.$_SESSION['uid'])[0]['slyszCoin']  >= $money)
             {
@@ -86,7 +86,7 @@ require_once 'config.php';
         elseif (Post::get('co') == 'getMoneyGuild') {
             $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
             $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
-            $money = Post::get('money');
+            $money = abs(Post::get('money'));
 
             if($guildInfo['guildOwner'] == $_SESSION['uid'])
             {
