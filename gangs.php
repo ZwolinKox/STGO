@@ -68,6 +68,7 @@
                             <h3>Nie jesteś członkiem gangu!</h3>
                             <div class="btn-dark btn-lg href" id="newGang.php">Załóż gang</div>
                             <div class="btn-dark btn-lg href" id="gangInvites.php">Sprawdź zaproszenia do gangu</div>
+                            <div class="btn-dark btn-lg href" id="rankingGangow.php">Ranking gangów</div>
                             <div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do domu</div>
 END;
                         }
@@ -90,12 +91,16 @@ END;
                             $guildMemberNine =	$guildInfo['guildMemberNine'];
                             $guildMemberTen = $guildInfo['guildMemberTen'];
                             $guildOwner = $guildInfo['guildOwner'];
+                            $guildLevel = $guildInfo['guildLevel'];
+                            $guildPoints = $guildInfo['guildPoints'];
 
 
                             //print_r(Guild::getGuildMember($guildMemberTwo));
 
                             echo <<< END
                             <h3>Jesteś członkiem gangu: $guildName</h3>
+                            <h5>Poziom gangu: <span style="color: gold;">$guildLevel</span></h3>
+                            <h5>Punkty gangu: <span style="color: gold;">$guildPoints</span></h3>
 END;
 
                             echo '<div class="btn-dark btn-lg " data-toggle="modal" data-target="#clanList">Lista członków gangu</div>';
@@ -141,7 +146,7 @@ END;
 							';							
 
                            }
-
+                            echo '<div class="btn-dark btn-lg href" id="rankingGangow.php">Ranking gangów</div>';
                             echo '<div class="btn-dark btn-lg href" id="index.php">Przestań się bawić w udawaną gangsterkę i wróc do domu</div>';
 
                         }
