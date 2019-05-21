@@ -105,12 +105,28 @@ END;
                            {
 
                             echo '<div class="btn-dark btn-lg href" id="invite.php">Zaproś nowych ludzi</div>';
-                            echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" id="deleteGuild">Rozwiąż gang</div>';
+                            echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Rozwiąż gang</div>';
+							
+							echo '
+							<div class="collapse" id="collapseExample">
+						  <div class="card bg-dark card-body">
+							<div class="card-header">Jeżeli chcesz rozwiązać klan wpisz "OK"</div>
+							<div class="card-body">
+								<input type="text" class="form-control" id="OK" name="OK">
+								<div class="btn-danger btn-sm" style="margin-top: 75px; id="deleteGuild">Rozwiąż gang</div>
+							</div>
+						  </div>
+						</div>
+
+													
+							';
+							
                            }
                            else
                            {
 
                             echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" id="leaveGuild" onclick="leaveGuild()">Opuść gang</div>';
+							
 
                            }
 
@@ -196,6 +212,8 @@ END;
 	<br/><br/>
     
     <script>
+	
+		document.addEventListener('DOMContentLoaded')
         let deleteMember = document.querySelector("#deleteMember");
 
             deleteMember.addEventListener("click", function() {
@@ -214,10 +232,15 @@ END;
                 })
 
         let deleteGuild = document.querySelector("#deleteGuild");
-
+        let OK = document.querySelector("#OK");
+		
+		
+		
         deleteGuild.addEventListener("click", function() {
-            console.log('xxxx');
-                $.ajax({
+        
+			if(OK.value == "OK")
+			{
+				$.ajax({
                     url: "ajax.php",
                     method: "post",
                     data: {
@@ -227,6 +250,8 @@ END;
                     console.log(result);
                     location.reload();
                 })
+			}
+                
             })
 
             //let leaveGuild = document.querySelector("#leaveGuild");

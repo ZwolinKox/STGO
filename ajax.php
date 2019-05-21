@@ -149,7 +149,7 @@ require_once 'config.php';
             
                 DatabaseManager::updateTable("ganginv", ['visible' => 0], ['guildName' => '"'.$guildName.'"', 'visible' => 1]);
                 DatabaseManager::updateTable("users", ["guildName" => '"'.$guildName.'"', "boolGuild" => "1"], ["id" => $_SESSION['uid']]);
-                DatabaseManager::updateTable('guilds', [$number => $_SESSION['uid']]);
+                DatabaseManager::updateTable('guilds', [$number => $_SESSION['uid']], ['guildName' => '"'.$guildName.'"']);
 
                 die('success'); 
 
