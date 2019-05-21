@@ -113,7 +113,7 @@ END;
 							<div class="card-header">Jeżeli chcesz rozwiązać klan wpisz "OK"</div>
 							<div class="card-body">
 								<input type="text" class="form-control" id="OK" name="OK">
-								<div class="btn-danger btn-sm" style="margin-top: 75px; id="deleteGuild">Rozwiąż gang</div>
+								<div class="btn-danger btn-lg" style="margin-top: 75px;" id="deleteGuild">Rozwiąż gang</div>
 							</div>
 						  </div>
 						</div>
@@ -125,8 +125,20 @@ END;
                            else
                            {
 
-                            echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" id="leaveGuild" onclick="leaveGuild()">Opuść gang</div>';
+                            echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">Opuść gang</div>';
 							
+							echo '
+							<div class="collapse" id="collapseExample2">
+						  <div class="card bg-dark card-body">
+							<div class="card-header">Jeżeli chcesz opuścić klan wpisz "OK"</div>
+							<div class="card-body">
+								<input type="text" class="form-control" id="OKO" name="OKO">
+								<div class="btn-danger btn-lg" style="margin-top: 75px;" onclick="leaveGuild()">Opuść gang</div>
+							</div>
+						  </div>
+						</div>
+													
+							';							
 
                            }
 
@@ -213,47 +225,49 @@ END;
     
     <script>
 	
-		document.addEventListener('DOMContentLoaded')
-        let deleteMember = document.querySelector("#deleteMember");
+		document.addEventListener('DOMContentLoaded', () => {
+            let deleteMember = document.querySelector("#deleteMember");
 
-            deleteMember.addEventListener("click", function() {
-                const memberNumber = document.querySelector("#players").value;
-                console.log(memberNumber);
-                    $.ajax({
-                        url: "ajax.php",
-                        method: "post",
-                        data: {
-                            co: "deleteGuildMember",
-                            member: memberNumber
-                        }
-                    }).done((result) => {
-                        location.reload();
-                    })
-                })
+deleteMember.addEventListener("click", function() {
+    const memberNumber = document.querySelector("#players").value;
+    console.log(memberNumber);
+        $.ajax({
+            url: "ajax.php",
+            method: "post",
+            data: {
+                co: "deleteGuildMember",
+                member: memberNumber
+            }
+        }).done((result) => {
+            location.reload();
+        })
+    })
 
-        let deleteGuild = document.querySelector("#deleteGuild");
-        let OK = document.querySelector("#OK");
-		
-		
-		
-        deleteGuild.addEventListener("click", function() {
-        
-			if(OK.value == "OK")
-			{
-				$.ajax({
-                    url: "ajax.php",
-                    method: "post",
-                    data: {
-                        co: "deleteGuild"
-                    }
-                }).done((result) => {
-                    console.log(result);
-                    location.reload();
-                })
-			}
-                
-            })
+let deleteGuild = document.querySelector("#deleteGuild");
+let OK = document.querySelector("#OK");
 
+
+
+deleteGuild.addEventListener("click", function() {
+
+if(OK.value == "OK")
+{
+    $.ajax({
+        url: "ajax.php",
+        method: "post",
+        data: {
+            co: "deleteGuild"
+        }
+    }).done((result) => {
+        console.log(result);
+        location.reload();
+    })
+}
+    
+})
+
+        })
+ 
             //let leaveGuild = document.querySelector("#leaveGuild");
 
 
@@ -265,7 +279,11 @@ END;
 
             function leaveGuild()
             {
-                $.ajax({
+                let OKO = document.querySelector("#OKO");
+                console.log(OKO.value);
+                if(OKO.value == "OK")
+                {
+                    $.ajax({
                     url: "ajax.php",
                     method: "post",
                     data: {
@@ -275,6 +293,8 @@ END;
                     console.log(result);
                     location.reload();
                 })
+                }
+
             }
 
     </script>
