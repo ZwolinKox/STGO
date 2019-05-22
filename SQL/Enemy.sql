@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 23 Mar 2019, 14:31
--- Wersja serwera: 10.1.33-MariaDB
--- Wersja PHP: 7.2.6
+-- Czas generowania: 22 Maj 2019, 17:07
+-- Wersja serwera: 10.1.39-MariaDB
+-- Wersja PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,11 +52,17 @@ CREATE TABLE `enemy` (
 
 INSERT INTO `enemy` (`id`, `name`, `type`, `rarity`, `enemyLevel`, `enemyHp`, `enemyDamage`, `enemyArmor`, `dropXp`, `dropSlyszCoin`, `dropItemOne`, `dropItemTwo`, `dropItemThree`, `dropItemFour`, `dropItemFive`) VALUES
 (1, 'Elektryk', 'standard', 'common', 5, 25, 8, 10, 20, 5, 31, 32, 33, 34, 35),
-(2, 'Elektronik', 'standard', 'common', 10, 150, 15, 50, 20, 5, 31, 32, 33, 34, 36),
-(3, 'Mechatronik', 'standard', 'common', 15, 200, 20, 100, 40, 10, 37, 38, 39, 40, 41),
-(4, 'Informatyk', 'standard', 'common', 20, 400, 25, 150, 40, 10, 37, 38, 39, 40, 42),
-(5, 'Energia odnawialna', 'standard', 'common', 25, 600, 30, 300, 60, 20, 43, 44, 45, 46, 47),
-(6, 'Mechanik', 'standard', 'common', 30, 800, 35, 550, 60, 20, 43, 44, 45, 46, 48);
+(2, 'Elektryk zdolny', 'standard', 'common', 7, 50, 10, 12, 20, 5, 31, 32, 33, 34, 35),
+(3, 'Elektronik', 'standard', 'common', 10, 150, 15, 50, 20, 5, 31, 32, 33, 34, 36),
+(4, 'Elektronik zdolny', 'standard', 'common', 12, 180, 17, 80, 20, 5, 31, 32, 33, 34, 36),
+(5, 'Mechatronik', 'standard', 'common', 15, 200, 20, 100, 40, 10, 37, 38, 39, 40, 41),
+(6, 'Mechatronik zdolny', 'standard', 'common', 17, 250, 22, 120, 40, 10, 37, 38, 39, 40, 41),
+(7, 'Informatyk', 'standard', 'common', 20, 400, 25, 150, 40, 10, 37, 38, 39, 40, 42),
+(8, 'Informatyk zdolny', 'standard', 'common', 22, 420, 28, 200, 40, 10, 37, 38, 39, 40, 42),
+(9, 'Energia odnawialna', 'standard', 'common', 25, 600, 30, 300, 60, 20, 43, 44, 45, 46, 47),
+(10, 'Energia odnawialna zdolny', 'standard', 'common', 27, 700, 32, 400, 60, 20, 43, 44, 45, 46, 47),
+(11, 'Mechanik', 'standard', 'common', 30, 800, 35, 550, 60, 20, 43, 44, 45, 46, 48),
+(12, 'Mechanik zdolny', 'standard', 'common', 30, 900, 40, 600, 60, 20, 43, 44, 45, 46, 48);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -76,7 +82,7 @@ ALTER TABLE `enemy`
 -- AUTO_INCREMENT dla tabeli `enemy`
 --
 ALTER TABLE `enemy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
