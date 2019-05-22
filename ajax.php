@@ -119,6 +119,41 @@ require_once 'config.php';
             }
         }
 
+        elseif (Post::get('co') == 'newEnemyGang' || Post::get('co') == "newFriendGang") {
+
+            $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+            $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
+
+            if($guildInfo['guildOwner'] != $_SESSION['uid'])
+                die('Nie jestes założycielem gangu!');
+
+            $otherGuildInfo = DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".Post::get('gangName')."'")[0];
+
+            $myId = $_SESSION['uid'];
+            
+            if($otherGuildInfo['id'] < 1)
+                die('Taki gang nie istnieje!');
+
+            $result = DatabaseManager::selectbySQL('SELECT * FROM guilddiplomacy WHERE guildOne="'.$guildName.'" OR guildTwo="'.$guildName.'"')[0];
+
+            if($result['id'] >= 1)
+                die('Posiadasz już stosunki dyplomatyczne z tym gangiem');
+
+            $type;
+            if(Post::get('co') == 'newEnemyGang')
+                $type = "Wojna";
+            elseif (Post::get('co') == 'newFriendGang') 
+                $type = "Sojusz";
+            
+
+            DatabaseManager::insertInto('guilddiplomacy', ['guildOne' => $guildName, 'guildTwo' => $otherGuildInfo['guildName'], 'type' => $type]);
+
+            die('success');
+        }
+
+        elseif (Post::get('co') == 'newFriendGang') {
+            die('zeby wyszli z dan');
+        }
 
         elseif (Post::get('co') == 'guildAccept') {
 
@@ -126,7 +161,8 @@ require_once 'config.php';
             $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
             $myId = $_SESSION['uid'];
 
-            if($guildInfo['id'] <= 1)
+            //Możliwe błędy
+            if($guildInfo['id'] < 1)
                 die('Taki gang nie istnieje!');
 
             $usr = DatabaseManager::selectBySQL("SELECT id FROM ganginv WHERE playerId='$myId' AND guildName='$guildName' AND visible=1 LIMIT 1")[0]["id"];

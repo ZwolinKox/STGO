@@ -102,6 +102,8 @@ END;
                             else
                                 $nextLevelColor = 'lightgreen';
 
+
+
                             //print_r(Guild::getGuildMember($guildMemberTwo));
 
                             echo <<< END
@@ -112,6 +114,7 @@ END;
 
                             echo '<div class="btn-dark btn-lg " data-toggle="modal" data-target="#clanList">Lista członków gangu</div>';
                             echo '<div class="btn-dark btn-lg href" id="skarbiec.php">Skarbiec Gangu</div>'; 
+                            echo '<div class="btn-dark btn-lg href" id="dyplomacja.php">Dyplomacja Gangu</div>'; 
 
                            if($areYouOwner)
                            {
