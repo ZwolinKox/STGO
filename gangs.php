@@ -94,6 +94,13 @@ END;
                             $guildLevel = $guildInfo['guildLevel'];
                             $guildPoints = $guildInfo['guildPoints'];
 
+                            $guildNextLevelSC = ($guildInfo['guildLevel']+1)*1200 - 500;
+
+                            $nextLevelColor;
+                            if($guildInfo['guildBankSlyszCoin'] < $guildNextLevelSC)
+                                $nextLevelColor = 'red';
+                            else
+                                $nextLevelColor = 'lightgreen';
 
                             //print_r(Guild::getGuildMember($guildMemberTwo));
 
@@ -110,6 +117,7 @@ END;
                            {
 
                             echo '<div class="btn-dark btn-lg href" id="invite.php">Zaproś nowych ludzi</div>';
+                            echo '<div class="btn-dark btn-lg" id="nextLevel">Ulepsz gang (<span style="color: '.$nextLevelColor.'" >'. $guildNextLevelSC.'SC</span>)</div>';
                             echo '<div class="btn-danger btn-lg" style="margin-top: 75px;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Rozwiąż gang</div>';
 							
 							echo '
@@ -232,6 +240,8 @@ END;
 	
 		document.addEventListener('DOMContentLoaded', () => {
             let deleteMember = document.querySelector("#deleteMember");
+            let nextLevel = document.querySelector("#nextLevel");
+
 
 deleteMember.addEventListener("click", function() {
     const memberNumber = document.querySelector("#players").value;
@@ -242,6 +252,18 @@ deleteMember.addEventListener("click", function() {
             data: {
                 co: "deleteGuildMember",
                 member: memberNumber
+            }
+        }).done((result) => {
+            location.reload();
+        })
+    })
+
+    nextLevel.addEventListener("click", function() {
+        $.ajax({
+            url: "ajax.php",
+            method: "post",
+            data: {
+                co: "nextLevelGuild",
             }
         }).done((result) => {
             location.reload();

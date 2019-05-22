@@ -100,6 +100,25 @@ require_once 'config.php';
 
         }
 
+        elseif(Post::get('co') == 'nextLevelGuild')
+        {
+            $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+            $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
+
+            if($guildInfo['guildOwner'] == $_SESSION['uid'])
+            {
+                $guildNextLevelSC = ($guildInfo['guildLevel']+1)*1200 - 500;
+
+                if($guildInfo['guildBankSlyszCoin'] >= $guildNextLevelSC)
+                {
+                    DatabaseManager::updateTable('guilds', ['guildBankSlyszCoin' => 'guildBankSlyszCoin-'.$guildNextLevelSC, 'guildLevel' => 'guildLevel+1'], ['guildName' => '"'.$guildName.'"']);
+                    die('yes');
+                }
+
+                die('no');
+            }
+        }
+
 
         elseif (Post::get('co') == 'guildAccept') {
 
