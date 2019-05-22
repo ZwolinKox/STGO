@@ -59,24 +59,18 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
                     
-                    <form action="sendPrivateMessage.php" method="POST">
-                        <div class="form-group" style="margin-top: 15px;">
-                            <label for="mailTo">Adresat:</label>
-                            <input type="text" class="form-control" id="mailTo" name="adresat">
-                        </div>
-                        <div class="form-group">
-                            <label for="mailText">Treść</label>
-                            <textarea class="form-control" rows="5" id="mailText" name="tresc"></textarea>
-                        </div>
-                            <input class="btn btn-dark btn-lg" type="submit" value="Wyślij" style="margin-bottom: 15px;">
-                    </form>
+                    <?php 
 
-                    <form action="deletePrivateMessage.php" method="POST">
-                        <input class="btn btn-dark btn-lg" type="submit" value="Usuń wszystkie wiadomości" style="margin-bottom: 15px;">
-                    </form> 
+                        echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div><br>';
+                    
+                        echo '<input class="form-control" type="text" placeholder="Adresat" id="messageTo"><br>';
+                        echo '<textarea class="form-control" id="messageText" rows="4"></textarea><br>';
+                        echo '<input class="form-control" type="text" placeholder="Wyślij SłyszCoiny..." id="messageSC"><br>';
+                        echo '<div class="btn-dark btn-lg" onclick="send()">Wyślij</div>';
 
-                    <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div><br>
-
+                        echo '<div class="btn-dark btn-lg" onclick="del()">Usuń wiadomości</div><br>';
+                    
+                    ?>
                     <!-- ////////////////////////////////////////////////// -->
 
                     <?php
@@ -123,6 +117,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	
+    <script>
+        function send() {
+            $.ajax({
+            url: "sendPrivateMessage.php",
+            method: "post",
+            data: {
+                messageTo: $('#messageTo').val(),
+                messageText: $('#messageText').val(),
+                messageSc: $('#messageSC').val()
+            }
+            })
+        parent.window.location.reload();
+        }
+    </script>
+
+    <script>
+        function del() {
+            $.ajax({
+            url: "sendPrivateMessage.php",
+            method: "post",
+            data: {
+                messageDelete: "delete"
+            }
+            })
+        parent.window.location.reload();
+        }
+    </script>
 
 </body>
 </html>

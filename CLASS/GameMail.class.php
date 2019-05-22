@@ -3,7 +3,13 @@
 class GameMail {
     private function __construct () {}
 
-    static public function sendMail($mailTo, $mailFrom, $mailText) {
+    static public function sendMail($mailTo, $mailFrom, $mailText, $mailSlyszCoin) {
+        if($mailSlyszCoin != 0)
+        {
+            $mailText .= ' (Przelano: '.$mailSlyszCoin.'SC!)';
+            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-'. $mailSlyszCoin], ['id' => $_SESSION['uid']]);
+            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+'. $mailSlyszCoin], ['id' => GameMail::nameToId($mailTo)]);
+        }
         DatabaseManager::insertInto("mail", ["whoReceive" => GameMail::nameToId($mailTo), "whoSend" => $mailFrom, "messDate" => date("H:i d-m"), "messText" => $mailText]);
     }
 
@@ -20,7 +26,7 @@ class GameMail {
         return DatabaseManager::selectBySQL('SELECT id FROM users WHERE username="'.$name.'"')[0]['id'];
     }
 
-    static public function deleteMail($id) {
-        DatabaseManager::deleteFrom("Mail", ["whoReceive" => $id]);
+    static public function deleteMail() {
+        DatabaseManager::deleteFrom("Mail", ["whoReceive" => $_SESSION['uid']]);
     }
 }
