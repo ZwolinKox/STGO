@@ -123,6 +123,9 @@ require_once 'config.php';
 
             $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
             $guildInfo =  DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".$guildName."'")[0];
+			
+			if(Post::get("gangName") == $guildName)
+				die("Nie możesz posiadać stosunków dyplomatycznych z własnym klanem!");
 
             if($guildInfo['guildOwner'] != $_SESSION['uid'])
                 die('Nie jestes założycielem gangu!');

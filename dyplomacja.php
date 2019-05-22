@@ -111,7 +111,6 @@
 
                     if(is_array($wynik))
                     {
-                        echo '<br> <div class="btn-dark btn-lg href" id="gangs.php">Wróć do gangu</div><br>';
                         echo '<br><table class="table table-striped table-dark">
                                 <thead>
                                 <tr>
