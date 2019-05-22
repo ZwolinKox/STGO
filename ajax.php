@@ -128,13 +128,13 @@ require_once 'config.php';
                 die('Nie jestes założycielem gangu!');
 
             $otherGuildInfo = DatabaseManager::selectBySQL("SELECT * FROM guilds WHERE guildName='".Post::get('gangName')."'")[0];
-
+            $otherGuildName = $otherGuildInfo['guildName'];
             $myId = $_SESSION['uid'];
             
             if($otherGuildInfo['id'] < 1)
                 die('Taki gang nie istnieje!');
 
-            $result = DatabaseManager::selectbySQL('SELECT * FROM guilddiplomacy WHERE guildOne="'.$guildName.'" OR guildTwo="'.$guildName.'"')[0];
+            $result = DatabaseManager::selectbySQL("SELECT * FROM guilddiplomacy WHERE ( guildOne='$guildName' AND guildTwo='$otherGuildName' ) OR ( guildOne='$otherGuildName' AND guildTwo='$guildName' )")[0];
 
             if($result['id'] >= 1)
                 die('Posiadasz już stosunki dyplomatyczne z tym gangiem');
