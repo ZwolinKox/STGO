@@ -124,7 +124,7 @@
 
                             echo '</select>';
 
-                            echo '<div class="btn-dark btn-lg" style="margin-top: 35px;" onclick="sendMoney()">Włóż przedmiot do depozytu</div>';
+                            echo '<div class="btn-dark btn-lg" style="margin-top: 35px;" onclick="sendItem()">Włóż przedmiot do depozytu</div>';
 
                             echo '<select style="margin-top: 35px;" class="form-control" id="guildItems">';
                                 
@@ -172,7 +172,7 @@
                             echo '</select>';
 
 
-                            echo '<div class="btn-dark btn-lg" style="margin-top: 35px;" onclick="sendMoney()">Wyjmij przedmiot z depozytu</div>';
+                            echo '<div class="btn-dark btn-lg" style="margin-top: 35px;" onclick="getItem()">Wyjmij przedmiot z depozytu</div>';
 
                             
 
@@ -202,16 +202,16 @@
     
     <script>
 
-            function getMoney() {
+            function getItem() {
 
-                const scValue = document.querySelector('#goldValue').value;
+                const itemIdd = document.querySelector('#guildItems').value;
 
                 $.ajax({
                     url: "ajax.php",
                     method: "post",
                     data: {
-                        co: "getMoneyGuild",
-                        money: scValue
+                        co: "getItemGuild",
+                        itemId: itemIdd
                     }
                 }).done((result) => {
                     console.log(result);
@@ -220,16 +220,16 @@
             }
 
             
-            function sendMoney() {
+            function sendItem() {
 
-                const scValue = document.querySelector('#goldValue').value;
+                const itemIdd = document.querySelector('#playerItems').value;
 
                 $.ajax({
                     url: "ajax.php",
                     method: "post",
                     data: {
-                        co: "sendMoneyGuild",
-                        money: scValue
+                        co: "sendItemGuild",
+                        itemId: itemIdd
                     }
                 }).done((result) => {
                     console.log(result);

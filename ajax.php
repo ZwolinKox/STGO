@@ -154,8 +154,64 @@ require_once 'config.php';
             die('success');
         }
 
-        elseif (Post::get('co') == 'newFriendGang') {
-            die('zeby wyszli z dan');
+        elseif(Post::get('co') == 'sendItemGuild') {
+            $itemId = Post::get('itemId');
+            $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+            $depoSlot;
+
+            if(DatabaseManager::selectBySQL("SELECT guildBankSlotOne FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotOne'] == 0)
+            {
+                $depoSlot = 'guildBankSlotOne';
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotTwo FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotTwo'] == 0)
+            {
+                $depoSlot = "guildBankSlotTwo";
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotThree FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotThree'] == 0)
+            {
+                $depoSlot = "guildBankSlotThree";            
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotFour FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotFour'] == 0)
+            {
+                $depoSlot = "guildBankSlotFour";
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotFive FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotFive'] == 0)
+            {
+                $depoSlot = "guildBankSlotFive";  
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotSix FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotSix'] == 0)
+            {
+                $depoSlot = "guildBankSlotSix";
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotSeven FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotSeven'] == 0)
+            {
+                $depoSlot = "guildBankSlotSeven";  
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotEight FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotEight'] == 0)
+            {
+                $depoSlot = "guildBankSlotEight";  
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotNine FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotNine'] == 0)
+            {
+                $depoSlot = "guildBankSlotNine";  
+            }
+            elseif(DatabaseManager::selectBySQL("SELECT guildBankSlotTen FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotTen'] == 0)
+            {
+                $depoSlot = "guildBankSlotTen";  
+            }
+            else
+                die('Nie ma miejsca w depozycie gangu!');
+
+            if(EqManager::findItem($itemId) == null) 
+                die('Nie posiadasz takiego przedmiotu!');
+
+            //die($itemId);
+
+            DatabaseManager::updateTable('users', [EqManager::findItem($itemId) => 0], ['id' => $_SESSION['uid']]);
+            DatabaseManager::updateTable('guilds', [$depoSlot => $itemId], ['guildName' => "'".$guildName."'"]);
+
+            die('success');
+
         }
 
         elseif (Post::get('co') == 'guildAccept') {
