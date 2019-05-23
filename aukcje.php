@@ -79,8 +79,8 @@
                                 $seller = UserManager::nickById($elements[$i]['sellerId']);
                                 $price = $elements[$i]['itemPrice'];
                                 $itemId = $elements[$i]['id'];
-
-                                echo '<div class="btn-dark btn-lg" onclick="buyItem('.$itemId.')">'.$item.' ('.$price.'SC) - '.$seller.'</div>';
+ 
+                                echo '<div class="btn-dark btn-lg" onclick="buyItem('.$itemId.')">'.$item.' '.EqManager::stat($elements[$i]["itemId"]).' ('.$price.'SC) - '.$seller.'</div>';
                             }
                         }
                     ?>

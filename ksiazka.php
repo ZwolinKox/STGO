@@ -85,7 +85,7 @@
 
                                 echo '<div class="btn-dark btn-lg href" id="index.php">Powrót</div>';
                                 echo '<div class="btn-dark btn-lg href" id="ksiazka.php">Szukaj innego gracza</div><br>';
-                                echo '<h3 style="display: inline;"><p>'.UserManager::otherNick($playerData[0]["id"], "span").' ('.$playerData[0]["userLevel"].')</p></h3>';
+                                echo '<h3 style="display: inline;"><p>'.UserManager::otherNick($playerData[0]["id"], "span").' (Lvl: '.$playerData[0]["userLevel"].')</p></h3>';
                                 
                                 $xpPoints = ($playerData[0]['xpPoints'] / $playerData[0]['maxXp']) * 100;
                                 echo '

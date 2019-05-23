@@ -68,7 +68,7 @@
         $stats['procentXp'] = ($stats['xpPoints'] / $stats['maxXp']) * 100;
         
         echo '<div id="stats">';
-        echo '<h3 id="username" style="display: inline;"><p>'.UserManager::Nick('span').' ('.$stats['userLevel'].')</p></h3>';
+        echo '<h3 id="username" style="display: inline;"><p>'.UserManager::Nick('span').' (Lvl: '.$stats['userLevel'].')</p></h3>';
         echo '<h3 id="gamemode"><p>Tryb gry <span style="color: '.$stats['hardcoreColor'].'">'.$stats['hardcore'].'!</span></p></h3>';
         echo '
         <h5>Punkty życia:</h5>
@@ -204,7 +204,7 @@ END;
             const resultObj = JSON.parse(result);    
 
             document.querySelector('#stats').innerHTML  = `
-                <h3 id="username"><p>${ resultObj.username } (${ resultObj.userLevel })</p></h3>
+                <h3 id="username"><p>${ resultObj.username } (Lvl: ${ resultObj.userLevel })</p></h3>
                 <h3 id="gamemode"><p>Tryb gry <span style="color: ${ resultObj.hardcoreColor }"> ${ resultObj.hardcore }!</span></p></h3>
                 <h5>Punkty życia:</h5>
                 <div class="progress">
