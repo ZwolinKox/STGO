@@ -139,24 +139,28 @@
                                 }
                                 else if(Get::get('naprawa')== 'koparka')
                                 {
+                                    $elementsValue = DatabaseManager::selectBySQL('SELECT collectElik, collectElyk, collectInfo, collectEnod FROM users WHERE id='.$_SESSION['uid']);
+
                                     if(DatabaseManager::selectBySQL("SELECT boolkoparka FROM users WHERE id=".$_SESSION['uid'])[0]['boolkoparka'] != true)
                                     {
                                         echo '<br><h3 style="text-align: center;">Częsci od elektroników!</h3>';
                                         echo '<div class="progress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectElik'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectElik'].'%"></div>
                                         </div><br>';
                                         echo '<h3 style="text-align: center;">Częsci od elektryków!</h3>';
                                         echo '<div class="progress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectElyk'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectElyk'].'%"></div>
                                         </div><br>';
                                         echo '<h3 style="text-align: center;">Częsci od informatyków!</h3>';
                                         echo '<div class="progress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectInfo'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectInfo'].'%"></div>
                                         </div><br>';
                                         echo '<h3 style="text-align: center;">Częsci od energi odnawialnej!</h3>';
                                         echo '<div class="progress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectEnod'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectEnod'].'%"></div>
                                         </div><br>';
+
+                                        echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php">Wróć</div>';
 
                                     }
                                 }
@@ -174,7 +178,7 @@
     
                                     echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php?naprawa=tak">Tak </div>';
                                     echo '<br> <div class="btn-dark btn-lg href" id="index.php">Nie</div>';
-                                    echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php?naprawa=koparka">Chcę złożyć koparkę słyszcoinów</div>';
+                                    echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php?naprawa=koparka">Koparka Słysz Coinów</div>';
     
                                 }
                             }

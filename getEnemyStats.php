@@ -68,39 +68,31 @@ elseif ($_POST['co'] == 'Cios') {
             }
     
             //Losowanie, czy będzie drop
-            if(rand(1, 20) == 3) {
-                $itemDrop = rand(1, 5);
-    
-                switch ($itemDrop) {
-                        case '1':
-                        $itemDrop = 'dropItemOne';
-                        break;
-                        case '2':
-                        $itemDrop = 'dropItemTwo';
-                        break;
-                        case '3':
-                        $itemDrop = 'dropItemThree';
-                        break;
-                        case '4':
-                        $itemDrop = 'dropItemFour';
-                        break;
-                        case '5':
-                        $itemDrop = 'dropItemFive';
-                        break;
+            $itemDrop = Drop::school(1);
+            if($itemDrop != null)
+            {
+                $freeSlot = EqManager::findSpace();
+                
+                if($freeSlot != null) 
+                {
+                    DatabaseManager::updateTable('users', [$freeSlot => $itemDrop], ['id' => $_SESSION['uid']]);
+                }
+                else
+                {
+                    $_SESSION['enemyInfo']['isFull'] = true;
                 }
     
-                $freeSlot = EqManager::findSpace();
+                $_SESSION['enemyInfo']['dropItem'] = DatabaseManager::selectBySQL("SELECT name FROM items, enemy WHERE items.id = enemy.$itemDrop AND enemy.id =".$_SESSION['enemyInfo']['id'])[0]['name'];
+            
+            }
     
                 
     
-                if($freeSlot != null) {
-                    DatabaseManager::updateTable('users', [$freeSlot => DatabaseManager::selectBySQL("SELECT $itemDrop FROM enemy WHERE id=".$_SESSION['enemyInfo']['id'])[0][$itemDrop]], ['id' => $_SESSION['uid']]);
-                } else
-                    $_SESSION['enemyInfo']['isFull'] = true;
+                
     
-                $_SESSION['enemyInfo']['dropItem'] = DatabaseManager::selectBySQL("SELECT name FROM items, enemy WHERE items.id = enemy.$itemDrop AND enemy.id =".$_SESSION['enemyInfo']['id'])[0]['name'];
+                
     
-            }
+            
     
             $_SESSION['fight'] = false;
             unset($_SESSION['fight']);

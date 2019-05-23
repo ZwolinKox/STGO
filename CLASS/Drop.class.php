@@ -5,11 +5,31 @@
     class Drop {
         //Metoda drop zwraca id zdobytego itemu lub null jesli nie wylosowales itemu
         public static function school($enemyId) {
-            $enemyData = DatabaseManager::selectBySQL('SELECT dropItemOne, dropItemTwo, dropItemThree, dropItemFour, dropItemFive FROM enemy WHERE id='.$enemyId);           
+            $itemFirst = DatabaseManager::selectBySQL('SELECT dropItemOne FROM enemy WHERE id='.$enemyId)[0]['dropItemOne'];
+            $itemTwo = DatabaseManager::selectBySQL('SELECT dropItemTwo FROM enemy WHERE id='.$enemyId)[0]['dropItemTwo'];
+            $itemThree = DatabaseManager::selectBySQL('SELECT dropItemThree FROM enemy WHERE id='.$enemyId)[0]['dropItemThree'];
+            $itemFour = DatabaseManager::selectBySQL('SELECT dropItemFour FROM enemy WHERE id='.$enemyId)[0]['dropItemFour'];
+            $itemFive = DatabaseManager::selectBySQL('SELECT dropItemFive FROM enemy WHERE id='.$enemyId)[0]['dropItemFive'];           
+            
             $items = array();
             $randomSeed = rand(1, 100);
             $dropType;
 
+            //DROPIENIE CZESCI DO KOPARKI
+            if(rand(1, 100) <= 25)
+            {
+                switch(rand(1, 4))
+                {
+                    case 1: DatabaseManager::updateTable('users', ['collectElik' => 'collectElik+1'], ['id' => $_SESSION['uid']]); break;
+                    case 2: DatabaseManager::updateTable('users', ['collectElyk' => 'collectElyk+1'], ['id' => $_SESSION['uid']]); break;
+                    case 3: DatabaseManager::updateTable('users', ['collectInfo' => 'collectInfo+1'], ['id' => $_SESSION['uid']]); break;
+                    case 4: DatabaseManager::updateTable('users', ['collectEnod' => 'collectEnod+1'], ['id' => $_SESSION['uid']]); break;       
+                }
+            }
+
+
+
+            //DROPIENIE ITEMA
             if($randomSeed <= 5)
             {
                 $dropType = "heroic";
@@ -23,29 +43,30 @@
                 return null;
             }
 
-            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$enemyData[0]['dropItemOne'])[0]['dropItemOne'] == $dropType)
+
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemFirst)[0]['rarity'] == $dropType)
             {
-                array_push($items, $enemyData[0]['dropItemOne']);
+                array_push($items, $itemFirst);
             }
 
-            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$enemyData[0]['dropItemTwo'])[0]['dropItemTwo'] == $dropType)
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemTwo)[0]['rarity'] == $dropType)
             {
-                array_push($items, $enemyData[0]['dropItemTwo']);
+                array_push($items, $itemTwo);
             }
 
-            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$enemyData[0]['dropItemThree'])[0]['dropItemThree'] == $dropType)
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemThree)[0]['rarity'] == $dropType)
             {
-                array_push($items, $enemyData[0]['dropItemThree']);
+                array_push($items, $itemThree);
             }
 
-            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$enemyData[0]['dropItemFour'])[0]['dropItemFour'] == $dropType)
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemFour)[0]['rarity'] == $dropType)
             {
-                array_push($items, $enemyData[0]['dropItemFour']);
+                array_push($items, $itemFour);
             }
 
-            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$enemyData[0]['dropItemFive'])[0]['dropItemFive'] == $dropType)
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemFive)[0]['rarity'] == $dropType)
             {
-                array_push($items, $enemyData[0]['dropItemFive']);
+                array_push($items, $itemFive);
             }
 
             $dropSeed = rand(0, count($items)-1);
