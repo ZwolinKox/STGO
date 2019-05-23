@@ -229,18 +229,7 @@
                                         {
                                             echo '<h3>Twoje kazanie brzmiało następująco:';
                                             echo '<p style="text-align: justify;">
-                                            Drodzy bracia i siostry, 
-                                            Pomimo tego co wpaja nam "nauka" od setek lat trzeba ujrzec swiatlo prawdy.. 
-                                            Otoz Ziemia nie jest okragla, tak jak wam tak wmawiaja naukowcy i rzad. 
-                                            Od wiekow ludzie wiedzieli, ze jest plaska. 
-                                            Dzisiaj malo kto zna prawde, 
-                                            dlatego przybywam do was, aby was oswiecic.
-                                            Wytlumaczcie mi moi drodzy, jak to jest. 
-                                            Przeciez jakby ziemia byla kula, to oceany by po niej splywaly! 
-                                            Nie przekonalem was? To posluchajcie tego!
-                                            Samoloty nie mogą latać po kulistej Ziemi, gdyż ona się obraca, a każde lądowanie skończyłoby się katastrofą. 
-                                            I co wy na to "naukowcy"?
-                                            Na koniec chcialbym tylko prosic o wybaczenie dla tych, którzy szerzą te kłamstwa..
+                                           Na początku nie było nic. Następnie pojawił się Piszczan. Piszczan zaczął walić piszczana. Tak powstała ziemia. Następnie Piszczan stwierdził, że to jest dobre. Zaczął ponownie walić piszczana. Następnie oddał mocz, uznając że w ziemi musi coś płynąć. Tak właśnie wypełnił ziemię Harnasiem. Piszczan stwierdził, że to jest dobre. Piszczan po raz 3 ponowił walić piszczana. Wtedy pierwszy raz wypowiedziano słowa „Masno Ni”. W ten sposób powstali ludzie, zwierzęta oraz wieloryby. Piszczan postanowił stworzyć kogoś równego sobie, kogoś kto mu dorówna, kogoś kto będzie z nim rapował. Zaczął walić piszczana i tak powstał Hulbój. Piszczan nadał sobie tytuł Lil. Od tego momentu był to Lil Piszczan. Hulbój nadał sobie tytuł Young. Od tamtego momentu w świecie istniały 2 najsilniejsze istoty we wszechświecie, Young Hulbów i Lil Piszczan. Jednak Piszczan zaczął się nudzić, więc postanowił dać ludziom inteligencję. Zaczęli tworzyć cywilizacje, jedna szczególnie wdała się w łaski Piszczana, naród żydowski. Na wodza tego narodu wybrał ówczesną najpotężniejszą istotę na ziemi, Mojżesza. To on na górze Sohan otrzymał od Lil Piszczana jego 2 płyty, na pierwszej skierowanej do samego Piszczana były 3 kawałki, jeden z Hulbójem na feacie, a na drugiej płycie znajdowało się 7 utworów skierowanych do ludzi. Jednak Mojżesz stwierdził, że rapowanie jest również dla niego, jednak nie mówił o to Lil Piszczanowi. Lil Piszczan następnie postanowił zrobić dla siebie konkurencję muzyczną, tak powstało NBG, którego siedziba mieściła się w Nędzy.
                                             </p><br>';
                                             $rng = rand(1,2);
                                             switch($rng)
@@ -283,16 +272,14 @@
                                         {
                                             echo '<h3>Twoje kazanie brzmiało następująco:';
                                             echo '<p style="text-align: justify;">
-                                            Drodzy bracia i siostry
-                                            Jak pewnie myslicie, Adolf Hitler byl czlowiekiem
-                                            Jednakze byl genetycznie modyfikowanyn delfinem!
-                                            Myslicie, ze to absurd?
-                                            Nie powiedzialbym
-                                            Adolf - Imie
-                                            A dolphin - delfin
-                                            Adolfin..
-                                            To nie przypadek
-                                            Ta cala wiedze mam z wiarygodnego zrodla, kwejk
+                                            Kiedyś Young Hulbój i Lil Piszczan postanowili się sprawdzić na siłowni u chudego
+											Obydwoje dysponowali nieludzką siłą, która jest w stanie zniszczyć całe galaktyki
+											Ich sparing trwał naprawdę długo, ale w końcu ich pięści spotkały się.
+											Tak powstała jasna siła, czyste dobro i moc połączona z dwój bogów.
+											Ta czysta energia zmaterializowała się jako Wielmożny Grześ.
+											Był on jednocześnie najmądrzejszą istotą we wrzechświecie jak i najsilniejszą.
+											Zamieszkał on w świecie bogów razem z Lil Piszczanem oraz Young Hulbójem.
+											Jednak opuścił ten świat błąkając się po ludzkiej ziemi, nie mieszając się w koflikty tego świata.
                                             </p><br>';
                                             $rng = rand(1,2);
                                             switch($rng)
@@ -335,17 +322,11 @@
                                         {
                                             echo '<h3>Twoje kazanie brzmiało następująco:';
                                             echo '<p style="text-align: justify;">
-                                            Drodzy bracia i siostry
-                                            Jak dobrze wiecie, coraz popularniejsze sa w internetach tzw czalendze
-                                            Wykonywane sa zarowno przez gwiazdy, jak i zwyklych ludzi
-                                            Jednakze jeden z nich, nie jest zwykla zabawa
-                                            Mam tutaj na mysli Ice Bucket Challenge
-                                            Pewnie zyjecie w przekonaniu, ze to zabawa charytatywna
-                                            Ktora przerodzila sie w forme rozrywki?
-                                            W zadnym wypadku!
-                                            Diabel tkwi w szczegolach
-                                            W rzeczywistosci jest to chrzest satanistyczny
-                                            Jezeli widzicie, ze wasze dziecko wykonuje podobne praktyki, mozecie zglosic sie do egzorcysty
+                                            Mojżesz był wybranym człowiekiem. Wszysci żydzi znali oblicze Lil Piszczana, ale tylko Mojżesz był przy premierze jego kawałków.
+											Jednak i on zaczął rapować, Lil Piszczan to dostrzegł i był z niego dumny.
+											Dał mu wybór: nagrywać w KGB albo NBG
+											Jednakże Mojżesz nie wykonał prośby i zaczął solową działalność jako xXxMojżesz.
+											Za to żydów spotkała zagłada
                                             </p><br>';
                                             $rng = rand(1,2);
                                             switch($rng)
