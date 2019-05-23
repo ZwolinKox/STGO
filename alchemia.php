@@ -81,7 +81,7 @@
                                     }
                                 }
                                 elseif(Get::get('co') == 'kamien') {
-                                    if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 50 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 20) {
+                                    if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 50 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 150) {
                                         DatabaseManager::updateTable('users', ['userEnergy' => '100', 'slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
                                         URL::to('alchemia.php');
                                     }
@@ -92,9 +92,19 @@
                                     }
                                 }  
                                 elseif (Get::get('co') == 'depuratus') {
-                                    if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 70 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 50) {
-                                        DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10', 'slyszCoin' => 'slyszCoin-50'], ['id' => $_SESSION['uid']]);
+                                    if(DatabaseManager::selectBySQL("SELECT statIntelect FROM users WHERE id=".$_SESSION['uid'])[0]['statIntelect'] >= 500 && DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] >= 150) {
+                                        
+                                        DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-150'], ['id' => $_SESSION['uid']]);
+
+                                        if(rand(1, 4) == 1)
+                                        {
+                                                DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+10'], ['id' => $_SESSION['uid']]);
+                                        }
+                                        else
+                                            $_SESSION['badDepuratus'] = 'true';
+                                        
                                         URL::to('alchemia.php');
+
                                     }
                                     else {
                                         echo '<h3 style="color: red;">Nie masz wystarczająco inteligencji lub Słysz coinów</h3>';
@@ -104,6 +114,11 @@
                             }
                             else
                             {
+                                if(isset($_SESSION['badDepuratus'])) {
+                                    echo '<h3 style="color: lightred">Nie udało się zażyć depuratus!</h3>';
+                                    unset($_SESSION['badDepuratus']);
+                                }
+                            
                                 echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=panaceum">Panaceum (Wymagana inteligencja: 30, cena 20SC) (Odnawia całe HP)</div>';
                                 echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=kamien">Kamień filozoficzny (Wymagana inteligencja: 50, cena 20SC) (Odnawia całą energię)</div>';
                                 echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=depuratus">Depuratus (Wymagana inteligencja: 70, cena 50SC) (+10 do MAXHP)</div>';

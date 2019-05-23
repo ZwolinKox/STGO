@@ -198,8 +198,8 @@ END;
                                         if(Get::get('miejsce') == 'mcdonald')
                                         {
                                             echo '<h3>Witaj w McDonalds! Mogę przyjąć twoje zamówienie?</h3><br>';
-                                            echo '<div class="btn-dark btn-lg" id="burgerslysz">SłyszBurger (-1 Siła, +1 MaxHP)</div>';
-                                            echo '<div class="btn-dark btn-lg" id="bigslysz">BigSłysz (+1 Siła, -1 MaxHP)</div>';
+                                            echo '<div class="btn-dark btn-lg" id="burgerslysz">SłyszBurger (-1 Siła, +1 MaxHP 15SC)</div>';
+                                            echo '<div class="btn-dark btn-lg" id="bigslysz">BigSłysz (+1 Siła, -1 MaxHP 15SC)</div>';
                                             echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Wyjdz na dwór</div>';
                                         }
                                         else if(Get::get('miejsce') == 'aldi')

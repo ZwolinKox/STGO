@@ -134,17 +134,18 @@
 
         //Metody wykorzystywane w szkole w parku w McDonalds
         static public function jedzBurger() {
-			if(DatabaseManager::selectBySQL('SELECT statStrength FROM users WHERE id='.$_SESSION['uid'])[0]['statStrength'] > 1) {
+			if(DatabaseManager::selectBySQL('SELECT statStrength FROM users WHERE id='.$_SESSION['uid'])[0]['statStrength'] > 1 && DatabaseManager::selectBySQL('SELECT slyszCoin FROM users WHERE id='.$_SESSION['uid'])[0]['slyszCoin'] >= 15) {
 				DatabaseManager::updateTable('users', ['statStrength' => 'statStrength-1'], ['id' => $_SESSION['uid']]);
-				DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+1'], ['id' => $_SESSION['uid']]);
+				DatabaseManager::updateTable('users', ['maxHp' => 'maxHp+1', 'slyszCoin' => 'slyszCoin-15'], ['id' => $_SESSION['uid']]);
 			}
 
         }
 
         static public function jedzBig() {
-			if(DatabaseManager::selectBySQL('SELECT maxHp FROM users WHERE id='.$_SESSION['uid'])[0]['maxHp'] > 1) {
+			if(DatabaseManager::selectBySQL('SELECT maxHp FROM users WHERE id='.$_SESSION['uid'])[0]['maxHp'] > 1 &&
+              DatabaseManager::selectBySQL('SELECT slyszCoin FROM users WHERE id='.$_SESSION['uid'])[0]['slyszCoin'] >= 15) {
 				DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+1'], ['id' => $_SESSION['uid']]);
-				DatabaseManager::updateTable('users', ['maxHp' => 'maxHp-1'], ['id' => $_SESSION['uid']]);
+				DatabaseManager::updateTable('users', ['maxHp' => 'maxHp-1', 'slyszCoin' => 'slyszCoin-15'], ['id' => $_SESSION['uid']]);
 			}
 
         }
