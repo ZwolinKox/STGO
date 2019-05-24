@@ -258,7 +258,7 @@ require_once 'config.php';
 
         $eqSlot = EqManager::findSpace();
             if($eqSlot == null) 
-                die('Nie posiadasz takiego przedmiotu!');
+                die('Nie masz wolnego miejsca w ekwipunku!');
 
             //die($itemId);
 

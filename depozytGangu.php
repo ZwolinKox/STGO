@@ -87,7 +87,7 @@
                             $guildOwner = $guildInfo['guildOwner'];
                             
                             echo '<h3>Depozyt klanowy posiada 10 miejsc!</h3>';
-
+                            echo '<h3 style="color: red;" id="error"></h3>';
                             echo '<label style="margin-top: 15px;" for="playerItems"><h4>Twoje przedmioty</h4></label>';
                             echo '<select class="form-control" id="playerItems">';
                                 
@@ -217,7 +217,9 @@
                         itemId: itemIdd
                     }
                 }).done((result) => {
-                    console.log(result);
+                    if(result != "success")
+                        document.querySelector('#error').innerHTML = result;
+                        
                     parent.window.location.reload();
                 })
             }
@@ -235,7 +237,9 @@
                         itemId: itemIdd
                     }
                 }).done((result) => {
-                    console.log(result);
+                    if(result != "success")
+                        document.querySelector('#error').innerHTML = result;
+
                     parent.window.location.reload();
                 })
             }
