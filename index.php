@@ -57,17 +57,14 @@
 
 <div class="collapse" id="collapseExample">
   <div class="card bg-dark card-body">
-	<div class="card-header">Aktualizacja 1.2B i 1.3B / 21.05.2019</div>
+	<div class="card-header">Aktualizacja 1.4B / 24.05.2019</div>
     <div class="card-body">
 	<ul>
-		<li>Dodanie systemu opuszczenia/rozwiązania gangu</li>
-		<li>Dodanie systemu dodania ludzi do gangu</li>
-		<li>Dodanie systemu przyjmowania zaproszeń do gangu</li>
-		<li>Dodanie książki telefonicznej i zakładki profilu</li>
-		<li>Dodanie skarbca gangu</li>
-		<li>W wersji 1.3B:</li>
-		<li>Dodanie rankingu gangów</li>
-		<li>Przygotowanie pod ulepszanie gangów i wyświetlenie statystyk</li>
+		<li>Dodanie systemu depozytu klanu</li>
+		<li>Nowy system dropu</li>
+		<li>Osłabienie zdobywania maksymalnego hp</li>
+		<li>Dodanie opisu przedmiotów do aukcji</li>
+		<li>Dodanie nowych kazań do kościoła</li>
 	</ul>
 	</div>
   </div>
