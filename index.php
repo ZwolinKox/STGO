@@ -65,6 +65,7 @@
 		<li>Osłabienie zdobywania maksymalnego hp</li>
 		<li>Dodanie opisu przedmiotów do aukcji</li>
 		<li>Dodanie nowych kazań do kościoła</li>
+		<li>Dodanie informacji o koszcie naprawy komputera</li>
 	</ul>
 	</div>
   </div>
