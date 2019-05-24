@@ -214,6 +214,61 @@ require_once 'config.php';
 
         }
 
+        elseif(Post::get('co') == 'getItemGuild') {
+            $itemId = Post::get('itemId');
+            $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
+            $depoSlot;
+
+        if(DatabaseManager::selectBySQL("SELECT guildBankSlotOne FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotOne'] == $itemId)
+        {
+            $depoSlot = "guildBankSlotOne";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT guildBankSlotTwo FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotTwo'] == $itemId)
+        {
+            $depoSlot = "guildBankSlotTwo";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT guildBankSlotThree FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotThree'] == $itemId)
+        {
+            $depoSlot = "guildBankSlotThree";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT guildBankSlotFour FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotFour'] == $itemId)
+        {
+            $depoSlot = "guildBankSlotFour";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT guildBankSlotFive FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotFive'] == $itemId)
+        {
+            $depoSlot = "guildBankSlotFive";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT guildBankSlotSix FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotSix'] == $itemId)
+        {
+            $depoSlot = "guildBankSlotSix";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT guildBankSlotSeven FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotSeven'] == $itemId)
+        {
+            $depoSlot = "guildBankSlotSeven";
+        }
+        else if(DatabaseManager::selectBySQL("SELECT guildBankSlotEight FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotEight'] == $itemId)
+        {
+            $depoSlot = "guildBankSlotEight";
+        }
+        else
+        {
+            die('Nie ma takiego przedmiotu w depozycie!');
+        }
+
+        $eqSlot = EqManager::findSpace();
+            if($eqSlot == null) 
+                die('Nie posiadasz takiego przedmiotu!');
+
+            //die($itemId);
+
+            DatabaseManager::updateTable('users', [$eqSlot => $itemId], ['id' => $_SESSION['uid']]);
+            DatabaseManager::updateTable('guilds', [$depoSlot => 0], ['guildName' => "'".$guildName."'"]);
+
+            die('success');
+
+        }
+
         elseif (Post::get('co') == 'guildAccept') {
 
             $guildName = Post::get('guildName');

@@ -86,7 +86,9 @@
                             $guildMemberTen = $guildInfo['guildMemberTen'];
                             $guildOwner = $guildInfo['guildOwner'];
                             
+                            echo '<h3>Depozyt klanowy posiada 10 miejsc!</h3>';
 
+                            echo '<label style="margin-top: 15px;" for="playerItems"><h4>Twoje przedmioty</h4></label>';
                             echo '<select class="form-control" id="playerItems">';
                                 
                             if(DatabaseManager::selectBySQL("SELECT eqSlotOne FROM users WHERE id=".$_SESSION['uid'])[0]['eqSlotOne'] != 0)
@@ -125,8 +127,9 @@
                             echo '</select>';
 
                             echo '<div class="btn-dark btn-lg" style="margin-top: 35px;" onclick="sendItem()">Włóż przedmiot do depozytu</div>';
+                            echo '<label style="margin-top: 15px;" for="guildItems"><h4>Depozyt klanowy</h4></label>';
 
-                            echo '<select style="margin-top: 35px;" class="form-control" id="guildItems">';
+                            echo '<select class="form-control" id="guildItems">';
                                 
                             if(DatabaseManager::selectBySQL("SELECT guildBankSlotOne FROM guilds WHERE guildName='".$guildName."'")[0]['guildBankSlotOne'] != 0)
                             {
