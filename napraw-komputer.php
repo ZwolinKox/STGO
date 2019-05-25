@@ -174,7 +174,7 @@
                                 }
                                 else 
                                 {
-                                    echo '<h3>Chcesz naprawiać komputer?</h3>';
+                                    echo '<h3>Chcesz naprawiać komputer? (Koszt 30SC, 20 energii)</h3>';
     
                                     echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php?naprawa=tak">Tak </div>';
                                     echo '<br> <div class="btn-dark btn-lg href" id="index.php">Nie</div>';

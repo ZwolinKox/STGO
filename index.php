@@ -57,6 +57,7 @@
 
 <div class="collapse" id="collapseExample">
   <div class="card bg-dark card-body">
+<<<<<<< HEAD
 	<div class="card-header">Aktualizacja 1.2B, 1.3B i 1.4B / 23.05.2019</div>
     <div class="card-body">
 	<ul>
@@ -71,6 +72,17 @@
 		<li>W wersji 1.4B:</li>
 		<li>Nowy system dropu!</li>
 		<li>Informacje o itemach w sklepie i o dropie</li>
+=======
+	<div class="card-header">Aktualizacja 1.4B / 24.05.2019</div>
+    <div class="card-body">
+	<ul>
+		<li>Dodanie systemu depozytu klanu</li>
+		<li>Nowy system dropu</li>
+		<li>Osłabienie zdobywania maksymalnego hp</li>
+		<li>Dodanie opisu przedmiotów do aukcji</li>
+		<li>Dodanie nowych kazań do kościoła</li>
+		<li>Dodanie informacji o koszcie naprawy komputera</li>
+>>>>>>> 9506907cb90a5490e908effd7e55d280fd92c909
 	</ul>
 	</div>
   </div>
