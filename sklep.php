@@ -106,6 +106,7 @@
                                     $iLvl = $itemData[$i]['forLevel'];
                                     $iDmg = $itemData[$i]['addDamage'];
                                     $count = $i +1;
+                                    $iId = $itemData[$i]['id'];
 
                                     if(($checkCost < $iCost)||($checkLvl < $iLvl))
                                     {
@@ -115,8 +116,9 @@
                                     {
                                         $color = '';
                                     }                               
-                                        echo '<div class="btn-dark btn-lg shop" id="'.$count.'"><p style="color: '.$color.';">'.$iName.'(Lvl: '.$iLvl.') Obrażenia: '.$iDmg.' Koszt: '.$iCost.'SC</p></div>';
-                                }                            
+                                        //echo '<div class="btn-dark btn-lg shop" id="'.$count.'"><p style="color: '.$color.';">'.$iName.'(Lvl: '.$iLvl.') Obrażenia: '.$iDmg.' Koszt: '.$iCost.'SC</p></div>';
+                                        echo '<div class="btn-dark btn-lg shop" id="'.$count.'"><p style="color: '.$color.';">'.$iName.' '.EqManager::stat($iId).' Koszt: '.$iCost.'SC</p></div>';
+                                    }                            
                        ?>
 
                 </div>

@@ -57,7 +57,7 @@
 
 <div class="collapse" id="collapseExample">
   <div class="card bg-dark card-body">
-	<div class="card-header">Aktualizacja 1.2B i 1.3B / 21.05.2019</div>
+	<div class="card-header">Aktualizacja 1.2B, 1.3B i 1.4B / 23.05.2019</div>
     <div class="card-body">
 	<ul>
 		<li>Dodanie systemu opuszczenia/rozwiązania gangu</li>
@@ -68,6 +68,9 @@
 		<li>W wersji 1.3B:</li>
 		<li>Dodanie rankingu gangów</li>
 		<li>Przygotowanie pod ulepszanie gangów i wyświetlenie statystyk</li>
+		<li>W wersji 1.4B:</li>
+		<li>Nowy system dropu!</li>
+		<li>Informacje o itemach w sklepie i o dropie</li>
 	</ul>
 	</div>
   </div>

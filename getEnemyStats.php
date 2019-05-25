@@ -82,7 +82,7 @@ elseif ($_POST['co'] == 'Cios') {
                     $_SESSION['enemyInfo']['isFull'] = true;
                 }
     
-                $_SESSION['enemyInfo']['dropItem'] = DatabaseManager::selectBySQL("SELECT name FROM items, enemy WHERE items.id = enemy.$itemDrop AND enemy.id =".$_SESSION['enemyInfo']['id'])[0]['name'];
+                $_SESSION['enemyInfo']['dropItem'] = $itemDrop;
             
             }
     

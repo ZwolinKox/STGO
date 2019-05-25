@@ -62,7 +62,7 @@
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
 								
-				<div class="col-12 text-center display-4">Lvl Up!</div>
+				<div class="col-12 text-center display-4">Wygrałeś!</div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
@@ -72,8 +72,8 @@
                     
                     <?php
                     if(isset($_SESSION['enemyInfo']['dropItem'])) {
-                        $color = 'style="color: lightblue"';
-                        echo '<h3>Z tej walki wyniosłeś również przedmiot o nazwie: <span '.$color.'>'.$_SESSION['enemyInfo']['dropItem']. "</span> </h3>";
+                        $dropItemId = $_SESSION['enemyInfo']['dropItem'];
+                        echo '<h3>Zdobyłeś przedmiot: '.EqManager::item($dropItemId, "colorTag").'</h3>';
                     }
 
                     if(isset($_SESSION['enemyInfo']['isFull']) && $_SESSION['enemyInfo']['isFull'])
