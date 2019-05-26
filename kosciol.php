@@ -183,41 +183,42 @@
 
                                     //TU BEDZIE KOLEJNY ACZIFMENT
 
+
                                     echo'
-                                                
-                                                    <br><select class="form-control">
-                                                        <option>Tu naraze jest ściernisko</option>
-                                                        <option>Pole, pole, łyse pole</option>
-                                                        <option>Pomalutku, bez pośpiechu</option>
-                                                        <option>wszystko zrobię sam</option>
-                                                        <option>ale mam już plan</option>
+                                                <h3 style="color: lightgreen;" id="songGit"></h3>
+                                                    <br><select class="form-control" id="song1">
+                                                        <option value="1">Tu naraze jest ściernisko</option>
+                                                        <option value="2">Pole, pole, łyse pole</option>
+                                                        <option value="3">Pomalutku, bez pośpiechu</option>
+                                                        <option value="4">wszystko zrobię sam</option>
+                                                        <option value="5">ale mam już plan</option>
                                                     </select><br>
                                                 
-                                                    <select class="form-control">
-                                                        <option>Tu naraze jest ściernisko</option>
-                                                        <option>Pole, pole, łyse pole</option>
-                                                        <option>Pomalutku, bez pośpiechu</option>
-                                                        <option>wszystko zrobię sam</option>
-                                                        <option>ale mam już plan</option>
+                                                    <select class="form-control" id="song2">
+                                                        <option value="1">Tu naraze jest ściernisko</option>
+                                                        <option value="2">Pole, pole, łyse pole</option>
+                                                        <option value="3">Pomalutku, bez pośpiechu</option>
+                                                        <option value="4">wszystko zrobię sam</option>
+                                                        <option value="5">ale mam już plan</option>
                                                     </select><br>
                                                 
-                                                    <select class="form-control">
-                                                        <option>Tu naraze jest ściernisko</option>
-                                                        <option>Pole, pole, łyse pole</option>
-                                                        <option>Pomalutku, bez pośpiechu</option>
-                                                        <option>wszystko zrobię sam</option>
-                                                        <option>ale mam już plan</option>
+                                                    <select class="form-control" id="song3"id="song1">
+                                                        <option value="1">Tu naraze jest ściernisko</option>
+                                                        <option value="2">Pole, pole, łyse pole</option>
+                                                        <option value="3">Pomalutku, bez pośpiechu</option>
+                                                        <option value="4">wszystko zrobię sam</option>
+                                                        <option value="5">ale mam już plan</option>
                                                     </select><br>
                                                 
-                                                    <select class="form-control">
-                                                        <option>Tu naraze jest ściernisko</option>
-                                                        <option>Pole, pole, łyse pole</option>
-                                                        <option>Pomalutku, bez pośpiechu</option>
-                                                        <option>wszystko zrobię sam</option>
-                                                        <option>ale mam już plan</option>
+                                                    <select class="form-control" id="song4">
+                                                        <option value="1">Tu naraze jest ściernisko</option>
+                                                        <option value="2">Pole, pole, łyse pole</option>
+                                                        <option value="3">Pomalutku, bez pośpiechu</option>
+                                                        <option value="4">wszystko zrobię sam</option>
+                                                        <option value="5">ale mam już plan</option>
                                                     </select><br>';
 
-                                    echo '<br><div class="btn-dark btn-lg href" id="index.php">Śpiewaj!</div>';
+                                    echo '<br><div class="btn-dark btn-lg" id="goSong">Śpiewaj!</div>';
 
 
                                 }
@@ -494,6 +495,58 @@
     </div> <!-- ŚRODEK -->
 
 	<br/><br/>
+
+    <script>
+        //2, 5, 3, 4
+
+        let goSong = document.querySelector('#goSong');
+
+        let song1 = document.querySelector('#song1');
+        let song2 = document.querySelector('#song2');
+        let song3 = document.querySelector('#song3');
+        let song4 = document.querySelector('#song4');
+
+        goSong.addEventListener('click', () => {
+            console.log(song1.value + " | " + song2.value + " | " + song3.value + " | " + song4.value)
+
+            if(song1.value == 2 && song2.value  == 5 && song3.value  == 3 && song4.value  == 4) {
+               
+            $.ajax({
+            url : "ajax.php",
+            method : "POST",
+            data : {
+                co: "piesn",
+            }
+            }).done((result) => {
+
+                document.querySelector('#songGit').innerHTML = "Udalo Ci sie zaspiewac piesn! twoja nagroda to " + result;
+                setTimeout(() => {
+                    location.href = "index.php";
+                }, '1000');                
+            }) 
+        }
+        else {
+            $.ajax({
+            url : "ajax.php",
+            method : "POST",
+            data : {
+                co: "death",
+            }
+            }).done((result) => {
+
+                document.querySelector('#songGit').innerHTML = "<span style='color: red;'>Źle zaśpiewałeś psalm! Fanatyczni wyznawcy wymierzają Ci sprawiedliwość</span> ";
+
+                setTimeout(() => {
+                    location.reload();
+                }, '1000');
+            }) 
+        }
+        })
+
+
+        
+
+    </script>
     
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone

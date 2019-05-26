@@ -214,6 +214,42 @@ require_once 'config.php';
 
         }
 
+        elseif(Post::get('co') == 'death') {
+            UserManager::death();
+        }
+
+        elseif (Post::get('co') == "piesn") {
+
+            $add = rand(1, 3);
+
+            DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+
+
+            switch($add) 
+            {
+                case 1:
+                {
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+10'], ['id' => $_SESSION['uid']]);
+                    die('Otrzymałeś 10 slyszCoinów!');
+                } break;
+
+                case 2:
+                {
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-15'], ['id' => $_SESSION['uid']]);
+                    die('Fałszowałeś, więc straciłeś 15 slyszCoinow!');
+                } break;
+
+                case 3:
+                {
+                    DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+4'], ['id' => $_SESSION['uid']]);
+                    die('Od machania mikrofonem wzrosła twoja siła o 4!');
+                } break;
+            }
+
+            
+
+        }
+
         elseif(Post::get('co') == 'getItemGuild') {
             $itemId = Post::get('itemId');
             $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
