@@ -60,9 +60,16 @@
             $dayWeek = DatabaseManager::selectBySQL('SELECT dayWeek FROM users WHERE id='.Session::get('uid'))[0]['dayWeek'];
 
             $dayWeek++;
+
+            if($dayWeek == 7)
+            {
+                Anticheat::checkDate();
+                DatabaseManager::updateTable('users', ['lastSunday' => "now()"], ['id' => $_SESSION['uid']]);
+            }
+
             if($dayWeek > 7) {
                 $dayWeek = 1;
-                DatabaseManager::updateTable('users', ['boolChurch' => 0, 'boolSchoolBan' => 0], ['id' => Session::get('uid')]);
+                DatabaseManager::updateTable('users', ['boolChurch' => 0, 'boolSchoolBan' => 0], ['id' => Session::get('uid')]);  
             }
                 
 

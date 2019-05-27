@@ -57,23 +57,8 @@
 
 <div class="collapse" id="collapseExample">
   <div class="card bg-dark card-body">
-<<<<<<< HEAD
-	<div class="card-header">Aktualizacja 1.2B, 1.3B i 1.4B / 23.05.2019</div>
-    <div class="card-body">
-	<ul>
-		<li>Dodanie systemu opuszczenia/rozwiązania gangu</li>
-		<li>Dodanie systemu dodania ludzi do gangu</li>
-		<li>Dodanie systemu przyjmowania zaproszeń do gangu</li>
-		<li>Dodanie książki telefonicznej i zakładki profilu</li>
-		<li>Dodanie skarbca gangu</li>
-		<li>W wersji 1.3B:</li>
-		<li>Dodanie rankingu gangów</li>
-		<li>Przygotowanie pod ulepszanie gangów i wyświetlenie statystyk</li>
-		<li>W wersji 1.4B:</li>
-		<li>Nowy system dropu!</li>
-		<li>Informacje o itemach w sklepie i o dropie</li>
-=======
-	<div class="card-header">Aktualizacja 1.4B / 24.05.2019</div>
+
+	<div class="card-header">Aktualizacja 1.4B / 27.05.2019</div>
     <div class="card-body">
 	<ul>
 		<li>Dodanie systemu depozytu klanu</li>
@@ -82,7 +67,8 @@
 		<li>Dodanie opisu przedmiotów do aukcji</li>
 		<li>Dodanie nowych kazań do kościoła</li>
 		<li>Dodanie informacji o koszcie naprawy komputera</li>
->>>>>>> 9506907cb90a5490e908effd7e55d280fd92c909
+		<li>Informacje o itemach w sklepie i o dropie</li>
+		<li>System Anty-Cheat</li>
 	</ul>
 	</div>
   </div>
