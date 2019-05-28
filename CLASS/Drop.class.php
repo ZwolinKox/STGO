@@ -1,6 +1,6 @@
 <?php
-    //15% drop itemu rare (niebieski)
-    //5% drop heroic (fioletowy) 
+    //10% drop itemu rare (niebieski)
+    //1% drop heroic (fioletowy) 
 
     class Drop {
         //Metoda drop zwraca id zdobytego itemu lub null jesli nie wylosowales itemu
@@ -30,11 +30,11 @@
 
 
             //DROPIENIE ITEMA
-            if($randomSeed <= 5)
+            if($randomSeed <= 1)
             {
                 $dropType = "heroic";
             }
-            else if(($randomSeed > 5)&&($randomSeed <= 25))
+            else if(($randomSeed > 20)&&($randomSeed <= 30))
             {
                 $dropType = "rare";
             }

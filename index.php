@@ -58,7 +58,7 @@
 <div class="collapse" id="collapseExample">
   <div class="card bg-dark card-body">
 
-	<div class="card-header">Aktualizacja 1.4B / 28.05.2019</div>
+	<div class="card-header">Aktualizacja 1.5B / 28.05.2019</div>
     <div class="card-body">
 	<ul>
 		<li>Dodanie systemu depozytu klanu</li>
@@ -74,6 +74,7 @@
 		<li>Poprawa informacji na paskach HP, XP oraz Energii</li>
 		<li>Podział ,,piętra" na 3 odrębne expowiska</li>
 		<li>Naprawa zgłoszonych bugów*</li>
+		<li>Utrudniony drop itemów ;)</li>
 	</ul>
 	</div>
   </div>
