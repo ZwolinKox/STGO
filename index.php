@@ -58,7 +58,7 @@
 <div class="collapse" id="collapseExample">
   <div class="card bg-dark card-body">
 
-	<div class="card-header">Aktualizacja 1.4B / 27.05.2019</div>
+	<div class="card-header">Aktualizacja 1.4B / 28.05.2019</div>
     <div class="card-body">
 	<ul>
 		<li>Dodanie systemu depozytu klanu</li>
@@ -69,6 +69,11 @@
 		<li>Dodanie informacji o koszcie naprawy komputera</li>
 		<li>Informacje o itemach w sklepie i o dropie</li>
 		<li>System Anty-Cheat</li>
+		<li>Nowy system levelowania</li>
+		<li>Dodanie sali gimnastycznej</li>
+		<li>Poprawa informacji na paskach HP, XP oraz Energii</li>
+		<li>Podział ,,piętra" na 3 odrębne expowiska</li>
+		<li>Naprawa zgłoszonych bugów*</li>
 	</ul>
 	</div>
   </div>
@@ -139,7 +144,7 @@
 	<br/><br/>
 
 
-    
+
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone
     </footer>

@@ -401,6 +401,14 @@ require_once 'config.php';
         {
             ButtonFunc::czytaj('naukowa');
         }
+        elseif(Post::get('co') == 'rozgrzewka')
+        {
+            ButtonFunc::salaCwiczenie('rozgrzewka');
+        }
+        elseif(Post::get('co') == 'materac')
+        {
+            ButtonFunc::salaCwiczenie('materac');
+        }
         elseif(Post::get('co') == 'changeItem') 
         {
             if(EqManager::checkHand(DatabaseManager::selectBySQL('SELECT '.$_POST['itemName'].' FROM users WHERE id='.$_SESSION['uid'])[0][$_POST['itemName']])) {

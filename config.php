@@ -40,6 +40,12 @@ if(isset($_SESSION['logged']) && $_SESSION['logged']) {
     {
         $unban = DatabaseManager::selectBySQL('SELECT banCheck FROM users WHERE id='.$_SESSION['uid'])[0]['banCheck'];
         
+        $banInfo = "";
+        if(DatabaseManager::selectBySQL('SELECT banInfo FROM users WHERE id='.$_SESSION['uid'])[0]['banInfo'] != "")
+        {
+            $banInfo = DatabaseManager::selectBySQL('SELECT banInfo FROM users WHERE id='.$_SESSION['uid'])[0]['banInfo'];
+        }
+        
         echo <<< END
             <!DOCTYPE html>
             <html>
@@ -86,6 +92,7 @@ if(isset($_SESSION['logged']) && $_SESSION['logged']) {
                     <div class="row">
                                             
                             <div class="col-12 text-center display-4">Jesteś martwy do $unban</div>
+                            <div class="col-12 text-center display-4"><p style="color: red">$banInfo</p></div>
                             
                             <div class="col-12" style="margin-top: 15px;">
             

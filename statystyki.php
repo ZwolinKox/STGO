@@ -74,7 +74,7 @@
         <h5>Punkty życia:</h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="'.$stats['statHp'].'" aria-valuemin="0" aria-valuemax="'.$stats['maxHp'].'" style="width:'.$stats['procentHp'].'%">
-            <span style="color: black">'.round($stats['procentHp'], 2).'%</span></div>
+            <span style="color: black">'.$stats['statHp'].'/'.$stats['maxHp'].' '.round($stats['procentHp'], 2).'%</span></div>
         </div>
         <p></p>
         ';
@@ -82,7 +82,7 @@
         <h5>XP:</h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="'.$stats['xpPoints'].'" aria-valuemin="0" aria-valuemax="'.$stats['maxXp'].'" style="width:'.$stats['procentXp'].'%">
-            <span style="color: black">'.round($stats['procentXp'], 2).'%</span></div>
+            <span style="color: black">'.$stats['xpPoints'].'/'.$stats['maxXp'].' '.round($stats['procentXp'], 2).'%</span></div>
         </div>
         <p></p>
         ';
@@ -90,7 +90,7 @@
         <h5>Energia:</h5>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="'.$stats['userEnergy'].'" aria-valuemin="0" aria-valuemax="100" style="width:'.$stats['userEnergy'].'%">
-            <span style="color: black">'.round($stats['userEnergy'], 2).'%</span></div>
+            <span style="color: black">'.$stats['userEnergy'].'/100 '.round($stats['userEnergy'], 2).'%</span></div>
         </div>
         <p></p>
         ';
@@ -209,19 +209,19 @@ END;
                 <h5>Punkty życia:</h5>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="${ resultObj.statHp }" aria-valuemin="0" aria-valuemax="${ resultObj.maxHp }" style="width:${ resultObj.procentHp }%">
-                    <span style="color: black">${ Round(resultObj.procentHp, 2) }%</span></div>
+                    <span style="color: black"> ${ resultObj.statHp }/${ resultObj.maxHp }  ${ Round(resultObj.procentHp, 2) }%</span></div>
                 </div>
                 <p></p>
                 <h5>XP:</h5>
                 <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="${ resultObj.xpPoints }" aria-valuemin="0" aria-valuemax="${ resultObj.maxXp }" style="width: ${ resultObj.procentXp }%">
-                    <span style="color: black"> ${ Round(resultObj.procentXp, 2) }%</span></div>
+                <span style="color: black"> ${ resultObj.xpPoints }/${ resultObj.maxXp }  ${ Round(resultObj.procentXp, 2) }%</span></div>
                 </div>
                 <p></p>
                 <h5>Energia:</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="${ resultObj.userEnergy }" aria-valuemin="0" aria-valuemax="100" style="width: ${ resultObj.userEnergy }%">
-                        <span style="color: black">${ resultObj.userEnergy }%</span></div>
+                        <span style="color: black"> ${ resultObj.userEnergy }/100  ${ Round(resultObj.userEnergy, 2) }%</span></div>
                     </div>
                 <p></p>
                 <p id="dayweek">Dzień tygodnia: ${ resultObj.dayWeek }</p>

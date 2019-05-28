@@ -12,7 +12,8 @@ class Anticheat {
 
         if($sinceThen->s <= 5)
         {
-            DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL 24 HOUR", 'statHp' => 1], ['id' => $_SESSION['uid']]);
+            DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL 24 HOUR"], ['id' => $_SESSION['uid']]);
+            DatabaseManager::updateTable('users', ['banInfo' => "Jestes podejrzewany o używanie bota!"], ['id' => $_SESSION['uid']]);
             header('Location: logout.php');
         }
     }

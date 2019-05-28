@@ -95,7 +95,7 @@
             }
             else
             {
-                DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-15'], ['id' => $_SESSION['uid']]);
+                DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-30'], ['id' => $_SESSION['uid']]);
                 switch($gatunek)
                 {
                     case 'horror':
@@ -110,7 +110,7 @@
                     case 'przygodowa':
                     {
 						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 15) {
-							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-15'], ['id' => $_SESSION['uid']]);
+							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-10'], ['id' => $_SESSION['uid']]);
 							DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+1'], ['id' => $_SESSION['uid']]);
 						}
 
@@ -119,7 +119,7 @@
                     {
                         $add = rand(2, 4);
 						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 20) {
-							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-20'], ['id' => $_SESSION['uid']]);
+							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-30'], ['id' => $_SESSION['uid']]);
 							DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+'.$add], ['id' => $_SESSION['uid']]); 
 						}
 
@@ -128,6 +128,38 @@
                 if(isset($add))
                 {
                     unset($add);
+                }
+            }
+        }
+
+        //Metody wykorzystywane w sali gimnastycznej
+        static public function salaCwiczenie($jakie)
+        {
+            switch($jakie)
+            {
+                case "rozgrzewka": 
+                {
+                    if(Action::getCoins() >= 30)
+                    {
+                        if(Action::getEnergy() >= 10)
+                        {
+                            Action::delCoin(30);
+                            Action::delEnergy(10);
+                            Action::addStrength(1);
+                        }
+                    }
+                }break;
+                case "materac":
+                {
+                    if(Action::getCoins() >= 30)
+                    {
+                        if(Action::getEnergy() >= 30)
+                        {
+                            Action::delCoin(30);
+                            Action::delEnergy(30);
+                            Action::addStrength(rand(3, 4));
+                        }
+                    }
                 }
             }
         }

@@ -63,7 +63,8 @@ elseif ($_POST['co'] == 'Cios') {
             if(DatabaseManager::selectBySQL("SELECT xpPoints FROM users WHERE id=".$_SESSION['uid'])[0]['xpPoints']
                 >= DatabaseManager::selectBySQL("SELECT maxXp FROM users WHERE id=".$_SESSION['uid'])[0]['maxXp']) 
             {
-                DatabaseManager::updateTable('users', ['xpPoints' => "0", 'maxXp' => '(maxXp*2)+maxXp', 'userLevel' => 'userLevel+1'], ['id' => $_SESSION['uid']]);
+                
+                Drop::levelUp(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel']);
                 $_SESSION['lvlup'] = true;
             }
     

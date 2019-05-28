@@ -83,7 +83,125 @@
                                 if(Get::get('gdzie') == 'parter-szukaj')
                                 {
 
-                                    $enemyId = rand(1, 12); //Do ustalenia testy
+                                    $enemyId = rand(1, 4);
+                                    $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
+                                    $enemyInfo = $enemyStats[0]['name'].' Lvl: '.$enemyStats[0]['enemyLevel'];
+
+                                    $_SESSION['enemyId'] = $enemyId;
+                                    $_SESSION['enemyInfo'] = $enemyStats[0];
+                                    $_SESSION['enemyInfo']['enemyMaxHp'] = $_SESSION['enemyInfo']['enemyHp'];
+                                    $_SESSION['enemyInfo']['enemyMaxArmor'] = $_SESSION['enemyInfo']['enemyArmor'];
+                                    
+                                    echo <<< END
+                                    <div class="text-center" style="margin-bottom: 35px;">
+
+                                    <div id="poszukiwanie" class="display-4" style="margin-bottom: 35px; color: red;">Poszukiwanie przeciwników...</div>
+
+                                    <div id="search" class="spinner-border" role="status" style="width: 9rem; height: 9rem;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+
+                                    <div id="fight"></div>
+
+                                    </div>
+
+                                    <script defer>
+
+                                        function start() {
+                                            $.ajax({
+                                                url: "getEnemyStats.php",
+                                                method: "post",
+                                                data: {
+                                                    co: "startFight"
+                                                }
+                                            }).done((result) => {
+                                                location.href = 'fight.php';
+                                            })
+                                        
+                                            
+                                        }
+
+                                        document.addEventListener("DOMContentLoaded",() => {
+                                            const poszukiwanie = document.querySelector("#poszukiwanie");
+                                            const fight = document.querySelector("#fight");
+
+                                            setTimeout(() => {
+                                                poszukiwanie.style.color = "lightGreen";
+                                                poszukiwanie.innerHTML = "Znaleziono przeciwnika! $enemyInfo";
+                                                document.querySelector("#search").style.display = "none";
+                                                fight.innerHTML = `<div class="btn-dark btn-lg" onclick="start()">Walcz</div>
+                                                <div class="btn-dark btn-lg" onclick="location.href = 'szkola.php'">Uciekaj</div>`
+                                            }, 1000)
+
+                                        })
+                                        
+                                    </script>
+
+END;
+                                }
+                                else if(Get::get('gdzie') == 'pietro1-szukaj')
+                                {
+
+                                    $enemyId = rand(5, 8);
+                                    $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
+                                    $enemyInfo = $enemyStats[0]['name'].' Lvl: '.$enemyStats[0]['enemyLevel'];
+
+                                    $_SESSION['enemyId'] = $enemyId;
+                                    $_SESSION['enemyInfo'] = $enemyStats[0];
+                                    $_SESSION['enemyInfo']['enemyMaxHp'] = $_SESSION['enemyInfo']['enemyHp'];
+                                    $_SESSION['enemyInfo']['enemyMaxArmor'] = $_SESSION['enemyInfo']['enemyArmor'];
+                                    
+                                    echo <<< END
+                                    <div class="text-center" style="margin-bottom: 35px;">
+
+                                    <div id="poszukiwanie" class="display-4" style="margin-bottom: 35px; color: red;">Poszukiwanie przeciwników...</div>
+
+                                    <div id="search" class="spinner-border" role="status" style="width: 9rem; height: 9rem;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+
+                                    <div id="fight"></div>
+
+                                    </div>
+
+                                    <script defer>
+
+                                        function start() {
+                                            $.ajax({
+                                                url: "getEnemyStats.php",
+                                                method: "post",
+                                                data: {
+                                                    co: "startFight"
+                                                }
+                                            }).done((result) => {
+                                                location.href = 'fight.php';
+                                            })
+                                        
+                                            
+                                        }
+
+                                        document.addEventListener("DOMContentLoaded",() => {
+                                            const poszukiwanie = document.querySelector("#poszukiwanie");
+                                            const fight = document.querySelector("#fight");
+
+                                            setTimeout(() => {
+                                                poszukiwanie.style.color = "lightGreen";
+                                                poszukiwanie.innerHTML = "Znaleziono przeciwnika! $enemyInfo";
+                                                document.querySelector("#search").style.display = "none";
+                                                fight.innerHTML = `<div class="btn-dark btn-lg" onclick="start()">Walcz</div>
+                                                <div class="btn-dark btn-lg" onclick="location.href = 'szkola.php'">Uciekaj</div>`
+                                            }, 1000)
+
+                                        })
+                                        
+                                    </script>
+
+END;
+                                }
+                                else if(Get::get('gdzie') == 'pietro2-szukaj')
+                                {
+
+                                    $enemyId = rand(9, 12);
                                     $enemyStats = DatabaseManager::selectBySQL("SELECT * FROM enemy WHERE id=$enemyId");
                                     $enemyInfo = $enemyStats[0]['name'].' Lvl: '.$enemyStats[0]['enemyLevel'];
 
@@ -157,12 +275,17 @@ END;
                                 {
                                     echo '<h3>Jaką książkę chcesz przeczytać?</h3>';
 
-                                    echo '<div class="btn-dark btn-lg" id="horror">Horror (-10 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
-                                    echo '<div class="btn-dark btn-lg" id="przygodowa">Przygodowa (-15 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
-                                    echo '<div class="btn-dark btn-lg" id="naukowa">Naukowa (-20 Energii, -15 SłyszCoin, +0-2 Inteligencji)</div>';
-
+                                    echo '<div class="btn-dark btn-lg" id="horror">Horror (-10 Energii, -30 SłyszCoin, +0-2 Inteligencji)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="przygodowa">Przygodowa (-10 Energii, -30 SłyszCoin, +1 Inteligencji)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="naukowa">Naukowa (-30 Energii, -30 SłyszCoin, +2-4 Inteligencji)</div>';
                                     echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                    
+                                }
+                                else if(Get::get('gdzie') == 'sala')
+                                {
+                                    echo '<div class="btn-dark btn-lg" id="rozgrzewka">Prowadź rozgrzewkę (-10 Energii, -30 SłyszCoin, +1 Siły)</div>';
+                                    echo '<div class="btn-dark btn-lg" id="materac">Rób ćwiczenia na materacu (-30 Energii, -30 SłyszCoin, +3-4 Siły)</div>';
+                                    echo '<br><div class="btn-dark btn-lg href" id="szkola.php">Wróc na korytarz!</div>';
                                 }
                                 else if(Get::get('gdzie') == 'plecaki')
                                 {
@@ -248,10 +371,13 @@ END;
                             {
                                 echo '<h3>Gdzie chcesz iść? Pamiętaj, że jak wyjdziesz ze szkoły to będziesz mógł wrócić dopiero jutro!</h3>';
 
-                                echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=parter-szukaj">Przeszukaj parter </div>';
-                                echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=sklep">Sklepik szkolny </div>';
+                                echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=parter-szukaj">Przeszukaj: Parter (Zalecany poziom: 1)</div>';
+                                echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=pietro1-szukaj">Przeszukaj: Pierwsze piętro (Zalecany poziom: 12)</div>';
+                                echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=pietro2-szukaj">Przeszukaj: Drugie piętro (Zalecany poziom: 22)</div>';
+                                echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=sklep">Sklepik szkolny </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=toaleta">Toaleta </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=biblioteka">Biblioteka </div>';
+                                echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=sala">Sala gimnastyczna </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=plecaki">Okradnij plecaki </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Idz do parku </div>';
                                 echo '<div class="btn-dark btn-lg href" id="sklodowska.php">Wyrusz w niebezpieczne rewiry</div>';
@@ -351,6 +477,36 @@ END;
                         method: "post",
                         data: {
                             co: "naukowa"
+                        }
+                    })
+                })
+        }
+    </script>
+
+    <script>
+        const rozgrzewkaBtn = document.querySelector("#rozgrzewka");
+        const materacBtn = document.querySelector("#materac");
+
+        if(rozgrzewkaBtn)
+        {
+                rozgrzewkaBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "rozgrzewka"
+                        }
+                    })
+                })
+        }
+        if(materacBtn)
+        {
+                materacBtn.addEventListener("click", function() {
+                    $.ajax({
+                        url: "ajax.php",
+                        method: "post",
+                        data: {
+                            co: "materac"
                         }
                     })
                 })
