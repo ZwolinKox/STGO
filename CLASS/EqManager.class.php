@@ -85,7 +85,7 @@ class EqManager {
             {
                 case 'common': break;
                 case 'rare': $color = '#6DC4F1'; break;
-                case 'heroic': $color = '#9944B9'; break;
+                case 'heroic': $color = '#B26DF2'; break;
                 case 'legendary': $color = '#D0B95B'; break;
             }
 
