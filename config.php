@@ -41,9 +41,10 @@ if(isset($_SESSION['logged']) && $_SESSION['logged']) {
         $unban = DatabaseManager::selectBySQL('SELECT banCheck FROM users WHERE id='.$_SESSION['uid'])[0]['banCheck'];
         
         $banInfo = "";
-        if(DatabaseManager::selectBySQL('SELECT banInfo FROM users WHERE id='.$_SESSION['uid'])[0]['banInfo'] != "")
+        if(DatabaseManager::selectBySQL('SELECT banInfo FROM users WHERE id='.$_SESSION['uid'])[0]['banInfo'] != "0")
         {
-            $banInfo = DatabaseManager::selectBySQL('SELECT banInfo FROM users WHERE id='.$_SESSION['uid'])[0]['banInfo'];
+            $banInfo = "Jestes podejrzany o używanie bota!";
+            //To trzeba do antycheat przeniesc w przyszlosci
         }
         
         echo <<< END
