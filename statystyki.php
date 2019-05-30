@@ -62,6 +62,10 @@
             $stats['eqMainHandName'] = EqManager::item($stats['eqMainHand'], 'colorTag').' '.EqManager::stat($stats['eqMainHand']); //test
         }
 
+        if($stats['drivingLicence'] == true)
+            $stats['drivingLicence'] = "Posiadasz prawo jazdy kategorii B!";
+        else
+            $stats['drivingLicence'] = "";
 
 
         $stats['procentHp'] = ($stats['statHp'] / $stats['maxHp']) * 100;
@@ -70,6 +74,7 @@
         echo '<div id="stats">';
         echo '<h3 id="username" style="display: inline;"><p>'.UserManager::Nick('span').' (Lvl: '.$stats['userLevel'].')</p></h3>';
         echo '<h3 id="gamemode"><p>Tryb gry <span style="color: '.$stats['hardcoreColor'].'">'.$stats['hardcore'].'!</span></p></h3>';
+        echo '<h3 style="color: gold;">'.$stats['drivingLicence'].'</h3>';
         echo '
         <h5>Punkty życia:</h5>
         <div class="progress">
@@ -206,6 +211,7 @@ END;
             document.querySelector('#stats').innerHTML  = `
                 <h3 id="username"><p>${ resultObj.username } (Lvl: ${ resultObj.userLevel })</p></h3>
                 <h3 id="gamemode"><p>Tryb gry <span style="color: ${ resultObj.hardcoreColor }"> ${ resultObj.hardcore }!</span></p></h3>
+                <h3 style="color: gold;">${ resultObj.drivingLicence }</h3>
                 <h5>Punkty życia:</h5>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="${ resultObj.statHp }" aria-valuemin="0" aria-valuemax="${ resultObj.maxHp }" style="width:${ resultObj.procentHp }%">

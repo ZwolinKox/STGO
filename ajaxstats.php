@@ -59,6 +59,11 @@ if(isset($_POST['ajax']) && $_POST['ajax'] == 'ajax')
             break;
     }
 
+    if($stats['drivingLicence'] == true)
+        $stats['drivingLicence'] = "Posiadasz prawo jazdy kategorii B!";
+    else
+        $stats['drivingLicence'] = "";
+
     if($stats['eqMainHand'] == 0)
         $stats['eqMainHandName'] = "Brak broni";
     else {

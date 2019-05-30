@@ -62,8 +62,10 @@
 
                     <h3>Witaj w ośrodku nauki jazdy Majncar!</h3>
 
-                    <div class="btn-dark btn-lg href" id="index.php">Wyrób prawo jazdy typu B (Koszt: 20 000SC)</div>
+                    <div class="btn-dark btn-lg" id="prawko">Wyrób prawo jazdy typu B (Koszt: 20 000SC)</div>
                     <div class="btn-dark btn-lg href" id="index.php">Wróć do domu</div>
+
+                    <div id="error"></div>
 
 
                 </div>
@@ -87,6 +89,33 @@
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone
     </footer>
+
+    <script>
+
+        const error = document.querySelector("#error");
+
+        document.querySelector('#prawko').addEventListener('click', () => {
+            $.ajax({
+                url: "ajax.php",
+                method: "post",
+                data: {
+                    co: "drivingLicence",
+                }
+            }).done((result) => {
+
+                if(result == "success") 
+                    error.innerHTML = "<h3 style='color: lightgreen;'>Udało ci się zdać prawo jazdy!</h3>";
+                else
+                    error.innerHTML = "<h3 style='color: red;'> " + result + "</h3>";
+                
+
+                //parent.window.location.reload();
+            })
+        })
+
+
+
+    </script>
 	
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
