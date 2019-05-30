@@ -75,6 +75,13 @@
                         <div class="btn-dark btn-lg href" id="aukcje.php">14. Aukcje</div>
                         <div class="btn-dark btn-lg href" id="ksiazka.php">15. Książka telefoniczna</div>
 
+                        <?php 
+                        if(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel'] < 30)
+                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="prawko.php">15. Prawo jazdy (Wymagany poziom: 30)</div>';
+                        else
+                            echo '<div class="btn-dark btn-lg href" id="prawko.php">15. Prawo jazdy (Wymagany poziom: 30)</div>';
+                        ?>
+
 
                 </div>
 		

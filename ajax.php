@@ -100,6 +100,22 @@ require_once 'config.php';
 
         }
 
+        elseif (Post::get('co') == 'drivingLicence') {
+            if(Action::getCoins() < 20000)
+                die('Nie posiadasz 20 000 SC!');
+
+            if(DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'] < 30)
+                die("Nie posiadasz 30 poziomu!");
+
+            if(DatabaseManager::selectBySQL("SELECT drivingLicence FROM users WHERE id=".$_SESSION['uid'])[0]['drivingLicence'] == true)
+                die("Posiadasz już prawo jazdy!");
+
+            DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20000', 'drivingLicence' => 1], ['id' => $_SESSION['uid']]);
+
+            die('success');
+            
+        }
+
         elseif(Post::get('co') == 'nextLevelGuild')
         {
             $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];
