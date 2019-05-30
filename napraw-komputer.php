@@ -139,10 +139,10 @@
                                 }
                                 else if(Get::get('naprawa')== 'koparka')
                                 {
-                                    $elementsValue = DatabaseManager::selectBySQL('SELECT collectElik, collectElyk, collectInfo, collectEnod FROM users WHERE id='.$_SESSION['uid']);
-
-                                    if(DatabaseManager::selectBySQL("SELECT boolkoparka FROM users WHERE id=".$_SESSION['uid'])[0]['boolkoparka'] != true)
+                                    if(DatabaseManager::selectBySQL("SELECT boolKoparka FROM users WHERE id=".$_SESSION['uid'])[0]['boolKoparka'] != 1)
                                     {
+                                        $elementsValue = DatabaseManager::selectBySQL('SELECT collectElik, collectElyk, collectInfo, collectEnod FROM users WHERE id='.$_SESSION['uid']);
+
                                         echo '<br><h3 style="text-align: center;">Częsci od elektroników!</h3>';
                                         echo '<div class="progress">
                                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectElik'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectElik'].'%"></div>
@@ -160,8 +160,59 @@
                                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectEnod'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectEnod'].'%"></div>
                                         </div><br>';
 
+                                        if(($elementsValue[0]['collectElik']>=100)&&($elementsValue[0]['collectElyk']>=100)&&($elementsValue[0]['collectInfo']>=100)&&($elementsValue[0]['collectEnod']>=100))
+                                        {
+                                            echo '<br> <div class="btn-dark btn-lg" onclick="build()">Zbuduj koparke! (Koszt: 1000SC)</div>'; 
+                                        }
+                                        else
+                                        {
+                                            echo '<h3 style="color: red;">Nie masz wystarczającej ilości części!</h3>';
+                                        }
+
                                         echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php">Wróć</div>';
 
+                                    }
+                                    else
+                                    {
+                                        $elementsValue = DatabaseManager::selectBySQL('SELECT collectElik, collectElyk, collectInfo, collectEnod, levelKoparka FROM users WHERE id='.$_SESSION['uid']);
+
+                                        echo '<h3>Poziom twojej koparki: '.$elementsValue[0]['levelKoparka'].'</h3>';
+                                        echo '<h3>Dziennie zarabiasz: '.Miner::minerGain($elementsValue[0]['levelKoparka']).'</h3>';
+
+                                        if($elementsValue[0]['levelKoparka'] < 5)
+                                        {
+                                            echo '<br><h3 style="text-align: center;">Częsci od elektroników!</h3>';
+                                            echo '<div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectElik'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectElik'].'%"></div>
+                                            </div><br>';
+                                            echo '<h3 style="text-align: center;">Częsci od elektryków!</h3>';
+                                            echo '<div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectElyk'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectElyk'].'%"></div>
+                                            </div><br>';
+                                            echo '<h3 style="text-align: center;">Częsci od informatyków!</h3>';
+                                            echo '<div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectInfo'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectInfo'].'%"></div>
+                                            </div><br>';
+                                            echo '<h3 style="text-align: center;">Częsci od energi odnawialnej!</h3>';
+                                            echo '<div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="'.$elementsValue[0]['collectEnod'].'" aria-valuemin="0" aria-valuemax="100" style="width: '.$elementsValue[0]['collectEnod'].'%"></div>
+                                            </div><br>';
+
+                                            if(($elementsValue[0]['collectElik']>=100)&&($elementsValue[0]['collectElyk']>=100)&&($elementsValue[0]['collectInfo']>=100)&&($elementsValue[0]['collectEnod']>=100))
+                                            {
+                                                echo '<br> <div class="btn-dark btn-lg" onclick="upgrade()">Ulepsz koparke!</div>'; 
+                                            }
+                                            else
+                                            {
+                                                echo '<br><h3 style="color: red;">Nie masz wystarczającej ilości części na ulepszenie!</h3>';
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo '<br><h3 style="color: lightgreen;">Masz maksymalny poziom koparki!</h3>';
+                                        }
+
+                                        echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php">Wróć</div>';
                                     }
                                 }
                             }
@@ -211,5 +262,32 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script>
+        function build() {
+            $.ajax({
+            url: "ajax.php",
+            method: "post",
+            data: {
+                co: "build"
+            }
+            })
+        parent.window.location.reload();
+        }
+    </script>
+
+    <script>
+        function upgrade() {
+            $.ajax({
+            url: "ajax.php",
+            method: "post",
+            data: {
+                co: "upgrade"
+            }
+            })
+        parent.window.location.reload();
+        }
+    </script>
+
 </body>
 </html>

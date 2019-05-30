@@ -449,9 +449,14 @@ require_once 'config.php';
         {
             TradeManager::buyById(Post::get('id'));
         }
-
-
-
+        elseif(Post::get('co') == 'build')
+        {   
+            Miner::build();
+        }
+        elseif(Post::get('co') == 'upgrade')
+        {
+            Miner::upgrade();
+        }
     }
 
 ?>
