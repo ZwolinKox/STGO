@@ -121,7 +121,7 @@
                             
                                 echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=panaceum">Panaceum (Wymagana inteligencja: 30, cena 20SC) (Odnawia całe HP)</div>';
                                 echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=kamien">Kamień filozoficzny (Wymagana inteligencja: 50, cena 20SC) (Odnawia całą energię)</div>';
-                                echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=depuratus">Depuratus (Wymagana inteligencja: 70, cena 50SC) (+10 do MAXHP)</div>';
+                                echo '<div class="btn-dark btn-lg href" id="alchemia.php?co=depuratus">Depuratus (Wymagana inteligencja: 500, cena 150SC, 25% szans na powodzenie) (+10 do MAXHP)</div>';
                                 echo '<div class="btn-dark btn-lg href" id="index.php">Powrót do domu</div>';
                             }
                         ?>
