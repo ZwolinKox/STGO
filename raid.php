@@ -59,36 +59,19 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                        <div class="btn-dark btn-lg href jeden" id="szkola.php">1. Idz do szkoly (Z wyjatkiem weekendu, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href dwa" id="sklep.php">2. Idz do sklepu</div>
-                        <div class="btn-dark btn-lg href trzy" id="napraw-komputer.php">3. Napraw komputer</div>
-                        <div class="btn-dark btn-lg href cztery" id="spanie.php">4. Idz spac</div>
-                        <div class="btn-dark btn-lg href" id="silownia.php">5. Idz wreszcie na silownie</div>
-                        <div class="btn-dark btn-lg href" id="memy.php">6. Wyslij mema na grupe</div>
-                        <div class="btn-dark btn-lg href" id="brat.php">7. Wyzywanie brata</div>
-                        <div class="btn-dark btn-lg href" id="lotek.php">8. Zagraj w Slyszolotka</div>
-                        <div class="btn-dark btn-lg href" id="alchemia.php">9. Idz do pracowni alchemicznej</div>
-                
-                        <?php 
-                        if(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel'] < 30)
-                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="template.php">15. Eksploracja (Raidy - wymagany poziom: 30)</div>';
-                        else
-                            echo '<div class="btn-dark btn-lg href" id="raid.php">15. Eksploracja (Raidy - wymagany poziom: 30)</div>';
-                        ?>
+                    <?php
 
-                        <div class="btn-dark btn-lg href" id="kosciol.php">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
-                        <div class="btn-dark btn-lg href" id="poczta.php">12. Poczta</div>
-                        <div class="btn-dark btn-lg href" id="gangs.php">13. Gangi</div>
-                        <div class="btn-dark btn-lg href" id="aukcje.php">14. Aukcje</div>
-                        <div class="btn-dark btn-lg href" id="ksiazka.php">15. Książka telefoniczna</div>
+                        $raidList = DatabaseManager::selectBySQL("SELECT name, forLevel FROM raid");
 
-                        <?php 
-                        if(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel'] < 30)
-                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="prawko.php">15. Prawo jazdy (Wymagany poziom: 30)</div>';
-                        else
-                            echo '<div class="btn-dark btn-lg href" id="prawko.php">15. Prawo jazdy (Wymagany poziom: 30)</div>';
-                        ?>
+                        for($i=0; $i<count($raidList); $i++)
+                        {
+                            $raidname = $raidList[$i]['name'];
+                            $raidlevel = $raidList[$i]['forLevel'];
 
+                            echo '<div class="btn-dark btn-lg" onclick="queue('.$raidname.')">'.$raidname.' (Lvl: '.$raidlevel.')</div>';
+                        }
+
+                    ?> 
 
                 </div>
 		
