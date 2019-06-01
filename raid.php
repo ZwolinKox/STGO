@@ -78,7 +78,13 @@
                         {
                             for($i=0; $i<count($invites); $i++)
                             {
-                                echo $invites[0][DatabaseManager::selectBySQL('SELECT ')]
+                                $raidId = $invites[$i]['raidId'];
+                                $leaderId = $invites[$i]['leaderId'];
+
+                                if($invites[$i]['visible'])
+                                {
+                                    echo DatabaseManager::selectBySQL('SELECT name FROM raid WHERE id='.$raidId)[0]['name'].' ('.UserManager::nickById($leaderId);
+                                }
                             }
                         }
                     ?> 
