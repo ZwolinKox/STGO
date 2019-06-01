@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 01 Cze 2019, 15:49
+-- Czas generowania: 01 Cze 2019, 15:58
 -- Wersja serwera: 10.1.39-MariaDB
 -- Wersja PHP: 7.3.5
 
@@ -30,9 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `raidinv` (
   `id` int(11) NOT NULL,
-  `visible` int(11) NOT NULL,
+  `visible` tinyint(1) NOT NULL,
   `leaderId` int(11) NOT NULL,
-  `invitedId` int(11) NOT NULL
+  `invitedId` int(11) NOT NULL,
+  `raidId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 COMMIT;
 

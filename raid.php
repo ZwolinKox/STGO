@@ -71,6 +71,16 @@
                             echo '<div class="btn-dark btn-lg" onclick="queue('.$raidname.')">'.$raidname.' (Lvl: '.$raidlevel.')</div>';
                         }
 
+                        echo '<br><h3>Zaproszenia: </h3>';
+                        $invites = DatabaseManager::selectBySQL('SELECT * FROM raidinv WHERE invitedId='.$_SESSION['uid']);
+
+                        if($invites != null)
+                        {
+                            for($i=0; $i<count($invites); $i++)
+                            {
+                                echo $invites[0][DatabaseManager::selectBySQL('SELECT ')]
+                            }
+                        }
                     ?> 
 
                 </div>
