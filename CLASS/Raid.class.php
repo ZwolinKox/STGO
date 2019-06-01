@@ -4,5 +4,8 @@ class Raid{
         return DatabaseManager::selectBySQL('SELECT * FROM raid WHERE id='.$raidId);
     }
         
+    public static function invitePlayer($userId) {
+        
+    }
 }
 ?>

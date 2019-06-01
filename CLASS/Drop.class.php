@@ -74,6 +74,62 @@
             return $items[$dropSeed];
         }
 
+        static public function raid($enemyId) {
+            $itemFirst = DatabaseManager::selectBySQL('SELECT dropItemOne FROM enemy WHERE id='.$enemyId)[0]['dropItemOne'];
+            $itemTwo = DatabaseManager::selectBySQL('SELECT dropItemTwo FROM enemy WHERE id='.$enemyId)[0]['dropItemTwo'];
+            $itemThree = DatabaseManager::selectBySQL('SELECT dropItemThree FROM enemy WHERE id='.$enemyId)[0]['dropItemThree'];
+            $itemFour = DatabaseManager::selectBySQL('SELECT dropItemFour FROM enemy WHERE id='.$enemyId)[0]['dropItemFour'];
+            $itemFive = DatabaseManager::selectBySQL('SELECT dropItemFive FROM enemy WHERE id='.$enemyId)[0]['dropItemFive'];           
+            
+            $items = array();
+            $randomSeed = rand(1, 1000);
+            $dropType;
+
+            //DROPIENIE ITEMA
+            if($randomSeed <= 1)
+            {
+                $dropType = "legendary";
+            }
+            else if(($randomSeed > 200)&&($randomSeed <= 300))
+            {
+                $dropType = "heroic";
+            }
+            else
+            {
+                return null;
+            }
+
+
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemFirst)[0]['rarity'] == $dropType)
+            {
+                array_push($items, $itemFirst);
+            }
+
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemTwo)[0]['rarity'] == $dropType)
+            {
+                array_push($items, $itemTwo);
+            }
+
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemThree)[0]['rarity'] == $dropType)
+            {
+                array_push($items, $itemThree);
+            }
+
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemFour)[0]['rarity'] == $dropType)
+            {
+                array_push($items, $itemFour);
+            }
+
+            if(DatabaseManager::selectBySQL('SELECT rarity FROM items WHERE id='.$itemFive)[0]['rarity'] == $dropType)
+            {
+                array_push($items, $itemFive);
+            }
+
+            $dropSeed = rand(0, count($items)-1);
+
+            return $items[$dropSeed];
+        }
+
         static public function levelUp($currentLevel) {
             DatabaseManager::updateTable('users', ['xpPoints' => "0", 'userLevel' => 'userLevel+1'], ['id' => $_SESSION['uid']]);
             $maxXp = DatabaseManager::selectBySQL('SELECT maxXp FROM users WHERE id='.$_SESSION['uid'])[0]['maxXp'];
