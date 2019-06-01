@@ -83,7 +83,7 @@
 
                                 if($invites[$i]['visible'])
                                 {
-                                    echo DatabaseManager::selectBySQL('SELECT name FROM raid WHERE id='.$raidId)[0]['name'].' ('.UserManager::nickById($leaderId);
+                                    echo DatabaseManager::selectBySQL('SELECT name FROM raid WHERE id='.$raidId)[0]['name'].' ('.UserManager::nickById($leaderId).')<br>';
                                 }
                             }
                         }
