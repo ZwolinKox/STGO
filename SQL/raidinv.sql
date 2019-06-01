@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 01 Cze 2019, 15:58
+-- Czas generowania: 01 Cze 2019, 16:16
 -- Wersja serwera: 10.1.39-MariaDB
 -- Wersja PHP: 7.3.5
 
@@ -35,6 +35,26 @@ CREATE TABLE `raidinv` (
   `invitedId` int(11) NOT NULL,
   `raidId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Indeksy dla zrzutów tabel
+--
+
+--
+-- Indeksy dla tabeli `raidinv`
+--
+ALTER TABLE `raidinv`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT dla tabeli `raidinv`
+--
+ALTER TABLE `raidinv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
