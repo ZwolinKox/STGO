@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 31 Maj 2019, 11:23
--- Wersja serwera: 10.1.39-MariaDB
--- Wersja PHP: 7.3.5
+-- Czas generowania: 02 Cze 2019, 10:44
+-- Wersja serwera: 10.1.38-MariaDB
+-- Wersja PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,6 +42,13 @@ CREATE TABLE `raid` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
+-- Zrzut danych tabeli `raid`
+--
+
+INSERT INTO `raid` (`id`, `name`, `type`, `forLevel`, `enemyOne`, `enemyTwo`, `enemyThree`, `enemyFour`, `enemyFive`, `enemyBoss`) VALUES
+(1, 'Nedza', 'raid', 30, 14, 14, 14, 14, 14, 13);
+
+--
 -- Indeksy dla zrzutów tabel
 --
 
@@ -59,7 +66,7 @@ ALTER TABLE `raid`
 -- AUTO_INCREMENT dla tabeli `raid`
 --
 ALTER TABLE `raid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

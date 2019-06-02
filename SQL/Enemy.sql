@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Maj 2019, 17:07
--- Wersja serwera: 10.1.39-MariaDB
--- Wersja PHP: 7.3.5
+-- Czas generowania: 02 Cze 2019, 10:44
+-- Wersja serwera: 10.1.38-MariaDB
+-- Wersja PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,11 +58,13 @@ INSERT INTO `enemy` (`id`, `name`, `type`, `rarity`, `enemyLevel`, `enemyHp`, `e
 (5, 'Mechatronik', 'standard', 'common', 15, 200, 20, 100, 40, 10, 37, 38, 39, 40, 41),
 (6, 'Mechatronik zdolny', 'standard', 'common', 17, 250, 22, 120, 40, 10, 37, 38, 39, 40, 41),
 (7, 'Informatyk', 'standard', 'common', 20, 400, 25, 150, 40, 10, 37, 38, 39, 40, 42),
-(8, 'Informatyk zdolny', 'standard', 'common', 22, 420, 28, 200, 40, 10, 37, 38, 39, 40, 42),
-(9, 'Energia odnawialna', 'standard', 'common', 25, 600, 30, 300, 60, 20, 43, 44, 45, 46, 47),
-(10, 'Energia odnawialna zdolny', 'standard', 'common', 27, 700, 32, 400, 60, 20, 43, 44, 45, 46, 47),
-(11, 'Mechanik', 'standard', 'common', 30, 800, 35, 550, 60, 20, 43, 44, 45, 46, 48),
-(12, 'Mechanik zdolny', 'standard', 'common', 30, 900, 40, 600, 60, 20, 43, 44, 45, 46, 48);
+(8, 'Informatyk zdolny', 'standard', 'common', 22, 500, 28, 200, 40, 10, 37, 38, 39, 40, 42),
+(9, 'Energia odnawialna', 'standard', 'common', 25, 700, 30, 300, 60, 20, 43, 44, 45, 46, 47),
+(10, 'Energia odnawialna zdolny', 'standard', 'common', 27, 800, 32, 400, 60, 20, 43, 44, 45, 46, 47),
+(11, 'Mechanik', 'standard', 'common', 30, 900, 35, 550, 60, 20, 43, 44, 45, 46, 48),
+(12, 'Mechanik zdolny', 'standard', 'common', 30, 1000, 40, 600, 60, 20, 43, 44, 45, 46, 48),
+(13, 'Futszak', 'boss', 'boss', 30, 6000, 240, 2000, 0, 1000, 55, 56, 55, 57, 58),
+(14, 'Złomiarz', 'common', 'raid-mob', 30, 2000, 100, 500, 0, 20, 0, 0, 0, 0, 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -82,7 +84,7 @@ ALTER TABLE `enemy`
 -- AUTO_INCREMENT dla tabeli `enemy`
 --
 ALTER TABLE `enemy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

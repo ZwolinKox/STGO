@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 01 Cze 2019, 16:44
--- Wersja serwera: 10.1.39-MariaDB
--- Wersja PHP: 7.3.5
+-- Czas generowania: 02 Cze 2019, 10:44
+-- Wersja serwera: 10.1.38-MariaDB
+-- Wersja PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `raidsession` (
   `id` int(11) NOT NULL,
   `tour` int(11) NOT NULL,
-  `leaderId` int(11) NOT NULL
+  `leaderId` int(11) NOT NULL,
+  `userTwoId` int(11) NOT NULL,
+  `userThreeId` int(11) NOT NULL,
+  `userFourId` int(11) NOT NULL,
+  `userFiveId` int(11) NOT NULL,
+  `userOneHp` int(11) NOT NULL,
+  `userTwoHp` int(11) NOT NULL,
+  `userThreeHp` int(11) NOT NULL,
+  `userFourHp` int(11) NOT NULL,
+  `userFiveHp` int(11) NOT NULL,
+  `currentFight` int(11) NOT NULL,
+  `currentEnemyArmor` int(11) NOT NULL,
+  `currentEnemyHp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
