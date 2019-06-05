@@ -5,8 +5,14 @@
 
     CheckUrl::check();
 
-    require_once('checkLogin.php');
-
+    if(isset($_SESSION['fight']) && $_SESSION['fight']) {
+        if(basename($_SERVER['PHP_SELF']) != 'fight.php' && basename($_SERVER['PHP_SELF']) != 'fight.php')
+            URL::to('fight.php');
+    }
+    
+    if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
+        header('Location: index.php');
+    
 
         if(!isset($_SESSION['winpvp']) || $_SESSION['winpvp'] == false)
             header('Location: index.php');
@@ -61,9 +67,9 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
-                    <div class="display-3" style="color: lightgreen;">Gratulacje! Wygrałeś walkę pvp za 4 sekundy zostaniesz uleczony</div>
+                    <div class="display-3" style="color: lightgreen;">Gratulacje! Wygrałeś walkę pvp</div>
 
-                    <h3 style="margin-top: 50px;">Zdobyłeś <span style="color: gold"><?php echo $_SESSION['Lp'];?></span> punktów ligowych!</h3>
+                    <h3 style="margin-top: 50px;">Zdobyłeś <span style="color: gold"><?php echo 20;?></span> punktów ligowych!</h3>
                     
                     <?php
 
