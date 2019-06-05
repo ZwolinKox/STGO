@@ -5,8 +5,8 @@
 
     CheckUrl::check();
 
-   if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
-        header('Location: index.php');
+    require_once('checkLogin.php');
+
 
 ?>
 <html>

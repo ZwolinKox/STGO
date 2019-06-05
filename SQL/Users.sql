@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Maj 2019, 20:24
+-- Czas generowania: 05 Cze 2019, 18:50
 -- Wersja serwera: 10.1.30-MariaDB
 -- Wersja PHP: 7.2.1
 
@@ -86,8 +86,14 @@ CREATE TABLE `users` (
   `collectElyk` int(11) NOT NULL,
   `collectInfo` int(11) NOT NULL,
   `collectEnod` int(11) NOT NULL,
-  `drivingLicence` tinyint(1) NOT NULL DEFAULT '0'
+  `drivingLicence` tinyint(1) NOT NULL DEFAULT '0',
+  `statHpPvp` int(11) NOT NULL,
+  `maxHpPvp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `users`
+--
 
 
 --

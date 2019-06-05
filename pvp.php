@@ -58,6 +58,7 @@
 
                         if(!DatabaseManager::selectBySQL('SELECT * FROM fight WHERE status=0 AND (playerOne='.$_SESSION['uid'].' OR playerTwo='.$_SESSION['uid'].')')) {
                             echo '<h3 style="color: red;">Nie uczestniczysz w żadnej walce!</h3>';
+                            echo '<div class="btn-dark btn-lg" onclick="location.reload()">Odśwież</div>';
                             echo '<div class="btn-dark btn-lg href" id="sklodowska.php">Tak</div>';
                         }   
                         else {
@@ -118,7 +119,9 @@
                         }).done((result) => {
 
                             if(result == 'win')
-                                location.href = "win.php"
+                                location.href = "winpvp.php"
+                            else if(result == "lose")
+                                location.href = "losepvp.php";
                             else
                                 document.querySelector('#logs').innerHTML = result;
                         })
@@ -157,6 +160,12 @@
                                 <span style="color: black">${ Round(resultObj.enemyHpProcent, 2) }%</span></div>
                             </div>
 
+                            <h3 style="margin-bottom: 25px; margin-top: 25px;">Twoje punkty życia: </h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar bg-success progress-bar-animated" role="progressbar" aria-valuenow="${ resultObj.hp }" aria-valuemin="0" aria-valuemax="${ resultObj.maxHp }" style="width: ${ resultObj.hpProcent }%">
+                                <span style="color: black">${ Round(resultObj.hpProcent, 2) }%</span></div>
+                            </div>
+
                             <h3 style="margin-top: 25px;">Posiadana broń przeciwnika: ${ resultObj.eqMainHand }</h3>
                             <h3 style="margin-top: 25px;">Siła przeciwnika: ${ resultObj.statStrength }</h3>
                             <h3 style="margin-top: 25px;">Inteligencja przeciwnika: ${ resultObj.statIntelect }</h3>
@@ -168,7 +177,7 @@
                         `;
                     })
                     
-            }, '1000');
+            }, '100');
         });
 		
 			
@@ -190,7 +199,7 @@
                         url: "ajaxpvp.php",
                         method: "post",
                         data: {
-                            co : 'Ucieczka'
+                            co : 'Poddaj'
                         }
                         }).done((result) => {
                             console.log(result);

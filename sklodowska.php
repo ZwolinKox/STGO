@@ -8,6 +8,8 @@
    if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
         header('Location: index.php');
 
+        DatabaseManager::updateTable('users', ['statHpPvp' => 'maxHp', 'maxHpPvp' => 'maxHp'], ['id' => $_SESSION['uid']]);
+
 ?>
 <html>
 <head>

@@ -5,13 +5,8 @@
 
     CheckUrl::check();
 
-    if(isset($_SESSION['fight']) && $_SESSION['fight']) {
-        if(basename($_SERVER['PHP_SELF']) != 'fight.php' && basename($_SERVER['PHP_SELF']) != 'fight.php')
-            URL::to('fight.php');
-    }
+    require_once('checkLogin.php');
 
-   if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
-        header('Location: index.php');
 
         if(!isset($_SESSION['winpvp']) || $_SESSION['winpvp'] == false)
             header('Location: index.php');

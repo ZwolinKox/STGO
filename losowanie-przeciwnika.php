@@ -149,41 +149,49 @@ END;
         elseif ($role == 1) {
             $_SESSION['enemyFound'] = false;
             DatabaseManager::deleteFrom('pvpqueue', ['host' => $_SESSION['uid'], 'client' => $_SESSION['uid']], "OR");
+
+            DatabaseManager::updateTable('users', ['statHpPvp' => 'maxHp', 'maxHpPvp' => 'maxHp'], ['id' => $_SESSION['uid']]);
+
             echo <<< END
             <script>  
-            console.log('host');
-            setInterval(() => {
 
-                $.ajax({
-                    url: "ajaxFightManager.php",
-                    method: "post",
-                    data: {
-                        co: "allAccept"
-                    }
-                }).done((result) => {
-                    if(result == "yes") {
-                        location.href = "pvp.php";
-                    }
+            setTimeout(() => {
+                console.log('host');
+                setInterval(() => {
+    
+                    $.ajax({
+                        url: "ajaxFightManager.php",
+                        method: "post",
+                        data: {
+                            co: "allAccept"
+                        }
+                    }).done((result) => {
+                        if(result == "yes") {
+                            location.href = "pvp.php";
+                        }
+    
+                    });
+                    
+                    $.ajax({
+                        url: "ajaxFightManager.php",
+                        method: "post",
+                        data: {
+                            co: "host"
+                        }
+                    }).done((result) => {
+                        if(result != "no") {
+                            result = JSON.parse(result);
+                            if(result.time <= 0)
+                                location.href = "sklodowska.php";
+    
+                            document.querySelector('main').innerHTML = "HOST <h2 style='color: lightgreen;'> Znaleziono przeciwnika! </h2> <br></br> <div class='btn-dark btn-lg href' onclick='hostAccept()'>Potwierdź</div> <br><br> <h3>Pozostało: <strong style='color: gold;'>"+result.time+"</strong> sekund</h3>"
+                        }
+                    })
+                    
+                }, '300')
+            }, '1000')
 
-                });
-                
-                $.ajax({
-                    url: "ajaxFightManager.php",
-                    method: "post",
-                    data: {
-                        co: "host"
-                    }
-                }).done((result) => {
-                    if(result != "no") {
-                        result = JSON.parse(result);
-                        if(result.time <= 0)
-                            location.href = "sklodowska.php";
-
-                        document.querySelector('main').innerHTML = "HOST <h2 style='color: lightgreen;'> Znaleziono przeciwnika! </h2> <br></br> <div class='btn-dark btn-lg href' onclick='hostAccept()'>Potwierdź</div> <br><br> <h3>Pozostało: <strong style='color: gold;'>"+result.time+"</strong> sekund</h3>"
-                    }
-                })
-                
-            }, '300')
+            
             
             </script>
 END;

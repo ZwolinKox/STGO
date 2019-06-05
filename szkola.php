@@ -209,6 +209,7 @@ END;
                                     $_SESSION['enemyInfo'] = $enemyStats[0];
                                     $_SESSION['enemyInfo']['enemyMaxHp'] = $_SESSION['enemyInfo']['enemyHp'];
                                     $_SESSION['enemyInfo']['enemyMaxArmor'] = $_SESSION['enemyInfo']['enemyArmor'];
+
                                     
                                     echo <<< END
                                     <div class="text-center" style="margin-bottom: 35px;">
