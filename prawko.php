@@ -5,8 +5,8 @@
 
     CheckUrl::check();
 
-   if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
-        header('Location: index.php');
+    require_once('checkLogin.php');
+
 
 
     if(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel'] < 30)
