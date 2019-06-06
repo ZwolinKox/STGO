@@ -85,6 +85,14 @@
                         ?>
 
 
+                        <?php 
+                        if(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel'] < 30)
+                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="template.php">15. Szczelina (Rifty - wymagany poziom: 30)</div>';
+                        else
+                            echo '<div class="btn-dark btn-lg href" id="rift.php">15. Szczelina (Rifty - wymagany poziom: 30)</div>';
+                        ?>
+
+
                 </div>
 		
 		

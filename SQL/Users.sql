@@ -1,11 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Czas generowania: 05 Cze 2019, 18:50
 -- Wersja serwera: 10.1.30-MariaDB
 -- Wersja PHP: 7.2.1
+=======
+-- Czas generowania: 05 Cze 2019, 18:14
+-- Wersja serwera: 10.1.38-MariaDB
+-- Wersja PHP: 7.3.2
+>>>>>>> 07e1719637f2ce70f291a1c4844144e1e4ed1703
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -87,6 +93,7 @@ CREATE TABLE `users` (
   `collectInfo` int(11) NOT NULL,
   `collectEnod` int(11) NOT NULL,
   `drivingLicence` tinyint(1) NOT NULL DEFAULT '0',
+<<<<<<< HEAD
   `statHpPvp` int(11) NOT NULL,
   `maxHpPvp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
@@ -96,12 +103,17 @@ CREATE TABLE `users` (
 --
 
 
+=======
+  `riftLevel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+>>>>>>> 07e1719637f2ce70f291a1c4844144e1e4ed1703
 --
 -- Indeksy dla zrzutów tabel
 --
 
 --
--- Indexes for table `users`
+-- Indeksy dla tabeli `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
@@ -114,7 +126,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
