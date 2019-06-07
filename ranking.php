@@ -6,6 +6,13 @@
     require_once('checkLogin.php');
 
 
+    if(!isset($_GET['sort']))
+        $_SESSION['sort'] = 'userLevel';
+    elseif($_GET['sort'] == '1')
+        $_SESSION['sort'] = 'userLevel';
+    elseif ($_GET['sort'] == '2') {
+        $_SESSION['sort'] = 'userLeaguePoints';
+    }
 ?>
 <html>
 <head>
@@ -56,8 +63,17 @@
 
                 <?php
 
-                    $wynik = DatabaseManager::selectbySQL("SELECT username, userLevel, team FROM users ORDER BY userLevel DESC LIMIT 10");
-                    
+                echo '<label for="sorts">Sortuj według:</label>
+                    <select class="form-control" name="sorts" id="sorts">
+                        <option value="1">Poziom</option>
+                        <option value="2">Punkty ligowe</option>
+                    </select>
+                ';
+                
+                    $sort =  $_SESSION['sort'];
+                    $wynik = DatabaseManager::selectbySQL("SELECT username, userLeaguePoints, userLevel, team FROM users ORDER BY $sort DESC LIMIT 10");
+
+                    echo '<br> <div class="btn-success btn-lg" id="sort">Sortuj</div><br>';
                     echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div><br>';
                     echo '<br><table class="table table-striped table-dark">
                             <thead>
@@ -65,12 +81,14 @@
                                 <th scope="col">Miejsce</th>
                                 <th scope="col">Nick</th>
                                 <th scope="col">Poziom</th>
+                                <th scope="col">Punkty ligowe</th>
                             </tr>
                             <tbody>';
                     for($i=count($wynik)-1; $i != -1; $i--)
                     {
                         $rNick = $wynik[abs($i-9)]['username'];
                         $rLvl = $wynik[abs($i-9)]['userLevel'];
+                        $rPnt = $wynik[abs($i-9)]['userLeaguePoints'];
                         $count = abs($i - 10);
                         switch($wynik[abs($i-9)]['team'])
                         {
@@ -84,6 +102,7 @@
                                 <th scope="row">'.$count.'</th>
                                 <td><a href="ksiazka.php?profile='.$rNick.'" style="color: '.$color.';">'.$rNick.'</a></td>
                                 <td>'.$rLvl.'</td>
+                                <td>'.$rPnt.'</td>
                             </tr>';
                     }
                     echo    '</tbody>
@@ -99,6 +118,17 @@
     <footer style="background-color: rgb(37, 37, 44); padding-top: -10px;" class="footer fixed-bottom text-center">
         Słysz Symulator 2018 &copy; Wszelkie prawa zastrzeżone
     </footer>
+
+    <script>
+
+        document.querySelector('#sort').addEventListener('click', () => {
+            let sort = document.querySelector('#sorts').value;
+
+            location.href = "ranking.php?sort=" + sort;
+        })
+
+
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
