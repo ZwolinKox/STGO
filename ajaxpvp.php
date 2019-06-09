@@ -114,6 +114,8 @@ elseif ($_POST['co'] == 'Cios') {
         $playerDmg = ($playerStats['statStrength'] / 100 ) * $playerWeapon['addStrenght'] + ($playerStats['statIntelect'] / 100 ) * $playerWeapon['addIntelect'] + $playerWeapon['addDamage'];
     
         DatabaseManager::updateTable('users', ['statHpPvp' => "statHpPvp-$playerDmg"], ['id' => $enemyId]);
+
+        $playerDmg = $playerDmg.Legendary::legendaryPassive();
     
         DatabaseManager::updateTable('fight', ['round' => $enemyId, 'playerOneLastRound' => 'NOW() + INTERVAL 15 SECOND', 'playerTwoLastRound' => 'NOW() + INTERVAL 15 SECOND']);
 

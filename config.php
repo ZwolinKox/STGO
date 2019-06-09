@@ -36,6 +36,7 @@ function __autoload($className) {
 }
 
 if(isset($_SESSION['logged']) && $_SESSION['logged']) {
+    
     if(is_array(DatabaseManager::selectBySQL('SELECT banCheck FROM users WHERE banCheck > now() AND id='.$_SESSION['uid'])[0])) 
     {
         $unban = DatabaseManager::selectBySQL('SELECT banCheck FROM users WHERE id='.$_SESSION['uid'])[0]['banCheck'];

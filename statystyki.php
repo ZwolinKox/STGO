@@ -59,7 +59,7 @@
             $stats['eqMainHandName'] = "Brak broni";
         else {
             $stats['eqMainHandName'] = DatabaseManager::selectBySQL('SELECT items.name FROM users, items WHERE items.id = users.eqMainHand AND users.id='.$_SESSION['uid'])[0]['name'];
-            $stats['eqMainHandName'] = EqManager::item($stats['eqMainHand'], 'colorTag').' '.EqManager::stat($stats['eqMainHand']); //test
+            $stats['eqMainHandName'] = EqManager::item($stats['eqMainHand'], 'colorTag').' '.EqManager::stat($stats['eqMainHand']).Legendary::description(); //test
         }
 
         if($stats['drivingLicence'] == true)
