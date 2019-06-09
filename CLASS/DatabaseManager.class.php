@@ -4,6 +4,7 @@
 class DatabaseManager {
     static public function getConnection() {
         $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PW, DB_DB); //Tworzymy połączenie przekazując zmienne utworzone w pliku config.php
+        mysqli_query($conn, 'SET NAMES utf8');
         if(mysqli_connect_errno())  //W przypadku błędu z połączeniem
             return false;
         else

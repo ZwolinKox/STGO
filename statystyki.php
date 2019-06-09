@@ -59,7 +59,7 @@
             $stats['eqMainHandName'] = "Brak broni";
         else {
             $stats['eqMainHandName'] = DatabaseManager::selectBySQL('SELECT items.name FROM users, items WHERE items.id = users.eqMainHand AND users.id='.$_SESSION['uid'])[0]['name'];
-            $stats['eqMainHandName'] = EqManager::item($stats['eqMainHand'], 'colorTag').' '.EqManager::stat($stats['eqMainHand']).Legendary::description(); //test
+            $stats['eqMainHandName'] = EqManager::item($stats['eqMainHand'], 'colorTag').' '.EqManager::stat($stats['eqMainHand']); //test
         }
 
         if($stats['drivingLicence'] == true)
@@ -108,6 +108,7 @@
         echo '<p id="team">Twoja drużyna: <span style="color: '.$stats['colorTeam'].'">'.$stats['team'].'</span></p>';
         echo '<p id="eqmainhand">Obecnie posiadana broń: '.$stats['eqMainHandName'].'</p>';
         echo '</div>';
+        echo Legendary::description();
 
         $eq1name = EqManager::item($stats['eqSlotOne'], 'name').''.EqManager::stat($stats['eqSlotOne']);
         $eq2name = EqManager::item($stats['eqSlotTwo'], 'name').''.EqManager::stat($stats['eqSlotTwo']);
@@ -206,9 +207,9 @@ END;
                 return Math.round(n*factor)/factor;
             }
                 
-            const resultObj = JSON.parse(result);    
-
-            document.querySelector('#stats').innerHTML  = `
+            const resultObj = JSON.parse(result); 
+            
+            const newStats = `
                 <h3 id="username"><p>${ resultObj.username } (Lvl: ${ resultObj.userLevel })</p></h3>
                 <h3 id="gamemode"><p>Tryb gry <span style="color: ${ resultObj.hardcoreColor }"> ${ resultObj.hardcore }!</span></p></h3>
                 <h3 style="color: gold;">${ resultObj.drivingLicence }</h3>
@@ -239,6 +240,10 @@ END;
                 <p id="team">Twoja drużyna: <span style="color: ${ resultObj.colorTeam }"> ${ resultObj.team} </span></p>               
                 <p id="eqmainhand">Obecnie posiadana broń: ${ resultObj.eqMainHandName } </p>
                 `;
+
+                if(document.querySelector('#stats').innerHTML !== newStats)
+                    document.querySelector('#stats').innerHTML = newStats;
+
             })
         }, '1000');
 
