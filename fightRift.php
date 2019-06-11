@@ -58,7 +58,7 @@
     <div class="container"> <!-- ŚRODEK !-->
         <div class="row">
 								
-				<div class="col-12 text-center display-4">Walka z Mieszkaniec Szczelin</div>
+				<div class="col-12 text-center display-4">Szczelina poziom: <?php echo $_SESSION['enemyInfo']['level']; ?></div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
@@ -74,7 +74,7 @@
                             ";
 
                             echo '<div id="cios" style="margin-top: 75px;" class="btn-dark btn-lg">Zadaj cios</div>
-                            <div id="ucieczka" class="btn-dark btn-lg">Uciekaj (Utrata całej energii, koszt 200SC)</div>';
+                            <div id="ucieczka" class="btn-dark btn-lg">Uciekaj</div>';
 
                             echo '<div id="logs" style="margin-top: 35px;"></div>';
 

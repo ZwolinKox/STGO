@@ -12,11 +12,8 @@ if($_POST['co'] == 'startFight') {
 }
 
 if($_POST['co'] == 'getEnemyStats') {
-    $riftEnemy = unserialize($_SESSION['riftEnemy']);
-    $riftEnemyStat = $riftEnemy->getStat();
-
-    $_SESSION['enemyInfo']['enemyArmorProcent'] = ($riftEnemyStat['armor'] / $_SESSION['enemyInfo']['enemyMaxArmor']) * 100;
-    $_SESSION['enemyInfo']['enemyHpProcent'] = ($riftEnemyStat['hp'] / $_SESSION['enemyInfo']['enemyMaxHp']) * 100;
+    $_SESSION['enemyInfo']['enemyArmorProcent'] = ($_SESSION['enemyInfo']['enemyArmor'] / $_SESSION['enemyInfo']['enemyMaxArmor']) * 100;
+    $_SESSION['enemyInfo']['enemyHpProcent'] = ($_SESSION['enemyInfo']['enemyHp'] / $_SESSION['enemyInfo']['enemyMaxHp']) * 100;
 
     unset($riftEnemy, $riftEnemyStat);
     die(json_encode($_SESSION['enemyInfo']));
@@ -29,51 +26,65 @@ elseif ($_POST['co'] == "Ucieczka") {
 }
 
 elseif ($_POST['co'] == 'Cios') {
-    $riftEnemy = unserialize($_SESSION['riftEnemy']);
-    $riftEnemyStat = $riftEnemy->getStat();
-    
     $playerStats = DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$_SESSION['uid'])[0];
     $playerWeapon = DatabaseManager::selectBySQL("SELECT items.* FROM items, users WHERE items.id = users.eqMainHand AND users.id=".$_SESSION['uid'])[0];
-    $enemyDmg =  $riftEnemyStat['damage'];
+    $enemyDmg =  $_SESSION['enemyInfo']['enemyDamage'];
     $playerDmg = ($playerStats['statStrength'] / 100 ) * $playerWeapon['addStrenght'] + ($playerStats['statIntelect'] / 100 ) * $playerWeapon['addIntelect'] + $playerWeapon['addDamage'];
 
-    if($riftEnemyStat['hp'] > 0) {
-        $riftEnemyStat['armor'] -= $playerDmg;
+    if($_SESSION['enemyInfo']['enemyHp'] > 0) {
+        $_SESSION['enemyInfo']['enemyArmor'] -= $playerDmg;
 
-        if($riftEnemyStat['armor'] < 0)
-            $riftEnemyStat['armor'] = 0;
+        if($_SESSION['enemyInfo']['enemyArmor'] < 0)
+        {
+            $_SESSION['enemyInfo']['enemyArmor'] = 0;
+        }
 
     } else {
-        $riftEnemyStat['hp'] -= $playerDmg;
+        $_SESSION['enemyInfo']['enemyHp'] -= $playerDmg;
     }
 
     DatabaseManager::updateTable('users', ['statHp' => "statHp-$enemyDmg"], ['id' => $_SESSION['uid']]);
 
-    $_SESSION['riftEnemy'] = serialize($riftEnemy);
-
     if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0) {
         UserManager::death();
     }
-    elseif ($riftEnemyStat['hp'] <= 0) {
-
+    elseif ($_SESSION['enemyInfo']['enemyHp'] <= 0) {
         if(!$_SESSION['winWithMonster'])
         {
-            $riftEnemyStat['hp'] = 0;
+            $_SESSION['enemyInfo']['enemyHp'] = 0;
             $_SESSION['winWithMonster'] = true;
-    
-            //Tutaj daj kod przejscie do nastepnego przeciwnika
 
             $_SESSION['fight'] = false;
             unset($_SESSION['fight']);
-      
-            $_SESSION['win'] = true;
     
-            die('win');
+            //Tutaj daj kod przejscie do nastepnego przeciwnika
+
+            Action::addCoin(1);
+
+            if(DatabaseManager::selectBySQL("SELECT riftLevel FROM users WHERE id=".$_SESSION['uid'])[0]['riftLevel'] < $_SESSION['enemyInfo']['level'])
+            {
+                DatabaseManager::updateTable('users', ['riftLevel' => $_SESSION['enemyInfo']['level']], ['id' => $_SESSION['uid']]);
+            }
+
+            $riftEnemy = new RiftEnemy($_SESSION['enemyInfo']['level']+1);
+            $riftEnemyStats = $riftEnemy->getStat();
+            unset($_SESSION['enemyInfo']);
+                    
+            $_SESSION['enemyInfo']['enemyHp'] = $riftEnemyStats['hp'];
+            $_SESSION['enemyInfo']['enemyMaxHp'] = $riftEnemyStats['hp'];
+            $_SESSION['enemyInfo']['enemyArmor'] = $riftEnemyStats['armor'];
+            $_SESSION['enemyInfo']['enemyMaxArmor'] = $riftEnemyStats['armor'];
+            $_SESSION['enemyInfo']['enemyDamage'] = $riftEnemyStats['damage'];
+            $_SESSION['enemyInfo']['level'] = $riftEnemyStats['level'];
+            $_SESSION['riftEnemy'] = serialize($riftEnemy);
+            unset($riftEnemy);
+
+            header('Location: fightRift.php');
         }
     }
         
     else {
-        if($riftEnemyStat['hp'])
+        if($_SESSION['enemyInfo']['enemyHp'])
 
         die("<div class='alert alert-warning alert-dismissible fade show' role='alert'>
         Przeciwnik zadał Ci obrażenia równe $enemyDmg
@@ -82,11 +93,5 @@ elseif ($_POST['co'] == 'Cios') {
           <span aria-hidden='true'>&times;</span>
         </button>
         </div>");
-    }
-
-  
+    } 
 }
-
-
-
-

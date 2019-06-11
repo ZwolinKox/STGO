@@ -63,9 +63,14 @@
                         $riftEnemy = new RiftEnemy(1);
                         $riftEnemyStats = $riftEnemy->getStat();
                     
+                        $_SESSION['enemyInfo']['enemyHp'] = $riftEnemyStats['hp'];
                         $_SESSION['enemyInfo']['enemyMaxHp'] = $riftEnemyStats['hp'];
+                        $_SESSION['enemyInfo']['enemyArmor'] = $riftEnemyStats['armor'];
                         $_SESSION['enemyInfo']['enemyMaxArmor'] = $riftEnemyStats['armor'];
+                        $_SESSION['enemyInfo']['enemyDamage'] = $riftEnemyStats['damage'];
+                        $_SESSION['enemyInfo']['level'] = $riftEnemyStats['level'];
                         $_SESSION['riftEnemy'] = serialize($riftEnemy);
+                        unset($riftEnemy);
 
                         echo "<h3>Twój akutalny rekord w szczelinie to: ".DatabaseManager::selectBySQL('SELECT riftLevel FROM users WHERE id='.$_SESSION['uid'])[0]['riftLevel']." !</h3><br>";
 
