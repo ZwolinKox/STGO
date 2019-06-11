@@ -59,7 +59,44 @@
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
                     <?php
+                        
+                        $riftEnemy = new RiftEnemy(1);
+                        $riftEnemyStats = $riftEnemy->getStat();
+                    
+                        $_SESSION['enemyInfo']['enemyMaxHp'] = $riftEnemyStats['hp'];
+                        $_SESSION['enemyInfo']['enemyMaxArmor'] = $riftEnemyStats['armor'];
+                        $_SESSION['riftEnemy'] = serialize($riftEnemy);
 
+                        echo "<h3>Twój akutalny rekord w szczelinie to: ".DatabaseManager::selectBySQL('SELECT riftLevel FROM users WHERE id='.$_SESSION['uid'])[0]['riftLevel']." !</h3><br>";
+
+                        echo <<< END
+                        <div class="text-center" style="margin-bottom: 35px;">
+                        <div id="fight"></div>
+
+                        <div class="btn-dark btn-lg" onclick="start()">Wejdz do szczeliny</div>
+                        <div class="btn-dark btn-lg" onclick="location.href = 'index.php'">Uciekaj</div>
+
+                        </div>
+
+                        <script defer>
+
+                            function start() {
+                                $.ajax({
+                                    url: "getEnemyStatsRift.php",
+                                    method: "post",
+                                    data: {
+                                        co: "startFight"
+                                    }
+                                }).done((result) => {
+                                    location.href = 'fightRift.php';
+                                })  
+                            }
+                                document.addEventListener("DOMContentLoaded",() => {
+                                const fight = document.querySelector("#fight");
+                            })          
+                        </script>
+END;
+                    
                     ?>
                 </div>
 		
