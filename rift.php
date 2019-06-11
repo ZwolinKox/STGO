@@ -58,56 +58,9 @@
 				<div class="col-12 text-center display-4">Szczelina</div>
 				
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
-
                     <?php
-                        echo '<div class="btn-dark btn-lg" onclick="startRift()">Rozpocznij szczelinę</div><br>';
-
-                        echo <<< END
-                                    <div class="text-center" style="margin-bottom: 35px;">
-
-                                    
-
-                                    <div id="fight"></div>
-
-                                    </div>
-
-                                    <script defer>
-
-                                        function start() {
-                                            $.ajax({
-                                                url: "getEnemyStatsRift.php",
-                                                method: "post",
-                                                data: {
-                                                    co: "startFight"
-                                                }
-                                            }).done((result) => {
-                                                location.href = 'fightRift.php';
-                                            })
-                                        
-                                            
-                                        }
-
-                                        document.addEventListener("DOMContentLoaded",() => {
-                                            const poszukiwanie = document.querySelector("#poszukiwanie");
-                                            const fight = document.querySelector("#fight");
-
-                                            setTimeout(() => {
-                                                poszukiwanie.style.color = "lightGreen";
-                                                poszukiwanie.innerHTML = "Znaleziono przeciwnika! $enemyInfo";
-                                                document.querySelector("#search").style.display = "none";
-                                                fight.innerHTML = `<div class="btn-dark btn-lg" onclick="start()">Walcz</div>
-                                                <div class="btn-dark btn-lg" onclick="location.href = 'szkola.php'">Uciekaj</div>`
-                                            }, 1000)
-
-                                        })
-                                        
-                                    </script>
-
-END;
-
 
                     ?>
-
                 </div>
 		
 		
