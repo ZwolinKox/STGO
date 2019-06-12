@@ -127,8 +127,10 @@
                         }
                         }).done((result) => {
 
-                            if(result == 'win')
-                                location.href = "win.php"
+                            if(result == "win")
+                                location.reload();
+                            else if(result == "lose")
+                                location.href = "rift.php";
                             else
                                 document.querySelector('#logs').innerHTML = result;
                         })
@@ -149,6 +151,8 @@
                         }
                         
                     }).done((result) => {
+                    
+                    
                         let resultObj = JSON.parse(result);
 						
 
@@ -174,15 +178,6 @@
             }, '1000');
         });
 		
-			
-		window.addEventListener('keydown', function(event) {
-			
-			const key = event.keyCode;
-			
-			if(key == 32)
-				attack();
-		
-		}, false);
 
         document.querySelector('#cios').addEventListener('click', () => {
             attack();

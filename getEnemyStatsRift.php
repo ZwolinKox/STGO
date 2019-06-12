@@ -7,6 +7,7 @@ if(!isset($_POST['co']))
     die();
 
 if($_POST['co'] == 'startFight') {
+    $_SESSION['winWithMonster'] = false;
     $_SESSION['fight'] = true;
     unset($_POST['co']);
 }
@@ -31,7 +32,7 @@ elseif ($_POST['co'] == 'Cios') {
     $enemyDmg =  $_SESSION['enemyInfo']['enemyDamage'];
     $playerDmg = ($playerStats['statStrength'] / 100 ) * $playerWeapon['addStrenght'] + ($playerStats['statIntelect'] / 100 ) * $playerWeapon['addIntelect'] + $playerWeapon['addDamage'];
 
-    if($_SESSION['enemyInfo']['enemyHp'] > 0) {
+    if($_SESSION['enemyInfo']['enemyArmor'] > 0) {
         $_SESSION['enemyInfo']['enemyArmor'] -= $playerDmg;
 
         if($_SESSION['enemyInfo']['enemyArmor'] < 0)
@@ -46,7 +47,7 @@ elseif ($_POST['co'] == 'Cios') {
     DatabaseManager::updateTable('users', ['statHp' => "statHp-$enemyDmg"], ['id' => $_SESSION['uid']]);
 
     if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0) {
-        UserManager::death();
+        die('lose');
     }
     elseif ($_SESSION['enemyInfo']['enemyHp'] <= 0) {
         if(!$_SESSION['winWithMonster'])
@@ -55,7 +56,7 @@ elseif ($_POST['co'] == 'Cios') {
             $_SESSION['winWithMonster'] = true;
 
             $_SESSION['fight'] = false;
-            unset($_SESSION['fight']);
+            //unset($_SESSION['fight']);
     
             //Tutaj daj kod przejscie do nastepnego przeciwnika
 
@@ -78,8 +79,10 @@ elseif ($_POST['co'] == 'Cios') {
             $_SESSION['enemyInfo']['level'] = $riftEnemyStats['level'];
             $_SESSION['riftEnemy'] = serialize($riftEnemy);
             unset($riftEnemy);
+            //$_SESSION['winWithMonster'] = false;
 
-            header('Location: fightRift.php');
+            die('win');
+            //header('Location: fightRift.php');
         }
     }
         
