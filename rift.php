@@ -63,6 +63,7 @@
                         $riftEnemy = new RiftEnemy(1);
                         $riftEnemyStats = $riftEnemy->getStat();
                     
+                        $_SESSION['hpBeforeRift'] = DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'];
                         $_SESSION['enemyInfo']['enemyHp'] = $riftEnemyStats['hp'];
                         $_SESSION['enemyInfo']['enemyMaxHp'] = $riftEnemyStats['hp'];
                         $_SESSION['enemyInfo']['enemyArmor'] = $riftEnemyStats['armor'];

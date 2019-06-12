@@ -161,13 +161,13 @@
                             <h3 style="margin-bottom: 25px; margin-top: 25px;">Pancerz przeciwnika: </h3>
                             <div class="progress">
                                 <div class="progress-bar progress-bar bg-success progress-bar-animated" role="progressbar" aria-valuenow="${ resultObj.enemyArmor }" aria-valuemin="0" aria-valuemax="${ resultObj.enemyMaxArmor }" style="width: ${ resultObj.enemyArmorProcent }%">
-                                <span style="color: black">${ Round(resultObj.enemyArmorProcent, 2) }%</span></div>
+                                <span style="color: black">${ resultObj.enemyArmor }/${ resultObj.enemyMaxArmor } ${ Round(resultObj.enemyArmorProcent, 2) }%</span></div>
                             </div>
                             
                             <h3 style="margin-bottom: 25px; margin-top: 25px;">Punkty życia przeciwnika: </h3>
                             <div class="progress">
                                 <div class="progress-bar progress-bar bg-danger progress-bar-animated" role="progressbar" aria-valuenow="${ resultObj.enemyHp }" aria-valuemin="0" aria-valuemax="${ resultObj.enemyMaxHp }" style="width: ${ resultObj.enemyHpProcent }%">
-                                <span style="color: black">${ Round(resultObj.enemyHpProcent, 2) }%</span></div>
+                                <span style="color: black">${ resultObj.enemyHp }/${ resultObj.enemyMaxHp } ${ Round(resultObj.enemyHpProcent, 2) }%</span></div>
                             </div>
 
                             <h3 style="margin-top: 25px;">Atak: ${ resultObj.enemyDamage }</h3>

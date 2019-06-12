@@ -7,7 +7,6 @@ if(Post::exist('itemCost'))
 {
     if(Post::exist('itemId'))
     {   
-        //Action::delCoin(1);
         $item = Post::get('itemId');
         
         if(EqManager::findItem($item) != null)

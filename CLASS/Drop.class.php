@@ -130,15 +130,15 @@
             return $items[$dropSeed];
         }
 
-        static public function levelUp($currentLevel) {
-            DatabaseManager::updateTable('users', ['xpPoints' => "0", 'userLevel' => 'userLevel+1'], ['id' => $_SESSION['uid']]);
-            $maxXp = DatabaseManager::selectBySQL('SELECT maxXp FROM users WHERE id='.$_SESSION['uid'])[0]['maxXp'];
-
+        static public function levelUp($currentLevel) { 
             //LEVELCAP
             define('LEVELCAP', 30);
 
-            if($currentLevel != LEVELCAP)
+            if($currentLevel < LEVELCAP)
             {
+                DatabaseManager::updateTable('users', ['xpPoints' => "0", 'userLevel' => 'userLevel+1'], ['id' => $_SESSION['uid']]);
+                $maxXp = DatabaseManager::selectBySQL('SELECT maxXp FROM users WHERE id='.$_SESSION['uid'])[0]['maxXp'];
+
                 $newMaxXp;
                 if($currentLevel < 10)
                 {
@@ -154,6 +154,13 @@
                 }
 
                 DatabaseManager::updateTable('users', ['maxXp' => $newMaxXp], ['id' => $_SESSION['uid']]);
+            }
+            else
+            {
+                DatabaseManager::updateTable('users', ['xpPoints' => "0", 'userLevel' => 'userLevel+1'], ['id' => $_SESSION['uid']]);
+                $maxXp = DatabaseManager::selectBySQL('SELECT maxXp FROM users WHERE id='.$_SESSION['uid'])[0]['maxXp'];
+            
+                DatabaseManager::updateTable('users', ['xpPoints' => $maxXp, 'userLevel' => LEVELCAP], ['id' => $_SESSION['uid']]);
             }
 
         }

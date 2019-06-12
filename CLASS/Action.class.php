@@ -72,6 +72,10 @@ class Action {
         }
     }
 
+    static public function setHp($value) {
+        DatabaseManager::updateTable('users', ['statHp' => $value], ['id' => $_SESSION['uid']]);
+    }
+
     //Sila
     static public function addStrength($value) {
         DatabaseManager::updateTable('users', ['statStrength' => 'statStrength+'. $value], ['id' => $_SESSION['uid']]);

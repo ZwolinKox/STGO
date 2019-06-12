@@ -47,6 +47,7 @@ elseif ($_POST['co'] == 'Cios') {
     DatabaseManager::updateTable('users', ['statHp' => "statHp-$enemyDmg"], ['id' => $_SESSION['uid']]);
 
     if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0) {
+        Action::setHp($_SESSION['hpBeforeRift']);
         die('lose');
     }
     elseif ($_SESSION['enemyInfo']['enemyHp'] <= 0) {
