@@ -77,6 +77,21 @@ class Legendary {
                     }
                     break;
                 }
+
+                case '2':
+                {
+                    if(rand(1, 100) <= $passive['chance'])
+                    {
+                        $maxHp = DatabaseManager::selectBySQL('SELECT maxHp FROM users WHERE id='.$_SESSION['uid'])[0]['maxHp'];
+
+                        $heal = ($maxHp / 100) * 6;
+
+                        DatabaseManager::updateTable('users', ['statHpPvp' => 'statHpPvp+'.$heal], ['id' => $_SESSION['uid']]);
+
+                        return " + <h5 style='color: red;'>".$passive['name']."</h5>";
+                    }
+                    break;
+                }
             
             default:
                 # code...
