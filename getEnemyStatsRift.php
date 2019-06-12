@@ -48,6 +48,13 @@ elseif ($_POST['co'] == 'Cios') {
 
     if(DatabaseManager::selectBySQL("SELECT statHp FROM users WHERE id=".$_SESSION['uid'])[0]['statHp'] <= 0) {
         Action::setHp($_SESSION['hpBeforeRift']);
+
+        if(DatabaseManager::selectBySQL("SELECT boolRift FROM users WHERE id=".$_SESSION['uid'])[0]['boolRift'] == 0)
+        {
+            Action::addCoin(Rift::prize($_SESSION['enemyInfo']['level']));
+            DatabaseManager::updateTable('users', ['boolRift' => 1], ['id' => $_SESSION['uid']]);
+        }
+
         die('lose');
     }
     elseif ($_SESSION['enemyInfo']['enemyHp'] <= 0) {
@@ -60,8 +67,6 @@ elseif ($_POST['co'] == 'Cios') {
             //unset($_SESSION['fight']);
     
             //Tutaj daj kod przejscie do nastepnego przeciwnika
-
-            Action::addCoin(1);
 
             if(DatabaseManager::selectBySQL("SELECT riftLevel FROM users WHERE id=".$_SESSION['uid'])[0]['riftLevel'] < $_SESSION['enemyInfo']['level'])
             {
