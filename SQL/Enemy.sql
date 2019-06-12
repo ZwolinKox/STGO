@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 02 Cze 2019, 10:44
+-- Czas generowania: 12 Cze 2019, 13:01
 -- Wersja serwera: 10.1.38-MariaDB
 -- Wersja PHP: 7.3.2
 
@@ -56,13 +56,13 @@ INSERT INTO `enemy` (`id`, `name`, `type`, `rarity`, `enemyLevel`, `enemyHp`, `e
 (3, 'Elektronik', 'standard', 'common', 10, 150, 15, 50, 20, 5, 31, 32, 33, 34, 36),
 (4, 'Elektronik zdolny', 'standard', 'common', 12, 180, 17, 80, 20, 5, 31, 32, 33, 34, 36),
 (5, 'Mechatronik', 'standard', 'common', 15, 200, 20, 100, 40, 10, 37, 38, 39, 40, 41),
-(6, 'Mechatronik zdolny', 'standard', 'common', 17, 250, 22, 120, 40, 10, 37, 38, 39, 40, 41),
-(7, 'Informatyk', 'standard', 'common', 20, 400, 25, 150, 40, 10, 37, 38, 39, 40, 42),
-(8, 'Informatyk zdolny', 'standard', 'common', 22, 500, 28, 200, 40, 10, 37, 38, 39, 40, 42),
-(9, 'Energia odnawialna', 'standard', 'common', 25, 700, 30, 300, 60, 20, 43, 44, 45, 46, 47),
-(10, 'Energia odnawialna zdolny', 'standard', 'common', 27, 800, 32, 400, 60, 20, 43, 44, 45, 46, 47),
-(11, 'Mechanik', 'standard', 'common', 30, 900, 35, 550, 60, 20, 43, 44, 45, 46, 48),
-(12, 'Mechanik zdolny', 'standard', 'common', 30, 1000, 40, 600, 60, 20, 43, 44, 45, 46, 48),
+(6, 'Mechatronik zdolny', 'standard', 'common', 17, 300, 25, 120, 40, 10, 37, 38, 39, 40, 41),
+(7, 'Informatyk', 'standard', 'common', 20, 500, 30, 150, 40, 10, 37, 38, 39, 40, 42),
+(8, 'Informatyk zdolny', 'standard', 'common', 22, 700, 45, 200, 40, 10, 37, 38, 39, 40, 42),
+(9, 'Energia odnawialna', 'standard', 'common', 25, 900, 50, 300, 60, 20, 43, 44, 45, 46, 47),
+(10, 'Energia odnawialna zdolny', 'standard', 'common', 27, 1000, 60, 400, 60, 20, 43, 44, 45, 46, 47),
+(11, 'Mechanik', 'standard', 'common', 30, 1200, 80, 550, 60, 20, 43, 44, 45, 46, 48),
+(12, 'Mechanik zdolny', 'standard', 'common', 30, 1500, 100, 600, 60, 20, 43, 44, 45, 46, 48),
 (13, 'Futszak', 'boss', 'boss', 30, 6000, 240, 2000, 0, 1000, 55, 56, 55, 57, 58),
 (14, 'Złomiarz', 'common', 'raid-mob', 30, 2000, 100, 500, 0, 20, 0, 0, 0, 0, 0);
 
