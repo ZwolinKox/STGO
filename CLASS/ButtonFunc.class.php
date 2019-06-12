@@ -89,7 +89,7 @@
 
         //Metody wykorzystywane w szkole w bibliotece
         static public function czytaj($gatunek) {
-            if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 15)
+            if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 30)
             {
                 echo '<h3 style="color: red;">Nie masz tyle Słysz Coinów!</h3><br>';
             }

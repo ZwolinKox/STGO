@@ -57,7 +57,8 @@
 
             if($dayWeek == 7)
             {
-                Anticheat::checkDate();
+                //Narazie anticheat musi byc wylaczony poniewaz dziala srednio, pracuje nad nowym wydajniejszym i dokładniejszym
+                //Anticheat::checkDate();
                 DatabaseManager::updateTable('users', ['lastSunday' => "now()"], ['id' => $_SESSION['uid']]);
             }
 
