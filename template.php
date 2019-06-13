@@ -66,9 +66,9 @@
                 
                         <?php 
                         if(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel'] < 30)
-                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="template.php">15. Eksploracja (Raidy - wymagany poziom: 30)</div>';
+                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="template.php">10. Eksploracja (Raidy - wymagany poziom: 30)</div>';
                         else
-                            echo '<div class="btn-dark btn-lg href" id="raid.php">15. Eksploracja (Raidy - wymagany poziom: 30)</div>';
+                            echo '<div class="btn-dark btn-lg href" id="raid.php">10. Eksploracja (Raidy - wymagany poziom: 30)</div>';
                         ?>
 
                         <div class="btn-dark btn-lg href" id="kosciol.php">11. Idz do kosciola (Dostepne jedynie w niedziele, raz dziennie)</div>
@@ -76,20 +76,22 @@
                         <div class="btn-dark btn-lg href" id="gangs.php">13. Gangi</div>
                         <div class="btn-dark btn-lg href" id="aukcje.php">14. Aukcje</div>
                         <div class="btn-dark btn-lg href" id="ksiazka.php">15. Książka telefoniczna</div>
+                        <div class="btn-dark btn-lg href" id="melanz.php">16. Zrób melanż w domu (Dostępne tylko w sobotę, wymaga posiadania przy sobie 20SC)</div>
+
 
                         <?php 
                         if(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel'] < 30)
-                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="prawko.php">15. Prawo jazdy (Wymagany poziom: 30)</div>';
+                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="prawko.php">17. Prawo jazdy (Wymagany poziom: 30)</div>';
                         else
-                            echo '<div class="btn-dark btn-lg href" id="prawko.php">15. Prawo jazdy (Wymagany poziom: 30)</div>';
+                            echo '<div class="btn-dark btn-lg href" id="prawko.php">17. Prawo jazdy (Wymagany poziom: 30)</div>';
                         ?>
 
 
                         <?php 
                         if(DatabaseManager::selectBySQL('SELECT userLevel FROM users WHERE id='.$_SESSION['uid'])[0]['userLevel'] < 30)
-                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="template.php">15. Szczelina (Rifty - wymagany poziom: 30)</div>';
+                            echo '<div class="btn-dark btn-lg href" style="color: red;" id="template.php">18. Szczelina (Rifty - wymagany poziom: 30)</div>';
                         else
-                            echo '<div class="btn-dark btn-lg href" id="rift.php">15. Szczelina (Rifty - wymagany poziom: 30)</div>';
+                            echo '<div class="btn-dark btn-lg href" id="rift.php">18. Szczelina (Rifty - wymagany poziom: 30)</div>';
                         ?>
 
 

@@ -116,6 +116,143 @@ require_once 'config.php';
             
         }
 
+        elseif (Post::get('co') == 'melanz') {
+
+            $dayWeek = DatabaseManager::selectBySQL('SELECT dayWeek FROM users WHERE id='.Session::get('uid'))[0]['dayWeek'];
+
+            $dayWeek++;
+
+            if($dayWeek == 7)
+            {
+                DatabaseManager::updateTable('users', ['lastSunday' => "now()"], ['id' => $_SESSION['uid']]);
+            }
+
+            if($dayWeek > 7) {
+                $dayWeek = 1;
+                DatabaseManager::updateTable('users', ['boolChurch' => 0, 'boolSchoolBan' => 0], ['id' => Session::get('uid')]);  
+            }
+                
+
+            DatabaseManager::updateTable('users', ['userEnergy' => '100', 'statHp' => 'maxHp', 'dayWeek' => $dayWeek, 'dayGame'=>'dayGame+1', 'boolLotek' => 0, 'boolSchool' => 0], ['id' => $_SESSION['uid']]);
+
+
+
+            if(rand(1, 4) == 1)
+            {
+                echo "<span style='color: red;'>Impreza się ledwo rozpoczcęła, a twoi rodzice wrócili do domu! </span>";
+            }
+
+            elseif(Post::get('trunki') == '1' && Post::get('ludzie') == '3' && Post::get('taniec') == 2)
+            {
+                $wynik = rand(1, 3);
+
+                if($wynik == 1) {
+                    echo "<span style='color: lightgreen;'>Impreza się ledwo rozpoczcęła, a całe miasto wbiło do mieszkania. Nie sądziłeś, że przyjdą. 
+                    Całe szczęście kupiłeś bardzo dużo soku. Jednak przyszła wyjątkowa osoba. Twój najlepszy kolega, osoba Ci najbliższa.
+                    Dzisiaj nie jest on zwykłym człowiekiem. Jest archaniołem w legendarnej armii Lil Piszczana, ale udało mu się tutaj dotrzeć.
+                    Postanowiliście, że zrobicie to co parę lat temu w barze gdzie zaproponowałeś mu zmianę stylu życia. Ostatni taniec.
+                    Od tamtego momentu od nowa odkrył w sobie moc, która doprowadziła go do tego gdzie jest teraz. Postanowiliście zatańczyć na stole.
+                    Niektórzy uciekli, ale nie przejmowaliście się tym. I w ten sposób bawiliście się do rana</span>";
+                    
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
+
+                }
+                elseif ($wynik == 2) {
+                    echo "<span style='color: red;'>Nikt do Ciebie nie przyszedł. Totalnie nikt. Każdy Cię olał</span>";
+                }
+                elseif ($wynik == 3) {
+                    echo "<span style='color: red;'>Impreza się ledwo rozpoczcęła, a całe miasto wbiło do mieszkania. Nie sądziłeś, że przyjdą. Nie widziałeś w tej grupce swojego
+                    najlepszego przyjaciela. Szybko okazało się, że do twojego soczku ktoś dolał metanol. Masowa ślepota ogarnęła wszystkich na imprezie. Możesz czuć się za to 
+                    odpowiedzialny, nie dopilnowałeś wszystkiego, a przecież zaprosiłeś całe miasto. Zostało Ci tylko tańczyć na stole, aż przyjedzie policja </span>";
+                }
+            }
+
+            elseif(Post::get('trunki') == '3' && Post::get('ludzie') == '1')
+            {
+                $wynik = rand(1, 3);
+
+                if($wynik == 1) {
+                    echo "<span style='color: lightgreen;'>Impreza się ledwo rozpoczcęła, a twoi kumple byli już w drzwiach. Postanowiliście zrobić sesję RPG.
+                    Mityczne stworzenia, smoki i inne krasnoludy nagle pojawiły się w pomieszczeniu. Nie do końca wiedzieliście co się dzieje.
+                    Kilka chwil potem kolega rzucił się na jednego z nich tocząc z nim epicką walkę. Niestety odniósł poważne obrażenia. On umierał.
+                    Wszyscy płakaliście. To był najmocniejszy FreeWave trip jaki was spotkał</span>";
+
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
+
+                }
+                elseif ($wynik == 2) {
+                    echo "<span style='color: red;'>Nikt do Ciebie nie przyszedł. Totalnie nikt. Każdy Cię olał. Ale przynajmniej piesek napił się z tobą piwka. To chyba dobrze? Halo piesku?</span>";
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+                }
+                elseif ($wynik == 3) {
+                    echo "<span style='color: red;'>Impreza się ltylko tańczyć na stole, a koledzy stali w dzwiach. Jeden kolega nie wyglądał za dobrze, mówił, że nie pije dziś FreeWaveColi. Nie pytaliśmy o powód.
+                    Jednak jeden z nas myślał, że pożartuje i mu doleje do soku. Okazało się, że wcześniej zarzył Esperal. Jego pogrzeb jest we wtorek</span>";
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+
+                }
+            }
+
+
+            
+            elseif(Post::get('trunki') == '2' && Post::get('ludzie') == '3' &&  Post::get('spiew') == '4')
+            {
+                $wynik = rand(1, 3);
+
+                if($wynik == 1) {
+                    echo "<span style='color: lightgreen;'>Impreza się ledwo rozpoczcęła, a setki osób przychodzi na koncert xXXxMojżesza w twoim domu
+                    . Może mało miejsca, ale i tak dacie radę, jest alkohol, dobra muzyka i masa ludzi. Może być lepiej?</span>";
+                    
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
+                }
+                elseif ($wynik == 2) {
+                    echo "<span style='color: red;'>Nikt do Ciebie nie przyszedł. Totalnie nikt. Każdy Cię olał. Więc sam zacząłeś rapować po pijaku aż ktoś rzucił Cię piłką przez okno</span>";
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+
+                }
+                elseif ($wynik == 3) {
+                    echo "<span style='color: red;'>Okazało się, że raper Young Ligma nie istnieje, a ludzie żądają koncertu. Ostatecznie zostałeś ośmieszony i wszyscy Cię opuścili</span>";
+               
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+
+                }
+            }
+            else {
+                $wynik = rand(1, 5);
+
+                if($wynik == 1) {
+                    echo "<span style='color: lightgreen;'>Impreza się ledwo rozpoczcęła, a nagle odwiedza imprezę Young Hulbój w swojej nowej postaci
+                    . Wszystcy myślą, że to P********3, ale ty wiesz, że to on. Przyjął nowe ciało, żeby tanim kosztem móc się alkoholizować, przyniósł własne trunki.
+                    Melanż zapowiada się wspaniały</span>";
+
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
+
+                }
+                elseif ($wynik == 2) {
+                    echo "<span style='color: red;'>Nikt do Ciebie nie przyszedł. Totalnie nikt. Każdy Cię olał. Nic nowego</span>";
+                
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+                }
+                elseif ($wynik == 3) {
+                    echo "<span style='color: lightgreen;'>Okazało się, że raper Young Ligma nie istnieje, ale udało się coś załatwić. Impreza była fajna, spokojna. Dobre.<span>";
+               
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin+20'], ['id' => $_SESSION['uid']]);
+
+                }
+                elseif ($wynik == 4) {
+                    echo "<span style='color: red;'>Impreza to była totalna klapa, nawet nie ma co tego komentować..</span>";
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+                }
+                elseif ($wynik == 5) {
+                    echo "<span style='color: red;'>No cóż można powiedzieć, dziewczyna do której podbijałeś na imprezie Cię wyśmiała. Czy przebieg imprezy ma znaczenie?..</span>";
+                    DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-20'], ['id' => $_SESSION['uid']]);
+                }
+
+            }
+
+            die('<div class="btn-dark btn-lg" onclick="location.href = `index.php`">Wyśpij się</div>');
+            
+        }
+
         elseif(Post::get('co') == 'nextLevelGuild')
         {
             $guildName = DatabaseManager::selectBySQL("SELECT guildName FROM users WHERE id=".$_SESSION['uid'])[0]['guildName'];

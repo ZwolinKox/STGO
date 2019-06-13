@@ -130,17 +130,7 @@
 
                 const scValue = document.querySelector('#goldValue').value;
 
-                $.ajax({
-                    url: "ajax.php",
-                    method: "post",
-                    data: {
-                        co: "getMoneyGuild",
-                        money: scValue
-                    }
-                }).done((result) => {
-                    console.log(result);
-                    parent.window.location.reload();
-                })
+                
             }
 
             
