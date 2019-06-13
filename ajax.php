@@ -116,6 +116,17 @@ require_once 'config.php';
             
         }
 
+        elseif(Post::get('co') == 'szkalowaniePapieza') {
+            UserManager::death();
+        }
+
+        elseif(Post::get('co') == 'rozmowaPapiez') {
+            if($_SESSION['papa']) {
+                $_SESSION['papa'] = false;
+                DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+2'], ['id' => $_SESSION['uid']]);
+            }
+        }
+
         elseif (Post::get('co') == 'melanz') {
 
             $dayWeek = DatabaseManager::selectBySQL('SELECT dayWeek FROM users WHERE id='.Session::get('uid'))[0]['dayWeek'];

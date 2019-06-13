@@ -221,7 +221,27 @@
                                 {
                                     if(Get::exist('jakie'))
                                     {
-                                        if(Get::get('jakie') == 'pierwsze')
+                                        if(rand(1, 20) == 5)
+                                        {
+                                            DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
+                                            $_SESSION['papa'] = true;
+                                            echo '<h3>Od słów twojej prawdy objawił Ci się papież!: </h3>';
+                                            echo '<audio autoplay controls>
+                                            <source src="http://goleniow.net.pl/request.php?6" type="audio/mp3">
+                                          </audio>';
+                                            
+                                          echo '<script type="text/javascript" src="http://bajery.net/js/sp.js?img=http%3A%2F%2F28.csd.pl%2Fsite%2Fak.otrebusy%2Fak-graphs%2Fprodukty%2Fciastka%2Fkremowka.png&timer=40&num=10"></script>';
+                                        
+                                        echo '<br><div class="btn-dark btn-lg" onclick="rozmowa()">Rozmawiaj z nim</div>';
+                                        echo '<div class="btn-dark btn-lg" onclick="szkalowanie()">Szkaluj go</div>';
+
+
+                                        echo '<div id="papamessage"></div>';
+
+
+                                        }
+
+                                        elseif(Get::get('jakie') == 'pierwsze')
                                         {
                                             echo '<h3>Twoje kazanie brzmiało następująco:';
                                             echo '<p style="text-align: justify;">
@@ -264,7 +284,7 @@
                                             echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                             
                                         }
-                                        else if(Get::get('jakie') == 'drugie')
+                                        elseif(Get::get('jakie') == 'drugie')
                                         {
                                             echo '<h3>Twoje kazanie brzmiało następująco:';
                                             echo '<p style="text-align: justify;">
@@ -314,7 +334,7 @@
                                             echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                             
                                         }
-                                        else if(Get::get('jakie') == 'trzecie')
+                                        elseif(Get::get('jakie') == 'trzecie')
                                         {
                                             echo '<h3>Twoje kazanie brzmiało następująco:';
                                             echo '<p style="text-align: justify;">
@@ -361,20 +381,14 @@
                                             echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                             
                                         }
-                                        else if(Get::get('jakie') == 'czwarte')
+                                        elseif(Get::get('jakie') == 'czwarte')
                                         {
                                             echo '<h3>Twoje kazanie brzmiało następująco:';
                                             echo '<p style="text-align: justify;">
-                                            Drodzy bracia i siostry
-                                            Na pewno wierzycie w podzial swiata, jaki jest wam pokazywany w szkolach
-                                            Jednak jest to tylko propaganda miedzynarodowa
-                                            Prawda jest zupelnie inna!
-                                            Otoz prawda ejst inna
-                                            Wszechswiat zlozony jest ze stref
-                                            My zyjemy w strefie zielonej, a istnieja jeszcze takie jak czarna lub zolta!
-                                            W dodatku czarna dziura moze wychodzic jako bialy karzel
-                                            Tego nie wolno lekcewazyc
-                                            Caly wszechswiat opiera sie na czestotliwosciach, najlepsza to 432 Hz..
+                                            Świat stworzony przez Lil Piszczana był cudowny, jednak zaczynało się w nim szerzyć zło.
+                                            Niektóre zło tego swiata zostało stworzone samoistnie poprzez wolną wolę ludzi. Takie zło 
+                                            było możliwe do zamknięcia w twierdzi. Ta twierdza nazywała się "Tworków". Zarządzał nim Althof z rodu Neuhof.
+                                            Miejsca pilnowała trójgłowa sarna strzegąca bram tworkowskich. Jednak powstało też zło potężne jak bogowie...
                                             </p><br>';
                                             $rng = rand(1,2);
                                             switch($rng)
@@ -413,7 +427,7 @@
                                             echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                                             
                                         }
-                                        else if(Get::get('jakie') == "piate")
+                                        elseif(Get::get('jakie') == "piate")
                                         {
                                             echo '<h3>Twoje kazanie brzmiało następująco:';
                                             echo '<p style="text-align: justify;">
@@ -539,6 +553,41 @@
         })
 
 
+        function szkalowanie() {
+            $.ajax({
+            url : "ajax.php",
+            method : "POST",
+            data : {
+                co: "szkalowaniePapieza",
+            }
+            }).done((result) => {
+
+                document.querySelector('#papamessage').innerHTML = "<h3 style='color: red;'>Papież wyśmiał twojego wąsa. Nie wytrzymałeś takiego wstydu...</h3> ";
+
+                setTimeout(() => {
+                    location.href = "index.php";
+                }, '1000');
+            }) 
+        }
+
+        function rozmowa() {
+            $.ajax({
+            url : "ajax.php",
+            method : "POST",
+            data : {
+                co: "rozmowaPapiez",
+            }
+            }).done((result) => {
+
+                document.querySelector('#papamessage').innerHTML = "<h3 style='color: lightgreen;'>Rozmowa z papieżem była świetna! Dostałeś 2 punkty inteligencji</h3> ";
+                setTimeout(() => {
+                    location.href = "index.php";
+                }, '1000');
+            }) 
+        }
+
+
+     
         
 
     </script>
