@@ -226,6 +226,7 @@
                                             DatabaseManager::updateTable('users', ['boolChurch' => 'true'], ['id' => $_SESSION['uid']]);
                                             $_SESSION['papa'] = true;
                                             echo '<h3>Od słów twojej prawdy objawił Ci się papież!: </h3>';
+                                            echo '<img  class="img-fluid" alt="Jan Pat II" src="https://www.wykop.pl/cdn/c3201142/comment_oBWUFEKqkTVBtZpK2GpYfFukCzl92BVF.jpg">';
                                             echo '<audio autoplay controls>
                                             <source src="http://goleniow.net.pl/request.php?6" type="audio/mp3">
                                           </audio>';
