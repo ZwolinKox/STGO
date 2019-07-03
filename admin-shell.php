@@ -29,12 +29,12 @@
             else if(substr(Post::get('adminCommand'), 0, -(strlen(Post::get('adminCommand'))-9)) == 'broadcast')
             {
                 $text = substr(Post::get('adminCommand'), 10, strlen(Post::get('adminCommand')));
-                $allPlayers = DatabaseManager::selectBySQL("SELECT id FROM users")[0];
-                $arrayValue = count($allPlayers);
+                $allPlayers = DatabaseManager::selectBySQL("SELECT id FROM users");
 
                 for($i=0; $i<$arrayValue; $i++)
                 {
-                    DatabaseManager::insertInto("mail", ["whoReceive" => $i, "whoSend" => 0, "messDate" => date("H:i d-m"), "messText" => $text]);
+                    $receiveId = $allPlayers[$i]['id'];
+                    DatabaseManager::insertInto("mail", ["whoReceive" => $receiveId, "whoSend" => 0, "messDate" => date("H:i d-m"), "messText" => $text]);
                 }
             }
             //wlaczenie lub wylaczenie mozliwosci zalogowania sie do gry (prace techniczne)
@@ -52,7 +52,7 @@
                 }
                 else
                 {
-                    $_SESSION['shellOutput'] = "Serwer jest włączony!";
+                    $_SESSION['shellOutput'] = "Serwer jest wyłączony!";
                 }
             }
             //informacje o poleceniach

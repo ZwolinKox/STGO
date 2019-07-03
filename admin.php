@@ -55,20 +55,26 @@
         <div class="row">
 								
 				<div class="col-12 text-center display-4">Shell</div>
+                <div class="col-12 text-center display-2">
 
                 <?php
 
-                echo '<input class="form-control" type="text" placeholder=">" id="commandLine"><br>';
-                echo '<div class="btn-dark btn-lg" onclick="send()">Wyślij</div>';
+                echo '<input class="form-control" type="text" placeholder=">" id="commandLine">';
+                echo '<div class="btn-dark btn-lg" onclick="send()">Wyślij</div><br>';
                 
                 if(isset($_SESSION['shellOutput']))
                 {
-                    echo $_SESSION['shellOutput'];
-
-                    var_dump($_SESSION['shellOutput']);
+                    if(is_array($_SESSION['shellOutput']))
+                    {
+                        var_dump($_SESSION['shellOutput']);
+                    }
+                    else
+                    {
+                        echo '<h2>'.$_SESSION['shellOutput'].'<h2>';
+                    }
                 }
-
                 ?>
+                </div>
 
         </div>
     </div> <!-- ŚRODEK -->
