@@ -76,7 +76,15 @@
                         {
                             for($i=0; $i < count($allMail); $i++)
                             {
-                                $rNick = GameMail::idToName($allMail[$i]['whoSend']);
+                                if($allMail[$i]['whoSend'] == 0)
+                                {
+                                    $rNick = 'Administrator';
+                                }
+                                else
+                                {
+                                    $rNick = GameMail::idToName($allMail[$i]['whoSend']);
+                                }
+                                    
                                 $rDate = $allMail[$i]['messDate'];
                                 $rText = $allMail[$i]['messText'];
 

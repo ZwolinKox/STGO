@@ -2,21 +2,38 @@
 	require_once('config.php');
 
 
-if(Post::exist('login') && Post::exist('pass')) {
-        
+if(Post::exist('login') && Post::exist('pass'))
+{   
     $um = new UserManager;
     
-    if($um->LogIn(Post::get('login'), Post::get('pass'))) { //przekazanie do metody LogIn w klasie UserManager loginu i hasła
-        
-        URL::to($_SERVER['HTTP_REFERER']); //przekierowanie do gry
-        
-    } else {
-        
-        die ("Nieprawidłowa nazwa użytkownika lub hasło."); //nieprawidłowe dane
-        
+    //przekazanie do metody LogIn w klasie UserManager loginu i hasła
+    if($um->LogIn(Post::get('login'), Post::get('pass')))
+    {
+        if(DatabaseManager::selectBySQL("SELECT serverOpen FROM admin WHERE id=1")[0]['serverOpen'] == 0)
+        {
+            if(DatabaseManager::selectBySQL("SELECT isAdmin FROM users WHERE id=".$_SESSION['uid'])[0]['isAdmin'] != 1)
+            {
+                $um = new UserManager;
+                $um->LogOut();
+                die ("Trwają prace techniczne!");
+            }
+            else
+            {
+                URL::to($_SERVER['HTTP_REFERER']); //przekierowanie do gry
+            }
+        }
+        else
+        {
+            URL::to($_SERVER['HTTP_REFERER']); //przekierowanie do gry
+        }    
     }
-    
-} else { 
+    else
+    {    
+        die ("Nieprawidłowa nazwa użytkownika lub hasło."); //nieprawidłowe dane   
+    }
+} 
+else 
+{ 
     die("DOSTĘP DO TEJ STRONY ZOSTAŁ ZABLOKOWANY!"); //wejście bez formularza  
 }
 ?>

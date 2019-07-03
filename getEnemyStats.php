@@ -86,15 +86,7 @@ elseif ($_POST['co'] == 'Cios') {
                 $_SESSION['enemyInfo']['dropItem'] = $itemDrop;
             
             }
-    
-                
-    
-                
-    
-                
-    
-            
-    
+
             $_SESSION['fight'] = false;
             unset($_SESSION['fight']);
     

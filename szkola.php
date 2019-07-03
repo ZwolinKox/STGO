@@ -370,6 +370,7 @@ END;
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=parter-szukaj">Przeszukaj: Parter (Zalecany poziom: 1)</div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=pietro1-szukaj">Przeszukaj: Pierwsze piętro (Zalecany poziom: 12)</div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=pietro2-szukaj">Przeszukaj: Drugie piętro (Zalecany poziom: 22)</div>';
+                                echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=dom">Wróć do domu </div>';
                                 echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=sklep">Sklepik szkolny </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=toaleta">Toaleta </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=biblioteka">Biblioteka </div>';
@@ -377,8 +378,6 @@ END;
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=plecaki">Okradnij plecaki </div>';
                                 echo '<div class="btn-dark btn-lg href" id="szkola.php?gdzie=park">Idz do parku </div>';
                                 echo '<div class="btn-dark btn-lg href" id="sklodowska.php">Wyrusz w niebezpieczne rewiry</div>';
-                                echo '<br><div class="btn-dark btn-lg href" id="szkola.php?gdzie=dom">Wróć do domu </div>';
-                                
                             }
                         }
 
