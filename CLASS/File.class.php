@@ -28,7 +28,7 @@ class File {
     }
 
     public function write($fileName, $value) {
-        $file = fopen("newfile.txt", "w", true) or self::throw();
+        $file = fopen($fileName, "w", true) or self::throw();
         fwrite($file, $value);
         fclose($file);
     }
