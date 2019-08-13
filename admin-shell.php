@@ -55,6 +55,14 @@
                     $_SESSION['shellOutput'] = "Serwer jest wyłączony!";
                 }
             }
+            //wykonanie kopii zapasowej najważniejszych informacji z tabeli users
+            else if(substr(Post::get('adminCommand'), 0, -(strlen(Post::get('adminCommand'))-6)) == 'backup')
+            {
+                Admin::backupNow();
+                unset($_POST['adminCommand'], $_POST['adminVerify']);
+                $_SESSION['shellOutput'] = 'Wykonano kopie zapasową tabeli users!';
+            }
+
             //informacje o poleceniach
             else if(substr(Post::get('adminCommand'), 0, -(strlen(Post::get('adminCommand'))-4)) == 'help')
             {

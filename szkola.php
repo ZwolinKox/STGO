@@ -56,6 +56,11 @@
 
                     <?php
 
+                        if((!Anticheat::compareIpAddress()) || (!Anticheat::checkToken()))
+                        {
+                            Anticheat::forceLogout();
+                        }
+
                         if(DatabaseManager::selectBySQL("SELECT dayWeek FROM users WHERE id=".$_SESSION['uid'])[0]['dayWeek'] > 5)
                         {
                             echo '<h3 style="color: red;">Nie możesz iść do szkoły w weekend!</h3><br>';

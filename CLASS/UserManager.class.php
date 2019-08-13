@@ -54,6 +54,10 @@ class UserManager {
            
             
             self::log_in(); //ustawienie sesji
+
+            Anticheat::saveIpAddress();
+            Anticheat::generateToken();
+
             return $this->login;
             
         } else {
@@ -105,6 +109,8 @@ class UserManager {
             "dayWeek" => 1, "dayGame" => 1, "slyszCoin" => 100, "xpPoints" => 0, "userLevel" => 1, "userLeaguePoints" => 0, "userEnergy" => 100, "statStrength" => 0, "statIntelect" => 0, 
             "statArmor" => 0, "statHp" => 100, "statDamage" => 1, "maxHp" => 100, "maxXp" => 100, "boolHardcore"=>$hardcore
         )); //dodanie użytkownika do bazy danych
+            
+            
             if($res) {
                 return true;
             }

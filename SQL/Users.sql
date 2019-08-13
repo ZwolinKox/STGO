@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Lip 2019, 13:10
--- Wersja serwera: 10.1.38-MariaDB
--- Wersja PHP: 7.3.2
+-- Czas generowania: 12 Sie 2019, 23:35
+-- Wersja serwera: 10.1.39-MariaDB
+-- Wersja PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -91,7 +91,9 @@ CREATE TABLE `users` (
   `maxHpPvp` int(11) NOT NULL,
   `riftLevel` int(11) NOT NULL,
   `boolRift` tinyint(1) NOT NULL,
-  `isAdmin` tinyint(1) NOT NULL
+  `isAdmin` tinyint(1) NOT NULL,
+  `authIp` text COLLATE utf8_polish_ci NOT NULL,
+  `authToken` text COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
@@ -112,7 +114,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -8,4 +8,7 @@ Miner::mineCoins();
 
 //Resetowanie cooldown'u na nagrode w riftach 
 Rift::setBool();
+
+//Wykonanie kopii zapasowej tabeli users
+Admin::backupNow();
 ?>
