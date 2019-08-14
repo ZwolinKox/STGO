@@ -57,6 +57,9 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
                     <?php
+                    Anticheat::checkToken();
+                    Anticheat::compareIpAddress();
+                    
                         if(DatabaseManager::selectBySQL("SELECT boolChurch FROM users WHERE id=".$_SESSION['uid'])[0]['boolChurch'])
                         {
                             echo '<h3 style="color: red;">W tym tygodniu już byłeś w kościele!</h3><br>';

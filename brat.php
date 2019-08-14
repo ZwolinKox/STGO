@@ -57,6 +57,9 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
                        <?php
+                       Anticheat::checkToken();
+                       Anticheat::compareIpAddress();
+                       
                             if(Get::exist('jak'))
                             {
                                 if(Get::get('jak') == 'smiech')

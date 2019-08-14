@@ -55,6 +55,9 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
                         
                     <?php
+                    Anticheat::checkToken();
+                    Anticheat::compareIpAddress();
+                    
                         echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
                         echo '<div class="btn-dark btn-lg href" id="aukcje-sprzedaj.php">Dodaj aukcję!</div><br>';                      
                         echo '<h3>Lista aukcji:</h3><br>';

@@ -55,11 +55,8 @@
 				<div class="col-12 col-md-6" style="margin-top: 15px;">
 
                     <?php
-
-                        if((!Anticheat::compareIpAddress()) || (!Anticheat::checkToken()))
-                        {
-                            Anticheat::forceLogout();
-                        }
+                        Anticheat::checkToken();
+                        Anticheat::compareIpAddress();
 
                         if(DatabaseManager::selectBySQL("SELECT dayWeek FROM users WHERE id=".$_SESSION['uid'])[0]['dayWeek'] > 5)
                         {

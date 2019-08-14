@@ -21,13 +21,12 @@ class Anticheat {
         }
     }
 
-    public static function forceLogout()
-    {
+    public static function forceLogout() {
         session_destroy();
         header('Location: index.php');
     }
 
-    public static function getIpAddress() {
+    public static function getAddress() {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             return $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -37,47 +36,30 @@ class Anticheat {
         }
     }
 
-    private static function getIpAddr() {
-        if(!empty($_SERVER['HTTP_CLIENT_IP']))
-        {
-            return $_SERVER['HTTP_CLIENT_IP'];
-        }
-        else if(!empty($_SERVER['HTTP_X_FORWARDER_FOR']))
-        {
-            return $_SERVER['HTTP_X_FORWARDER_FOR'];
-        }
-        else
-        {
-            return $_SERVER['REMOTE_ADDR'];
-        }
-    }
-
-
     public static function saveIpAddress() {
-        DatabaseManager::updateTable('users', ['authIp' => getIpAddress()], ['id' => $_SESSION['uid']]);
+        DatabaseManager::updateTable('users', ['authIp' => '"'.Anticheat::getAddress().'"'], ['id' => $_SESSION['uid']]);
     }
 
     public static function compareIpAddress() {
-        if(getIpAddr() == DatabaseManager::selectBySQL("SELECT authIp FROM users WHERE id=".$_SESSION['uid'])[0]['authIp'])
+        if(Anticheat::getAddress() != DatabaseManager::selectBySQL("SELECT authIp FROM users WHERE id=".$_SESSION['uid'])[0]['authIp'])
         {
-            return true;
+            Anticheat::forceLogout();
+            return false;
         }
-        forceLogout();
-        return false;
+        return true;
     }
 
     public static function generateToken() {
         define("CHARS", "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-        //$charList = str_split("abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         $authToken = "auth";
 
         for($i=0; $i<25; $i++)
         {
-            //$authToken .= $charList[rand(0, sizeof($charList))];
             $authToken .= CHARS[rand(0, 61)];
         }
-        DatabaseManager::updateTable('users', ['authToken' => $authToken], ['id' => $_SESSION['uid']]);
+        DatabaseManager::updateTable('users', ["authToken" => '"'.$authToken.'"'], ['id' => $_SESSION['uid']]);
         setcookie("authToken", $authToken); 
+        unset($authToken);
     }
 
     public static function checkToken() {
@@ -88,7 +70,7 @@ class Anticheat {
                 return true;
             }
         }
-        forceLogout();
+        Anticheat::forceLogout();
         return false;
     }
 }

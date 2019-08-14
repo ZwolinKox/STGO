@@ -54,10 +54,6 @@ class UserManager {
            
             
             self::log_in(); //ustawienie sesji
-
-            Anticheat::saveIpAddress();
-            Anticheat::generateToken();
-
             return $this->login;
             
         } else {

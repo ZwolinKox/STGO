@@ -19,12 +19,14 @@ if(Post::exist('login') && Post::exist('pass'))
             }
             else
             {
-                URL::to($_SERVER['HTTP_REFERER']); //przekierowanie do gry
+                //URL::to($_SERVER['HTTP_REFERER']); //przekierowanie do gry
+                URL::to('auth.php'); //Przekierowanie do gry po algorytmach autoryzacyjnych
             }
         }
         else
         {
-            URL::to($_SERVER['HTTP_REFERER']); //przekierowanie do gry
+            //URL::to($_SERVER['HTTP_REFERER']); //przekierowanie do gry
+            URL::to('auth.php'); //Przekierowanie do gry po algorytmach autoryzacyjnych
         }    
     }
     else
