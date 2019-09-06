@@ -32,7 +32,11 @@ elseif ($_POST['co'] == 'Cios') {
     
     $playerStats = DatabaseManager::selectBySQL("SELECT * FROM users WHERE id=".$_SESSION['uid'])[0];
     $playerWeapon = DatabaseManager::selectBySQL("SELECT items.* FROM items, users WHERE items.id = users.eqMainHand AND users.id=".$_SESSION['uid'])[0];
-    $enemyDmg =  $_SESSION['enemyInfo']['enemyDamage'];
+    
+    //$enemyDmg =  $_SESSION['enemyInfo']['enemyDamage'];
+    //Różnorodność w zadawanym damage pomysł Sarny
+    $enemyDmg = $_SESSION['enemyInfo']['enemyDamage'] + ((rand(1, 35) / 100) * $_SESSION['enemyInfo']['enemyDamage']);
+
     $playerDmg = ($playerStats['statStrength'] / 100 ) * $playerWeapon['addStrenght'] + ($playerStats['statIntelect'] / 100 ) * $playerWeapon['addIntelect'] + $playerWeapon['addDamage'];
 
     if($_SESSION['enemyInfo']['enemyArmor'] > 0) {
@@ -69,7 +73,7 @@ elseif ($_POST['co'] == 'Cios') {
             }
     
             //Losowanie, czy będzie drop
-            $itemDrop = Drop::school(1);
+            $itemDrop = Drop::school($_SESSION['enemyId']);
             if($itemDrop != null)
             {
                 $freeSlot = EqManager::findSpace();
