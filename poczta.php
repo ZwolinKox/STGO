@@ -56,7 +56,7 @@
                     
                     <?php 
 
-                        echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div><br>';
+                        echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div><br>';
                     
                         echo '<input class="form-control" type="text" placeholder="Adresat" id="messageTo"><br>';
                         echo '<textarea class="form-control" id="messageText" rows="4"></textarea><br>';

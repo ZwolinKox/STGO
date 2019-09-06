@@ -4,5 +4,5 @@ require_once('config.php');
 Anticheat::generateToken();
 Anticheat::saveIpAddress();
 
-header('Location: index.php');
+header('Location: dom.php');
 ?>

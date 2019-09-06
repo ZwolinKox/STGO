@@ -67,7 +67,7 @@
                                     if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
@@ -83,7 +83,7 @@
                                             echo '<h3 style="color: red;">Twojego brata to nie rusza, a rodzice nie są zadowoleni!</h3><br>';
                                         }
 
-                                        echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                 }
                                 else if(Get::get('jak') == 'zwierze')
@@ -91,7 +91,7 @@
                                     if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
@@ -107,7 +107,7 @@
                                             echo '<h3 style="color: red;">Twojego brata to nie rusza, a rodzice nie są zadowoleni!</h3><br>';
                                         }
 
-                                        echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                 }
                                 else if(Get::get('jak') == 'palec')
@@ -115,7 +115,7 @@
                                     if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
@@ -131,7 +131,7 @@
                                             echo '<h3 style="color: red;">Twojego brata to nie rusza, a rodzice nie są zadowoleni!</h3><br>';
                                         }
 
-                                        echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                 }
                                 else if(Get::get('jak') == 'wulgaryzmy')
@@ -139,7 +139,7 @@
                                     if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
@@ -155,7 +155,7 @@
                                             echo '<h3 style="color: red;">Twojego brata to nie rusza, a rodzice nie są zadowoleni!</h3><br>';
                                         }
 
-                                        echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                 }
                                 else if(Get::get('jak') == 'rodzice')
@@ -163,7 +163,7 @@
                                     if(Action::getEnergy() < 100)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                     else
                                     {
@@ -179,7 +179,7 @@
                                             echo '<h3 style="color: red;">Twojego brata to nie rusza, a rodzice nie są zadowoleni!</h3><br>';
                                         }
 
-                                        echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                 }
                             }
@@ -191,7 +191,7 @@
                                 echo '<div class="btn-dark btn-lg href" id="brat.php?jak=palec">Pokaż mu środkowy palec (40% szans na powodzenie, koszt 100 Energii)</div>';
                                 echo '<div class="btn-dark btn-lg href" id="brat.php?jak=wulgaryzmy">Użyj wulgaryzmów (30% szans na powodzenie, koszt 100 Energii)</div>';
                                 echo '<div class="btn-dark btn-lg href" id="brat.php?jak=rodzice">Zacznij obrażać mu rodziców (10% szans na powodzenie, koszt 100 Energii)</div>';
-                                echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                echo '<br><div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                             }
                        ?>
 

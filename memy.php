@@ -67,7 +67,7 @@
                                 if(Action::getCoins() < 15)
                                 {
                                     echo '<h3 style="color: red">Nie masz tyle Słysz Coinów!</h3>';
-                                    echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                                 else
                                 {
@@ -84,7 +84,7 @@
                                     }
 
                                     echo '<div class="btn-dark btn-lg href" id="memy.php">Wyślij kolejnego mema </div>';
-                                    echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                             }
                             else if(Get::get('jakie') == 'polityczne')
@@ -92,7 +92,7 @@
                                 if(Action::getCoins() < 20)
                                 {
                                     echo '<h3 style="color: red">Nie masz tyle Słysz Coinów!</h3>';
-                                    echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                                 else
                                 {
@@ -109,7 +109,7 @@
                                     }
 
                                     echo '<div class="btn-dark btn-lg href" id="memy.php">Wyślij kolejnego mema </div>';
-                                    echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                             }
                             else if(Get::get('jakie') == 'czarny-humor')
@@ -117,7 +117,7 @@
                                 if(Action::getCoins() < 40)
                                 {
                                     echo '<h3 style="color: red">Nie masz tyle Słysz Coinów!</h3>';
-                                    echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                                 else
                                 {
@@ -134,7 +134,7 @@
                                     }
 
                                     echo '<div class="btn-dark btn-lg href" id="memy.php">Wyślij kolejnego mema </div>';
-                                    echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                             }
                             else if(Get::get('jakie') == 'dank-meme')
@@ -142,7 +142,7 @@
                                 if(Action::getCoins() < 60)
                                 {
                                     echo '<h3 style="color: red">Nie masz tyle Słysz Coinów!</h3>';
-                                    echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                                 else
                                 {
@@ -159,7 +159,7 @@
                                     }
 
                                     echo '<div class="btn-dark btn-lg href" id="memy.php">Wyślij kolejnego mema </div>';
-                                    echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                             }
 
@@ -171,7 +171,7 @@
                             echo '<div class="btn-dark btn-lg href" id="memy.php?jakie=polityczne">Polityczne (50% szans na powodzenie, koszt 20 Słysz Coin)</div>';
                             echo '<div class="btn-dark btn-lg href" id="memy.php?jakie=czarny-humor">Czarny humor (30% szans na powodzenie, koszt 40 Słysz Coin)</div>';
                             echo '<div class="btn-dark btn-lg href" id="memy.php?jakie=dank-meme">Dank meme (10% szans na powodzenie, koszt 60 Słysz Coin)</div>';
-                            echo '<br><div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                            echo '<br><div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                         }
 
 

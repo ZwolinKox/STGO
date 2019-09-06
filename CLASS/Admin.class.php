@@ -14,5 +14,14 @@ class Admin {
         }
         unset($data, $output);
     }
+
+    static public function sqlBackup() {
+        $filename='database_backup_'.date('G_a_m_d_y').'.sql';
+
+        $result=exec('mysqldump database_name --password=your_pass --user=root --single-transaction >/var/backups/'.$filename,$output);
+
+        if($output==''){/* no output is good */}
+        else {/* we have something to log the output here*/}
+    }
 }
 ?>

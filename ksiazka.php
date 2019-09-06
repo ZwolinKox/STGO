@@ -78,7 +78,7 @@
 
                                 $eqMainHandName = EqManager::item($playerData[0]['eqMainHand'], 'colorTag').' '.EqManager::stat($playerData[0]['eqMainHand']);
 
-                                echo '<div class="btn-dark btn-lg href" id="index.php">Powrót</div>';
+                                echo '<div class="btn-dark btn-lg href" id="dom.php">Powrót</div>';
                                 echo '<div class="btn-dark btn-lg href" id="ksiazka.php">Szukaj innego gracza</div><br>';
                                 echo '<h3 style="display: inline;"><p>'.UserManager::otherNick($playerData[0]["id"], "span").' (Lvl: '.$playerData[0]["userLevel"].')</p></h3>';
                                 
@@ -109,7 +109,7 @@
                         {
                             echo '<br><input class="form-control" type="text" placeholder="Wyszukaj gracza wpisując jego nick!" id="inputNick">';
                             echo '<div class="btn-dark btn-lg" onclick="search()">Szukaj!</div><br>';
-                            echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                            echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
 
                         }
                     ?>

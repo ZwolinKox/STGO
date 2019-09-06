@@ -68,13 +68,13 @@
                                     if(Action::getEnergy() < 20)
                                     {
                                         echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                     else if(Action::getCoins() < 30)
                                     {
 
                                         echo '<h3 style="color: red;">Nie masz tyle słysz coinów!</h3>';
-                                        echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                        echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                     }
                                     else{
                                         DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-20', 'slyszCoin' => 'slyszCoin-30'], ['id' => $_SESSION['uid']]);
@@ -100,7 +100,7 @@
                                             
                                             echo '</h3>';
                                             echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php">Naprawiaj komputer ponownie</div>';
-                                            echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                            echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                         }
                                         else {
                                             
@@ -127,7 +127,7 @@
                                             
                                             echo '</h3>';
                                             echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php">Naprawiaj komputer ponownie</div>';
-                                            echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                            echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                         }
                                     }
 
@@ -218,14 +218,14 @@
                                 if(Action::getEnergy() < 20)
                                 {
                                     echo '<h3 style="color: red;">Nie masz tyle energii!</h3>';
-                                    echo '<br> <div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                                    echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
                                 }
                                 else 
                                 {
                                     echo '<h3>Chcesz naprawiać komputer? (Koszt 30SC, 20 energii)</h3>';
     
                                     echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php?naprawa=tak">Tak </div>';
-                                    echo '<br> <div class="btn-dark btn-lg href" id="index.php">Nie</div>';
+                                    echo '<br> <div class="btn-dark btn-lg href" id="dom.php">Nie</div>';
                                     echo '<br> <div class="btn-dark btn-lg href" id="napraw-komputer.php?naprawa=koparka">Koparka Słysz Coinów</div>';
     
                                 }

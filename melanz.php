@@ -62,7 +62,7 @@
                         DatabaseManager::selectBySQL('SELECT slyszCoin FROM users WHERE id='.$_SESSION['uid'])[0]['slyszCoin'] < 20)
                         {
                             echo '<h3 style="color: red;">Nie możesz urządzić melanżu w sobote! Przecież rodzice są w domu, a może nie masz przy sobie 20SC?</h3>';
-                            echo '<div class="btn-dark btn-lg href" id="index.php">Wróć do domu </div>';
+                            echo '<div class="btn-dark btn-lg href" id="dom.php">Wróć do domu </div>';
 
                         }
                         else 
