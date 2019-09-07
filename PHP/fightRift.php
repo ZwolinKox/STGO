@@ -170,7 +170,7 @@
                                 <span style="color: black">${ resultObj.enemyHp }/${ resultObj.enemyMaxHp } ${ Round(resultObj.enemyHpProcent, 2) }%</span></div>
                             </div>
 
-                            <h3 style="margin-top: 25px;">Atak: ${ resultObj.enemyDamage }</h3>
+                            <h3 style="margin-top: 25px;">Atak: ${ resultObj.enemyDamage } + 1-25% wartości ataku</h3>
 
                         `;
                     })
