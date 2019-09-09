@@ -58,23 +58,10 @@
 <div class="collapse" id="collapseExample">
   <div class="card bg-dark card-body">
 
-	<div class="card-header">Aktualizacja 1.5B / 28.05.2019</div>
+	<div class="card-header">Oficialna wersja 1.1 / 09.09.2019</div>
     <div class="card-body">
 	<ul>
-		<li>Dodanie systemu depozytu klanu</li>
-		<li>Nowy system dropu</li>
-		<li>Osłabienie zdobywania maksymalnego hp</li>
-		<li>Dodanie opisu przedmiotów do aukcji</li>
-		<li>Dodanie nowych kazań do kościoła</li>
-		<li>Dodanie informacji o koszcie naprawy komputera</li>
-		<li>Informacje o itemach w sklepie i o dropie</li>
-		<li>System Anty-Cheat</li>
-		<li>Nowy system levelowania</li>
-		<li>Dodanie sali gimnastycznej</li>
-		<li>Poprawa informacji na paskach HP, XP oraz Energii</li>
-		<li>Podział ,,piętra" na 3 odrębne expowiska</li>
-		<li>Naprawa zgłoszonych bugów*</li>
-		<li>Utrudniony drop itemów ;)</li>
+		<li>Nowy balans przeciwników!</li>
 	</ul>
 	</div>
   </div>
