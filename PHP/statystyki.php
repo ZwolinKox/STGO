@@ -70,6 +70,7 @@
 
         $stats['procentHp'] = ($stats['statHp'] / $stats['maxHp']) * 100;
         $stats['procentXp'] = ($stats['xpPoints'] / $stats['maxXp']) * 100;
+        $stats['playTime'] = floor(($stats['playTime']/3600));
         
         echo '<div id="stats">';
         echo '<h3 id="username" style="display: inline;"><p>'.UserManager::Nick('span').' (Lvl: '.$stats['userLevel'].')</p></h3>';
@@ -101,6 +102,7 @@
         ';
         echo '<p id="dayweek">Dzień tygodnia: '.$stats['dayWeek'].'</p>';    //Nie wiem gdzie ta zmienna bedziemy trzymac, musi to byc wspólne 
         echo '<p id="daygame">Dzień w grze: '.$stats['dayGame'].'</p>';  //To musze dodac to tabeli user bo nie ma xD
+        echo '<p id="playTime">Ilość rozegranych godzin: '.$stats['playTime'].'</p>';
         echo '<p id="slyszCoin">Słysz Coiny: '.$stats['slyszCoin'].'</p>';
         echo '<p id="userleaguepoints">SłyszLeaguePoints: '.$stats['userLeaguePoints'].'</p><br>';
         echo '<p id="statstrength">Siła: '.$stats['statStrength'].'</p>';
@@ -233,6 +235,7 @@ END;
                 <p></p>
                 <p id="dayweek">Dzień tygodnia: ${ resultObj.dayWeek }</p>
                 <p id="daygame">Dzień w grze: ${ resultObj.dayGame }</p>
+                <p id="playTime">Ilość rozegranych godzin: ${ resultObj.playTime }</p>
                 <p id="slyszCoin">Słysz Coiny: ${ resultObj.slyszCoin }</p>
                 <p id="userleaguepoints">SłyszLeaguePoints: ${ resultObj.userLeaguePoints}</p><br>
                 <p id="statstrength">Siła: ${ resultObj.statStrength}</p>

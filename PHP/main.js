@@ -56,6 +56,15 @@ document.addEventListener('DOMContentLoaded', () =>  {
 		
 	}, false);
 
+	setInterval(() => {
+		$.ajax({
+            url: "ajax.php",
+            method: "post",
+            data: {
+                co: "lastLogin"
+            }
+        })
+	}, '1000');
 
 	
 })

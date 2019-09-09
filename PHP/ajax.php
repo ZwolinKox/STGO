@@ -24,6 +24,10 @@ require_once 'config.php';
             die("success");
         }
 
+        elseif (Post::get('co') == 'lastLogin') {
+            DatabaseManager::updateTable("users", ["lastLogin" => "NOW()", "playTime" => "playTime+1"], ["id" => Session::get('uid')]);
+        }
+
         elseif(Post::get('co') == 'deleteGuildMember')
         {
             Guild::deleteGuildMemberByNumber(Post::get('member'));

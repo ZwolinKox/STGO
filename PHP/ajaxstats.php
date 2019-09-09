@@ -76,6 +76,9 @@ if(isset($_POST['ajax']) && $_POST['ajax'] == 'ajax')
 
     $stats['username'] = UserManager::Nick('span');
 
+    $stats['playTime'] = floor(($stats['playTime']/3600));
+
+
     die(json_encode($stats));
 }
 

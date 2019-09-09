@@ -58,7 +58,7 @@
                         if(Get::exist('profile'))
                         {
                             $playerNick = Get::get('profile');
-                            $playerData = DatabaseManager::selectBySQL('SELECT id, username, slyszCoin, xpPoints, maxXp, userLevel, userLeaguePoints, statStrength, statIntelect, eqMainHand, team, boolGuild, guildName FROM users WHERE username="'.$playerNick.'"');
+                            $playerData = DatabaseManager::selectBySQL('SELECT id, playTime, username, lastLogin, slyszCoin, xpPoints, maxXp, userLevel, userLeaguePoints, statStrength, statIntelect, eqMainHand, team, boolGuild, guildName FROM users WHERE username="'.$playerNick.'"');
                             
                             if($playerData[0]['id'] != null)
                             {
@@ -78,9 +78,22 @@
 
                                 $eqMainHandName = EqManager::item($playerData[0]['eqMainHand'], 'colorTag').' '.EqManager::stat($playerData[0]['eqMainHand']);
 
+                                $isLogin = time() - strtotime($playerData[0]['lastLogin']);
+                                
+
                                 echo '<div class="btn-dark btn-lg href" id="dom.php">Powrót</div>';
                                 echo '<div class="btn-dark btn-lg href" id="ksiazka.php">Szukaj innego gracza</div><br>';
-                                echo '<h3 style="display: inline;"><p>'.UserManager::otherNick($playerData[0]["id"], "span").' (Lvl: '.$playerData[0]["userLevel"].')</p></h3>';
+                                echo '<h3 style="display: inline;"><p>'.UserManager::otherNick($playerData[0]["id"], "span").' (Lvl: '.$playerData[0]["userLevel"].')
+                                ';
+                                
+                                if($isLogin < 5)
+                                    echo '<strong style="color: lightgreen;">ONLINE</strong>';
+                                else
+                                    echo '<strong style="color: #ab2033;">OFFLINE</strong>';
+
+                                echo '</p></h3>';
+
+                                
                                 
                                 $xpPoints = ($playerData[0]['xpPoints'] / $playerData[0]['maxXp']) * 100;
                                 echo '
@@ -91,6 +104,8 @@
                                 </div>
                                 <p></p>
                                 ';
+                                echo '<p id="slyszCoin">Ostatnio zalogowany: <strong>'.$playerData[0]['lastLogin'].'</strong></p>';
+                                echo '<p id="slyszCoin">Ilość rozegranych godzin: <strong>'.floor(($playerData[0]['playTime']/3600)).'</strong></p>';
                                 echo '<p id="slyszCoin">Słysz Coiny: '.$playerData[0]['slyszCoin'].'</p>';
                                 echo '<p id="userleaguepoints">SłyszLeaguePoints: '.$playerData[0]['userLeaguePoints'].'</p><br>';
                                 echo '<p id="statstrength">Siła: '.$playerData[0]['statStrength'].'</p>';
