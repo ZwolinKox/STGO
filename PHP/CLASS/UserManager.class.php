@@ -9,18 +9,27 @@ class UserManager {
 
         $lvl = DatabaseManager::selectBySQL("SELECT userLevel FROM users WHERE id=".$_SESSION['uid'])[0]['userLevel'];
         
-        if($lvl < 5)
-            $add = 1;
-        elseif($lvl < 10)
-            $add = 6;
-        elseif ($lvl < 20) {
-            $add = 12;
+        if($lvl <= 5)
+        {
+            $add = 5;
+        }
+        else if(($lvl > 5)&&($lvl <= 15))
+        {
+            $add = 10;
+        }
+        else if(($lvl > 15)&&($lvl <= 25))
+        {
+            $add = 30;
+        }
+        else if(($lvl > 25)&&($lvl <= 29))
+        {
+            $add = 60;
         }
         else
-            $add = 24;
-
+        {
+            $add = 240;
+        }
             
-
         if(DatabaseManager::selectBySQL("SELECT boolHardcore FROM users WHERE id=".$_SESSION['uid'])[0]['boolHardcore']) {
             DatabaseManager::updateTable('users', ["dayWeek" => 1, "dayGame" => 1, "slyszCoin" => 100, "xpPoints" => 0, "userLevel" => 1, "userLeaguePoints" => 0, "userEnergy" => 100, "statStrength" => 0, "statIntelect" => 0, 
             "statArmor" => 0, "statHp" => 100, "statDamage" => 1, "maxHp" => 100, "maxXp" => 100, "eqMainHand" => '0'], ['id' => $_SESSION['uid']]);
@@ -31,7 +40,7 @@ class UserManager {
             
         else
             DatabaseManager::updateTable('users', ['banInfo' => 0], ['id' => $_SESSION['uid']]);
-            DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL $add HOUR", 'statHp' => 1], ['id' => $_SESSION['uid']]);
+            DatabaseManager::updateTable('users', ['banCheck' => "now() + INTERVAL $add MINUTE", 'statHp' => 1], ['id' => $_SESSION['uid']]);
 
         die('Umarłeś! Jesteś beznadziejnym Słyszem!');
 

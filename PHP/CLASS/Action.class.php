@@ -21,6 +21,11 @@ class Action {
 
     static public function delCoin($value) {
         DatabaseManager::updateTable('users', ['slyszCoin' => 'slyszCoin-'. $value], ['id' => $_SESSION['uid']]);
+        
+        if(DatabaseManager::selectBySQL("SELECT slyszCoin FROM users WHERE id=".$_SESSION['uid'])[0]['slyszCoin'] < 0)
+        {
+            DatabaseManager::updateTable('users', ['slyszCoin' => 0], ['id' => $_SESSION['uid']]);
+        }
     }
 
     static public function checkCoin($value) {

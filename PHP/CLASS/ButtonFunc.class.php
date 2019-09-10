@@ -102,14 +102,15 @@
                     {
                         $add = rand(0, 2);
 						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 10) {
-							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-10'], ['id' => $_SESSION['uid']]);
-							DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+'.$add], ['id' => $_SESSION['uid']]);
+                            DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-10'], ['id' => $_SESSION['uid']]);
+                            DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+'.$add], ['id' => $_SESSION['uid']]);
+                            
 						}
 
                     }break;
                     case 'przygodowa':
                     {
-						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 15) {
+						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 10) {
 							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-10'], ['id' => $_SESSION['uid']]);
 							DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+1'], ['id' => $_SESSION['uid']]);
 						}
@@ -118,7 +119,7 @@
                     case 'naukowa':
                     {
                         $add = rand(2, 4);
-						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 20) {
+						if(DatabaseManager::selectBySQL('SELECT userEnergy FROM users WHERE id='.$_SESSION['uid'])[0]['userEnergy'] >= 30) {
 							DatabaseManager::updateTable('users', ['userEnergy' => 'userEnergy-30'], ['id' => $_SESSION['uid']]);
 							DatabaseManager::updateTable('users', ['statIntelect' => 'statIntelect+'.$add], ['id' => $_SESSION['uid']]); 
 						}

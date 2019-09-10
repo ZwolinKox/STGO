@@ -200,7 +200,7 @@
                                                         <option value="5">ale mam już plan</option>
                                                     </select><br>
                                                 
-                                                    <select class="form-control" id="song3"id="song1">
+                                                    <select class="form-control" id="song3">
                                                         <option value="1">Tu naraze jest ściernisko</option>
                                                         <option value="2">Pole, pole, łyse pole</option>
                                                         <option value="3">Pomalutku, bez pośpiechu</option>
