@@ -39,13 +39,34 @@ elseif ($_POST['co'] == 'Cios') {
 
     $playerDmg = ($playerStats['statStrength'] / 100 ) * $playerWeapon['addStrenght'] + ($playerStats['statIntelect'] / 100 ) * $playerWeapon['addIntelect'] + $playerWeapon['addDamage'];
 
-    if($_SESSION['enemyInfo']['enemyArmor'] > 0) {
-        $_SESSION['enemyInfo']['enemyArmor'] -= $playerDmg;
+    //Rożnorodność w zadawanym damage przez gracza
+    if(rand(0, 1) == 1)
+    {
+        $playerDmg = $playerDmg + ((rand(0, 5) / 100) * $playerDmg);
+    }
+    else
+    {
+        $playerDmg = $playerDmg - ((rand(0, 5) / 100) * $playerDmg);
+    }
 
-        if($_SESSION['enemyInfo']['enemyArmor'] < 0)
+    if($_SESSION['enemyInfo']['enemyArmor'] > 0)
+    {
+        if($_SESSION['enemyInfo']['enemyArmor'] < $playerDmg)
+        {
+            //Zmienna ktora trzyma damage zeby potem go pokazac w logach
+            $damageLog = $playerDmg;
+            $playerDmg -= $_SESSION['enemyInfo']['enemyArmor'];
             $_SESSION['enemyInfo']['enemyArmor'] = 0;
-
-    } else {
+            $_SESSION['enemyInfo']['enemyHp'] -= $playerDmg;
+            $playerDmg = $damageLog;
+        }
+        else
+        {
+            $_SESSION['enemyInfo']['enemyArmor'] -= $playerDmg;
+        }
+    }
+    else 
+    {
         $_SESSION['enemyInfo']['enemyHp'] -= $playerDmg;
     }
 

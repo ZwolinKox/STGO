@@ -58,11 +58,11 @@
 <div class="collapse" id="collapseExample">
   <div class="card bg-dark card-body">
 
-	<div class="card-header">Oficjalna wersja 1.3 / 10.09.2019</div>
+	<div class="card-header">Oficjalna wersja 1.4 / 11.09.2019</div>
     <div class="card-body">
 	<ul>
-		<li>Poprawa bugów!</li>
-		<li>Znacznik online/offline</li>
+		<li>Duże zmiany w mechanice walki!</li>
+		<li>Poprawa balansu!</li>
 	</ul>
 	</div>
   </div>

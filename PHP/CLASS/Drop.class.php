@@ -142,7 +142,7 @@
                 $newMaxXp;
                 if($currentLevel < 10)
                 {
-                    $newMaxXp = $maxXp + 50;
+                    $newMaxXp = $maxXp + 80;
                 }
                 else if(($currentLevel >= 10)&&($currentLevel < 20))
                 {
@@ -150,7 +150,7 @@
                 }
                 else if(($currentLevel >=  20)&&($currentLevel < 30))
                 {
-                    $newMaxXp = intval($maxXp + ($maxXp / 3));
+                    $newMaxXp = intval($maxXp + ($maxXp / 5));
                 }
 
                 DatabaseManager::updateTable('users', ['maxXp' => $newMaxXp], ['id' => $_SESSION['uid']]);
